@@ -1,0 +1,182 @@
+require "minitest/autorun"
+
+root  = File.expand_path("..", __dir__)
+lib   = File.join(root, "lib")
+proto = File.expand_path("../protocol", root)
+$LOAD_PATH.unshift(lib)   unless $LOAD_PATH.include?(lib)
+$LOAD_PATH.unshift(proto) unless $LOAD_PATH.include?(proto)
+require "pemk"
+
+# The atomic ownership swap — the single security invariant of trading.
+class TradesTest < Minitest::Test
+  MON_CAPS = { uid_req_max: 64, party_max: 6, level_max: 100, trade_max: 1 }.freeze
+
+  def setup
+    @db = PEMK::DB.connect(ENV.fetch("DATABASE_URL"))
+    @db[:monster_transfers].delete
+    @db[:monsters].delete
+    @db[:enforcement_events].delete rescue nil
+    @db[:accounts].delete
+    @a = @db[:accounts].insert(email: "a@t.co", password_hash: "x", status: "active", created_at: Time.now)
+    @b = @db[:accounts].insert(email: "b@t.co", password_hash: "x", status: "active", created_at: Time.now)
+    @trades = PEMK::Trades.new(@db)
+    @mon    = PEMK::Monsters.new(@db, MON_CAPS)
+  end
+
+  def teardown
+    @db&.disconnect
+  end
+
+  def mint(owner, species, nonce, flagged: false, status: "active")
+    @db[:monsters].insert(owner_account_id: owner, issuer_account_id: owner, client_nonce: nonce,
+                          species: species, level_at_issue: 5, personal_id: 1, egg_at_issue: false,
+                          status: status, flagged: flagged)
+  end
+
+  def owner(uid)
+    @db[:monsters].where(id: uid).get(:owner_account_id)
+  end
+
+  def test_happy_one_for_one_flips_both_owners
+    ua = mint(@a, "PIKACHU", 1)
+    ub = mint(@b, "EEVEE", 2)
+    st, = @trades.execute_trade("t1", a: @a, b: @b, a_gives: [ua], b_gives: [ub])
+    assert_equal :ok, st
+    assert_equal @b, owner(ua)
+    assert_equal @a, owner(ub)
+    assert_equal 2, @db[:monster_transfers].where(trade_id: "t1").count
+  end
+
+  def test_abort_when_seller_does_not_own
+    ua = mint(@a, "PIKACHU", 1)
+    ub = mint(@b, "EEVEE", 2)
+    # each side offers a uid it does NOT own -> both CAS 0 rows -> whole trade aborts
+    st, reason = @trades.execute_trade("t2", a: @a, b: @b, a_gives: [ub], b_gives: [ua])
+    assert_equal :abort, st
+    assert_equal :ownership, reason
+    assert_equal @a, owner(ua)               # unchanged
+    assert_equal @b, owner(ub)
+    assert_equal 0, @db[:monster_transfers].count
+  end
+
+  def test_second_trade_of_an_already_traded_mon_aborts_wholesale
+    ua = mint(@a, "PIKACHU", 1)
+    ub = mint(@b, "EEVEE", 2)
+    uc = mint(@b, "MEW", 3)
+    @trades.execute_trade("t3", a: @a, b: @b, a_gives: [ua], b_gives: [ub])  # ua -> B
+    st, = @trades.execute_trade("t4", a: @a, b: @b, a_gives: [ua], b_gives: [uc])  # A no longer owns ua
+    assert_equal :abort, st
+    assert_equal @b, owner(uc)               # whole trade rolled back
+  end
+
+  def test_flagged_mon_cannot_be_traded
+    ua = mint(@a, "PIKACHU", 1, flagged: true)
+    ub = mint(@b, "EEVEE", 2)
+    st, = @trades.execute_trade("t5", a: @a, b: @b, a_gives: [ua], b_gives: [ub])
+    assert_equal :abort, st
+    assert_equal @a, owner(ua)
+    assert_equal @b, owner(ub)
+  end
+
+  # D8: quarantined mons (status != active) are blocked by the EXISTING CAS —
+  # zero trade-code change, works even with resim off.
+  def test_quarantined_mon_cannot_be_traded
+    ua = mint(@a, "PIKACHU", 1, status: "quarantined")
+    ub = mint(@b, "EEVEE", 2)
+    st, = @trades.execute_trade("tq", a: @a, b: @b, a_gives: [ua], b_gives: [ub])
+    assert_equal :abort, st
+    assert_equal @a, owner(ua)
+  end
+
+  # D8 STEP 5: the provisional trade hold (resim :on) — walk-gated release.
+  def provisional_catch(owner_acct, nonce, walk_status:, caught_age: 60)
+    uid = mint(owner_acct, "PIDGEY", nonce)
+    @db[:monsters].where(id: uid).update(verify_state: "provisional")
+    caught = Time.now - caught_age
+    roll = @db[:encounter_rolls].insert(account_id: owner_acct, species: "PIDGEY", level: 5, pid: nonce,
+                                        iv: Sequel.pg_jsonb([0] * 6), shiny: false, map: 5, enctype: "Land",
+                                        battle_seed: 900 + nonce, caught_at: caught, claimed_at: caught,
+                                        claimed_monster_uid: uid, created_at: caught)
+    if walk_status
+      @db[:battle_records].insert(account_id: owner_acct, encounter_roll_id: roll, mode: "on",
+                                  record: Sequel.blob("x"), replay_status: walk_status, created_at: caught)
+    end
+    uid
+  end
+
+  def test_provisional_pending_walk_is_held_within_ttl
+    trades = PEMK::Trades.new(@db, resim: :on)
+    ua = provisional_catch(@a, 1, walk_status: "pending", caught_age: 60)   # fresh, walk not run
+    ub = mint(@b, "EEVEE", 2)
+    st, reason = trades.execute_trade("th1", a: @a, b: @b, a_gives: [ua], b_gives: [ub])
+    assert_equal :abort, st
+    assert_equal :unverified, reason
+    assert_equal @a, owner(ua)                                             # nothing moved
+  end
+
+  def test_provisional_walk_cleared_is_tradeable
+    trades = PEMK::Trades.new(@db, resim: :on)
+    ua = provisional_catch(@a, 1, walk_status: "walk_ok")                  # walk ran, didn't refute
+    ub = mint(@b, "EEVEE", 2)
+    st, = trades.execute_trade("th2", a: @a, b: @b, a_gives: [ua], b_gives: [ub])
+    assert_equal :ok, st
+    assert_equal @b, owner(ua)                                             # released
+  end
+
+  def test_provisional_pending_past_ttl_fails_open
+    trades = PEMK::Trades.new(@db, resim: :on)
+    ua = provisional_catch(@a, 1, walk_status: "pending", caught_age: 7_200)   # >1h, harness dead
+    ub = mint(@b, "EEVEE", 2)
+    st, = trades.execute_trade("th3", a: @a, b: @b, a_gives: [ua], b_gives: [ub])
+    assert_equal :ok, st, "fail-open: a dead harness must never brick trading forever"
+  end
+
+  def test_provisional_with_null_caught_at_fails_open
+    # a provisional mon whose roll has no caught_at (no record will arrive) must
+    # RELEASE, not hold forever (the TTL clock has nothing to tick against).
+    trades = PEMK::Trades.new(@db, resim: :on)
+    uid = mint(@a, "PIDGEY", 1)
+    @db[:monsters].where(id: uid).update(verify_state: "provisional")
+    @db[:encounter_rolls].insert(account_id: @a, species: "PIDGEY", level: 5, pid: 1,
+                                 iv: Sequel.pg_jsonb([0] * 6), shiny: false, map: 5, enctype: "Land",
+                                 battle_seed: 5, caught_at: nil, claimed_monster_uid: uid, created_at: Time.now)
+    ub = mint(@b, "EEVEE", 2)
+    st, = trades.execute_trade("thnull", a: @a, b: @b, a_gives: [uid], b_gives: [ub])
+    assert_equal :ok, st
+  end
+
+  def test_provisional_hold_is_off_when_resim_off
+    ua = provisional_catch(@a, 1, walk_status: "pending", caught_age: 60)
+    ub = mint(@b, "EEVEE", 2)
+    st, = @trades.execute_trade("th4", a: @a, b: @b, a_gives: [ua], b_gives: [ub])   # default resim :off
+    assert_equal :ok, st
+  end
+
+  def test_replay_is_idempotent_no_double_swap
+    ua = mint(@a, "PIKACHU", 1)
+    ub = mint(@b, "EEVEE", 2)
+    @trades.execute_trade("t6", a: @a, b: @b, a_gives: [ua], b_gives: [ub])
+    st, = @trades.execute_trade("t6", a: @a, b: @b, a_gives: [ua], b_gives: [ub])   # replay same trade_id
+    assert_equal :ok_replay, st
+    assert_equal 2, @db[:monster_transfers].where(trade_id: "t6").count             # not doubled
+    assert_equal @b, owner(ua)                                                      # not swapped back
+  end
+
+  def test_evictions_positive_list
+    ua = mint(@a, "PIKACHU", 1)
+    ub = mint(@b, "EEVEE", 2)
+    @trades.execute_trade("t7", a: @a, b: @b, a_gives: [ua], b_gives: [ub])
+    assert_equal [ua], @mon.evictions(@a)    # A traded ua away, no longer owns it
+    assert_equal [ub], @mon.evictions(@b)
+  end
+
+  def test_a_returned_mon_is_not_evicted
+    ua = mint(@a, "PIKACHU", 1)
+    ub = mint(@b, "EEVEE", 2)
+    @trades.execute_trade("t8", a: @a, b: @b, a_gives: [ua], b_gives: [ub])  # ua->B, ub->A
+    @trades.execute_trade("t9", a: @a, b: @b, a_gives: [ub], b_gives: [ua])  # ua BACK to A, ub back to B
+    # ua was traded away once but is owned by A again -> current-owner check excludes it.
+    refute_includes @mon.evictions(@a), ua
+    refute_includes @mon.evictions(@b), ub
+  end
+end

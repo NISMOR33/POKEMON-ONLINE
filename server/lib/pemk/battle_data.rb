@@ -1,0 +1,250 @@
+# frozen_string_literal: true
+
+require "json"
+
+module PEMK
+  # Read-only server model of the game's BATTLE reference data (Milestone 4 Layer D).
+  # Loaded ONCE at boot from a build-time JSON export (server/data/battle_data.json)
+  # produced IN-ENGINE by the client's "PEMK: Export Battle Data" debug action. Like
+  # WorldData, the server NEVER reads a .dat/Marshal blob — that would need the engine's
+  # GameData/RGSS classes and a Marshal.load of attacker-influenceable files, the exact
+  # RCE surface M4 forbids. It only ever consumes plain JSON.
+  #
+  # Schema v1 is the PURE-DATA slice the anti-cheat needs — never move/ability/item
+  # EFFECT code (a move's function_code is a dispatch KEY, not data):
+  #   caps          {max_level, iv_stat_limit, ev_limit, ev_stat_limit, no_vitamin_ev_cap}
+  #   natures       ID => [[STAT, +10|-10], ...]   ([] for neutral)
+  #   growth_rates  ID => {max_exp}
+  #   types         ATK => { DEF => 0|1|2|4 }      (engine scale; /2.0 = multiplier)
+  #   abilities     [ID, ...]                      (existence set)
+  #   items         ID => {pocket, is_ball, is_berry, is_machine, can_hold, move}
+  #   moves         ID => {type, category, power, accuracy, pp, priority, target,
+  #                        function_code, flags, effect_chance}
+  #   species       ID => {species, form, types, base_stats, evs, base_exp, growth_rate,
+  #                        catch_rate, abilities, hidden_abilities, level_up_moves,
+  #                        tutor_moves, egg_moves, prev_species, minimum_level}
+  #   trainers      [{type, name, version, party: [[species, level, item, [moves]], ...]}]
+  #                 (D4; the item and moves from money authority M0)
+  #   trainer_types TYPE => {base_money}             (money authority M0; optional)
+  #   money_rules   {start_money}                    (money authority M0; optional)
+  # All IDs are Strings (JSON keys); callers normalize client-supplied ids with #to_s.
+  #
+  # Boot policy (same asymmetry as WorldData): ABSENT export -> tolerated (empty model +
+  # one warning, so D1 team-legality just no-ops); PRESENT-but-INVALID (unparseable /
+  # wrong schema_version / 'species' not an object) -> BOOT ERROR, so a stale/corrupt
+  # export never boots silently.
+  class BattleData
+    SCHEMA_VERSION = 1
+    NORMAL_EFFECT  = 2   # the type-matrix value for a neutral matchup (multiplier 1.0)
+
+    def initialize(path, expected_version: SCHEMA_VERSION, logger: nil)
+      @log          = logger || ->(_m) {}
+      @caps         = {}
+      @natures      = {}
+      @growth_rates = {}
+      @types        = {}
+      @abilities    = {}   # id => true (a Set-like hash, for O(1) existence)
+      @items        = {}
+      @moves        = {}
+      @species      = {}
+      @trainers     = {}   # [type, name, version] => frozen [[species, level], ...]
+      @trainer_types = {}  # type => {"base_money" => n} (money authority M0; optional)
+      @money_rules  = {}   # {"start_money" => n, "loss_multipliers" => [...], ...} (M0; optional)
+      @loaded       = false
+      load!(path, expected_version)
+    end
+
+    def loaded?; @loaded; end
+    def empty?;  @species.empty?; end
+
+    # --- species (D1 legality, D2 encounters, D4 rewards) ----------------------
+    # -> frozen species entry hash | nil. +id+ is a String key ("BULBASAUR", "VENUSAUR_1").
+    def species(id);        @species[id];        end
+    def species_known?(id); @species.key?(id);   end
+
+    # --- trainers (D4 rewards) --------------------------------------------------
+    # -> [[species, level], ...] | nil, for a trainer the export knows.
+    def trainer_party(type, name, version)
+      @trainers[[type.to_s, name.to_s, version.to_i]]
+    end
+
+    # --- money (money authority M0) ---------------------------------------------
+    # -> what a trainer type pays per level of its strongest Pokemon, or nil (an export
+    # from before M0, or a type it does not know).
+    def trainer_base_money(type)
+      money = (@trainer_types[type.to_s] || {})["base_money"]
+      money.is_a?(Integer) && money >= 0 ? money : nil
+    end
+
+    # -> a trainer's prize before the multipliers: its strongest Pokemon's level x its
+    # type's base money, as Battle#pbGainMoney pays it; nil when either is unknown.
+    def trainer_prize(type, name, version)
+      party = trainer_party(type, name, version)
+      base  = trainer_base_money(type)
+      return nil unless party && !party.empty? && base
+
+      party.map { |p| p[1] }.max * base
+    end
+
+    # -> whether any of the trainer's Pokemon knows one of +moves+, or nil when the export
+    # lists no moves for it. Only the player's side sets Happy Hour, but a copying move
+    # (Mimic, Copycat...) on the player's side can take it, or Metronome, from a foe.
+    def trainer_knows_any?(type, name, version, moves)
+      party = trainer_party(type, name, version)
+      return nil unless party && party.all? { |p| p[3].is_a?(Array) }
+
+      wanted = moves.map(&:to_s)
+      party.any? { |p| (p[3] & wanted).any? }
+    end
+
+    def trainer_types_list; @trainer_types.keys; end
+
+    # The money a new game starts with (metadata), or nil.
+    def start_money
+      money = @money_rules["start_money"]
+      money.is_a?(Integer) && money >= 0 ? money : nil
+    end
+
+    def money_rules; @money_rules; end
+
+    # --- moves / abilities / natures / items (D1 legality) ---------------------
+    def move(id);         @moves[id];          end
+    def move_known?(id);  @moves.key?(id);      end
+    def ability_known?(id); @abilities.key?(id); end
+    def nature(id);       @natures[id];        end   # [[STAT, delta], ...] | nil
+    def nature_known?(id); @natures.key?(id);  end
+    def item(id);         @items[id];          end
+    def item_known?(id);  @items.key?(id);     end
+
+    # Item authority E2: the engine rules that hand out items the server can bound -
+    # {"start_item_storage" => ["POTION"], "more_bonus_premier_balls" => true,
+    # "pickup_items" => [...], "honey_gather" => ["HONEY"], "mining_items" => [...]}.
+    # Empty for an export that predates them.
+    def item_rules; @item_rules || {}; end
+
+    def item_ids; @items.keys; end
+
+    # Every item some wild Pokemon may hold (item authority E2b). nil when the export
+    # predates the field.
+    def wild_items
+      return @wild_items if defined?(@wild_items)
+
+      with = @species.values.select { |s| s.key?("wild_items") }
+      @wild_items = with.empty? ? nil : with.flat_map { |s| Array(s["wild_items"]) }.uniq.freeze
+    end
+
+    # Can this item legally sit in a battler's held-item slot? Unknown item -> false
+    # (a held item the export doesn't know about is not something we can vouch for).
+    def holdable?(id)
+      e = @items[id]
+      e ? e["can_hold"] == true : false
+    end
+
+    # --- misc (used from D4 on; exposed now so the loader is complete) ----------
+    def caps; @caps; end                                        # frozen {"max_level"=>100, ...}
+    def max_level; @caps["max_level"]; end
+    def growth_rate_max_exp(rate); g = @growth_rates[rate.to_s]; g && g["max_exp"]; end
+
+    # Cumulative EXP required to BE at +level+ on this growth rate (curve[level-1]), or
+    # nil when the export predates the curve (older battle_data.json) or the rate/level
+    # is unknown — callers treat nil as unjudgeable. (D4 reward envelope.)
+    def exp_for_level(rate, level)
+      g = @growth_rates[rate.to_s]
+      curve = g && g["curve"]
+      return nil unless curve.is_a?(Array) && level.is_a?(Integer) && level >= 1 && level <= curve.length
+
+      curve[level - 1]
+    end
+
+    # Attacking x defending effectiveness on the engine scale (0/1/2/4); an unknown
+    # pairing defaults to NORMAL so a missing cell never fabricates (in)effectiveness.
+    def type_effectiveness(atk, dfn)
+      row = @types[atk.to_s]
+      return NORMAL_EFFECT unless row
+
+      row.fetch(dfn.to_s, NORMAL_EFFECT)
+    end
+
+    def summary
+      return "absent (Layer D no-op — run the in-game 'PEMK: Export Battle Data')" unless @loaded
+
+      "#{@species.size} species/forms, #{@moves.size} moves, #{@items.size} items, " \
+        "#{@abilities.size} abilities, #{@natures.size} natures, #{@trainers.size} trainers, " \
+        "#{@trainer_types.size} trainer types (schema v#{SCHEMA_VERSION})"
+    end
+
+    private
+
+    def load!(path, expected_version)
+      unless File.file?(path)
+        @log.call("battle-data: #{path} absent — Layer D team-legality runs in no-op mode until the in-game exporter is run")
+        return
+      end
+
+      doc =
+        begin
+          JSON.parse(File.read(path))
+        rescue JSON::ParserError => e
+          raise "battle data #{path} is not valid JSON: #{e.message}"
+        end
+
+      unless doc.is_a?(Hash) && doc["schema_version"] == expected_version
+        got = doc.is_a?(Hash) ? doc["schema_version"].inspect : "missing"
+        raise "battle data #{path} schema_version #{got} != expected #{expected_version} " \
+              "(regenerate via the in-game 'PEMK: Export Battle Data' action)"
+      end
+
+      species = doc["species"]
+      raise "battle data #{path} 'species' is not an object" unless species.is_a?(Hash)
+
+      @caps         = freeze_hash(doc["caps"])
+      @natures      = freeze_hash(doc["natures"])
+      @growth_rates = freeze_hash(doc["growth_rates"])
+      @types        = freeze_hash(doc["types"])
+      @abilities    = load_id_set(doc["abilities"])
+      @items        = freeze_hash(doc["items"])
+      @moves        = freeze_hash(doc["moves"])
+      @species      = freeze_hash(species)
+      @trainers     = load_trainers(doc["trainers"])   # optional (a pre-D4 export has none)
+      @item_rules   = freeze_hash(doc["item_rules"])   # optional (item authority E2)
+      @trainer_types = freeze_hash(doc["trainer_types"])   # optional (money authority M0)
+      @money_rules  = freeze_hash(doc["money_rules"])      # optional (money authority M0)
+
+      @loaded = true
+      @log.call("battle-data: loaded #{summary} from #{path}")
+    end
+
+    # Freeze a String-keyed section and each of its top-level entry values, tolerating a
+    # missing/mistyped section as empty (present-but-wrong-type is degraded, not fatal —
+    # only 'species' is load-bearing enough to raise).
+    def freeze_hash(h)
+      return {} unless h.is_a?(Hash)
+
+      h.each_value { |v| v.freeze }
+      h.freeze
+    end
+
+    # [{type, name, version, party: [[species, level], ...]}, ...] -> keyed and frozen.
+    def load_trainers(list)
+      return {} unless list.is_a?(Array)
+
+      out = {}
+      list.each do |t|
+        next unless t.is_a?(Hash) && t["party"].is_a?(Array)
+
+        party = t["party"].select { |p| p.is_a?(Array) && p[0].is_a?(String) && p[1].is_a?(Integer) }
+        out[[t["type"].to_s, t["name"].to_s, t["version"].to_i]] = party.map(&:freeze).freeze
+      end
+      out.freeze
+    end
+
+    # ["OVERGROW", ...] -> { "OVERGROW" => true } for O(1) existence checks.
+    def load_id_set(arr)
+      return {} unless arr.is_a?(Array)
+
+      set = {}
+      arr.each { |id| set[id.to_s] = true if id }
+      set.freeze
+    end
+  end
+end

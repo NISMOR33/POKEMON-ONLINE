@@ -1,0 +1,100 @@
+#===============================================================================
+# PEMK :: Config
+#-------------------------------------------------------------------------------
+# Central configuration for the MMO layer. Kept tiny and dependency-free so it
+# loads first (alphanumerically) and can be read by every other module.
+#===============================================================================
+module PEMK
+  module Config
+    # Master switch. When false, the plugin loads but stays completely inert,
+    # so the game behaves exactly like vanilla Essentials.
+    ENABLED = true
+
+    # Role of this game instance:
+    #   :auto   - try to host; if the port is already taken (another instance is
+    #             hosting on this PC), automatically join it as a client.
+    #             => launch the game twice for a zero-config local test.
+    #   :host   - host the relay AND play (friends connect to your LAN IP).
+    #   :client - join a host at HOST:PORT.
+    #   :off    - fully disabled (vanilla behaviour).
+    ROLE = :auto
+
+    # Client connect target (the host's IP). Loopback for a same-PC test; set to
+    # the host's LAN IP for :client instances playing with friends.
+    HOST = "127.0.0.1"
+    PORT = 9998
+
+    # Address the host relay binds to. "127.0.0.1" keeps it same-PC only and
+    # avoids a Windows Firewall prompt; use "0.0.0.0" to accept LAN friends.
+    BIND_HOST = "127.0.0.1"
+
+    # How often (in frames) an idle player re-announces its position, so players
+    # who join later still see everyone. ~30 frames ≈ 0.5 s.
+    HEARTBEAT_FRAMES = 30
+
+    # Drop a remote player we haven't heard from for this many seconds (covers
+    # disconnects/crashes without needing the dumb relay to send leave events).
+    # Must be comfortably larger than the heartbeat interval.
+    PRESENCE_TIMEOUT = 3.0
+
+    # Any of the above (ROLE/HOST/PORT/BIND_HOST) can be overridden at runtime by
+    # a plain-text "mmo_config.txt" in the game folder — see the plugin README.
+    # That lets friends set up LAN play without editing Ruby.
+    CONFIG_FILE = "mmo_config.txt"
+
+    # Phase 2 — authoritative account messages the SERVER handles itself (login,
+    # save, economy mutations) instead of relaying. Everything else (presence)
+    # is broadcast as-is.
+    ACCOUNT_TYPES = [:login, :save, :mutate, :badge, :inv].freeze
+
+    # Seconds to wait for the server's login response before proceeding offline.
+    LOGIN_TIMEOUT = 15.0
+
+    # M4 Layer C: seconds the client blocks for a server pickup grant before giving
+    # up (leaves the item ball, retries later). Short — a normal grant is a few frames
+    # on LAN; a laggy link tops out here rather than hanging the pickup.
+    PICKUP_GRANT_TIMEOUT = 2.5
+
+    # Step 6: seconds an event waits for the server to grant a gift. Past it the gift
+    # is owed and added once the grant comes (nothing is lost, nothing given unasked).
+    GIFT_GRANT_TIMEOUT = 3.0
+
+    # Item authority E3: seconds a Mart purchase or sale waits for the server. Past it
+    # nothing is bought or sold, and the player may try again.
+    SHOP_TIMEOUT = 5.0
+
+    # The classes a Pokemon from another player may contain (a trade's escrow, a PvP
+    # team). With the server's PEMK_PEER_CHECK on, bytes naming anything else are
+    # refused before they are loaded. A game whose plugins keep their own objects in
+    # a Pokemon adds those classes here (and to the server's PEMK_PEER_CLASSES).
+    PEER_CLASSES = %w[Pokemon Pokemon::Move Pokemon::Owner Mail].freeze
+
+    # Fixes for the engine's own item dupes (005_Battle/010_ItemDupes.rb: an item moved
+    # onto a wild Pokemon by Trick or Bestow came back at the end of the battle). On;
+    # false puts the engine's behaviour back.
+    ENGINE_DUPE_FIXES = true
+
+    # M4 Layer D D2: max seconds to block for a server wild-encounter mint before falling
+    # back to a local roll (encounters must keep happening on a laggy/dropped link). Short —
+    # this stalls entering every wild battle in `on` mode, so keep it tight.
+    ENCOUNTER_GRANT_TIMEOUT = 2.0
+
+    # M4 Layer D D3: max seconds to block for a server catch verdict before falling back
+    # to the local roll (a ball throw must always resolve).
+    CATCH_VERDICT_TIMEOUT = 2.5
+
+    # Wire framing: a big-endian uint32 length prefix precedes each payload.
+    # Must stay in sync with the server. (Validated in Phase 0: sockets + this
+    # framing round-trip correctly under mkxp-z / MRI 3.1.3.)
+    LENGTH_BYTES      = 4
+    MAX_MESSAGE_BYTES = 16 << 20  # 16 MiB hard cap. Larger frames = protocol error
+                                  # (drop the link). Sized to fit a full game save,
+                                  # which Phase 2 pushes to the server on Game.save.
+
+    # Wire hardening (see MessageCodec's split "safe envelope + opaque body" shape).
+    # ENVELOPE_MAX bounds the primitive envelope a host will decode; PRIM_MAX_ELEMS
+    # bounds any Array/Hash element count in the primitive codec (anti-memory-bomb).
+    ENVELOPE_MAX   = 64 << 10     # 64 KiB — routing/control data only, never a graph
+    PRIM_MAX_ELEMS = 4_096
+  end
+end

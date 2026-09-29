@@ -1,0 +1,4 @@
+Name       = [ULQ_007] Book System
+Version    = 1.0
+Essentials = 21.1
+Credits    = UlquiorraSM

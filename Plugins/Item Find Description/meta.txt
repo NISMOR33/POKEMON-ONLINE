@@ -1,0 +1,5 @@
+Name         = Item Find Description
+Version      = 2.1
+Essentials   = 21.1
+Website      = https://eeveeexpo.com/resources/1777/
+Credits      = Boonzeet, JulieHaru

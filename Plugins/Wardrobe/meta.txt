@@ -1,0 +1,5 @@
+Name       = DarrylBD99's Wardrobe
+Version    = 1.1
+Essentials = 21.1
+Credits    = [DarrylBD99, StarWolff]
+Link       = https://reliccastle.com/resources/1/

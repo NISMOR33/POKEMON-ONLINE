@@ -1,0 +1,2349 @@
+﻿# See the documentation on the wiki to learn how to edit this file.
+#-------------------------------
+[POKEMONTRAINER_Red]
+Name = Pokémon Trainer
+Gender = Male
+BaseMoney = 60
+#-------------------------------
+[POKEMONTRAINER_Leaf]
+Name = Pokémon Trainer
+Gender = Female
+BaseMoney = 60
+#-------------------------------
+[POKEMONTRAINER_Brendan]
+Name = Pokémon Trainer
+Gender = Male
+BaseMoney = 60
+BattleBGM = May Battle Theme.ogg
+VictoryBGM = Victory! Trainer.ogg
+#-------------------------------
+[POKEMONTRAINER_Brendan1]
+Name = Pokémon Trainer
+Gender = Male
+BaseMoney = 60
+BattleBGM = May Battle Theme.ogg
+VictoryBGM = Victory! Trainer.ogg
+#-------------------------------
+[POKEMONTRAINER_May]
+Name = Pokémon Trainer
+Gender = Female
+BaseMoney = 60
+BattleBGM = May Battle Theme.ogg
+VictoryBGM = Victory! Trainer.ogg
+#-------------------------------
+[POKEMONTRAINER_May1]
+Name = Pokémon Trainer
+Gender = Female
+BaseMoney = 60
+BattleBGM = May Battle Theme.ogg
+VictoryBGM = Victory! Trainer.ogg
+#-------------------------------
+[RIVAL1]
+Name = Rival
+Gender = Male
+BaseMoney = 16
+#-------------------------------
+[RIVAL2]
+Name = Rival
+Gender = Male
+BaseMoney = 36
+#-------------------------------
+[AROMALADY]
+Name = Aroma Lady
+Gender = Female
+BaseMoney = 32
+#-------------------------------
+[BEAUTY]
+Name = Beauty
+Gender = Female
+BaseMoney = 56
+#-------------------------------
+[BIKER]
+Name = Biker
+Gender = Male
+BaseMoney = 32
+#-------------------------------
+[BIRDKEEPER]
+Name = Bird Keeper
+Gender = Male
+BaseMoney = 32
+IntroBGM = Encounter! Ace Trainer.ogg
+#-------------------------------
+[BUGCATCHER]
+Name = Bug Catcher
+Gender = Male
+BaseMoney = 16
+#-------------------------------
+[BURGLAR]
+Name = Burglar
+Gender = Male
+BaseMoney = 88
+SkillLevel = 32
+#-------------------------------
+[CHANELLER]
+Name = Channeler
+Gender = Female
+BaseMoney = 32
+#-------------------------------
+[CHANNELER]
+Name = Channeler
+Gender = Female
+BaseMoney = 32
+#-------------------------------
+[CUEBALL]
+Name = Cue Ball
+Gender = Male
+BaseMoney = 24
+#-------------------------------
+[ENGINEER]
+Name = Engineer
+Gender = Male
+BaseMoney = 48
+#-------------------------------
+[FISHERMAN]
+Name = Fisherman
+Gender = Male
+BaseMoney = 32
+#-------------------------------
+[GAMBLER]
+Name = Gambler
+Gender = Male
+BaseMoney = 72
+SkillLevel = 32
+#-------------------------------
+[GENTLEMAN]
+Name = Gentleman
+Gender = Male
+BaseMoney = 72
+#-------------------------------
+[HIKER]
+Name = Hiker
+Gender = Male
+BaseMoney = 32
+IntroBGM = Encounter! Hiker.ogg
+#-------------------------------
+[JUGGLER]
+Name = Juggler
+Gender = Male
+BaseMoney = 32
+#-------------------------------
+[LADY]
+Name = Lady
+Gender = Female
+BaseMoney = 160
+SkillLevel = 72
+#-------------------------------
+[PAINTER]
+Name = Painter
+Gender = Female
+BaseMoney = 16
+#-------------------------------
+[POKEMANIAC]
+Name = Poké Maniac
+Gender = Male
+BaseMoney = 64
+#-------------------------------
+[POKEMONBREEDER]
+Name = Pokémon Breeder
+Gender = Female
+BaseMoney = 48
+#-------------------------------
+[PROFESSOR]
+Name = Professor
+Gender = Male
+BaseMoney = 100
+#-------------------------------
+[ROCKER]
+Name = Rocker
+Gender = Male
+BaseMoney = 24
+#-------------------------------
+[RUINMANIAC]
+Name = Ruin Maniac
+Gender = Male
+BaseMoney = 48
+#-------------------------------
+[SAILOR]
+Name = Sailor
+Gender = Male
+BaseMoney = 32
+#-------------------------------
+[SCIENTIST]
+Name = Scientist
+Gender = Male
+BaseMoney = 48
+#-------------------------------
+[SUPERNERD]
+Name = Super Nerd
+Gender = Male
+BaseMoney = 48
+#-------------------------------
+[TAMER]
+Name = Tamer
+Gender = Male
+BaseMoney = 40
+#-------------------------------
+[BLACKBELT]
+Name = Black Belt
+Gender = Male
+BaseMoney = 32
+#-------------------------------
+[BLACKBELT1]
+Name = Black Belt
+Gender = Male
+BaseMoney = 32
+#-------------------------------
+[BLACKBELT2]
+Name = Muscle Island Head
+Gender = Male
+BaseMoney = 32
+#-------------------------------
+[CRUSHGIRL]
+Name = Crush Girl
+Gender = Female
+BaseMoney = 24
+#-------------------------------
+[CAMPER]
+Name = Camper
+Gender = Male
+BaseMoney = 16
+#-------------------------------
+[PICNICKER]
+Name = Picnicker
+Gender = Female
+BaseMoney = 16
+#-------------------------------
+[COOLTRAINER_M]
+Name = Cool Trainer
+Gender = Male
+BaseMoney = 60
+#-------------------------------
+[COOLTRAINER_F]
+Name = Cool Trainer
+Gender = Female
+BaseMoney = 60
+#-------------------------------
+[YOUNGSTER]
+Name = Youngster
+Gender = Male
+BaseMoney = 16
+IntroBGM = Encounter! Youngster.ogg
+#-------------------------------
+[LASS]
+Name = Lass
+Gender = Female
+BaseMoney = 16
+IntroBGM = Encounter! Lass -.ogg
+#-------------------------------
+[POKEMONRANGER_M]
+Name = Pokémon Ranger
+Gender = Male
+BaseMoney = 60
+#-------------------------------
+[POKEMONRANGER_F]
+Name = Pokémon Ranger
+Gender = Female
+BaseMoney = 60
+#-------------------------------
+[PSYCHIC_M]
+Name = Psychic
+Gender = Male
+BaseMoney = 32
+#-------------------------------
+[PSYCHIC_F]
+Name = Psychic
+Gender = Female
+BaseMoney = 32
+#-------------------------------
+[SWIMMER_M]
+Name = Swimmer
+Gender = Male
+BaseMoney = 16
+SkillLevel = 32
+#-------------------------------
+[SWIMMER_F]
+Name = Swimmer
+Gender = Female
+BaseMoney = 16
+SkillLevel = 32
+#-------------------------------
+[SWIMMER2_M]
+Name = Swimmer
+Gender = Male
+BaseMoney = 16
+SkillLevel = 32
+#-------------------------------
+[SWIMMER2_F]
+Name = Swimmer
+Gender = Female
+BaseMoney = 16
+SkillLevel = 32
+IntroBGM = Encounter! Tuber.ogg
+#-------------------------------
+[TUBER_M]
+Name = Tuber
+Gender = Male
+BaseMoney = 4
+SkillLevel = 16
+IntroBGM = Encounter! Tuber.ogg
+#-------------------------------
+[TUBER_F]
+Name = Tuber
+Gender = Female
+BaseMoney = 4
+SkillLevel = 16
+#-------------------------------
+[TUBER2_M]
+Name = Tuber
+Gender = Male
+BaseMoney = 4
+SkillLevel = 16
+#-------------------------------
+[TUBER2_F]
+Name = Tuber
+Gender = Female
+BaseMoney = 4
+SkillLevel = 16
+#-------------------------------
+[COOLCOUPLE]
+Name = Cool Couple
+Gender = Unknown
+BaseMoney = 72
+SkillLevel = 48
+#-------------------------------
+[CRUSHKIN]
+Name = Crush Kin
+Gender = Unknown
+BaseMoney = 48
+#-------------------------------
+[SISANDBRO]
+Name = Sis and Bro
+Gender = Unknown
+BaseMoney = 16
+SkillLevel = 48
+#-------------------------------
+[TWINS]
+Name = Twins
+Gender = Unknown
+BaseMoney = 24
+IntroBGM = Encounter! Twins.ogg
+#-------------------------------
+[YOUNGCOUPLE]
+Name = Young Couple
+Gender = Unknown
+BaseMoney = 60
+SkillLevel = 32
+#-------------------------------
+[TEAMROCKET_M]
+Name = Team Rocket
+Gender = Male
+BaseMoney = 32
+#-------------------------------
+[TEAMROCKET_F]
+Name = Team Rocket
+Gender = Female
+BaseMoney = 32
+#-------------------------------
+[ROCKETBOSS]
+Name = Rocket Boss
+Gender = Male
+BaseMoney = 100
+#-------------------------------
+[LEADER_Roxanne]
+Name = Gym Leader
+Gender = Female
+BaseMoney = 100
+BattleBGM = Gym Leader Battle.ogg
+VictoryBGM = Victory! Gym Leader & Elite Four.ogg
+ShadowXY = 0,-4
+#-------------------------------
+[LEADER_Wattson]
+Name = Gym Leader
+Gender = Male
+BaseMoney = 100
+BattleBGM = Gym Leader Battle.ogg
+VictoryBGM = Victory! Gym Leader & Elite Four.ogg
+ShadowXY = 3,-2
+#-------------------------------
+[LEADER_Flannery]
+Name = Gym Leader
+Gender = Female
+BaseMoney = 100
+BattleBGM = Gym Leader Battle.ogg
+VictoryBGM = Victory! Gym Leader & Elite Four.ogg
+ShadowXY = 0,-3
+#-------------------------------
+[LEADER_Norman]
+Name = Gym Leader
+Gender = Female
+BaseMoney = 100
+BattleBGM = Gym Leader Battle.ogg
+VictoryBGM = Victory! Gym Leader & Elite Four.ogg
+ShadowXY = 0,-2
+#-------------------------------
+[LEADER_Winona]
+Name = Gym Leader
+Gender = Female
+BaseMoney = 100
+BattleBGM = Gym Leader Battle.ogg
+VictoryBGM = Victory! Gym Leader & Elite Four.ogg
+ShadowXY = 0,-3
+#-------------------------------
+[LEADER_Tate]
+Name = Gym Leader
+Gender = Unknown
+BaseMoney = 100
+BattleBGM = Gym Leader Battle.ogg
+VictoryBGM = Victory! Gym Leader & Elite Four.ogg
+ShadowXY = 0,-1
+#-------------------------------
+[LEADER_Juan]
+Name = Gym Leader
+Gender = Male
+BaseMoney = 100
+BattleBGM = Gym Leader Battle.ogg
+VictoryBGM = Victory! Gym Leader & Elite Four.ogg
+#-------------------------------
+[LEADER_Brawly]
+Name = Gym Leader
+Gender = Male
+BaseMoney = 100
+BattleBGM = Gym Leader Battle.ogg
+VictoryBGM = Victory! Gym Leader & Elite Four.ogg
+ShadowXY = 0,-7
+#-------------------------------
+[WULFRIC]
+Name = Gym Leader
+Gender = Male
+BaseMoney = 100
+BattleBGM = Battle Gym Leader
+VictoryBGM = Battle victory leader
+#-------------------------------
+[ELITEFOUR_Lorelei]
+Name = Elite Four
+Gender = Female
+BaseMoney = 100
+BattleBGM = Battle Elite
+VictoryBGM = Battle victory leader
+#-------------------------------
+[ELITEFOUR_Bruno]
+Name = Elite Four
+Gender = Male
+BaseMoney = 100
+BattleBGM = Battle Elite
+VictoryBGM = Battle victory leader
+#-------------------------------
+[ELITEFOUR_Agatha]
+Name = Elite Four
+Gender = Female
+BaseMoney = 100
+BattleBGM = Battle Elite
+VictoryBGM = Battle victory leader
+#-------------------------------
+[ELITEFOUR_Lance]
+Name = Elite Four
+Gender = Male
+BaseMoney = 100
+BattleBGM = Battle Elite
+VictoryBGM = Battle victory leader
+#-------------------------------
+[CHAMPION]
+Name = Champion
+Gender = Male
+BaseMoney = 100
+BattleBGM = Battle Champion
+VictoryBGM = Battle victory leader
+#-------------------------------
+[RIVAL]
+Name = Rival
+Gender = Female
+BaseMoney = 60
+BattleBGM = May Battle Theme.ogg
+VictoryBGM = Victory! Trainer.ogg
+#-------------------------------
+[TEAMAQUA_M]
+Name = Aqua
+Gender = Male
+BaseMoney = 32
+BattleBGM = Team Magma & Aqua Battle.ogg
+VictoryBGM = Victory! Team Magma & Aqua.ogg
+#-------------------------------
+[TEAMAQUA_F]
+Name = Aqua
+Gender = Female
+BaseMoney = 32
+BattleBGM = Team Magma & Aqua Battle.ogg
+VictoryBGM = Victory! Team Magma & Aqua.ogg
+#-------------------------------
+[HTEAMAQUA_M]
+Name = Aqua
+Gender = Male
+BaseMoney = 32
+BattleBGM = Team Magma & Aqua Battle.ogg
+VictoryBGM = Victory! Team Magma & Aqua.ogg
+#-------------------------------
+[HTEAMAQUA_F]
+Name = Aqua
+Gender = Female
+BaseMoney = 32
+BattleBGM = Team Magma & Aqua Battle.ogg
+VictoryBGM = Victory! Team Magma & Aqua.ogg
+#-------------------------------
+[RICHBOY]
+Name = Richboy
+Gender = Male
+BaseMoney = 32
+#-------------------------------
+[SCHOOLGIRL]
+Name = Schoolgirl
+Gender = Female
+BaseMoney = 32
+#-------------------------------
+[SCHOOLBOY]
+Name = Schoolboy
+Gender = Male
+BaseMoney = 32
+#-------------------------------
+[SKYGRUNT_M]
+Name = Sky
+Gender = Male
+BaseMoney = 32
+IntroBGM = Team Magma Appears.ogg
+BattleBGM = XD 11 Cipher Battle.ogg
+VictoryBGM = Victory! Team Sky.ogg
+#-------------------------------
+[BATTLEGIRL]
+Name = Crushgirl
+Gender = Female
+BaseMoney = 32
+#-------------------------------
+[BATTLEGIRL1]
+Name = Battlegirl
+Gender = Female
+BaseMoney = 32
+#-------------------------------
+[COLLECTOR]
+Name = Collector
+Gender = Male
+BaseMoney = 32
+#-------------------------------
+[POKEFAN_F]
+Name = Pokefan
+Gender = Female
+BaseMoney = 32
+#-------------------------------
+[POKEFAN_M]
+Name = Pokefan
+Gender = Male
+BaseMoney = 32
+IntroBGM = Encounter! Poké Fan.ogg
+#-------------------------------
+[GUITARIST]
+Name = Guitarist
+Gender = Male
+BaseMoney = 32
+IntroBGM = Encounter! Psychic.ogg
+#-------------------------------
+[TRIATHLETE_M]
+Name = Triathlete
+Gender = Male
+BaseMoney = 32
+#-------------------------------
+[TRIATHLETE_F]
+Name = Triathlete
+Gender = Female
+BaseMoney = 32
+#-------------------------------
+[TEAMMATES]
+Name = Teammates
+Gender = Unknown
+BaseMoney = 72
+SkillLevel = 48
+#-------------------------------
+[BREEDER_M]
+Name = Breeder
+Gender = Male
+BaseMoney = 32
+#-------------------------------
+[BREEDER_F]
+Name = Breeder
+Gender = Female
+BaseMoney = 32
+#-------------------------------
+[BUGMANIAC]
+Name = Bugmaniac
+Gender = Male
+BaseMoney = 32
+#-------------------------------
+[POKEMONTRAINER_Wally]
+Name = Pokémon Trainer
+Gender = Male
+BaseMoney = 60
+BattleBGM = Trainer Battle.mp3
+#-------------------------------
+[CAMPER_M]
+Name = Camper
+Gender = Male
+BaseMoney = 16
+#-------------------------------
+[CAMPER_F]
+Name = Camper
+Gender = Female
+BaseMoney = 16
+#-------------------------------
+[KINDLER]
+Name = Kindler
+Gender = Male
+BaseMoney = 16
+#-------------------------------
+[WINDSTRATE_Victor]
+Name = Windstrate
+Gender = Male
+BaseMoney = 16
+#-------------------------------
+[WINDSTRATE_Victoria]
+Name = Windstrate
+Gender = Female
+BaseMoney = 16
+#-------------------------------
+[WINDSTRATE_Vivi]
+Name = Windstrate
+Gender = Female
+BaseMoney = 16
+#-------------------------------
+[WINDSTRATE_Vicky]
+Name = Windstrate
+Gender = Female
+BaseMoney = 32
+#-------------------------------
+[INTERVIEWERS]
+Name = Interviewers
+Gender = Unknown
+BaseMoney = 72
+SkillLevel = 48
+#-------------------------------
+[ACETRAINER_M]
+Name = Ace Trainer
+Gender = Male
+BaseMoney = 60
+IntroBGM = Encounter! Ace Trainer.ogg
+#-------------------------------
+[ACETRAINER_F]
+Name = Ace Trainer
+Gender = Female
+BaseMoney = 60
+#-------------------------------
+[VETERAN_M]
+Name = Mega Master
+Gender = Male
+BaseMoney = 60
+IntroBGM = Encounter! Ace Trainer.ogg
+#-------------------------------
+[VETERAN_F]
+Name = Mega Specialist
+Gender = Female
+BaseMoney = 60
+#-------------------------------
+[PARASOLLADY]
+Name = Parasol Lady
+Gender = Female
+BaseMoney = 16
+#-------------------------------
+[NINJABOY]
+Name = Ninja Boy
+Gender = Male
+BaseMoney = 16
+IntroBGM = Encounter! Twins.ogg
+#-------------------------------
+[MYSTERYTRAINER]
+Name = Pokemon Master
+Gender = Male
+BaseMoney = 100
+SkillLevel = 255
+BattleBGM = B2W2 212 PWT Final Round!
+VictoryBGM = Victory! (Diantha)
+#-------------------------------
+[MAGMA_M]
+Name = Magma
+Gender = Male
+BaseMoney = 32
+IntroBGM = Team Magma Appears.ogg
+BattleBGM = Team Magma & Aqua Battle.ogg
+VictoryBGM = Victory! Team Magma & Aqua.ogg
+#-------------------------------
+[MAGMA_F]
+Name = Magma
+Gender = Female
+BaseMoney = 32
+IntroBGM = Team Magma Appears.ogg
+BattleBGM = Team Magma & Aqua Battle.ogg
+VictoryBGM = Victory! Team Magma & Aqua.ogg
+#-------------------------------
+[HMAGMA_M]
+Name = Magma
+Gender = Male
+BaseMoney = 32
+IntroBGM = Team Magma Appears.ogg
+BattleBGM = Team Magma & Aqua Battle.ogg
+VictoryBGM = Victory! Team Magma & Aqua.ogg
+#-------------------------------
+[HMAGMA_F]
+Name = Magma
+Gender = Female
+BaseMoney = 32
+IntroBGM = Team Magma Appears.ogg
+BattleBGM = Team Magma & Aqua Battle.ogg
+VictoryBGM = Victory! Team Magma & Aqua.ogg
+#-------------------------------
+[MAGMA_Tabitha]
+Name = Magma Admin
+Gender = Male
+BaseMoney = 60
+BattleBGM = Team Magma and Aqua Admin Battle!.ogg
+VictoryBGM = Victory! Team Magma & Aqua.ogg
+#-------------------------------
+[MAGMA_Courtney]
+Name = Magma Admin
+Gender = Female
+BaseMoney = 60
+IntroBGM = Team Aqua Admin Theme.ogg
+BattleBGM = Team Magma and Aqua Admin Battle!.ogg
+VictoryBGM = Victory! Team Magma & Aqua.ogg
+#-------------------------------
+[MAGMA_Courtneygrunt]
+Name = Magma Admin && Magma Grunt
+Gender = Female
+BaseMoney = 60
+IntroBGM = Team Aqua Admin Theme.ogg
+BattleBGM = Team Magma and Aqua Admin Battle!.ogg
+VictoryBGM = Victory! Team Magma & Aqua.ogg
+#-------------------------------
+[POKEMONTRAINER_Maxie]
+Name = Magmaboss
+Gender = Male
+BaseMoney = 60
+BattleBGM = Pokemon Team Aqua_Magma Leader Theme.ogg
+VictoryBGM = Victory! Team Magma & Aqua.ogg
+#-------------------------------
+[CHARIZARD]
+Name = Wild
+Gender = Male
+BaseMoney = 60
+#-------------------------------
+[SKYLEADER]
+Name = Sky Admin
+Gender = Male
+BaseMoney = 100
+BattleBGM = Pokemon Team Aqua_Magma Leader Theme.ogg
+VictoryBGM = Victory! Team Sky.ogg
+#-------------------------------
+[POKEMONTRAINER_Landon]
+Name = Pokemon Trainer
+Gender = Male
+BaseMoney = 100
+#-------------------------------
+[POKEMONTRAINER_Steven]
+Name = Pokemon Trainer
+Gender = Male
+BaseMoney = 100
+#-------------------------------
+[SKYGRUNTS_M]
+Name = Sky
+Gender = Male
+BaseMoney = 32
+IntroBGM = Team Magma Appears.ogg
+BattleBGM = XD 11 Cipher Battle.ogg
+VictoryBGM = Victory! Team Sky.ogg
+#-------------------------------
+[EXPERT_M]
+Name = Expert
+Gender = Male
+BaseMoney = 60
+#-------------------------------
+[EXPERT_F]
+Name = Expert
+Gender = Female
+BaseMoney = 60
+#-------------------------------
+[AQUA_Shelly]
+Name = Aqua Admin
+Gender = Female
+BaseMoney = 60
+BattleBGM = Team Magma and Aqua Admin Battle!.ogg
+VictoryBGM = Victory! Team Magma & Aqua.ogg
+#-------------------------------
+[HEXMANIAC]
+Name = Hexmaniac
+Gender = Female
+BaseMoney = 60
+IntroBGM = Encounter! Poké Maniac.ogg
+#-------------------------------
+[HOEENCHAMP]
+Name = Hoeen Legend
+Gender = Male
+BaseMoney = 100
+#-------------------------------
+[DOUBLECHAMPS1]
+Name = Champions
+Gender = Unknown
+BaseMoney = 72
+SkillLevel = 100
+#-------------------------------
+[GALARCHAMP]
+Name = Galar Champion
+Gender = Male
+BaseMoney = 100
+BattleBGM = Battle! Leon.ogg
+VictoryBGM = Victory! Trainer.ogg
+#-------------------------------
+[MORTY]
+Name = Gym Leader
+Gender = Male
+BaseMoney = 100
+#-------------------------------
+[AQUAADMIN_Matt]
+Name = Aqua Admin
+Gender = Male
+BaseMoney = 60
+BattleBGM = Team Magma & Aqua Leader Battle.ogg
+VictoryBGM = Victory! Team Magma & Aqua.ogg
+#-------------------------------
+[ALANACHAMP]
+Name = Dragon Emperor
+Gender = Male
+BaseMoney = 100
+#-------------------------------
+[POKEMONTRAINER_Steven1]
+Name = Pokemon Trainer
+Gender = Male
+BaseMoney = 100
+#-------------------------------
+[MAGMABOSSES]
+Name = Magma
+Gender = Unknown
+BaseMoney = 72
+SkillLevel = 100
+BattleBGM = Pokemon Team Aqua_Magma Leader Theme.ogg
+VictoryBGM = Victory! Team Magma & Aqua.ogg
+#-------------------------------
+[DIVER_M]
+Name = Diver
+Gender = Male
+BaseMoney = 100
+SkillLevel = 60
+BattleBGM = Trainer Battle.mp3
+#-------------------------------
+[DIVER_F]
+Name = Diver
+Gender = Female
+BaseMoney = 100
+SkillLevel = 60
+BattleBGM = Trainer Battle.mp3
+#-------------------------------
+[AQUABOSS]
+Name = Aqua Leader
+Gender = Male
+BaseMoney = 100
+BattleBGM = Pokemon Team Aqua_Magma Leader Theme.ogg
+VictoryBGM = Victory! Team Magma & Aqua.ogg
+#-------------------------------
+[POKEMONTRAINER_Landon1]
+Name = Pokemon Trainer
+Gender = Male
+BaseMoney = 100
+#-------------------------------
+[BIRD]
+Name = Pokemon Trainer
+Gender = Male
+BaseMoney = 100
+#-------------------------------
+[LOREKEEPER]
+Name = Lorekeeper
+Gender = Female
+BaseMoney = 100
+BattleBGM = Landon Final Battle Theme.ogg
+VictoryBGM = Victory! Team Magma & Aqua.ogg
+#-------------------------------
+[OLDCOUPLE]
+Name = Old Couple
+Gender = Unknown
+BaseMoney = 72
+SkillLevel = 48
+#-------------------------------
+[DRAGONTAMER]
+Name = Dragontamer
+Gender = Male
+BaseMoney = 60
+IntroBGM = Encounter! Ace Trainer.ogg
+#-------------------------------
+[POKEMONMASTER_Wally]
+Name = Pokémon Trainer
+Gender = Male
+BaseMoney = 60
+BattleBGM = Wally Battle.ogg
+VictoryBGM = Victory! Trainer.ogg
+#-------------------------------
+[ELITEFOUR_Sidney]
+Name = Elite Four
+Gender = Male
+BaseMoney = 100
+BattleBGM = Battle! Elite Four Hoenn.ogg
+VictoryBGM = Battle victory leader
+#-------------------------------
+[ELITEFOUR_Phoebe]
+Name = Elite Four
+Gender = Female
+BaseMoney = 100
+BattleBGM = Battle! Elite Four Hoenn.ogg
+VictoryBGM = Battle victory leader
+#-------------------------------
+[ELITEFOUR_Glacia]
+Name = Elite Four
+Gender = Female
+BaseMoney = 100
+BattleBGM = Battle! Elite Four Hoenn.ogg
+VictoryBGM = Battle victory leader
+#-------------------------------
+[ELITEFOUR_Drake]
+Name = Elite Four
+Gender = Male
+BaseMoney = 100
+BattleBGM = Battle! Elite Four Hoenn.ogg
+VictoryBGM = Battle victory leader
+#-------------------------------
+[CHAMPION_Wallace]
+Name = Champion
+Gender = Male
+BaseMoney = 100
+BattleBGM = Battle! Hoeen Champion.ogg
+VictoryBGM = Victory! Elite 4.ogg
+#-------------------------------
+[HOOENCHAMP]
+Name = Pokemon Master
+Gender = Male
+BaseMoney = 100
+BattleBGM = Battle! Hoeen Champion.ogg
+VictoryBGM = Victory! Elite 4.ogg
+#-------------------------------
+[LEADER_Brock]
+Name = Gym Leader
+Gender = Male
+BaseMoney = 100
+BattleBGM = Battle! Kanto Gym Leader.ogg
+VictoryBGM = Victory! Gym Leader & Elite Four.ogg
+#-------------------------------
+[LEADER_Misty]
+Name = Gym Leader
+Gender = Female
+BaseMoney = 100
+BattleBGM = Battle! Kanto Gym Leader.ogg
+VictoryBGM = Victory! Gym Leader & Elite Four.ogg
+#-------------------------------
+[LEADER_Surge]
+Name = Gym Leader
+Gender = Male
+BaseMoney = 100
+BattleBGM = Battle! Kanto Gym Leader.ogg
+VictoryBGM = Victory! Gym Leader & Elite Four.ogg
+#-------------------------------
+[LEADER_Erika]
+Name = Gym Leader
+Gender = Female
+BaseMoney = 100
+BattleBGM = Battle! Kanto Gym Leader.ogg
+VictoryBGM = Victory! Gym Leader & Elite Four.ogg
+#-------------------------------
+[LEADER_Sabrina]
+Name = Gym Leader
+Gender = Female
+BaseMoney = 100
+BattleBGM = Battle! Kanto Gym Leader.ogg
+VictoryBGM = Victory! Gym Leader & Elite Four.ogg
+#-------------------------------
+[LEADER_Janine]
+Name = Gym Leader
+Gender = Female
+BaseMoney = 100
+BattleBGM = Battle! Kanto Gym Leader.ogg
+VictoryBGM = Victory! Gym Leader & Elite Four.ogg
+#-------------------------------
+[LEADER_Blaine]
+Name = Gym Leader
+Gender = Male
+BaseMoney = 100
+BattleBGM = Battle! Kanto Gym Leader.ogg
+VictoryBGM = Victory! Gym Leader & Elite Four.ogg
+#-------------------------------
+[LEADER_Giovanni]
+Name = Gym Leader
+Gender = Male
+BaseMoney = 100
+BattleBGM = Battle! Kanto Gym Leader.ogg
+VictoryBGM = Victory! Gym Leader & Elite Four.ogg
+#-------------------------------
+[LEADER_Falkner]
+Name = Gym Leader
+Gender = Male
+BaseMoney = 100
+BattleBGM = Battle Gym Leader(Johto).ogg
+VictoryBGM = Victory! Gym Leader & Elite Four.ogg
+#-------------------------------
+[LEADER_Bugsy]
+Name = Gym Leader
+Gender = Male
+BaseMoney = 100
+BattleBGM = Battle Gym Leader(Johto).ogg
+VictoryBGM = Victory! Gym Leader & Elite Four.ogg
+#-------------------------------
+[LEADER_Whitney]
+Name = Gym Leader
+Gender = Female
+BaseMoney = 100
+BattleBGM = Battle Gym Leader(Johto).ogg
+VictoryBGM = Victory! Gym Leader & Elite Four.ogg
+#-------------------------------
+[LEADER_Morty]
+Name = Gym Leader
+Gender = Male
+BaseMoney = 100
+BattleBGM = Battle Gym Leader(Johto).ogg
+VictoryBGM = Victory! Gym Leader & Elite Four.ogg
+#-------------------------------
+[LEADER_Chuck]
+Name = Gym Leader
+Gender = Male
+BaseMoney = 100
+BattleBGM = Battle Gym Leader(Johto).ogg
+VictoryBGM = Victory! Gym Leader & Elite Four.ogg
+#-------------------------------
+[LEADER_Jasmine]
+Name = Gym Leader
+Gender = Female
+BaseMoney = 100
+BattleBGM = Battle Gym Leader(Johto).ogg
+VictoryBGM = Victory! Gym Leader & Elite Four.ogg
+#-------------------------------
+[LEADER_Pryce]
+Name = Gym Leader
+Gender = Male
+BaseMoney = 100
+BattleBGM = Battle Gym Leader(Johto).ogg
+VictoryBGM = Victory! Gym Leader & Elite Four.ogg
+#-------------------------------
+[LEADER_Clair]
+Name = Gym Leader
+Gender = Female
+BaseMoney = 100
+BattleBGM = Battle Gym Leader(Johto).ogg
+VictoryBGM = Victory! Gym Leader & Elite Four.ogg
+#-------------------------------
+[POKEMONTRAINER_Gladion]
+Name = Pokemon Trainer
+Gender = Male
+BaseMoney = 100
+BattleBGM = Battle! Gladion.ogg
+VictoryBGM = Victory! Gym Leader & Elite Four.ogg
+#-------------------------------
+[CHAMPION_Red]
+Name = Pokemon Master
+Gender = Male
+BaseMoney = 100
+BattleBGM = Rival Battle(Blue).ogg
+VictoryBGM = Victory! Elite 4.ogg
+#-------------------------------
+[LEADER_Koga]
+Name = Gym Leader
+Gender = Male
+BaseMoney = 100
+BattleBGM = Battle Gym Leader(Johto).ogg
+VictoryBGM = Victory! Gym Leader & Elite Four.ogg
+#-------------------------------
+[POKEMONTRAINER_Flannery]
+Name = Pokémon Trainer
+Gender = Female
+BaseMoney = 60
+#-------------------------------
+[POKEMONTRAINER_Aiden]
+Name = Pokemon Trainer
+Gender = Male
+BaseMoney = 100
+#-------------------------------
+[LEADER_Roxanne1]
+Name = Gym Leader
+Gender = Female
+BaseMoney = 100
+BattleBGM = Gym Leader Battle.ogg
+VictoryBGM = Victory! Gym Leader & Elite Four.ogg
+#-------------------------------
+[LEADER_Brawly1]
+Name = Gym Leader
+Gender = Male
+BaseMoney = 100
+BattleBGM = Gym Leader Battle.ogg
+VictoryBGM = Victory! Gym Leader & Elite Four.ogg
+#-------------------------------
+[LEADER_Wattson1]
+Name = Gym Leader
+Gender = Male
+BaseMoney = 100
+BattleBGM = Gym Leader Battle.ogg
+VictoryBGM = Victory! Gym Leader & Elite Four.ogg
+#-------------------------------
+[LEADER_Roark]
+Name = Gym Leader
+Gender = Male
+BaseMoney = 100
+BattleBGM = Battle Gym Leader(Sinnoh).ogg
+VictoryBGM = Victory! Gym Leader & Elite Four.ogg
+#-------------------------------
+[LEADER_Gardenia]
+Name = Gym Leader
+Gender = Female
+BaseMoney = 100
+BattleBGM = Battle Gym Leader(Sinnoh).ogg
+VictoryBGM = Victory! Gym Leader & Elite Four.ogg
+#-------------------------------
+[LEADER_Fantina]
+Name = Gym Leader
+Gender = Female
+BaseMoney = 100
+BattleBGM = Battle Gym Leader(Sinnoh).ogg
+VictoryBGM = Victory! Gym Leader & Elite Four.ogg
+#-------------------------------
+[LEADER_Maylene]
+Name = Gym Leader
+Gender = Female
+BaseMoney = 100
+BattleBGM = Battle Gym Leader(Sinnoh).ogg
+VictoryBGM = Victory! Gym Leader & Elite Four.ogg
+#-------------------------------
+[LEADER_Wake]
+Name = Gym Leader
+Gender = Male
+BaseMoney = 100
+BattleBGM = Battle Gym Leader(Sinnoh).ogg
+VictoryBGM = Victory! Gym Leader & Elite Four.ogg
+#-------------------------------
+[LEADER_Byron]
+Name = Gym Leader
+Gender = Male
+BaseMoney = 100
+BattleBGM = Battle Gym Leader(Sinnoh).ogg
+VictoryBGM = Victory! Gym Leader & Elite Four.ogg
+#-------------------------------
+[LEADER_Candice]
+Name = Gym Leader
+Gender = Female
+BaseMoney = 100
+BattleBGM = Battle Gym Leader(Sinnoh).ogg
+VictoryBGM = Victory! Gym Leader & Elite Four.ogg
+#-------------------------------
+[LEADER_Volkner]
+Name = Gym Leader
+Gender = Male
+BaseMoney = 100
+BattleBGM = Battle Gym Leader(Sinnoh).ogg
+VictoryBGM = Victory! Gym Leader & Elite Four.ogg
+#-------------------------------
+[LEADER_Viola]
+Name = Gym Leader
+Gender = Female
+BaseMoney = 100
+BattleBGM = Battle Gym Leader(Kalos).ogg
+VictoryBGM = Victory! Gym Leader & Elite Four.ogg
+#-------------------------------
+[LEADER_Grant]
+Name = Gym Leader
+Gender = Male
+BaseMoney = 100
+BattleBGM = Battle Gym Leader(Kalos).ogg
+VictoryBGM = Victory! Gym Leader & Elite Four.ogg
+#-------------------------------
+[LEADER_Korrina]
+Name = Gym Leader
+Gender = Female
+BaseMoney = 100
+BattleBGM = Battle Gym Leader(Kalos).ogg
+VictoryBGM = Victory! Gym Leader & Elite Four.ogg
+#-------------------------------
+[LEADER_Ramos]
+Name = Gym Leader
+Gender = Male
+BaseMoney = 100
+BattleBGM = Battle Gym Leader(Kalos).ogg
+VictoryBGM = Victory! Gym Leader & Elite Four.ogg
+#-------------------------------
+[LEADER_Clement]
+Name = Gym Leader
+Gender = Male
+BaseMoney = 100
+BattleBGM = Battle Gym Leader(Kalos).ogg
+VictoryBGM = Victory! Gym Leader & Elite Four.ogg
+#-------------------------------
+[LEADER_Valerie]
+Name = Gym Leader
+Gender = Female
+BaseMoney = 100
+BattleBGM = Battle Gym Leader(Kalos).ogg
+VictoryBGM = Victory! Gym Leader & Elite Four.ogg
+#-------------------------------
+[LEADER_Olympia]
+Name = Gym Leader
+Gender = Female
+BaseMoney = 100
+BattleBGM = Battle Gym Leader(Kalos).ogg
+VictoryBGM = Victory! Gym Leader & Elite Four.ogg
+#-------------------------------
+[LEADER_Wulfric]
+Name = Gym Leader
+Gender = Male
+BaseMoney = 100
+BattleBGM = Battle Gym Leader(Kalos).ogg
+VictoryBGM = Victory! Gym Leader & Elite Four.ogg
+#-------------------------------
+[LEADER_Cheren]
+Name = Gym Leader
+Gender = Male
+BaseMoney = 100
+BattleBGM = Battle Gym Leader(Unova).ogg
+VictoryBGM = Victory! Gym Leader & Elite Four.ogg
+#-------------------------------
+[LEADER_Lenora]
+Name = Gym Leader
+Gender = Female
+BaseMoney = 100
+BattleBGM = Battle Gym Leader(Unova).ogg
+VictoryBGM = Victory! Gym Leader & Elite Four.ogg
+#-------------------------------
+[LEADER_Burgh]
+Name = Gym Leader
+Gender = Male
+BaseMoney = 100
+BattleBGM = Battle Gym Leader(Unova).ogg
+VictoryBGM = Victory! Gym Leader & Elite Four.ogg
+#-------------------------------
+[LEADER_Elesa]
+Name = Gym Leader
+Gender = Female
+BaseMoney = 100
+BattleBGM = Battle Gym Leader(Unova).ogg
+VictoryBGM = Victory! Gym Leader & Elite Four.ogg
+#-------------------------------
+[LEADER_Clay]
+Name = Gym Leader
+Gender = Male
+BaseMoney = 100
+BattleBGM = Battle Gym Leader(Unova).ogg
+VictoryBGM = Victory! Gym Leader & Elite Four.ogg
+#-------------------------------
+[LEADER_Skyla]
+Name = Gym Leader
+Gender = Female
+BaseMoney = 100
+BattleBGM = Battle Gym Leader(Unova).ogg
+VictoryBGM = Victory! Gym Leader & Elite Four.ogg
+#-------------------------------
+[LEADER_Drayden]
+Name = Gym Leader
+Gender = Male
+BaseMoney = 100
+BattleBGM = Battle Gym Leader(Unova).ogg
+VictoryBGM = Victory! Gym Leader & Elite Four.ogg
+#-------------------------------
+[LEADER_Roxie]
+Name = Gym Leader
+Gender = Female
+BaseMoney = 100
+BattleBGM = Battle Gym Leader(Unova).ogg
+VictoryBGM = Victory! Gym Leader & Elite Four.ogg
+#-------------------------------
+[LEADER_Marlon]
+Name = Gym Leader
+Gender = Male
+BaseMoney = 100
+BattleBGM = Battle Gym Leader(Unova).ogg
+VictoryBGM = Victory! Gym Leader & Elite Four.ogg
+#-------------------------------
+[LEADER_Acerola]
+Name = Gym Leader
+Gender = Female
+BaseMoney = 100
+BattleBGM = Battle Gym Leader(Aloha).ogg
+VictoryBGM = Victory! Gym Leader & Elite Four.ogg
+#-------------------------------
+[LEADER_Hala]
+Name = Gym Leader
+Gender = Male
+BaseMoney = 100
+BattleBGM = Battle Gym Leader(Aloha).ogg
+VictoryBGM = Victory! Gym Leader & Elite Four.ogg
+#-------------------------------
+[LEADER_Kahili]
+Name = Gym Leader
+Gender = Female
+BaseMoney = 100
+BattleBGM = Battle Gym Leader(Aloha).ogg
+VictoryBGM = Victory! Gym Leader & Elite Four.ogg
+#-------------------------------
+[LEADER_Kiawe]
+Name = Gym Leader
+Gender = Female
+BaseMoney = 100
+BattleBGM = Battle Gym Leader(Aloha).ogg
+VictoryBGM = Victory! Gym Leader & Elite Four.ogg
+#-------------------------------
+[LEADER_Kukui]
+Name = Gym Leader
+Gender = Male
+BaseMoney = 100
+BattleBGM = Battle Gym Leader(Aloha).ogg
+VictoryBGM = Victory! Gym Leader & Elite Four.ogg
+#-------------------------------
+[LEADER_Lillie]
+Name = Gym Leader
+Gender = Female
+BaseMoney = 100
+BattleBGM = Battle Gym Leader(Aloha).ogg
+VictoryBGM = Victory! Gym Leader & Elite Four.ogg
+#-------------------------------
+[LEADER_Molayne]
+Name = Gym Leader
+Gender = Male
+BaseMoney = 100
+BattleBGM = Battle Gym Leader(Aloha).ogg
+VictoryBGM = Victory! Gym Leader & Elite Four.ogg
+#-------------------------------
+[LEADER_Nanu]
+Name = Gym Leader
+Gender = Male
+BaseMoney = 100
+BattleBGM = Battle Gym Leader(Aloha).ogg
+VictoryBGM = Victory! Gym Leader & Elite Four.ogg
+#-------------------------------
+[LEADER_Olivia]
+Name = Gym Leader
+Gender = Female
+BaseMoney = 100
+BattleBGM = Battle Gym Leader(Aloha).ogg
+VictoryBGM = Victory! Gym Leader & Elite Four.ogg
+#-------------------------------
+[LEADER_Mina]
+Name = Gym Leader
+Gender = Female
+BaseMoney = 100
+BattleBGM = Battle Gym Leader(Aloha).ogg
+VictoryBGM = Victory! Gym Leader & Elite Four.ogg
+#-------------------------------
+[LEADER_Mallow]
+Name = Gym Leader
+Gender = Female
+BaseMoney = 100
+BattleBGM = Battle Gym Leader(Aloha).ogg
+VictoryBGM = Victory! Gym Leader & Elite Four.ogg
+#-------------------------------
+[LEADER_Lana]
+Name = Gym Leader
+Gender = Female
+BaseMoney = 100
+BattleBGM = Battle Gym Leader(Aloha).ogg
+VictoryBGM = Victory! Gym Leader & Elite Four.ogg
+#-------------------------------
+[LEADER_Sophocles]
+Name = Gym Leader
+Gender = Male
+BaseMoney = 100
+BattleBGM = Battle Gym Leader(Aloha).ogg
+VictoryBGM = Victory! Gym Leader & Elite Four.ogg
+#-------------------------------
+[LEADER_Barry]
+Name = Pokemon Trainer
+Gender = Male
+BaseMoney = 100
+BattleBGM = Rival Battle(Barry).ogg
+VictoryBGM = Victory! Gym Leader & Elite Four.ogg
+#-------------------------------
+[LEADER_Bianca]
+Name = Pokemon Trainer
+Gender = Female
+BaseMoney = 100
+BattleBGM = Rival Battle(Bianca).ogg
+VictoryBGM = Victory! Gym Leader & Elite Four.ogg
+#-------------------------------
+[LEADER_Blue]
+Name = Pokemon Trainer
+Gender = Male
+BaseMoney = 100
+BattleBGM = Rival Battle(Blue).ogg
+VictoryBGM = Victory! Gym Leader & Elite Four.ogg
+#-------------------------------
+[LEADER_Cynthia]
+Name = Sinnoh Champion
+Gender = Female
+BaseMoney = 100
+BattleBGM = Battle! Champion Cynthia.ogg
+VictoryBGM = Victory! Gym Leader & Elite Four.ogg
+ShadowXY = 0,-2
+#-------------------------------
+[LEADER_Iris]
+Name = Unova Champion
+Gender = Female
+BaseMoney = 100
+BattleBGM = Battle! Iris.ogg
+VictoryBGM = Victory! (Diantha).ogg
+#-------------------------------
+[LEADER_Diantha]
+Name = Kalos Champion
+Gender = Female
+BaseMoney = 100
+BattleBGM = Battle! (Diantha).ogg
+VictoryBGM = Victory! (Diantha).ogg
+#-------------------------------
+[LEADER_Wallace]
+Name = Former Hoenn Champ
+Gender = Male
+BaseMoney = 100
+BattleBGM = Battle! Hoeen Champion.ogg
+VictoryBGM = Victory! Gym Leader & Elite Four.ogg
+#-------------------------------
+[LEADER_Alder]
+Name = Former Unova Champion
+Gender = Male
+BaseMoney = 100
+BattleBGM = Battle! Champion Alder.ogg
+VictoryBGM = Victory! (Diantha).ogg
+#-------------------------------
+[LEADER_Lance]
+Name = Kanto Champion
+Gender = Male
+BaseMoney = 100
+BattleBGM = Rival Battle(Blue).ogg
+VictoryBGM = Victory! Gym Leader & Elite Four.ogg
+#-------------------------------
+[LEADER_Leon]
+Name = Galar Champion
+Gender = Male
+BaseMoney = 100
+BattleBGM = Battle! Leon.ogg
+VictoryBGM = Victory! Gym Leader & Elite Four.ogg
+#-------------------------------
+[LEADER_Mustard]
+Name = Former Galar Champion
+Gender = Male
+BaseMoney = 100
+BattleBGM = Battle! (Mustard).ogg
+VictoryBGM = Victory (Mustard).ogg
+#-------------------------------
+[LEADER_Hau]
+Name = Pokemon Trainer
+Gender = Male
+BaseMoney = 100
+BattleBGM = Rival Battle(Hau).ogg
+VictoryBGM = Victory! Gym Leader & Elite Four.ogg
+#-------------------------------
+[LEADER_Hugh]
+Name = Pokemon Trainer
+Gender = Male
+BaseMoney = 100
+BattleBGM = Rival Battle(Hugh).ogg
+VictoryBGM = Victory! Gym Leader & Elite Four.ogg
+#-------------------------------
+[LEADER_Wally]
+Name = Pokemon Trainer
+Gender = Male
+BaseMoney = 100
+BattleBGM = Wally Battle.ogg
+VictoryBGM = Victory! Gym Leader & Elite Four.ogg
+#-------------------------------
+[LEADER_Gladion]
+Name = Pokemon Trainer
+Gender = Male
+BaseMoney = 100
+BattleBGM = Battle! Gladion.ogg
+VictoryBGM = Victory! Gym Leader & Elite Four.ogg
+#-------------------------------
+[LEADER_Silver]
+Name = Pokemon Trainer
+Gender = Male
+BaseMoney = 100
+BattleBGM = Rival Battle(Silver).ogg
+VictoryBGM = Victory! Gym Leader & Elite Four.ogg
+ShadowXY = 0,-3
+#-------------------------------
+[LEADER_Archie]
+Name = Aqua Boss
+Gender = Male
+BaseMoney = 100
+BattleBGM = Pokemon Team Aqua_Magma Leader Theme.ogg
+VictoryBGM = Victory! Gym Leader & Elite Four.ogg
+#-------------------------------
+[LEADER_Maxie]
+Name = Magma Boss
+Gender = Male
+BaseMoney = 100
+BattleBGM = Pokemon Team Aqua_Magma Leader Theme.ogg
+VictoryBGM = Victory! Gym Leader & Elite Four.ogg
+#-------------------------------
+[LEADER_Lusamine]
+Name = Aether Foundation Boss
+Gender = Female
+BaseMoney = 100
+BattleBGM = Battle! (Lusamine).ogg
+VictoryBGM = Victory! Gym Leader & Elite Four.ogg
+#-------------------------------
+[LEADER_Lysandre]
+Name = Flare Boss
+Gender = Male
+BaseMoney = 100
+BattleBGM = Battle! (Lysandre).ogg
+VictoryBGM = Victory! Gym Leader & Elite Four.ogg
+#-------------------------------
+[LEADER_Evice]
+Name = Cipher Boss
+Gender = Male
+BaseMoney = 100
+BattleBGM = Battle! (Lysandre).ogg
+VictoryBGM = Victory! Gym Leader & Elite Four.ogg
+#-------------------------------
+[LEADER_Guzma]
+Name = Skull Boss
+Gender = Male
+BaseMoney = 100
+BattleBGM = Battle! (Guzma).ogg
+VictoryBGM = Victory! Gym Leader & Elite Four.ogg
+#-------------------------------
+[LEADER_Cyrus]
+Name = Galactic Boss
+Gender = Male
+BaseMoney = 100
+BattleBGM = Battle! Kanto Gym Leader.ogg
+VictoryBGM = Victory! Gym Leader & Elite Four.ogg
+#-------------------------------
+[LEADER_Aaron]
+Name = Sinnoh Elite 4
+Gender = Male
+BaseMoney = 100
+BattleBGM = Battle! Sinnoh Elite Four.ogg
+VictoryBGM = Victory! Gym Leader & Elite Four.ogg
+#-------------------------------
+[LEADER_Bertha]
+Name = Sinnoh Elite 4
+Gender = Female
+BaseMoney = 100
+BattleBGM = Battle! Sinnoh Elite Four.ogg
+VictoryBGM = Victory! Gym Leader & Elite Four.ogg
+#-------------------------------
+[LEADER_Flint]
+Name = Sinnoh Elite 4
+Gender = Male
+BaseMoney = 100
+BattleBGM = Battle! Sinnoh Elite Four.ogg
+VictoryBGM = Victory! Gym Leader & Elite Four.ogg
+#-------------------------------
+[LEADER_Lucian]
+Name = Sinnoh Elite 4
+Gender = Male
+BaseMoney = 100
+BattleBGM = Battle! Sinnoh Elite Four.ogg
+VictoryBGM = Victory! Gym Leader & Elite Four.ogg
+#-------------------------------
+[LEADER_Agatha]
+Name = Kanto Elite 4
+Gender = Female
+BaseMoney = 100
+BattleBGM = Battle! Kanto Gym Leader.ogg
+VictoryBGM = Victory! Gym Leader & Elite Four.ogg
+#-------------------------------
+[LEADER_Lorelei]
+Name = Kanto Elite 4
+Gender = Female
+BaseMoney = 100
+BattleBGM = Battle! Kanto Gym Leader.ogg
+VictoryBGM = Victory! Gym Leader & Elite Four.ogg
+#-------------------------------
+[LEADER_Bruno]
+Name = Kanto Elite 4
+Gender = Male
+BaseMoney = 100
+BattleBGM = Battle! Kanto Gym Leader.ogg
+VictoryBGM = Victory! Gym Leader & Elite Four.ogg
+#-------------------------------
+[LEADER_Karen]
+Name = Johto Elite 4
+Gender = Female
+BaseMoney = 100
+BattleBGM = Battle! Kanto Gym Leader.ogg
+VictoryBGM = Victory! Gym Leader & Elite Four.ogg
+#-------------------------------
+[LEADER_Marshal]
+Name = Unova Elite 4
+Gender = Male
+BaseMoney = 100
+BattleBGM = Battle! Unova Elite Four.ogg
+VictoryBGM = Victory! Gym Leader & Elite Four.ogg
+#-------------------------------
+[LEADER_Shauntal]
+Name = Unova Elite 4
+Gender = Female
+BaseMoney = 100
+BattleBGM = Battle! Unova Elite Four.ogg
+VictoryBGM = Victory! Gym Leader & Elite Four.ogg
+#-------------------------------
+[LEADER_Grimsley]
+Name = Unova Elite 4
+Gender = Male
+BaseMoney = 100
+BattleBGM = Battle! Unova Elite Four.ogg
+VictoryBGM = Victory! Gym Leader & Elite Four.ogg
+#-------------------------------
+[LEADER_Ghetsis]
+Name = Plasma King
+Gender = Male
+BaseMoney = 100
+BattleBGM = Battle! (Ghetsis).ogg
+VictoryBGM = Victory! Gym Leader & Elite Four.ogg
+#-------------------------------
+[SINNOHCHAMP]
+Name = Sinnoh Champion
+Gender = Female
+BaseMoney = 100
+BattleBGM = Battle! Champion Cynthia.ogg
+VictoryBGM = Victory! (Kalos Gym Leader).ogg
+ShadowXY = 0,-2
+#-------------------------------
+[DOUBLEMAGMAGRUNTS]
+Name = Team Magma Grunts
+Gender = Male
+BaseMoney = 32
+IntroBGM = Team Magma Appears.ogg
+BattleBGM = Team Magma & Aqua Battle.ogg
+VictoryBGM = Victory! Team Magma & Aqua.ogg
+#-------------------------------
+[LEGENDARY]
+Name = Legendary Pokemon
+Gender = Male
+BaseMoney = 100
+BattleBGM = Battle! (Deoxys).ogg
+#-------------------------------
+[MALAMAR]
+Name = Thief
+Gender = Male
+BaseMoney = 100
+BattleBGM = Battle! (Deoxys).ogg
+#-------------------------------
+[SNOWTRAINER]
+Name = Snow Ranger
+Gender = Male
+BaseMoney = 60
+IntroBGM = Encounter! Ace Trainer.ogg
+#-------------------------------
+[FIREBREATHER]
+Name = Firebreather
+Gender = Male
+BaseMoney = 60
+#-------------------------------
+[AREAFOURBOSS]
+Name = Area 4 Boss
+Gender = Female
+BaseMoney = 60
+#-------------------------------
+[AREASIXBOSS]
+Name = Area 6 Boss
+Gender = Male
+BaseMoney = 60
+BattleBGM = Battle! Hoeen Champion.ogg
+#-------------------------------
+[PLASMA_M]
+Name = Plasma
+Gender = Male
+BaseMoney = 32
+IntroBGM = Encounter! Team Plasma.ogg
+BattleBGM = Battle! Team Plasma.ogg
+VictoryBGM = Victory! Team Sky.ogg
+#-------------------------------
+[PLASMA_F]
+Name = Plasma
+Gender = Female
+BaseMoney = 32
+IntroBGM = Encounter! Team Plasma.ogg
+BattleBGM = Battle! Team Plasma.ogg
+VictoryBGM = Victory! Team Sky.ogg
+#-------------------------------
+[URSARING]
+Name = Outraged Pokemon
+Gender = Male
+BaseMoney = 60
+#-------------------------------
+[LYCANROC]
+Name = A Lycanroc
+Gender = Male
+BaseMoney = 60
+#-------------------------------
+[BOWSERACE]
+Name = Bowser Ace
+Gender = Male
+BaseMoney = 60
+IntroBGM = Encounter! Team Plasma.ogg
+BattleBGM = Battle! Team Plasma.ogg
+VictoryBGM = Victory! Team Sky.ogg
+#-------------------------------
+[SOUND_M]
+Name = Pokemon Trainer
+Gender = Male
+BaseMoney = 32
+#-------------------------------
+[SOUND_F]
+Name = Pokemon Trainer
+Gender = Female
+BaseMoney = 32
+#-------------------------------
+[LEADER_Anabel]
+Name = Salon Maiden
+Gender = Female
+BaseMoney = 100
+BattleBGM = Battle! Hoenn Frontier Brain.ogg
+VictoryBGM = Victory! Gym Leader & Elite Four.ogg
+#-------------------------------
+[LEADER_Brandon]
+Name = Pyramid King
+Gender = Male
+BaseMoney = 100
+BattleBGM = Battle! Hoenn Frontier Brain.ogg
+VictoryBGM = Victory! Gym Leader & Elite Four.ogg
+#-------------------------------
+[LEADER_Greta]
+Name = Arena Tycoon
+Gender = Female
+BaseMoney = 100
+BattleBGM = Battle! Hoenn Frontier Brain.ogg
+VictoryBGM = Victory! Gym Leader & Elite Four.ogg
+#-------------------------------
+[LEADER_Lucy]
+Name = Pike Queen
+Gender = Female
+BaseMoney = 100
+BattleBGM = Battle! Hoenn Frontier Brain.ogg
+VictoryBGM = Victory! Gym Leader & Elite Four.ogg
+#-------------------------------
+[LEADER_Noland]
+Name = Factory Head
+Gender = Male
+BaseMoney = 100
+BattleBGM = Battle! Hoenn Frontier Brain.ogg
+VictoryBGM = Victory! Gym Leader & Elite Four.ogg
+#-------------------------------
+[LEADER_Spencer]
+Name = Palace Maven
+Gender = Male
+BaseMoney = 100
+BattleBGM = Battle! Hoenn Frontier Brain.ogg
+VictoryBGM = Victory! Gym Leader & Elite Four.ogg
+#-------------------------------
+[LEADER_Tucker]
+Name = Dome Ace
+Gender = Male
+BaseMoney = 100
+BattleBGM = Battle! Hoenn Frontier Brain.ogg
+VictoryBGM = Victory! Gym Leader & Elite Four.ogg
+#-------------------------------
+[LEADER_Palmer]
+Name = Tower Tycoon
+Gender = Male
+BaseMoney = 100
+BattleBGM = Battle! Sinnoh Frontier Brain.ogg
+VictoryBGM = Victory! Gym Leader & Elite Four.ogg
+#-------------------------------
+[LEADER_Argenta]
+Name = Hall Matron
+Gender = Female
+BaseMoney = 100
+BattleBGM = Battle! Sinnoh Frontier Brain.ogg
+VictoryBGM = Victory! Gym Leader & Elite Four.ogg
+#-------------------------------
+[LEADER_Caitlin]
+Name = Castle Owner
+Gender = Female
+BaseMoney = 100
+BattleBGM = Battle! Sinnoh Frontier Brain.ogg
+VictoryBGM = Victory! Gym Leader & Elite Four.ogg
+#-------------------------------
+[LEADER_Thorton]
+Name = Sinnoh Factory Head
+Gender = Male
+BaseMoney = 100
+BattleBGM = Battle! Sinnoh Frontier Brain.ogg
+VictoryBGM = Victory! Gym Leader & Elite Four.ogg
+#-------------------------------
+[LEADER_Dahlia]
+Name = Arcade Star
+Gender = Female
+BaseMoney = 100
+BattleBGM = Battle! Sinnoh Frontier Brain.ogg
+VictoryBGM = Victory! Gym Leader & Elite Four.ogg
+#-------------------------------
+[LEADER_Mira]
+Name = Pokémon Trainer
+Gender = Female
+BaseMoney = 100
+BattleBGM = Battle! Sinnoh Trainer.ogg
+VictoryBGM = Victory! Gym Leader & Elite Four.ogg
+#-------------------------------
+[LEADER_Marley]
+Name = Pokémon Trainer
+Gender = Female
+BaseMoney = 100
+BattleBGM = Battle! Sinnoh Trainer.ogg
+VictoryBGM = Victory! Gym Leader & Elite Four.ogg
+#-------------------------------
+[LEADER_Cheryl]
+Name = Pokémon Trainer
+Gender = Female
+BaseMoney = 100
+BattleBGM = Battle! Sinnoh Trainer.ogg
+VictoryBGM = Victory! Gym Leader & Elite Four.ogg
+#-------------------------------
+[LEADER_Emma]
+Name = Pokémon Trainer
+Gender = Female
+BaseMoney = 100
+BattleBGM = Battle Gym Leader(Kalos).ogg
+VictoryBGM = Victory! Gym Leader & Elite Four.ogg
+#-------------------------------
+[LEADER_Benga]
+Name = Boss Trainer
+Gender = Male
+BaseMoney = 100
+BattleBGM = Battle! Champion Alder.ogg
+VictoryBGM = Victory! (Diantha).ogg
+#-------------------------------
+[LEADER_Colress]
+Name = Pokémon Trainer
+Gender = Male
+BaseMoney = 100
+BattleBGM = Battle! Colress.ogg
+VictoryBGM = Victory! Gym Leader & Elite Four.ogg
+#-------------------------------
+[LEADER_Eusine]
+Name = Pokémon Trainer
+Gender = Male
+BaseMoney = 100
+BattleBGM = Battle! Eusine.ogg
+VictoryBGM = Victory! Gym Leader & Elite Four.ogg
+#-------------------------------
+[LEADER_Riley]
+Name = Pokémon Trainer
+Gender = Male
+BaseMoney = 100
+BattleBGM = Battle! Sinnoh Trainer.ogg
+VictoryBGM = Victory! Gym Leader & Elite Four.ogg
+#-------------------------------
+[LEADER_Ryuki]
+Name = Pokémon Trainer
+Gender = Male
+BaseMoney = 100
+BattleBGM = Battle Gym Leader(Aloha).ogg
+VictoryBGM = Victory! Gym Leader & Elite Four.ogg
+#-------------------------------
+[BASEEXPERT]
+Name = Secret Base Expert
+Gender = Male
+BaseMoney = 100
+BattleBGM = Battle! Unova Elite Four.ogg
+VictoryBGM = Victory! Gym Leader & Elite Four.ogg
+#-------------------------------
+[RANGERHEAD]
+Name = Ranger Chairman
+Gender = Male
+BaseMoney = 100
+BattleBGM = Battle! Elite Four Hoenn.ogg
+VictoryBGM = Battle victory leader
+#-------------------------------
+[PASTAIDEN]
+Name = Pokemon Trainer
+Gender = Male
+BaseMoney = 100
+#-------------------------------
+[POKEMONTRAINER_Hoopa]
+Name = Order Master
+Gender = Male
+BaseMoney = 60
+BattleBGM = XY 103 Battle! (Xerneas & Yveltal)
+VictoryBGM = Victory! Trainer
+#-------------------------------
+[CIPHER]
+Name = Neo Cipher
+Gender = Male
+BaseMoney = 32
+BattleBGM = XD 11 Cipher Battle
+VictoryBGM = Victory! Team Magma & Aqua.ogg
+#-------------------------------
+[SAGE]
+Name = Sage
+Gender = Male
+BaseMoney = 48
+BattleBGM = Battle (Sage).ogg
+VictoryBGM = Victory! Trainer.ogg
+#-------------------------------
+[ELDER]
+Name = Elder
+Gender = Male
+BaseMoney = 96
+BattleBGM = Battle (Sage).ogg
+VictoryBGM = Victory! Trainer.ogg
+#-------------------------------
+[PROFBAOBAB]
+Name = Neo Cipher Admin
+Gender = Male
+BaseMoney = 100
+BattleBGM = Baobab Battle Theme.ogg
+VictoryBGM = Baobab Defeated.ogg
+#-------------------------------
+[FOLLOWER_Wally]
+Name = Pokémon Trainer
+Gender = Male
+BaseMoney = 60
+BattleBGM = Wally Battle.ogg
+VictoryBGM = Victory! Trainer.ogg
+#-------------------------------
+[POKEMONTRAINER_Tempest]
+Name = Masked Man
+Gender = Male
+BaseMoney = 60
+BattleBGM = Raid (Basic) battle v1
+VictoryBGM = Victory! Trainer.ogg
+#-------------------------------
+[POKEMONTRAINER_Zinnia]
+Name = Draconid
+Gender = Female
+BaseMoney = 60
+BattleBGM = Wally Battle.ogg
+VictoryBGM = Victory! Trainer.ogg
+#-------------------------------
+[POKEMONTRAINER_Cynthia]
+Name = Sinnoh Chmampion
+Gender = Female
+BaseMoney = 60
+BattleBGM = Wally Battle.ogg
+VictoryBGM = Victory! Trainer.ogg
+#-------------------------------
+[POKEMONTRAINER_Anabel]
+Name = Salon Maiden
+Gender = Female
+BaseMoney = 100
+BattleBGM = Battle! Hoenn Frontier Brain.ogg
+VictoryBGM = Victory! Gym Leader & Elite Four.ogg
+#-------------------------------
+[WANDERER]
+Name = Wanderer
+Gender = Male
+BaseMoney = 100
+BattleBGM = XD 44 Mirror B. Battle.ogg
+#-------------------------------
+[POKEMONTRAINER_Dexio]
+Name = Pokémon Trainer
+Gender = Male
+BaseMoney = 100
+BattleBGM = Battle Gym Leader(Aloha).ogg
+VictoryBGM = Victory! Gym Leader & Elite Four.ogg
+#-------------------------------
+[POKEMONTRAINER_Sina]
+Name = Pokémon Trainer
+Gender = Female
+BaseMoney = 100
+BattleBGM = Battle Gym Leader(Aloha).ogg
+VictoryBGM = Victory! Gym Leader & Elite Four.ogg
+#-------------------------------
+[WORKER]
+Name = Worker
+Gender = Male
+BaseMoney = 16
+#-------------------------------
+[LEADER_Bea]
+Name = Galar Gym Leader
+Gender = Female
+BaseMoney = 100
+BattleBGM = SwSh 060 Battle! (Gym Leader)
+VictoryBGM = SwSh 062 Victory! (Gym Leader)
+#-------------------------------
+[DELINQUENT]
+Name = Delinquent
+Gender = Female
+BaseMoney = 32
+IntroBGM = Trainers' eyes Meet (Triathlete)
+#-------------------------------
+[LEADER_VolknerFlint]
+Name = Gym Leader
+Gender = Unknown
+BaseMoney = 100
+BattleBGM = Battle Gym Leader(Sinnoh).ogg
+VictoryBGM = Victory! Gym Leader & Elite Four.ogg
+#-------------------------------
+[LEADER_ByronRoark]
+Name = Sinnoh Gym Leaders
+Gender = Unknown
+BaseMoney = 100
+BattleBGM = Battle Gym Leader(Sinnoh).ogg
+VictoryBGM = Victory! Gym Leader & Elite Four.ogg
+#-------------------------------
+[LEADER_RedBlue]
+Name = Legendary Duo
+Gender = Unknown
+BaseMoney = 100
+BattleBGM = Rival Battle(Blue).ogg
+VictoryBGM = Victory! Elite 4.ogg
+#-------------------------------
+[LEADER_SilverGold]
+Name = Pokemon Trainers
+Gender = Male
+BaseMoney = 100
+BattleBGM = Rival Battle(Silver).ogg
+VictoryBGM = Victory! Gym Leader & Elite Four.ogg
+#-------------------------------
+[LEADER_GladionLillie]
+Name = Pokemon Trainers
+Gender = Unknown
+BaseMoney = 100
+BattleBGM = Battle! Gladion.ogg
+VictoryBGM = Victory! Gym Leader & Elite Four.ogg
+#-------------------------------
+[LEADER_DexioSina]
+Name = Pokémon Trainers
+Gender = Unknown
+BaseMoney = 100
+BattleBGM = Battle Gym Leader(Aloha).ogg
+VictoryBGM = Victory! Gym Leader & Elite Four.ogg
+#-------------------------------
+[LEADER_MaxieArchie]
+Name = Pokémon Trainers
+Gender = Unknown
+BaseMoney = 60
+BattleBGM = Pokemon Team Aqua_Magma Leader Theme.ogg
+VictoryBGM = Victory! Team Magma & Aqua.ogg
+#-------------------------------
+[LEADER_FlanneryMoore]
+Name = Gym Leaders
+Gender = Unknown
+BaseMoney = 100
+BattleBGM = Gym Leader Battle.ogg
+VictoryBGM = Victory! Gym Leader & Elite Four.ogg
+#-------------------------------
+[POKEMONTRAINER_Seth]
+Name = Pokémon Trainer
+Gender = Male
+BaseMoney = 60
+BattleBGM = World Tournament Theme.ogg
+VictoryBGM = Victory! Trainer.ogg
+#-------------------------------
+[POKEMONTRAINER_Dylancd]
+Name = Pokémon Trainer
+Gender = Male
+BaseMoney = 60
+BattleBGM = World Tournament Theme.ogg
+VictoryBGM = Victory! Trainer.ogg
+#-------------------------------
+[POKEMONTRAINER_Nasa]
+Name = Pokémon Trainer
+Gender = Male
+BaseMoney = 60
+BattleBGM = World Tournament Theme.ogg
+VictoryBGM = Victory! Trainer.ogg
+#-------------------------------
+[LEADER_Milo]
+Name = Gym Leader
+Gender = Male
+BaseMoney = 100
+BattleBGM = SwSh 060 Battle! (Gym Leader)
+VictoryBGM = SwSh 062 Victory! (Gym Leader)
+#-------------------------------
+[LEADER_Nessa]
+Name = Gym Leader
+Gender = Female
+BaseMoney = 100
+BattleBGM = SwSh 060 Battle! (Gym Leader)
+VictoryBGM = SwSh 062 Victory! (Gym Leader)
+#-------------------------------
+[LEADER_Kabu]
+Name = Gym Leader
+Gender = Male
+BaseMoney = 100
+BattleBGM = SwSh 060 Battle! (Gym Leader)
+VictoryBGM = SwSh 062 Victory! (Gym Leader)
+#-------------------------------
+[LEADER_Allister]
+Name = Gym Leader
+Gender = Male
+BaseMoney = 100
+BattleBGM = SwSh 060 Battle! (Gym Leader)
+VictoryBGM = SwSh 062 Victory! (Gym Leader)
+#-------------------------------
+[LEADER_Opal]
+Name = Gym Leader
+Gender = Female
+BaseMoney = 100
+BattleBGM = SwSh 060 Battle! (Gym Leader)
+VictoryBGM = SwSh 062 Victory! (Gym Leader)
+#-------------------------------
+[LEADER_Bede]
+Name = Gym Leader
+Gender = Male
+BaseMoney = 100
+BattleBGM = SwSh 060 Battle! (Gym Leader)
+VictoryBGM = SwSh 062 Victory! (Gym Leader)
+#-------------------------------
+[LEADER_Gordie]
+Name = Gym Leader
+Gender = Male
+BaseMoney = 100
+BattleBGM = SwSh 060 Battle! (Gym Leader)
+VictoryBGM = SwSh 062 Victory! (Gym Leader)
+#-------------------------------
+[LEADER_Melony]
+Name = Gym Leader
+Gender = Female
+BaseMoney = 100
+BattleBGM = SwSh 060 Battle! (Gym Leader)
+VictoryBGM = SwSh 062 Victory! (Gym Leader)
+#-------------------------------
+[LEADER_Piers]
+Name = Gym Leader
+Gender = Male
+BaseMoney = 100
+BattleBGM = SwSh 060 Battle! (Gym Leader)
+VictoryBGM = SwSh 062 Victory! (Gym Leader)
+#-------------------------------
+[LEADER_Marnie]
+Name = Gym Leader
+Gender = Female
+BaseMoney = 100
+BattleBGM = SwSh 060 Battle! (Gym Leader)
+VictoryBGM = SwSh 062 Victory! (Gym Leader)
+#-------------------------------
+[LEADER_Raihan]
+Name = Gym Leader
+Gender = Male
+BaseMoney = 100
+BattleBGM = SwSh 060 Battle! (Gym Leader)
+VictoryBGM = SwSh 062 Victory! (Gym Leader)
+#-------------------------------
+[LEADER_Klara]
+Name = Gym Leader
+Gender = Female
+BaseMoney = 100
+BattleBGM = SwSh 060 Battle! (Gym Leader)
+VictoryBGM = SwSh 062 Victory! (Gym Leader)
+#-------------------------------
+[LEADER_Avery]
+Name = Gym Leader
+Gender = Male
+BaseMoney = 100
+BattleBGM = SwSh 060 Battle! (Gym Leader)
+VictoryBGM = SwSh 062 Victory! (Gym Leader)
+#-------------------------------
+[LEADER_Geeta]
+Name = Paldea Champion
+Gender = Female
+BaseMoney = 100
+BattleBGM = Battle! (Champion Nemona)
+VictoryBGM = SwSh 062 Victory! (Gym Leader)
+#-------------------------------
+[LEADER_Red]
+Name = Pokémon Trainer
+Gender = Male
+BaseMoney = 100
+BattleBGM = Rival Battle(Blue).ogg
+VictoryBGM = Victory! Elite 4.ogg
+#-------------------------------
+[LEADER_Gold]
+Name = Pokémon Trainer
+Gender = Male
+BaseMoney = 100
+BattleBGM = Rival Battle(Blue).ogg
+VictoryBGM = Victory! Elite 4.ogg
+#-------------------------------
+[LEADER_Lucas]
+Name = Pokémon Trainer
+Gender = Male
+BaseMoney = 100
+BattleBGM = Rival Battle(Blue).ogg
+VictoryBGM = Victory! Elite 4.ogg
+#-------------------------------
+[LEADER_Hilbert]
+Name = Pokémon Trainer
+Gender = Male
+BaseMoney = 100
+BattleBGM = Rival Battle(Blue).ogg
+VictoryBGM = Victory! Elite 4.ogg
+#-------------------------------
+[LEADER_Nate]
+Name = Pokémon Trainer
+Gender = Male
+BaseMoney = 100
+BattleBGM = Rival Battle(Blue).ogg
+VictoryBGM = Victory! Elite 4.ogg
+#-------------------------------
+[LEADER_Calem]
+Name = Pokémon Trainer
+Gender = Male
+BaseMoney = 100
+BattleBGM = Rival Battle(Blue).ogg
+VictoryBGM = Victory! Elite 4.ogg
+#-------------------------------
+[LEADER_Elio]
+Name = Pokémon Trainer
+Gender = Male
+BaseMoney = 100
+BattleBGM = Rival Battle(Blue).ogg
+VictoryBGM = Victory! Elite 4.ogg
+#-------------------------------
+[LEADER_Victor]
+Name = Pokémon Trainer
+Gender = Male
+BaseMoney = 100
+BattleBGM = Rival Battle(Blue).ogg
+VictoryBGM = Victory! Elite 4.ogg
+#-------------------------------
+[LEADER_Florian]
+Name = Pokémon Trainer
+Gender = Male
+BaseMoney = 100
+BattleBGM = Rival Battle(Blue).ogg
+VictoryBGM = Victory! Elite 4.ogg
+#-------------------------------
+[LEADER_Wes]
+Name = Pokémon Trainer
+Gender = Male
+BaseMoney = 100
+BattleBGM = Rival Battle(Blue).ogg
+VictoryBGM = Victory! Elite 4.ogg
+#-------------------------------
+[LEADER_Leaf]
+Name = Pokémon Trainer
+Gender = Female
+BaseMoney = 100
+BattleBGM = World Tournament Theme.ogg
+VictoryBGM = Victory! Elite 4.ogg
+#-------------------------------
+[LEADER_Lyra]
+Name = Pokémon Trainer
+Gender = Female
+BaseMoney = 100
+BattleBGM = World Tournament Theme.ogg
+VictoryBGM = Victory! Elite 4.ogg
+#-------------------------------
+[LEADER_Kris]
+Name = Pokémon Trainer
+Gender = Female
+BaseMoney = 100
+BattleBGM = World Tournament Theme.ogg
+VictoryBGM = Victory! Elite 4.ogg
+#-------------------------------
+[LEADER_Dawn]
+Name = Pokémon Trainer
+Gender = Female
+BaseMoney = 100
+BattleBGM = World Tournament Theme.ogg
+VictoryBGM = Victory! Elite 4.ogg
+#-------------------------------
+[LEADER_Hilda]
+Name = Pokémon Trainer
+Gender = Female
+BaseMoney = 100
+BattleBGM = World Tournament Theme.ogg
+VictoryBGM = Victory! Elite 4.ogg
+#-------------------------------
+[LEADER_Rosa]
+Name = Pokémon Trainer
+Gender = Female
+BaseMoney = 100
+BattleBGM = World Tournament Theme.ogg
+VictoryBGM = Victory! Elite 4.ogg
+#-------------------------------
+[LEADER_Serena]
+Name = Pokémon Trainer
+Gender = Female
+BaseMoney = 100
+BattleBGM = World Tournament Theme.ogg
+VictoryBGM = Victory! Elite 4.ogg
+#-------------------------------
+[LEADER_Selene]
+Name = Pokémon Trainer
+Gender = Female
+BaseMoney = 100
+BattleBGM = World Tournament Theme.ogg
+VictoryBGM = Victory! Elite 4.ogg
+#-------------------------------
+[LEADER_Gloria]
+Name = Pokémon Trainer
+Gender = Female
+BaseMoney = 100
+BattleBGM = World Tournament Theme.ogg
+VictoryBGM = Victory! Elite 4.ogg
+#-------------------------------
+[LEADER_Juliana]
+Name = Pokémon Trainer
+Gender = Female
+BaseMoney = 100
+BattleBGM = World Tournament Theme.ogg
+VictoryBGM = Victory! Elite 4.ogg
+#-------------------------------
+[LEADER_Arven]
+Name = Pokémon Trainer
+Gender = Male
+BaseMoney = 100
+BattleBGM = Battle! (Champion Nemona)
+VictoryBGM = SwSh 062 Victory! (Gym Leader)
+#-------------------------------
+[LEADER_Nemona]
+Name = Pokémon Trainer
+Gender = Female
+BaseMoney = 100
+BattleBGM = Battle! (Champion Nemona)
+VictoryBGM = SwSh 062 Victory! (Gym Leader)
+#-------------------------------
+[LEADER_N]
+Name = Pokémon Trainer
+Gender = Male
+BaseMoney = 100
+BattleBGM = Battle! Iris.ogg
+VictoryBGM = Victory! (Diantha).ogg
+#-------------------------------
+[POKEMONTRAINER_Neo]
+Name = Pokémon Trainer
+Gender = Male
+BaseMoney = 60
+BattleBGM = World Tournament Theme.ogg
+VictoryBGM = Victory! Trainer.ogg
+#-------------------------------
+[POKEMONTRAINER_Alain]
+Name = Mega Specialist
+Gender = Male
+BaseMoney = 100
+BattleBGM = Battle! (Diantha).ogg
+VictoryBGM = Victory! (Diantha).ogg
+#-------------------------------
+[HPOKEMONTRAINER_Brendan]
+Name = Pokémon Trainer
+Gender = Male
+BaseMoney = 60
+BattleBGM = May Battle Theme.ogg
+VictoryBGM = Victory! Trainer.ogg
+#-------------------------------
+[HPOKEMONTRAINER_May]
+Name = Pokémon Trainer
+Gender = Female
+BaseMoney = 60
+BattleBGM = May Battle Theme.ogg
+VictoryBGM = Victory! Trainer.ogg
+#-------------------------------
+[POKEMONTRAINER_Dray]
+Name = Pokemon Trainer
+Gender = Male
+BaseMoney = 100
+BattleBGM = Battle! Gladion.ogg
+VictoryBGM = Victory! Gym Leader & Elite Four.ogg
+#-------------------------------
+[GRAVEKEEPER]
+Name = The Sorrowbound Myth
+Gender = Male
+BaseMoney = 100
+BattleBGM = Battle! Tempest(Finale)
+VictoryBGM = Victory! Gym Leader & Elite Four.ogg

@@ -1,0 +1,1024 @@
+﻿# See the documentation on the wiki to learn how to edit this file.
+#-------------------------------
+# Lappet Town (2) - Route 1 (5)
+2,North,0,5,South,4
+# Lappet Town (2) - Safari Zone (66)
+2,West,0,66,East,0
+# Route 8 (69) - Lappet Town (2)
+69,North,12,2,South,0
+# Route 6 (44) - Route 1 (5)
+44,South,43,5,North,0
+# Safari Zone (66) - Route 1 (5)
+66,North,18,5,South,0
+# Cedolan City (7) - Route 1 (5)
+7,South,0,5,North,2
+# Cedolan City (7) - Route 6 (44)
+7,West,5,44,East,0
+# Cedolan City (7) - Lerucean Town (23)
+7,East,0,23,West,78
+# Route 7 (47) - Cedolan City (7)
+47,West,0,7,East,0
+# Route 2 (21) - Cedolan City (7)
+21,South,0,7,North,21
+# Route 2 (21) - Lerucean Town (23)
+21,East,0,23,West,1
+# Route 2 (21) - Route 7 (47)
+21,East,77,47,West,0
+# Route 3 (31) - Lerucean Town (23)
+31,South,32,23,North,0
+# Route 3 (31) - Ingido Plateau (35)
+31,West,0,35,East,10
+# Littleroot Town (33) - Route 101 (80)
+33,North,2,80,South,0
+# Route 102 Fillertreesdown (83) - Littleroot Town (33)
+83,South,42,33,North,0
+# Ingido Plateau (35) - Route 4 (39)
+35,West,11,39,East,0
+# Route 5 (41) - Route 4 (40)
+41,North,0,40,South,0
+# Route 5 (41) - Route 6 (45)
+41,South,6,45,North,0
+# Route 7 (47) - Battle Frontier (52)
+47,East,8,52,West,0
+# Route 8 (69) - Safari Zone (66)
+69,North,0,66,South,10
+# Route 101 (80) - Route 102 (81)
+80,North,0,81,South,44
+# Route 102 Fillertreesdown (83) - Route 101 (80)
+83,East,0,80,West,0
+# Route 102 Fillertreestop (82) - Route 101 (80)
+82,East,35,80,West,0
+# Oldale Town (85) - Route 101 (80)
+85,South,0,80,North,6
+# Route 102 (81) - Petalburg City (95)
+81,West,0,95,East,14
+# Route 102 Fillertreesdown (83) - Route 102 (81)
+83,North,0,81,South,0
+# Route 103 (84) - Route 102 (81)
+84,South,0,81,North,44
+# Route 102 Fillertreestop (82) - Route 102 (81)
+82,South,0,81,North,0
+# Oldale Town (85) - Route 102 (81)
+85,West,0,81,East,0
+# 104 Border (114) - Route 102 (81)
+114,East,49,81,West,0
+# Route 102 Fillertreestop (82) - Petalburg City (95)
+82,West,1,95,East,0
+# Route 102 Fillertreestop (82) - Route 103 (84)
+82,East,0,84,West,7
+# Oldale Town (85) - Route 102 Fillertreestop (82)
+85,North,0,82,South,50
+# 103 Border (93) - Route 102 Fillertreestop (82)
+93,West,22,82,East,0
+# 104 Border (114) - Route 102 Fillertreestop (82)
+114,East,34,82,West,0
+# 110 border (165) - Route 102 Fillertreestop (82)
+165,North,0,82,South,110
+# Route 102 Fillertreesdown (83) - Petalburg City (95)
+83,West,0,95,East,34
+# Route 103 (84) - Route 102 Fillertreesdown (83)
+84,West,42,83,East,0
+# Oldale Town (85) - Route 102 Fillertreesdown (83)
+85,South,0,83,North,50
+# 103 Border (93) - Route 102 Fillertreesdown (83)
+93,West,57,83,East,0
+# 104 Border (114) - Route 102 Fillertreesdown (83)
+114,East,69,83,West,0
+# Oldale Town (85) - Route 103 (84)
+85,North,0,84,South,6
+# 103 Border (93) - Route 103 (84)
+93,South,0,84,North,0
+# route 103 and 110 border (188) - Route 103 (84)
+188,South,0,84,North,46
+# Mauville City (169) - Route 103 (84)
+169,West,80,84,East,0
+# Route 110 (158) - Route 103 (84)
+158,West,60,84,East,0
+# Route 109 (151) - Route 103 (84)
+151,West,0,84,East,103
+# 110 border (165) - Route 103 (84)
+165,North,0,84,South,66
+# route 103 and 110 border (188) - 103 Border (93)
+188,West,46,93,East,0
+# Petalburg City (95) - Route 105 (136)
+95,West,35,136,East,0
+# Route 104 (104) - Petalburg City (95)
+104,East,45,95,West,0
+# Rustboro City (106) - Petalburg City (95)
+106,East,105,95,West,0
+# 104 Border (114) - Petalburg City (95)
+114,South,0,95,North,0
+# 106 border 2 (140) - Petalburg City (95)
+140,East,0,95,West,135
+# Route 104 (104) - Route 105 (136)
+104,South,0,136,North,0
+# Route 104 (104) - 104 Border 3 (131)
+104,West,0,131,East,60
+# Route 104  (109) - Route 104 (104)
+109,East,0,104,West,10
+# Rustboro City (106) - Route 104 (104)
+106,South,0,104,North,0
+# Route 116 (112) - Route 104 (104)
+112,West,60,104,East,0
+# 104 Border (114) - Route 104 (104)
+114,West,0,104,East,10
+# 104 BORDER 2 (130) - Route 104 (104)
+130,East,24,104,West,0
+# Route 106 (139) - Route 104 (104)
+139,West,0,104,East,180
+# Route 134 (471) - Route 104 (104)
+471,North,0,104,South,247
+# 105 border (248) - Route 104 (104)
+248,East,0,104,West,90
+# 115 BORDER LEFT (267) - Route 104 (104)
+267,East,140,104,West,0
+# 115 BORDER LEFT 2 (269) - Route 104 (104)
+269,East,160,104,West,0
+# Slateport City (148) - Route 104 (104)
+148,North,0,104,South,194
+# 105 Border Right (295) - Route 104 (104)
+295,West,0,104,East,120
+# Rustboro City (106) - 104 Border 3 (131)
+106,West,0,131,East,0
+# Rustboro City (106) - Route 104  (109)
+106,West,70,109,East,0
+# Route 115 (128) - Rustboro City (106)
+128,South,0,106,North,0
+# Route 116 (112) - Rustboro City (106)
+112,West,0,106,East,0
+# 104 Border (114) - Rustboro City (106)
+114,West,0,106,East,70
+# 104 BORDER 2 (130) - Rustboro City (106)
+130,East,0,106,West,36
+# Route 106 (139) - Rustboro City (106)
+139,West,0,106,East,240
+# 105 border (248) - Rustboro City (106)
+248,East,0,106,West,150
+# 115 BORDER LEFT (267) - Rustboro City (106)
+267,East,80,106,West,0
+# 115 BORDER LEFT 2 (269) - Rustboro City (106)
+269,East,100,106,West,0
+# Mirage Cave (847) - Rustboro City (106)
+847,North,0,106,South,805
+# Route 111 Border (199) - Rustboro City (106)
+199,South,0,106,North,240
+# 105 Border Right (295) - Rustboro City (106)
+295,West,0,106,East,180
+# Route 116 Border Up (309) - Rustboro City (106)
+309,South,0,106,North,92
+# Route 104  (109) - Route 105 (136)
+109,East,70,136,West,0
+# Route 115 (128) - Route 104  (109)
+128,West,150,109,East,0
+# Route 116 (112) - Route 104  (109)
+112,South,0,109,North,60
+# 104 BORDER 2 (130) - Route 104  (109)
+130,South,10,109,North,0
+# Route 106 (137) - Route 104  (109)
+137,West,0,109,East,150
+# 115 BORDER UP (268) - Route 104  (109)
+268,West,165,109,East,0
+# 105 border (248) - Route 104  (109)
+248,North,5,109,South,0
+# Route 116 (112) - Route 105 (136)
+112,West,140,136,East,0
+# Route 116 (112) - Route 115 (128)
+112,North,0,128,South,40
+# 104 Border (114) - Route 116 (112)
+114,North,0,112,South,0
+# 106 border 2 (140) - Route 116 (112)
+140,East,0,112,West,240
+# 115 BORDER LEFT (267) - Route 116 (112)
+267,South,65,112,North,0
+# Route 111 Border (199) - Route 116 (112)
+199,South,0,112,North,200
+# Route 116 Border Up (309) - Route 116 (112)
+309,South,0,112,North,52
+# 104 Border (114) - Route 105 (136)
+114,West,70,136,East,0
+# 104 BORDER 2 (130) - 104 Border (114)
+130,South,70,114,North,0
+# 106 border 2 (140) - 104 Border (114)
+140,East,0,114,West,170
+# Route 115 (128) - 104 Border 3 (131)
+128,West,80,131,East,0
+# 104 BORDER 2 (130) - Route 115 (128)
+130,East,0,128,West,116
+# 115 BORDER UP (268) - Route 115 (128)
+268,South,0,128,North,0
+# 105 border (248) - Route 115 (128)
+248,East,0,128,West,230
+# 115 BORDER LEFT (267) - Route 115 (128)
+267,East,0,128,West,0
+# 115 BORDER LEFT 2 (269) - Route 115 (128)
+269,East,20,128,West,0
+# 104 BORDER 2 (130) - Route 105 (136)
+130,East,104,136,West,0
+# 104 BORDER 2 (130) - 104 Border 3 (131)
+130,North,5,131,South,0
+# Route 106 (137) - 104 BORDER 2 (130)
+137,West,0,130,East,184
+# 115 BORDER UP (268) - 104 BORDER 2 (130)
+268,West,131,130,East,0
+# Maville Border (173) - 104 BORDER 2 (130)
+173,South,0,130,North,210
+# 104 Border 3 (131) - Route 105 (136)
+131,East,140,136,West,0
+# 104 Border 3 (131) - route 103 and 110 border (188)
+131,South,185,188,North,0
+# Route 106 (137) - 104 Border 3 (131)
+137,West,0,131,East,220
+# 115 BORDER UP (268) - 104 Border 3 (131)
+268,West,95,131,East,0
+# 115 BORDER LEFT (267) - 104 Border 3 (131)
+267,South,0,131,North,0
+# Route 111 Border (199) - 104 Border 3 (131)
+199,South,0,131,North,265
+# Route 116 Border Up (309) - 104 Border 3 (131)
+309,South,0,131,North,117
+# Dewford Town (132) - Route 106 (137)
+132,North,0,137,South,60
+# Route 106 (139) - Dewford Town (132)
+139,East,0,132,West,0
+# Route 134 (471) - Dewford Town (132)
+471,South,0,132,North,187
+# Route 107 (138) - Dewford Town (132)
+138,West,0,132,East,0
+# 107 BORDER UP (270) - Dewford Town (132)
+270,West,20,132,East,0
+# Route 105 (136) - Route 118 (176)
+136,North,240,176,South,0
+# Route 106 (137) - Route 105 (136)
+137,North,0,136,South,0
+# Route 106 (139) - Route 105 (136)
+139,West,0,136,East,100
+# 107 BORDER UP (270) - Route 105 (136)
+270,North,0,136,South,80
+# 105 border (248) - Route 105 (136)
+248,East,0,136,West,10
+# 115 BORDER LEFT (267) - Route 105 (136)
+267,East,220,136,West,0
+# 115 BORDER LEFT 2 (269) - Route 105 (136)
+269,East,240,136,West,0
+# Route 110 (158) - Route 105 (136)
+158,South,0,136,North,200
+# 110 border (165) - Route 105 (136)
+165,South,0,136,North,180
+# 105 Border Right (295) - Route 105 (136)
+295,West,0,136,East,40
+# Route 106 (139) - Route 106 (137)
+139,North,0,137,South,40
+# Route 107 (138) - Route 106 (137)
+138,West,0,137,East,20
+# 107 BORDER UP (270) - Route 106 (137)
+270,West,0,137,East,0
+# 106 border 2 (140) - Route 106 (137)
+140,North,0,137,South,20
+# 105 border (248) - Route 106 (137)
+248,East,70,137,West,0
+# 115 BORDER LEFT (267) - Route 106 (137)
+267,East,300,137,West,0
+# 115 BORDER LEFT 2 (269) - Route 106 (137)
+269,East,320,137,West,0
+# Mirage Cave (662) - Route 106 (137)
+662,South,0,137,North,90
+# 105 Border Right (295) - Route 106 (137)
+295,South,0,137,North,40
+# Route 107 (138) - Route 134 (471)
+138,North,167,471,South,0
+# 107 BORDER UP (270) - Route 107 (138)
+270,South,0,138,North,0
+# Route 108 (150) - Route 107 (138)
+150,West,1,138,East,0
+# 109 border (164) - Route 107 (138)
+164,West,40,138,East,0
+# 105 Border Right (295) - Route 107 (138)
+295,East,60,138,West,0
+# Route 134 (471) - Route 106 (139)
+471,South,0,139,North,207
+# 107 BORDER UP (270) - Route 106 (139)
+270,South,0,139,North,40
+# 106 border 2 (140) - Route 106 (139)
+140,East,0,139,West,0
+# 106 border 2 (140) - Route 134 (471)
+140,North,227,471,South,0
+# 106 border 2 (140) - 107 BORDER UP (270)
+140,North,60,270,South,0
+# 115 BORDER UP (268) - 106 border 2 (140)
+268,East,335,140,West,0
+# 105 Border Right (295) - 106 border 2 (140)
+295,West,60,140,East,0
+# Border 1 (709) - Granite Cave (143)
+709,South,0,143,North,0
+# Border 2 (710) - Granite Cave (143)
+710,East,11,143,West,0
+# Border 1 (707) - Granite Cave (144)
+707,South,0,144,North,0
+# Border 2 (708) - Granite Cave (144)
+708,East,12,144,West,0
+# Border Right (705) - Granite Cave (145)
+705,East,0,145,West,0
+# Granite Cave SIMPLY BORDER (635) - Granite Cave (145)
+635,South,1,145,North,0
+# Slateport City (148) - Route 118 (176)
+148,North,46,176,South,0
+# Slateport City (148) - Route 134 (471)
+148,East,0,471,West,0
+# Slateport City (148) - Route 110 (158)
+148,North,6,158,South,0
+# Route 109 (151) - Slateport City (148)
+151,North,0,148,South,6
+# 109 border (164) - Slateport City (148)
+164,North,54,148,South,0
+# 110 border (165) - Slateport City (148)
+165,South,14,148,North,0
+# Route 108 (150) - 107 BORDER UP (270)
+150,West,0,270,East,19
+# Mauville City (169) - Route 108 (150)
+169,West,222,150,East,0
+# Route 110 (158) - Route 108 (150)
+158,West,202,150,East,0
+# Route 109 (151) - Route 108 (150)
+151,West,39,150,East,0
+# 109 border (164) - Route 108 (150)
+164,South,0,150,North,0
+# Mirage Cave (662) - Route 108 (150)
+662,East,47,150,West,0
+# Route 109 (151) - route 103 and 110 border (188)
+151,West,0,188,East,164
+# Route 109 (151) - Route 134 (471)
+151,East,0,471,West,60
+# Maville Border (173) - Route 109 (151)
+173,East,183,151,West,0
+# 109 border (164) - Route 109 (151)
+164,East,0,151,West,0
+# 110 border (165) - Route 109 (151)
+165,East,81,151,West,0
+# Route 110 (158) - Route 118 (176)
+158,East,0,176,West,25
+# Route 110 (158) - route 103 and 110 border (188)
+158,West,0,188,East,1
+# Route 110 (158) - Route 134 (471)
+158,South,47,471,North,0
+# Route 110 (158) - Mauville City (169)
+158,North,0,169,South,0
+# Maville Border (173) - Route 110 (158)
+173,East,20,158,West,0
+# Route 111 Border (199) - Route 110 (158)
+199,West,177,158,East,0
+# 109 border (164) - Route 110 (158)
+164,East,0,158,West,163
+# 110 border (165) - Route 110 (158)
+165,East,0,158,West,82
+# 109 border (164) - 107 BORDER UP (270)
+164,West,20,270,East,0
+# 109 border (164) - Mauville City (169)
+164,East,0,169,West,183
+# Mirage Cave (662) - 109 border (164)
+662,East,8,164,West,0
+# 110 border (165) - Route 134 (471)
+165,South,67,471,North,0
+# 110 border (165) - Mauville City (169)
+165,East,0,169,West,102
+# Mauville City (169) - Route 118 (176)
+169,East,0,176,West,5
+# Mauville City (169) - route 103 and 110 border (188)
+169,West,19,188,East,0
+# Maville Border (173) - Mauville City (169)
+173,East,0,169,West,0
+# Route 111 (197) - Mauville City (169)
+197,South,1,169,North,0
+# Mauville Border grass 1 (271) - Mauville City (169)
+271,South,21,169,North,0
+# Route 111 Border (199) - Mauville City (169)
+199,West,157,169,East,0
+# Verdanturf Town (187) - Route 117 (170)
+187,East,1,170,West,0
+# Verdanturf Rock Border (189) - Route 117 (170)
+189,East,21,170,West,0
+# 117 Border up (190) - Route 117 (170)
+190,South,0,170,North,0
+# Mauville Border 2 (174) - Route 117 (170)
+174,West,0,170,East,3
+# New Grass Border (285) - Route 117 (170)
+285,West,17,170,East,0
+# Maville Border (173) - route 103 and 110 border (188)
+173,South,0,188,North,20
+# Route 111 (197) - Maville Border (173)
+197,South,0,173,North,19
+# Mauville Border grass 1 (271) - Maville Border (173)
+271,South,1,173,North,0
+# New Grass Border (285) - Mauville Border 2 (174)
+285,South,0,174,North,0
+# Route 118 (176) - 119 border 2 (321)
+176,East,0,321,West,120
+# Route 134 (471) - Route 118 (176)
+471,North,0,176,South,7
+# Route 111 (197) - Route 118 (176)
+197,East,141,176,West,0
+# Route 111 (198) - Route 118 (176)
+198,East,171,176,West,0
+# Fortree City (322) - Route 118 (176)
+322,West,140,176,East,0
+# Route 119 (319) - Route 118 (176)
+319,South,0,176,North,45
+# Route 123 (316) - Route 118 (176)
+316,West,2,176,East,0
+# Fortree Border up (337) - Route 118 (176)
+337,West,160,176,East,0
+# Route 133 (470) - Route 118 (176)
+470,West,0,176,East,121
+# MAP621 (621) - Route 118 (176)
+621,West,0,176,East,101
+# Verdanturf Rock Border (189) - Verdanturf Town (187)
+189,South,0,187,North,0
+# 117 Border up (190) - Verdanturf Town (187)
+190,West,19,187,East,0
+# 117 Border up (190) - Verdanturf Rock Border (189)
+190,West,0,189,East,1
+# Mauville Border grass 1 (271) - Route 111 (197)
+271,East,0,197,West,126
+# Route 111 (198) - Route 111 (197)
+198,South,0,197,North,0
+# Route 113 (209) - Route 111 (197)
+209,East,13,197,West,0
+# Route 112 Border (204) - Route 111 (197)
+204,East,0,197,West,17
+# Route 112 (203) - Route 111 (197)
+203,East,0,197,West,36
+# Route 111 Border 2 (273) - Route 111 (197)
+273,East,0,197,West,85
+# Route 111 Border (199) - Route 111 (197)
+199,West,11,197,East,0
+# Route 111 (198) - Mauville Border grass 1 (271)
+198,West,156,271,East,0
+# Route 113 (209) - Route 111 (198)
+209,East,0,198,West,17
+# Route 112 Border (204) - Route 111 (198)
+204,East,0,198,West,47
+# Route 112 (203) - Route 111 (198)
+203,East,0,198,West,66
+# Route 111 Border 2 (273) - Route 111 (198)
+273,East,0,198,West,115
+# Route 111 Border (199) - Route 111 (198)
+199,West,0,198,East,19
+# Route 112 (203) - Route 112 Border (204)
+203,North,20,204,South,0
+# Route 111 Border 2 (273) - Route 112 (203)
+273,North,0,203,South,10
+# Lavaridge Town (231) - Route 112 (203)
+231,East,0,203,West,17
+# Lavaridge Border (565) - Route 112 (203)
+565,North,30,203,South,0
+# Fortree Border down (336) - Route 112 (203)
+336,South,0,203,North,186
+# Route 112 Border (204) - Route 113 (209)
+204,North,0,209,South,81
+# route 120 Border (374) - Route 112 Border (204)
+374,North,0,204,South,166
+# Fallarbor Town (210) - Route 113 (209)
+210,East,0,209,West,0
+# 113 Border (211) - Route 113 (209)
+211,North,0,209,South,0
+# Fallarbor Town (780) - Route 113 (209)
+780,South,21,209,North,0
+# 113 Border (211) - Fallarbor Town (210)
+211,West,0,210,East,30
+# Fallarbor Town (780) - Fallarbor Town (210)
+780,South,0,210,North,0
+# Route 114 Border (218) - Fallarbor Town (210)
+218,East,0,210,West,8
+# Route 114 Border Up (781) - Fallarbor Town (210)
+781,East,37,210,West,0
+# Fallarbor Town Rt 114 (746) - Route 114 (217)
+746,West,8,217,East,0
+# 114 Border up 2 (800) - Route 114 (217)
+800,South,0,217,North,0
+# 114 Border Left (801) - Route 114 (217)
+801,East,2,217,West,0
+# Route 114 Border (218) - Fallarbor Town (780)
+218,East,0,780,West,44
+# Route 114 Border Up (781) - Route 114 Border (218)
+781,South,1,218,North,0
+# Jagged Pass (802) - Jagged Pass (230)
+802,East,0,230,West,0
+# Jagged Pass Barrier (563) - Jagged Pass (230)
+563,South,1,230,North,0
+# Lavaridge Town (231) - Route 111 Border 2 (273)
+231,South,50,273,North,0
+# Lavaridge Border (565) - Lavaridge Town (231)
+565,North,0,231,South,10
+# 105 border (248) - 115 BORDER UP (268)
+248,East,0,268,West,245
+# 115 BORDER LEFT (267) - 115 BORDER UP (268)
+267,North,25,268,South,0
+# 115 BORDER LEFT 2 (269) - 115 BORDER LEFT (267)
+269,South,0,267,North,5
+# 115 BORDER LEFT 2 (269) - 115 BORDER UP (268)
+269,East,5,268,West,0
+# Mirage Cave (662) - 107 BORDER UP (270)
+662,South,0,270,North,10
+# 105 Border Right (295) - 107 BORDER UP (270)
+295,East,40,270,West,0
+# Route 111 Border 2 (273) - Mauville Border grass 1 (271)
+273,South,10,271,North,0
+# Lavaridge Border (565) - Route 111 Border 2 (273)
+565,East,0,273,West,0
+# Route 123 (316) - 119 border 2 (321)
+316,North,0,321,South,0
+# Route 123 (316) - Route 134 (471)
+316,West,130,471,East,0
+# Route 123 (316) - Route 119 (319)
+316,West,0,319,East,145
+# Route 124 (408) - Route 123 (316)
+408,South,0,316,North,240
+# Border 3 route 121 (375) - Route 123 (316)
+375,South,0,316,North,40
+# Route 122 (345) - Route 123 (316)
+345,South,0,316,North,98
+# Mossdeep City (409) - Route 123 (316)
+409,South,0,316,North,320
+# Lilycove Border down (612) - Route 123 (316)
+612,South,0,316,North,160
+# 127 border right (615) - Route 123 (316)
+615,South,0,316,North,400
+# Route 119 (319) - 119 border 2 (321)
+319,East,27,321,West,0
+# Route 119 (319) - Fortree City (322)
+319,East,7,322,West,0
+# Fortree Border up (337) - Route 119 (319)
+337,West,13,319,East,0
+# Route 133 (470) - Route 119 (319)
+470,West,0,319,East,268
+# MAP621 (621) - Route 119 (319)
+621,West,0,319,East,248
+# 119 border (320) - Route 119 (319)
+320,East,2,319,West,0
+# 119 border 2 (321) - Route 126 (412)
+321,South,240,412,North,0
+# Route 134 (471) - 119 border 2 (321)
+471,East,0,321,West,248
+# Fortree Border down (336) - 119 border 2 (321)
+336,West,0,321,East,0
+# Fortree City (322) - 119 border 2 (321)
+322,South,0,321,North,0
+# Route 127 (411) - 119 border 2 (321)
+411,North,0,321,South,320
+# route 120 Border (374) - 119 border 2 (321)
+374,West,0,321,East,15
+# 127 border (616) - 119 border 2 (321)
+616,North,0,321,South,400
+# 126 Border (924) - 119 border 2 (321)
+924,North,0,321,South,200
+# Fortree City (322) - Route 134 (471)
+322,West,268,471,East,0
+# Fortree City (322) - Fortree Border down (336)
+322,South,20,336,North,0
+# Route 120 (341) - Fortree City (322)
+341,West,4,322,East,0
+# Fortree Border up (337) - Fortree City (322)
+337,South,0,322,North,0
+# Border 3 route 121 (375) - Fortree City (322)
+375,West,0,322,East,101
+# Route 120 (341) - Fortree Border down (336)
+341,West,24,336,East,0
+# Border 3 route 121 (375) - Fortree Border down (336)
+375,West,0,336,East,81
+# route 120 Border (374) - Fortree Border down (336)
+374,North,0,336,South,0
+# Fortree Border up (337) - Route 134 (471)
+337,West,288,471,East,0
+# Fortree Border up (337) - Route 120 (341)
+337,East,16,341,West,0
+# Border 3 route 121 (375) - Fortree Border up (337)
+375,West,0,337,East,121
+# Route 120 (341) - Route 121 (343)
+341,East,85,343,West,0
+# Border 3 route 121 (375) - Route 120 (341)
+375,North,0,341,South,0
+# Route 122 (345) - Route 120 (341)
+345,North,0,341,South,58
+# route 120 Border (374) - Route 120 (341)
+374,East,0,341,West,39
+# Route 121 border (372) - Route 120 (341)
+372,West,35,341,East,0
+# Route 132 (469) - Route 120 (341)
+469,West,0,341,East,265
+# 132 border (620) - Route 120 (341)
+620,West,0,341,East,245
+# Route 121 (343) - Lilycove City (344)
+343,East,0,344,West,10
+# Border 3 route 121 (375) - Route 121 (343)
+375,North,40,343,South,0
+# Route 122 (345) - Route 121 (343)
+345,North,0,343,South,18
+# Pacifidlog Town (419) - Route 121 (343)
+419,West,0,343,East,160
+# Route 121 border (372) - Route 121 (343)
+372,South,0,343,North,0
+# Route 133 (470) - Route 121 (343)
+470,East,0,343,West,180
+# Pacifidlog Town (418) - Route 121 (343)
+418,West,0,343,East,180
+# Lilycove Border (611) - Route 121 (343)
+611,West,40,343,East,0
+# Lilycove Border down (612) - Route 121 (343)
+612,West,0,343,East,30
+# MAP621 (621) - Route 121 (343)
+621,East,0,343,West,160
+# Lilycove City (344) - Route 126 (412)
+344,East,67,412,West,0
+# Lilycove City (344) - Route 124 (408)
+344,East,0,408,West,13
+# Route 122 (345) - Lilycove City (344)
+345,East,0,344,West,30
+# Route 130 (416) - Lilycove City (344)
+416,West,0,344,East,187
+# 124 and 125 border up (613) - Lilycove City (344)
+613,West,38,344,East,0
+# another boder (618) - Lilycove City (344)
+618,West,0,344,East,147
+# Route 121 border (372) - Lilycove City (344)
+372,East,110,344,West,0
+# Route 132 (469) - Lilycove City (344)
+469,East,0,344,West,190
+# 132 border (620) - Lilycove City (344)
+620,East,0,344,West,170
+# Lilycove Border (611) - Lilycove City (344)
+611,South,0,344,North,0
+# Lilycove Border down (612) - Lilycove City (344)
+612,North,0,344,South,0
+# Route 122 (345) - Route 126 (412)
+345,South,142,412,North,0
+# Route 122 (345) - Border 3 route 121 (375)
+345,West,0,375,East,0
+# Route 127 (411) - Route 122 (345)
+411,North,0,345,South,222
+# 127 border (616) - Route 122 (345)
+616,North,0,345,South,302
+# Pacifidlog Town (419) - Route 122 (345)
+419,West,0,345,East,140
+# Pacifidlog Town (418) - Route 122 (345)
+418,West,0,345,East,160
+# Lilycove Border (611) - Route 122 (345)
+611,West,60,345,East,0
+# Lilycove Border down (612) - Route 122 (345)
+612,West,0,345,East,10
+# 126 Border (924) - Route 122 (345)
+924,North,0,345,South,102
+# Route 121 border (372) - Pacifidlog Town (419)
+372,East,280,419,West,0
+# Route 133 (470) - Route 121 border (372)
+470,East,0,372,West,300
+# Pacifidlog Town (418) - Route 121 border (372)
+418,West,0,372,East,300
+# Lilycove Border (611) - Route 121 border (372)
+611,West,0,372,East,80
+# Lilycove Border down (612) - Route 121 border (372)
+612,West,0,372,East,150
+# MAP621 (621) - Route 121 border (372)
+621,East,0,372,West,280
+# route 120 Border (374) - Border 3 route 121 (375)
+374,East,66,375,West,0
+# Border 3 route 121 (375) - Route 126 (412)
+375,South,200,412,North,0
+# Route 127 (411) - Border 3 route 121 (375)
+411,North,0,375,South,280
+# 127 border (616) - Border 3 route 121 (375)
+616,North,0,375,South,360
+# 126 Border (924) - Border 3 route 121 (375)
+924,North,0,375,South,160
+# Mt Pyre Border (688) - Mt. Pyre (377)
+688,South,0,377,North,0
+# Route 124 (408) - Route 126 (412)
+408,South,0,412,North,0
+# Route 127 (411) - Route 124 (408)
+411,West,0,408,East,80
+# Mossdeep City (409) - Route 124 (408)
+409,West,0,408,East,39
+# Route 125 (410) - Route 124 (408)
+410,West,1,408,East,0
+# 125 Border (614) - Route 124 (408)
+614,West,21,408,East,0
+# 124 and 125 border up (613) - Route 124 (408)
+613,South,0,408,North,0
+# Route 128 (413) - Route 124 (408)
+413,West,0,408,East,160
+# 127 border (616) - Route 124 (408)
+616,North,0,408,South,160
+# Route 129 (415) - Route 124 (408)
+415,West,0,408,East,200
+# Route 131 (417) - Route 124 (408)
+417,East,0,408,West,198
+# 131 border up (619) - Route 124 (408)
+619,East,0,408,West,178
+# Lilycove Border (611) - Route 124 (408)
+611,East,17,408,West,0
+# Lilycove Border down (612) - Route 124 (408)
+612,East,0,408,West,53
+# 126 Border (924) - Route 124 (408)
+924,North,40,408,South,0
+# Mossdeep City (409) - Route 126 (412)
+409,West,41,412,East,0
+# Mossdeep City (409) - Route 127 (411)
+409,South,0,411,North,0
+# Route 130 (416) - Mossdeep City (409)
+416,East,0,409,West,161
+# Route 125 (410) - Mossdeep City (409)
+410,South,0,409,North,0
+# 124 and 125 border up (613) - Mossdeep City (409)
+613,East,64,409,West,0
+# 127 border (616) - Mossdeep City (409)
+616,West,0,409,East,41
+# another boder (618) - Mossdeep City (409)
+618,East,0,409,West,121
+# 128 border (617) - Mossdeep City (409)
+617,West,0,409,East,161
+# 127 border right (615) - Mossdeep City (409)
+615,West,79,409,East,0
+# Mirage Mountain 125 Border Left (831) - Mossdeep City (409)
+831,West,119,409,East,0
+# 126 Border (924) - Mossdeep City (409)
+924,North,120,409,South,0
+# Route 125 (410) - Route 126 (412)
+410,West,81,412,East,0
+# Route 125 (410) - Route 130 (416)
+410,West,201,416,East,0
+# 125 Border (614) - Route 125 (410)
+614,South,0,410,North,0
+# 124 and 125 border up (613) - Route 125 (410)
+613,East,24,410,West,0
+# 127 border (616) - Route 125 (410)
+616,West,0,410,East,81
+# another boder (618) - Route 125 (410)
+618,East,0,410,West,161
+# 128 border (617) - Route 125 (410)
+617,West,0,410,East,201
+# 127 border right (615) - Route 125 (410)
+615,West,39,410,East,0
+# Mirage Mountain 125 Border Left (831) - Route 125 (410)
+831,West,79,410,East,0
+# Route 127 (411) - Route 126 (412)
+411,West,0,412,East,0
+# Route 130 (416) - Route 127 (411)
+416,East,0,411,West,120
+# 124 and 125 border up (613) - Route 127 (411)
+613,East,105,411,West,0
+# Route 128 (413) - Route 127 (411)
+413,North,0,411,South,0
+# 127 border (616) - Route 127 (411)
+616,West,0,411,East,0
+# another boder (618) - Route 127 (411)
+618,North,80,411,South,0
+# Lilycove Border down (612) - Route 127 (411)
+612,South,160,411,North,0
+# 128 border (617) - Route 127 (411)
+617,West,0,411,East,120
+# 127 border right (615) - Route 127 (411)
+615,West,120,411,East,0
+# Mirage Mountain 125 Border Left (831) - Route 127 (411)
+831,West,160,411,East,0
+# 125 Border (614) - Route 126 (412)
+614,West,101,412,East,0
+# Route 128 (413) - Route 126 (412)
+413,West,0,412,East,80
+# Route 129 (415) - Route 126 (412)
+415,West,0,412,East,120
+# another boder (618) - Route 126 (412)
+618,North,0,412,South,0
+# Route 131 (417) - Route 126 (412)
+417,East,0,412,West,118
+# 131 border up (619) - Route 126 (412)
+619,East,0,412,West,98
+# Lilycove Border (611) - Route 126 (412)
+611,East,97,412,West,0
+# Lilycove Border down (612) - Route 126 (412)
+612,East,27,412,West,0
+# 127 border right (615) - Route 126 (412)
+615,South,0,412,North,160
+# 126 Border (924) - Route 126 (412)
+924,East,0,412,West,0
+# Route 128 (413) - Route 130 (416)
+413,West,40,416,East,0
+# Route 128 (413) - 124 and 125 border up (613)
+413,West,0,613,East,185
+# Ever Grande City  (414) - Route 128 (413)
+414,West,45,413,East,0
+# 127 border (616) - Route 128 (413)
+616,South,0,413,North,80
+# Route 129 (415) - Route 128 (413)
+415,North,0,413,South,0
+# another boder (618) - Route 128 (413)
+618,East,0,413,West,0
+# 128 border (617) - Route 128 (413)
+617,North,0,413,South,80
+# 126 Border (924) - Route 128 (413)
+924,South,120,413,North,0
+# Ever Grande City  (414) - Route 130 (416)
+414,South,0,416,North,200
+# 127 border (616) - Ever Grande City  (414)
+616,East,35,414,West,0
+# Route 129 (415) - Ever Grande City  (414)
+415,North,120,414,South,0
+# 128 border (617) - Ever Grande City  (414)
+617,North,40,414,South,0
+# Mirage Cave (847) - Ever Grande City  (414)
+847,West,0,414,East,15
+# Route 129 (415) - Route 130 (416)
+415,West,0,416,East,0
+# Route 129 (415) - 124 and 125 border up (613)
+415,West,0,613,East,225
+# Route 129 (415) - 127 border (616)
+415,East,0,616,West,120
+# another boder (618) - Route 129 (415)
+618,East,40,415,West,0
+# 128 border (617) - Route 129 (415)
+617,West,0,415,East,0
+# 127 border right (615) - Route 129 (415)
+615,West,240,415,East,0
+# Mirage Mountain 125 Border Left (831) - Route 129 (415)
+831,West,280,415,East,0
+# Mirage Cave (847) - Route 129 (415)
+847,South,0,415,North,160
+# 125 Border (614) - Route 130 (416)
+614,West,221,416,East,0
+# another boder (618) - Route 130 (416)
+618,South,0,416,North,0
+# Route 131 (417) - Route 130 (416)
+417,East,2,416,West,0
+# 131 border up (619) - Route 130 (416)
+619,East,22,416,West,0
+# Lilycove Border (611) - Route 130 (416)
+611,East,217,416,West,0
+# Lilycove Border down (612) - Route 130 (416)
+612,East,147,416,West,0
+# Mirage Cave (847) - Route 130 (416)
+847,South,0,416,North,240
+# 126 Border (924) - Route 130 (416)
+924,East,120,416,West,0
+# Route 131 (417) - 124 and 125 border up (613)
+417,East,0,613,West,223
+# Route 131 (417) - another boder (618)
+417,East,0,618,West,38
+# Pacifidlog Town (419) - Route 131 (417)
+419,East,15,417,West,0
+# Pacifidlog Town (418) - Route 131 (417)
+418,East,0,417,West,5
+# 131 border up (619) - Route 131 (417)
+619,South,0,417,North,0
+# Pacifidlog Town (418) - Pacifidlog Town (419)
+418,North,0,419,South,0
+# Pacifidlog Town (418) - Route 132 (469)
+418,West,0,469,East,0
+# 131 border up (619) - Pacifidlog Town (418)
+619,West,25,418,East,0
+# 132 border (620) - Pacifidlog Town (418)
+620,East,20,418,West,0
+# MAP621 (621) - Pacifidlog Town (418)
+621,South,160,418,North,0
+# Route 133 (470) - Pacifidlog Town (419)
+470,North,160,419,South,0
+# Route 132 (469) - Pacifidlog Town (419)
+469,North,80,419,South,0
+# 131 border up (619) - Pacifidlog Town (419)
+619,West,5,419,East,0
+# 132 border (620) - Pacifidlog Town (419)
+620,East,0,419,West,0
+# Underwater (457) - Underwater (458)
+457,South,0,458,North,0
+# Route 132 (469) - Route 133 (470)
+469,West,0,470,East,0
+# 132 border (620) - Route 132 (469)
+620,South,0,469,North,0
+# Lilycove Border (611) - Route 132 (469)
+611,West,220,469,East,0
+# Lilycove Border down (612) - Route 132 (469)
+612,West,150,469,East,0
+# MAP621 (621) - Route 132 (469)
+621,East,20,469,West,0
+# Route 133 (470) - Route 134 (471)
+470,West,7,471,East,0
+# 132 border (620) - Route 133 (470)
+620,West,20,470,East,0
+# MAP621 (621) - Route 133 (470)
+621,South,0,470,North,0
+# MAP621 (621) - Route 134 (471)
+621,West,27,471,East,0
+# Primeval Forest (529) - Primeval Forest (528)
+529,East,39,528,West,0
+# Primeval Forest (530) - Primeval Forest (528)
+530,South,0,528,North,0
+# Primeval Forest (530) - Primeval Forest (529)
+530,West,1,529,East,0
+# Jagged Pass Barrier (563) - Jagged Pass (802)
+563,South,0,802,North,55
+# Victoru Road 1 Border Up (925) - Victory Road (588)
+925,South,0,588,North,0
+# MAP722 (722) - Altering Cave (604)
+722,East,5,604,West,0
+# MAP723 (723) - Altering Cave (604)
+723,South,0,604,North,0
+# Lilycove Border (611) - 124 and 125 border up (613)
+611,East,0,613,West,8
+# Lilycove Border (611) - another boder (618)
+611,East,177,618,West,0
+# Lilycove Border (611) - 132 border (620)
+611,West,200,620,East,0
+# Lilycove Border down (612) - 124 and 125 border up (613)
+612,East,0,613,West,78
+# Lilycove Border down (612) - 127 border (616)
+612,South,240,616,North,0
+# Lilycove Border down (612) - another boder (618)
+612,East,107,618,West,0
+# Lilycove Border down (612) - 132 border (620)
+612,West,130,620,East,0
+# 126 Border (924) - Lilycove Border down (612)
+924,North,0,612,South,40
+# 124 and 125 border up (613) - 125 Border (614)
+613,East,4,614,West,0
+# 131 border up (619) - 124 and 125 border up (613)
+619,East,0,613,West,203
+# 126 Border (924) - 124 and 125 border up (613)
+924,East,0,613,West,105
+# 127 border (616) - 125 Border (614)
+616,West,0,614,East,101
+# another boder (618) - 125 Border (614)
+618,East,0,614,West,181
+# 128 border (617) - 125 Border (614)
+617,West,0,614,East,221
+# Mirage Mountain (762) - 125 Border (614)
+762,South,0,614,North,32
+# 127 border right (615) - 125 Border (614)
+615,West,19,614,East,0
+# Mirage Mountain 125 Border Left (831) - 125 Border (614)
+831,West,59,614,East,0
+# 127 border right (615) - 127 border (616)
+615,South,0,616,North,0
+# 127 border right (615) - Mirage Mountain (762)
+615,West,0,762,East,15
+# Mirage Mountain 125 Border Left (831) - 127 border right (615)
+831,South,0,615,North,0
+# 126 Border (924) - 127 border right (615)
+924,North,200,615,South,0
+# another boder (618) - 127 border (616)
+618,North,160,616,South,0
+# Mirage Mountain (762) - 127 border (616)
+762,East,135,616,West,0
+# 128 border (617) - another boder (618)
+617,North,0,618,South,160
+# Mirage Mountain (762) - 128 border (617)
+762,East,255,617,West,0
+# Mirage Cave (847) - 128 border (617)
+847,West,70,617,East,0
+# 131 border up (619) - another boder (618)
+619,East,0,618,West,18
+# 126 Border (924) - another boder (618)
+924,East,80,618,West,0
+# MAP621 (621) - 132 border (620)
+621,East,0,620,West,0
+# Granite Cave SIMPLY BORDER (635) - Border Right (705)
+635,South,0,705,North,19
+# Mirage Island (660) - Route 106 (775)
+660,East,0,775,West,0
+# Border (913) - Mirage Island (660)
+913,South,0,660,North,49
+# Gym Border (676) - Dewford Gym (675)
+676,South,0,675,North,0
+# Gym Border Left (677) - Dewford Gym (675)
+677,East,2,675,West,0
+# Gym Border Left (677) - Gym Border (676)
+677,East,0,676,West,13
+# route 120 Border(Rain) (691) - Route 120 (690)
+691,West,0,690,East,0
+# Fortree Border(Rain) (692) - Route 120 (690)
+692,East,0,690,West,16
+# 119 border 2(Rain) (693) - Route 120 (690)
+693,East,0,690,West,31
+# 119 border 2(Rain) (693) - Fortree Border(Rain) (692)
+693,North,0,692,South,0
+# Border 2 (708) - Border 1 (707)
+708,East,0,707,West,8
+# Border 2 (710) - Border 1 (709)
+710,East,0,709,West,9
+# MAP723 (723) - MAP722 (722)
+723,West,25,722,East,0
+# Flower Paradise (734) - Seabreak Path (737)
+734,South,0,737,North,36
+# Seabreak Path (737) - Route 224 (736)
+737,South,0,736,North,0
+# Coronet Border (740) - Mt. Coronet (739)
+740,East,0,739,West,0
+# 114 Border up 2 (800) - Fallarbor Town Rt 114 (746)
+800,East,22,746,West,0
+# Mirage Mountain 125 Border Left (831) - Mirage Mountain (762)
+831,West,25,762,East,0
+# Border (913) - Route 106 (775)
+913,South,1,775,North,0
+# Route 114 Border Up (781) - Fallarbor Town (780)
+781,East,1,780,West,0
+# Petalburg Woods (796) - Petalburg Sanctuary (795)
+796,East,0,795,West,0
+# 114 Border Left (801) - 114 Border up 2 (800)
+801,East,0,800,West,28
+# Stark Isle (920) - Stark Isle (919)
+920,South,0,919,North,0

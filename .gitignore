@@ -1,0 +1,18 @@
+#.runtime directory (Postgres data & server logs)
+.runtime/
+*.log
+mmo.log
+server.log
+
+# Temporary session tokens
+mmo_session*.dat
+mmo_account*.dat
+mmo_config*.txt
+
+# Compiled plugin scripts (auto-generated on boot)
+Data/PluginScripts.rxdata
+
+# Temporary / Scratch files
+scratch/
+check_*.rb
+inspect_*.rb

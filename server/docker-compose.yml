@@ -1,0 +1,65 @@
+# PEMK dedicated server — one command for a self-hosting dev: `docker compose up`.
+# Brings up Postgres, runs migrations, then the server. Build context is the repo
+# root so the image can vendor ../protocol.
+name: pemk
+
+services:
+  db:
+    image: postgres:16
+    environment:
+      POSTGRES_USER: pemk
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-pemk_dev}
+      POSTGRES_DB: pemk
+    volumes:
+      - pemk_pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U pemk -d pemk"]
+      interval: 5s
+      timeout: 3s
+      retries: 12
+    restart: unless-stopped
+
+  server:
+    build:
+      context: ..
+      dockerfile: server/Dockerfile
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      DATABASE_URL: postgres://pemk:${POSTGRES_PASSWORD:-pemk_dev}@db:5432/pemk
+      PEMK_BIND: "0.0.0.0"
+      PEMK_PORT: "9998"
+      # The protections, all off unless set (a .env file next to this one, or the
+      # shell: PEMK_FLAG_STATE=shadow docker compose up). The ramp is in
+      # docs/GETTING-STARTED.md.
+      PEMK_POS_ENFORCE: ${PEMK_POS_ENFORCE:-off}
+      PEMK_PICKUP_ENFORCE: ${PEMK_PICKUP_ENFORCE:-off}
+      PEMK_FLAG_STATE: ${PEMK_FLAG_STATE:-off}
+      PEMK_FLAG_ENFORCE: ${PEMK_FLAG_ENFORCE:-off}
+      PEMK_GIFT_ENFORCE: ${PEMK_GIFT_ENFORCE:-off}
+      PEMK_PEER_CHECK: ${PEMK_PEER_CHECK:-off}
+      PEMK_PEER_CLASSES: ${PEMK_PEER_CLASSES:-}
+      PEMK_TRADE_REDELIVERY: ${PEMK_TRADE_REDELIVERY:-on}
+      PEMK_ITEM_RECORD: ${PEMK_ITEM_RECORD:-full}
+      PEMK_SHOP_ENFORCE: ${PEMK_SHOP_ENFORCE:-off}
+      PEMK_ITEM_AUTHORITY: ${PEMK_ITEM_AUTHORITY:-off}
+      PEMK_ITEM_LOCAL: ${PEMK_ITEM_LOCAL:-}
+      PEMK_BATTLE_ENFORCE_TEAMS: ${PEMK_BATTLE_ENFORCE_TEAMS:-off}
+      PEMK_BATTLE_ENFORCE_ENCOUNTERS: ${PEMK_BATTLE_ENFORCE_ENCOUNTERS:-off}
+      PEMK_BATTLE_ENFORCE_CATCHES: ${PEMK_BATTLE_ENFORCE_CATCHES:-off}
+      PEMK_BATTLE_ENFORCE_REWARDS: ${PEMK_BATTLE_ENFORCE_REWARDS:-off}
+      PEMK_BATTLE_ENFORCE_EXP: ${PEMK_BATTLE_ENFORCE_EXP:-off}
+      PEMK_BATTLE_ENFORCE_RNG: ${PEMK_BATTLE_ENFORCE_RNG:-off}
+      PEMK_BATTLE_ENFORCE_RESIM: ${PEMK_BATTLE_ENFORCE_RESIM:-off}
+      PEMK_RESIM_MIN_STRIKES: ${PEMK_RESIM_MIN_STRIKES:-2}
+      PEMK_ANOMALY_DETECTION: ${PEMK_ANOMALY_DETECTION:-off}
+      PEMK_CORPUS_RETENTION_DAYS: ${PEMK_CORPUS_RETENTION_DAYS:-30}
+    ports:
+      - "${PEMK_PORT:-9998}:9998"
+    stop_grace_period: 30s   # audit: give SIGTERM time to drain pending saves
+    command: ["sh", "-c", "bundle exec rake db:migrate && bundle exec ruby bin/pemk_server.rb"]
+    restart: unless-stopped
+
+volumes:
+  pemk_pgdata:

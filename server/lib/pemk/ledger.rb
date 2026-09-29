@@ -1,0 +1,122 @@
+# frozen_string_literal: true
+
+module PEMK
+  # Server-authoritative economy. The client sends the ABSOLUTE post-clamp value
+  # for a field with a per-channel seq (the observer only ever sees the absolute,
+  # so a reconnect-safe delta is impossible to compute client-side). We validate
+  # against the game cap, dedup by ledger-row existence (gap-safe idempotency), and
+  # keep a materialized balance. This is cap-enforcement + an audit trail — NOT
+  # anti-cheat: a modified client can still inject a within-cap value (reason stays
+  # :unattributed). All calls run inside a per-player mailbox, so a given account's
+  # mutations are already serialized (no read-modify-write race).
+  class Ledger
+    # Fields whose value is PROGRESSION rather than currency: they only ever grow, so
+    # the server unions instead of assigning and a rollback cannot erase them. Enabled
+    # with the sovereignty layer (flag_state); a fork that deliberately revokes badges
+    # in a story beat must keep that off, or clear the balance through an operator path.
+    MONOTONIC = %i[badges].freeze
+
+    def initialize(db, caps, monotonic: false)
+      @db   = db
+      @caps = caps            # { money: 999_999, coins: ..., ... }
+      @monotonic = monotonic
+    end
+
+    def monotonic?(key)
+      @monotonic && MONOTONIC.include?(key)
+    end
+
+    # -> [:ack, balance] | [:dup, recorded_balance] | [:rej, current_balance, reason]
+    # +reason+ (M4 D4) attributes the ledger row (default "unattributed"); a caller can
+    # pass "battle:<n>" / "battle_suspect:<n>". Backward-compatible — old call sites omit it.
+    def apply_econ(account_id, field, value, seq, now: Time.now, reason: "unattributed")
+      key = field.to_s.to_sym
+      cap = @caps[key]
+      return [:rej, current(account_id, field), :bad_field] unless cap && value.is_a?(Integer) && seq.is_a?(Integer)
+
+      result = nil
+      @db.transaction do
+        recorded = @db[:economy_ledger].where(account_id: account_id, field: field.to_s, seq: seq).get(:balance_after)
+        if recorded
+          result = [:dup, recorded]                       # already applied this seq -> re-ack the recorded value
+        else
+          cur = current(account_id, field)
+          # Badges are progression, not currency: a player never loses one in normal
+          # play, so the bitmask is unioned instead of assigned. A reloaded save that
+          # predates a badge pushes 0 and would otherwise erase it - observed in a live
+          # session right after a rollback. The union keeps what was earned and the ack
+          # hands the repaired mask straight back to the client.
+          # Unconditional: a bitmask union is the whole semantics. Gating it on
+          # "value < cur" still loses a bit on a sideways change (0b0001 -> 0b0100),
+          # which a test caught.
+          value |= cur if monotonic?(key)
+          if value.negative? || value > cap
+            result = [:rej, cur, :cap]
+          else
+            @db[:economy_balances]
+              .insert_conflict(target: %i[account_id field], update: { balance: value, last_seq: seq })
+              .insert(account_id: account_id, field: field.to_s, balance: value, last_seq: seq)
+            @db[:economy_ledger].insert(
+              account_id: account_id, field: field.to_s, delta: value - cur,
+              reason: reason.to_s, seq: seq, balance_after: value, created_at: now
+            )
+            result = [:ack, value]
+          end
+        end
+      end
+      result
+    end
+
+    # A change the server makes itself (a Mart purchase or sale): +delta+ on +field+,
+    # within 0..cap. Its ledger row takes a negative seq, which no client frame uses, and
+    # the balance's last_seq is left alone, so the client's next seq still follows its
+    # own. -> [:ack, balance] | [:rej, balance, :funds | :cap | :bad_field]
+    def adjust(account_id, field, delta, reason:, now: Time.now)
+      key = field.to_s.to_sym
+      cap = @caps[key]
+      return [:rej, current(account_id, field), :bad_field] unless cap && delta.is_a?(Integer)
+
+      result = nil
+      @db.transaction do
+        cur = current(account_id, field)
+        value = cur + delta
+        if value.negative?
+          result = [:rej, cur, :funds]
+        elsif value > cap
+          result = [:rej, cur, :cap]
+        else
+          low = @db[:economy_ledger].where(account_id: account_id, field: field.to_s).min(:seq) || 0
+          @db[:economy_balances]
+            .insert_conflict(target: %i[account_id field], update: { balance: value })
+            .insert(account_id: account_id, field: field.to_s, balance: value, last_seq: 0)
+          @db[:economy_ledger].insert(account_id: account_id, field: field.to_s, delta: delta, reason: reason.to_s,
+                                      seq: [low, 0].min - 1, balance_after: value, created_at: now)
+          result = [:ack, value]
+        end
+      end
+      result
+    end
+
+    def current(account_id, field)
+      @db[:economy_balances].where(account_id: account_id, field: field.to_s).get(:balance) || 0
+    end
+
+    # Was this (account, field, seq) already applied? (D4: attribute/consume budget only
+    # for a genuinely new frame, never a reconnect replay.)
+    def recorded?(account_id, field, seq)
+      !@db[:economy_ledger].where(account_id: account_id, field: field.to_s, seq: seq).empty?
+    end
+
+    # Canonical economy for login_ok reconciliation: { balances: {field=>value},
+    # last_seq: N } (N = max applied economy seq, the client's next-seq authority).
+    def snapshot(account_id)
+      balances = {}
+      last_seq = 0
+      @db[:economy_balances].where(account_id: account_id).select(:field, :balance, :last_seq).each do |row|
+        balances[row[:field].to_sym] = row[:balance]
+        last_seq = row[:last_seq] if row[:last_seq] > last_seq
+      end
+      { balances: balances, last_seq: last_seq }
+    end
+  end
+end

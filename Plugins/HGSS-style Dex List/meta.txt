@@ -1,0 +1,4 @@
+Name = HGSS Dex List
+Version = 1.0
+Essentials = 21.1
+Credits = Komeiji514

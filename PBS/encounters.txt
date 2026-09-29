@@ -1,0 +1,4723 @@
+﻿# See the documentation on the wiki to learn how to edit this file.
+#-------------------------------
+[002] # Lappet Town
+Water,2
+    60,TENTACOOL,14,19
+    30,MANTYKE,15,16
+    10,REMORAID,14,16
+OldRod
+    100,MAGIKARP,16,19
+GoodRod
+    60,BARBOACH,17,18
+    20,KRABBY,15,16
+    20,SHELLDER,16,19
+SuperRod
+    40,CHINCHOU,17,19
+    40,QWILFISH,16,19
+    15,CORSOLA,15,18
+    5,STARYU,15,17
+#-------------------------------
+[005] # Route 1
+Land,21
+    40,PIDGEY,11,14
+    40,RATTATA,11,14
+    9,PIDGEY,11,13
+    9,RATTATA,11,13
+    1,PIDGEY,14
+    1,RATTATA,14
+LandNight,21
+    39,RATTATA,10,14
+    30,HOOTHOOT,10,13
+    20,SPINARAK,8,12
+    9,HOOTHOOT,10,14
+    1,HOOTHOOT,14
+    1,RATTATA,15
+#-------------------------------
+[005,1] # Route 1
+Land,21
+    40,PIDGEY,15,18
+    40,RATTATA,14,18
+    10,SENTRET,13,17
+    5,PIDGEY,14,16
+    5,RATTATA,13,16
+LandNight,21
+    40,RATTATA,14,18
+    30,HOOTHOOT,14,17
+    20,SPINARAK,12,16
+    10,CLEFAIRY,11,15
+#-------------------------------
+[021] # Route 2
+Land,21
+    50,RATTATA,12,15
+    30,POOCHYENA,11,15
+    10,SHINX,10,12
+    10,SHINX,10,11
+Water,2
+    60,MAGIKARP,7,10
+    30,GOLDEEN,11,14
+    10,STARYU,12,15
+OldRod
+    70,MAGIKARP,7,10
+    30,MAGIKARP,9,15
+GoodRod
+    60,GOLDEEN,12,14
+    20,FINNEON,12,15
+    20,MAGIKARP,12,17
+SuperRod
+    40,FINNEON,12,15
+    40,GOLDEEN,12,14
+    15,STARYU,12,15
+    5,STARYU,14,17
+HeadbuttLow
+    50,PINECO,11,13
+    30,LEDYBA,6,8
+    19,SPINARAK,9,12
+    1,MUNCHLAX,11,14
+HeadbuttHigh
+    50,PINECO,11,13
+    30,WURMPLE,6,8
+    20,SPINARAK,9,12
+#-------------------------------
+[028] # Natural Park
+Land,21
+    25,BEEDRILL,38,46
+    25,BUTTERFREE,38,46
+    20,SUNFLORA,38,46
+    18,CHARJABUG,38,44
+    15,PIDGEOTTO,40,44
+    12,LEAVANNY,38,43
+    10,SCYTHER,40
+LandNight,21
+    30,ARIADOS,40,44
+    30,NOCTOWL,40,43
+    25,GALVANTULA,40,43
+    20,FORRETRESS,40,43
+    18,DOTTLER,40,43
+    10,HYPNO,40,43
+    10,XATU,40,44
+LandMorning,21
+    40,BEEDRILL,40,44
+    40,BUTTERFREE,40,44
+    20,PIDGEOT,40,44
+BugContest,21
+    35,BEEDRILL,40,42
+    35,BUTTERFREE,40,43
+    30,SNOM,40
+    30,WIMPOD,40,43
+    12,LOKIX,37,41
+    12,SPIDOPS,37,41
+    10,PARASECT,40,43
+    10,VENOMOTH,40,43
+    5,PINSIR,40,43
+    5,SCYTHER,40
+#-------------------------------
+[031] # Route 3
+Land,21
+    30,NIDORANfE,12,15
+    30,NIDORANmA,12,15
+    20,PIKACHU,14,17
+    10,EEVEE,15
+    10,PONYTA,13,15
+Water,2
+    60,SURSKIT,13,14
+    35,LOTAD,14
+    5,LOTAD,15
+OldRod
+    70,MAGIKARP,6,11
+    30,MAGIKARP,10,17
+GoodRod
+    60,POLIWAG,12,15
+    20,PSYDUCK,11,14
+    20,WOOPER,13,17
+SuperRod
+    40,CHINCHOU,11,12
+    40,REMORAID,12,14
+    20,LUVDISC,10,16
+RockSmash,50
+    60,NOSEPASS,13,14
+    40,GEODUDE,12,15
+HeadbuttLow
+    30,PINECO,14,17
+    25,COMBEE,15,17
+    20,PINECO,14,16
+    10,HERACROSS,16,18
+    9,HERACROSS,16,17
+    5,COMBEE,15,16
+    1,MUNCHLAX,13,18
+HeadbuttHigh
+    50,SEEDOT,14,17
+    30,SHROOMISH,14,17
+    20,BURMY,12,15
+#-------------------------------
+[033] # Littleroot Town
+Water,2
+    20,MARILL,5,35
+    15,REMORAID,5,30
+    10,GOLDEEN,20,30
+    10,SURSKIT,20,30
+OldRod
+    20,DEWPIDER,5,10
+    20,MAGIKARP,5,10
+    15,FINNEON,5,10
+    15,REMORAID,5,10
+GoodRod
+    20,MAGIKARP,10,30
+    15,DEWPIDER,10,30
+    15,FINNEON,10,30
+    15,REMORAID,10,30
+    10,CORPHISH,10,30
+SuperRod
+    20,CORPHISH,20,45
+    20,REMORAID,20,45
+    5,OCTILLERY,20,45
+#-------------------------------
+[034] # Ice Cave
+Cave,5
+    40,SWINUB,16,18
+    20,SNEASEL,14,16
+    20,SNORUNT,12,15
+    10,SMOOCHUM,11,14
+    10,SNOVER,14
+#-------------------------------
+[039] # Route 4
+Land,21
+    50,SHELLOS_1,12,15
+    40,GRIMER,13,15
+    10,MURKROW,12,14
+#-------------------------------
+[041] # Route 5
+Land,21
+    50,GRIMER,13,15
+    40,SPEAROW,13,16
+    10,SLUGMA,13,14
+#-------------------------------
+[044] # Route 6
+Land,21
+    50,SHELLOS_1,12,15
+    40,GRIMER,13,15
+    10,MURKROW,12,14
+#-------------------------------
+[047] # Route 7
+Land,21
+    50,SHELLOS,12,15
+    30,BIDOOF,14,17
+    10,MURKROW,12,14
+    10,WURMPLE,9,12
+RockSmash,50
+    90,NOSEPASS,13,14
+    10,GEODUDE,12,15
+#-------------------------------
+[049] # Rock Cave
+Cave,5
+    20,MAGNETON,14,16
+    20,MAGNETON,14,17
+    20,NOSEPASS,14,15
+    20,NOSEPASS,13,14
+    10,GEODUDE,13,15
+    10,MAWILE,14,16
+#-------------------------------
+[050] # Rock Cave
+Cave,5
+    20,MAGNETON,14,16
+    20,MAGNETON,14,17
+    20,NOSEPASS,14,15
+    20,NOSEPASS,13,14
+    10,BURMY,14,16
+    10,GEODUDE,13,15
+#-------------------------------
+[051] # Dungeon
+Cave,5
+    20,CHINGLING,1
+    20,CLEFFA,1
+    20,IGGLYBUFF,1
+    20,PICHU,1
+    10,RIOLU,1
+    10,TYROGUE,1
+#-------------------------------
+[066] # Safari Zone
+Land,21
+    20,ABRA,12,15
+    20,DODUO,13,15
+    20,NIDORANfE,15,16
+    20,NIDORANmA,15,16
+    10,HOPPIP,13,17
+    10,TANGELA,14,16
+#-------------------------------
+[068] # Safari Zone
+Land,21
+    20,EXEGGCUTE,15,18
+    20,RHYHORN,16,18
+    10,AIPOM,14,17
+    10,GIRAFARIG,16,17
+    10,VENONAT,15,17
+    10,VENONAT,15,18
+    5,HERACROSS,15,17
+    5,TAUROS,15,16
+    4,PINSIR,16
+    4,SCYTHER,16
+    1,CHANSEY,17
+    1,KANGASKHAN,19
+Water,2
+    60,PSYDUCK,16,18
+    30,MARILL,15,18
+    5,BUIZEL,15,17
+    5,SLOWPOKE,14,16
+OldRod
+    70,MAGIKARP,17,21
+    30,MAGIKARP,17,20
+GoodRod
+    60,MAGIKARP,16,20
+    20,FEEBAS,16,20
+    20,POLIWAG,17,18
+SuperRod
+    40,GOLDEEN,16,18
+    40,REMORAID,17,19
+    15,CARVANHA,16,17
+    4,FINNEON,15,18
+    1,DRATINI,17
+#-------------------------------
+[069] # Route 8
+Land,21
+    20,MAREEP,16,18
+    20,ODDISH,15,17
+    13,BONSLY,14,16
+    10,DITTO,15,17
+    10,DITTO,16,18
+    10,LOTAD,15,18
+    10,LOTAD,15,17
+    5,BONSLY,14,17
+    1,BONSLY,15,16
+    1,BONSLY,15
+Water,2
+    60,TENTACOOL,14,19
+    30,MANTYKE,15,16
+    10,REMORAID,14,16
+OldRod
+    100,MAGIKARP,16,19
+GoodRod
+    60,BARBOACH,17,18
+    20,KRABBY,15,16
+    20,SHELLDER,16,19
+SuperRod
+    40,CHINCHOU,17,19
+    40,QWILFISH,16,19
+    15,CORSOLA,15,18
+    5,STARYU,15,17
+#-------------------------------
+[070] # Underwater
+Land,21
+    20,CHINCHOU,17,21
+    20,CLAMPERL,18,20
+    20,SHELLDER,18,20
+    10,CLAMPERL,18,19
+    10,CORSOLA,17,20
+    10,RELICANTH,16,19
+    10,SHELLDER,18,19
+#-------------------------------
+[075] # Tiall Region
+Land,21
+    20,GEODUDE_1,11,14
+    20,RATTATA_1,11,14
+    10,CUBONE,11,14
+    10,DIGLETT_1,11,14
+    10,MEOWTH_1,11,14
+    10,PIKACHU,11,14
+    10,SANDSHREW_1,11,14
+    10,VULPIX_1,11,14
+#-------------------------------
+[080] # Route 101
+Land,21
+    20,POOCHYENA,2
+    20,SENTRET,2,3
+    20,WURMPLE,2
+    20,ZIGZAGOON,2
+    18,LECHONK,2
+    15,RATTATA,2
+    10,POOCHYENA,2,3
+LandNight,21
+    20,POOCHYENA,2
+    20,PURRLOIN,2,3
+    20,WURMPLE,2
+    20,YUNGOOS,2
+    20,ZIGZAGOON,2
+    10,SEWADDLE,2
+#-------------------------------
+[081] # Route 102
+Land,21
+    20,LILLIPUP,3,4
+    20,LOTAD,3,4
+    20,POOCHYENA,3,4
+    20,WURMPLE,3,4
+    15,RATTATA,2
+    15,ZIGZAGOON,3,4
+    4,RALTS,4
+    1,SEEDOT,3
+    1,SURSKIT,3
+LandNight,21
+    20,LOTAD,3,4
+    20,POOCHYENA,3,4
+    20,PURRLOIN,3,4
+    20,WURMPLE,3,4
+    20,YUNGOOS,2,3
+    15,ZIGZAGOON,3,4
+    4,RALTS,4
+    1,SEEDOT,3
+    1,SURSKIT,3
+OldRod
+    20,MAGIKARP,5,10
+    15,GOLDEEN,5,10
+GoodRod
+    20,MAGIKARP,10,30
+    15,GOLDEEN,10,30
+    10,CORPHISH,10,30
+SuperRod
+    20,CORPHISH,20,45
+Water,2
+    20,MARILL,5,35
+    1,GOLDEEN,20,30
+    1,SURSKIT,20,30
+#-------------------------------
+[084] # Route 103
+Land,21
+    20,LILLIPUP,2,3
+    20,POOCHYENA,2,3
+    20,RATTATA,2,3
+    20,ZIGZAGOON,2,3
+    18,LECHONK,2,3
+    15,SENTRET,2,3
+    15,SHELLOS,3,4
+    10,WINGULL,2,3
+LandNight,21
+    20,POOCHYENA,2,3
+    20,PURRLOIN,3,4
+    20,YUNGOOS,2,3
+    20,ZIGZAGOON,2,3
+    15,SENTRET,2,3
+    15,SHELLOS,3,4
+    10,WINGULL,2,3
+OldRod
+    20,MAGIKARP,5,10
+    15,GOLDEEN,5,10
+GoodRod
+    20,MAGIKARP,10,30
+    15,GOLDEEN,10,30
+    10,CORPHISH,10,30
+SuperRod
+    20,CORPHISH,20,45
+Water,2
+    20,MARILL,5,35
+    10,GOLDEEN,20,30
+    1,SURSKIT,20,30
+#-------------------------------
+[095] # Petalburg City
+Water,2
+    20,DUCKLETT,5,35
+    20,MARILL,5,35
+    20,TENTACOOL,5,35
+    12,SLOWPOKE_1,5,35
+    10,SLOWPOKE,5,35
+    1,GOLDEEN,20,30
+    1,SURSKIT,20,30
+WaterNight,2
+    20,DUCKLETT,5,35
+    20,MARILL,5,35
+    20,TENTACOOL,5,35
+    15,BRUXISH,5,35
+    10,SLOWPOKE,5,35
+    1,GOLDEEN,20,30
+    1,SURSKIT,20,30
+OldRod
+    20,DEWPIDER,5,10
+    20,MAGIKARP,5,10
+    15,FINNEON,5,10
+    15,REMORAID,5,10
+GoodRod
+    20,MAGIKARP,10,30
+    15,DEWPIDER,10,30
+    15,FINNEON,10,30
+    15,REMORAID,10,30
+    10,CORPHISH,10,30
+SuperRod
+    20,CORPHISH,20,45
+    20,REMORAID,20,45
+    5,OCTILLERY,20,45
+#-------------------------------
+[104] # Route 104
+Land,21
+    20,BELLSPROUT,4,5
+    20,POOCHYENA,4,5
+    17,FIDOUGH,4,5
+    15,MARILL,4,5
+    15,NIDORANfE,3,5
+    15,NIDORANmA,3,5
+    15,WURMPLE,4,5
+    10,TAILLOW,4,5
+    10,WINGULL,3,5
+    1,CHATOT,3,5
+LandNight,21
+    20,POOCHYENA,4,5
+    20,PURRLOIN,4,5
+    20,SEWADDLE,4,5
+    20,ZIGZAGOON,4,5
+    15,MARILL,4,5
+    15,NIDORANfE,3,5
+    15,NIDORANmA,3,5
+    10,TAILLOW,4,5
+    10,WINGULL,3,5
+    1,CHATOT,3,5
+Water,2
+    20,WINGULL,10,30
+    5,PELIPPER,25,30
+GoodRod
+    20,MAGIKARP,10,30
+SuperRod
+    20,MAGIKARP,20,45
+#-------------------------------
+[105] # Petalburg Woods
+Land,21
+    20,POOCHYENA,5,6
+    20,WURMPLE,5,6
+    20,ZIGZAGOON,5,6
+    15,SHROOMISH,5,6
+    10,CASCOON,5
+    10,SILCOON,5
+    5,SLAKOTH,5,6
+    5,TAILLOW,5,6
+#-------------------------------
+[108] # Petalburg Woods
+Land,21
+    20,CASCOON,60,65
+    20,SILCOON,60,65
+    20,VIGOROTH,60,65
+    10,SWELLOW,60,65
+    8,MIGHTYENA,60,64
+    1,PHANTUMP,60,65
+#-------------------------------
+[109] # Route 104 
+Water,2
+    20,WINGULL,10,30
+    5,PELIPPER,25,30
+GoodRod
+    20,MAGIKARP,10,30
+SuperRod
+    20,MAGIKARP,20,45
+#-------------------------------
+[110] # Spring Cave
+Cave,5
+    90,KRABBY,25,30
+    10,CRABRAWLER,25,30
+#-------------------------------
+[112] # Route 116
+Land,21
+    20,BIDOOF,8,10
+    20,PIDOVE,6,10
+    20,POOCHYENA,8,10
+    15,NINCADA,8,10
+    15,PAWMI,8,10
+    15,TAILLOW,8,10
+    10,ABRA,7,10
+    2,SKITTY,7,10
+#-------------------------------
+[126] # Rusturf Tunnel
+Cave,5
+    20,NYMBLE,7,10
+    20,WHISMUR,7,10
+    15,NOIBAT,7,10
+    10,CHINGLING,7,10
+    10,GEODUDE,7,10
+    10,NACLI,7,10
+    5,PANCHAM,7,11
+#-------------------------------
+[128] # Route 115
+Land,21
+    20,SWABLU,25,27
+    20,TAILLOW,24,27
+    17,WATTREL,24,27
+    10,CLEFAIRY,25,27
+    10,EKANS,20,25
+    10,SWELLOW,25,27
+    8,KILOWATTREL,25,27
+    8,MISDREAVUS,24,27
+    5,JIGGLYPUFF,24,25
+    1,ARBOK,22,26
+Water,2
+    20,TENTACOOL,5,35
+    10,WINGULL,10,30
+    5,PELIPPER,25,30
+GoodRod
+    20,MAGIKARP,10,30
+    10,TENTACOOL,10,30
+    10,WAILMER,10,30
+SuperRod
+    20,WAILMER,20,45
+#-------------------------------
+[129] # Area Zero Pacifidlog 
+Cave,5
+    20,CHIMECHO,44,50
+    20,FLITTLE,44,50
+    20,GLIMMET,44,50
+    15,LINOONE_1,44,50
+    10,GREAVARD,44,50
+    7,VAROOM,40
+    4,GLIMMORA,44,50
+Water,2
+    20,DEWPIDER,42,47
+    20,FRILLISH,42,47
+    12,TATSUGIRI,42,46
+    10,ARAQUANID,42,46
+    7,VELUZA,45
+OldRod
+    20,MAGIKARP,10
+    15,CLAUNCHER,10
+    15,WIGLETT,10
+GoodRod
+    20,MAGIKARP,10,30
+    15,CLAUNCHER,10,30
+    10,VELUZA,15,30
+SuperRod
+    15,WISHIWASHI,43,45
+    10,VELUZA,43,46
+    1,DONDOZO,43,45
+#-------------------------------
+[132] # Dewford Town
+Water,2
+    20,TENTACOOL,5,35
+    15,FINIZEN,5,36
+    10,WINGULL,10,30
+    5,PELIPPER,25,30
+OldRod
+    20,MAGIKARP,5,10
+    15,WIGLETT,5,10
+    10,TENTACOOL,5,10
+GoodRod
+    20,MAGIKARP,10,30
+    15,WIGLETT,10,30
+    10,TENTACOOL,10,30
+    10,WAILMER,10,30
+SuperRod
+    20,WAILMER,20,45
+    15,BASCULIN,20,45
+    10,VELUZA,20,45
+#-------------------------------
+[136] # Route 105
+Water,2
+    20,TENTACOOL,5,35
+    15,FINIZEN,25,35
+    15,KRABBY,5,35
+    15,WINGULL,10,30
+    10,CLAUNCHER,10,30
+    5,PELIPPER,25,30
+OldRod
+    20,MAGIKARP,5,10
+    10,TENTACOOL,5,10
+GoodRod
+    20,MAGIKARP,10,30
+    10,TENTACOOL,10,30
+    5,WAILMER,10,30
+SuperRod
+    20,WAILMER,25,45
+#-------------------------------
+[137] # Route 106
+Water,2
+    20,TENTACOOL,5,35
+    15,FINIZEN,25,35
+    15,KRABBY,5,35
+    15,WINGULL,10,30
+    10,CLAUNCHER,10,30
+    5,PELIPPER,25,30
+OldRod
+    20,MAGIKARP,5,10
+    10,TENTACOOL,5,10
+GoodRod
+    20,MAGIKARP,10,30
+    10,TENTACOOL,10,30
+    5,WAILMER,10,30
+SuperRod
+    20,WAILMER,25,45
+    10,SOBBLE,10
+#-------------------------------
+[138] # Route 107
+Water,2
+    20,TENTACOOL,5,35
+    15,FINIZEN,25,35
+    15,KRABBY,5,35
+    15,WINGULL,10,30
+    10,CLAUNCHER,10,30
+    5,PELIPPER,25,30
+OldRod
+    20,MAGIKARP,5,10
+    10,TENTACOOL,5,10
+GoodRod
+    20,MAGIKARP,10,30
+    10,TENTACOOL,10,30
+    5,WAILMER,10,30
+SuperRod
+    20,WAILMER,25,45
+#-------------------------------
+[143] # Granite Cave
+Cave,5
+    20,MAKUHITA,11,12
+    20,TADBULB,11,12
+    15,FERROSEED,11,12
+    15,VENIPEDE,11,12
+    15,ZUBAT,11,12
+    10,ABRA,11,12
+    10,GEODUDE,11,12
+    10,ONIX,10,12
+    5,SCRAGGY,10,12
+    1,HONEDGE,10,13
+#-------------------------------
+[144] # Granite Cave
+Cave,5
+    20,ARON,9,12
+    20,NICKIT,9,12
+    15,JOLTIK,9,12
+    15,ZUBAT,9,12
+    10,ABRA,9,12
+    10,KLINK,9,12
+    10,MAKUHITA,10,12
+    10,MAWILE,9,11
+    10,SABLEYE,9,11
+    1,HONEDGE,10,13
+    1,PANCHAM,10,13
+RockSmash,50
+    20,GEODUDE,10,15
+    5,NOSEPASS,10,20
+    1,BINACLE,10,20
+#-------------------------------
+[145] # Granite Cave
+Cave,5
+    20,ARON,9,12
+    20,NICKIT,9,12
+    15,JOLTIK,9,12
+    15,ZUBAT,9,12
+    10,ABRA,9,12
+    10,MAKUHITA,10,12
+    10,MAWILE,9,11
+    10,SABLEYE,9,11
+    10,TIMBURR,9,12
+    1,HONEDGE,10,13
+RockSmash,50
+    20,GEODUDE,10,15
+    5,NOSEPASS,10,20
+    1,BINACLE,10,20
+#-------------------------------
+[146] # Granite Cave
+Cave,5
+    20,MAKUHITA,11,12
+    20,TADBULB,11,12
+    17,HONEDGE,10,13
+    15,FERROSEED,11,12
+    15,VENIPEDE,11,12
+    15,ZUBAT,11,12
+    10,ABRA,11,12
+    5,SCRAGGY,10,12
+#-------------------------------
+[148] # Slateport City
+Water,2
+    20,TENTACOOL,5,35
+    15,FINIZEN,25,35
+    15,KRABBY,5,35
+    10,CLAUNCHER,10,30
+    10,KINGLER,40
+    8,WISHIWASHI,25,35
+    5,PELIPPER,25,30
+OldRod
+    20,MAGIKARP,5,10
+    10,TENTACOOL,5,10
+GoodRod
+    20,MAGIKARP,10,30
+    10,TENTACOOL,10,30
+    5,WAILMER,10,30
+SuperRod
+    20,WAILMER,25,45
+    10,SQUIRTLE,10
+#-------------------------------
+[150] # Route 108
+Water,2
+    20,TENTACOOL,5,35
+    15,FINIZEN,25,35
+    15,KRABBY,5,35
+    15,WINGULL,10,30
+    10,CLAUNCHER,10,30
+    10,KINGLER,40
+    5,PELIPPER,25,30
+OldRod
+    20,MAGIKARP,5,10
+    10,TENTACOOL,5,10
+GoodRod
+    20,MAGIKARP,10,30
+    10,TENTACOOL,10,30
+    5,WAILMER,10,30
+SuperRod
+    20,WAILMER,25,45
+    10,POPPLIO,10
+#-------------------------------
+[151] # Route 109
+Water,2
+    20,TENTACOOL,5,35
+    15,FINIZEN,25,35
+    15,KRABBY,5,35
+    10,CLAUNCHER,10,30
+    10,KINGLER,40
+    8,WISHIWASHI,25,35
+    5,PELIPPER,25,30
+OldRod
+    20,MAGIKARP,5,10
+    10,TENTACOOL,5,10
+GoodRod
+    20,MAGIKARP,10,30
+    10,TENTACOOL,10,30
+    5,WAILMER,10,30
+SuperRod
+    20,WAILMER,25,45
+    10,POPPLIO,10
+#-------------------------------
+[158] # Route 110
+Land,21
+    20,ELECTRIKE,12,14
+    20,ESPURR,12,14
+    15,SHELLOS,12,14
+    15,TRUBBISH,12,13
+    10,GULPIN,12,14
+    10,MINUN,13,14
+    10,ODDISH,13,15
+    4,WINGULL,12,14
+    1,PLUSLE,12,14
+LandNight,21
+    20,ELECTRIKE,12,14
+    20,POOCHYENA,12,14
+    15,GOTHITA,12,14
+    15,TRUBBISH,12,13
+    10,ESPURR,12,14
+    10,MINUN,13,14
+    10,ODDISH,13,15
+    4,WINGULL,12,14
+    3,CHATOT,12,13
+    1,PLUSLE,12,14
+GoodRod
+    20,MAGIKARP,10,30
+    10,TENTACOOL,10,30
+    5,WAILMER,10,30
+OldRod
+    20,MAGIKARP,5,10
+    10,TENTACOOL,5,10
+SuperRod
+    20,WAILMER,20,45
+Water,2
+    20,TENTACOOL,5,35
+    10,WINGULL,10,30
+    5,WINGULL,15,25
+    4,PELIPPER,25,30
+#-------------------------------
+[170] # Route 117
+Land,21
+    20,ODDISH,13
+    15,DEERLING,13,15
+    15,SKIPLOOM,13,15
+    10,BUIZEL,13,15
+    10,POOCHYENA,14
+    5,ILLUMISE,13,14
+    1,LOTAD,13,16
+    1,SEEDOT,13,16
+    1,VOLBEAT,13
+LandNight,21
+    20,FLETCHLING,13,15
+    20,ODDISH,13
+    15,DEERLING,13,15
+    15,SKIPLOOM,13,15
+    10,MARILL,13
+    10,PUMPKABOO,13,15
+OldRod
+    20,MAGIKARP,5,10
+    10,GOLDEEN,5,10
+GoodRod
+    20,MAGIKARP,10,30
+    15,GOLDEEN,10,30
+    10,CORPHISH,10,30
+SuperRod
+    20,CORPHISH,20,45
+Water,2
+    20,MARILL,20,30
+    4,MARILL,5,10
+    1,GOLDEEN,20,30
+#-------------------------------
+[176] # Route 118
+Land,21
+    20,ELECTRIKE,27,32
+    20,RATTATA,27,32
+    20,STARLY,27,32
+    20,ZIGZAGOON,27,32
+    10,AIPOM,27,32
+    10,LINOONE,26,31
+    10,MANECTRIC,26,31
+    10,STARAVIA,27,32
+    5,LUXIO,26,31
+    1,KECLEON,25,33
+Water,2
+    20,TENTACOOL,5,35
+    15,WINGULL,10,30
+    4,PELIPPER,25,32
+OldRod
+    20,MAGIKARP,5,10
+    10,TENTACOOL,5,10
+GoodRod
+    20,MAGIKARP,10,30
+    10,TENTACOOL,10,30
+SuperRod
+    20,SHARPEDO,30,35
+    15,CARVANHA,10,45
+    1,SHARPEDO,40,50
+#-------------------------------
+[197] # Route 111
+Water,2
+    20,TENTACOOL,5,35
+    20,SLOWPOKE_1,5,35
+    15,WINGULL,10,30
+    4,PELIPPER,25,32
+OldRod
+    20,MAGIKARP,5,10
+    15,SLOWPOKE_1,5,10
+    10,TENTACOOL,5,10
+GoodRod
+    20,MAGIKARP,10,30
+    10,TENTACOOL,10,30
+SuperRod
+    20,SHARPEDO,30,35
+    15,CARVANHA,10,45
+    1,SHARPEDO,40,50
+#-------------------------------
+[201] # Route 112
+Land,21
+    20,NUMEL,18,22
+    15,HOUNDOUR,18,22
+    15,LITLEO,18,22
+    15,PONYTA,18,22
+    10,MARILL,18,22
+    10,TYROGUE,15
+    5,SAWK,15,20
+    5,THROH,15,20
+#-------------------------------
+[203] # Route 112
+Land,21
+    20,NUMEL,18,22
+    15,HOUNDOUR,18,22
+    15,LITLEO,18,22
+    15,PONYTA,18,22
+    10,MARILL,18,22
+    10,TYROGUE,15
+    5,SAWK,15,20
+    5,THROH,15,20
+#-------------------------------
+[207] # Fiery Path
+Cave,5
+    20,KOFFING,17,22
+    20,NUMEL,17,22
+    15,DIGLETT,16,21
+    10,MACHOP,16,23
+    10,NUMEL,18,21
+    10,ROGGENROLA,19,22
+    10,SLUGMA,18,22
+    10,TORKOAL,19,23
+    5,TYROGUE,15
+    4,GRIMER,16,24
+CaveNight,5
+    20,KOFFING,17,22
+    20,NUMEL,17,22
+    15,DIGLETT,16,21
+    15,LITWICK,16,20
+    10,MACHOP,16,23
+    10,PANSEAR,18,20
+    10,SLUGMA,18,22
+    10,TORKOAL,19,23
+    5,MAGBY,5
+#-------------------------------
+[209] # Route 113
+Land,21
+    20,SPINDA,18,23
+    18,TANDEMAUS,17,20
+    15,HOUNDOUR,18,22
+    15,SALANDIT,18,22
+    10,SLUGMA,18,22
+    5,KLEFKI,20,22
+    5,SKARMORY,18,24
+    4,BOUFFALANT,20
+LandNight,21
+    20,SPINDA,18,23
+    15,DRIFLOON,18,22
+    15,HOUNDOUR,18,22
+    14,PAWMO,18,22
+    12,SOLOSIS,18,22
+    10,SLUGMA,18,22
+    5,KLEFKI,20,22
+    5,SKARMORY,18,24
+    4,BOUFFALANT,20
+#-------------------------------
+[217] # Route 114
+Land,21
+    20,LOTAD,19,24
+    20,SWABLU,19,24
+    17,WATTREL,17,24
+    15,FOONGUS,20,24
+    10,LOMBRE,20,24
+    10,SKORUPI,20,24
+    5,SEVIPER,20,24
+    5,ZANGOOSE,20,24
+    4,NUZLEAF,20,24
+Water,2
+    50,MARILL,19,24
+    31,AZUMARILL,20,25
+    30,TYMPOLE,20,22
+    15,SURSKIT,20
+    4,MASQUERAIN,25
+OldRod
+    20,MAGIKARP,5,10
+    15,TYMPOLE,5,10
+    10,GOLDEEN,5,10
+GoodRod
+    20,GOLDEEN,10,30
+    15,TYMPOLE,10,30
+    10,BARBOACH,10,30
+    4,PALPITOAD,30
+SuperRod
+    20,BARBOACH,20,45
+    10,PALPITOAD,20,45
+RockSmash,50
+    20,GEODUDE,5,20
+#-------------------------------
+[226] # Meteor Falls
+Cave,5
+    20,NOIBAT,21,25
+    20,ZUBAT,21,25
+    15,CLEFAIRY,21,24
+    12,TINKATINK,18,21
+    10,LUNATONE,21,25
+    10,SOLROCK,21,25
+SuperRod
+    20,BARBOACH,20,45
+GoodRod
+    20,GOLDEEN,10,30
+    10,BARBOACH,10,30
+OldRod
+    20,MAGIKARP,5,10
+    10,GOLDEEN,5,10
+#-------------------------------
+[230] # Jagged Pass
+Land,21
+    20,MANKEY,27,30
+    20,NUMEL,27,30
+    10,MACHOP,24,29
+    10,PONYTA,24,30
+    10,SPOINK,24,31
+    5,TYROGUE,10
+    4,TURTONATOR,24,30
+#-------------------------------
+[238] # Fiery Path 
+Cave,5
+    20,KOFFING,20,24
+    20,SIZZLIPEDE,20,24
+    10,GRIMER,20,24
+    10,TORKOAL,17,20
+    5,DEINO,19,24
+    1,TORKOAL,20,24
+#-------------------------------
+[243] # Mirage Tower
+Cave,5
+    20,CAPSAKID,30,37
+    20,VIBRAVA,33,37
+    20,YAMASK,30,38
+    15,DRILBUR,30,38
+    10,ZORUA,30,38
+    8,PAWNIARD,30,38
+    5,DEINO,30,38
+    4,GABITE,30,38
+#-------------------------------
+[244] # Mirage Tower
+Cave,5
+    20,CAPSAKID,30,37
+    20,VIBRAVA,33,37
+    20,YAMASK,30,38
+    15,DRILBUR,30,38
+    10,ZORUA,30,38
+    8,PAWNIARD,30,38
+    5,DEINO,30,38
+    4,GABITE,30,38
+#-------------------------------
+[247] # Mirage Tower
+Cave,5
+    20,TRAPINCH,25,28
+    20,YAMASK,24,27
+    15,DRILBUR,25,28
+    10,ZORUA,25,28
+    8,PAWNIARD,25,28
+    5,DEINO,25,30
+    4,GIBLE,20,22
+#-------------------------------
+[253] # Abandoned Ship 4
+Water,2
+    20,CLAUNCHER,25,30
+    20,FRILLISH,25,30
+    20,SINISTEA,25,30
+    15,CORSOLA,25,30
+    15,CORSOLA_1,25,30
+    10,QWILFISH,20,30
+    10,QWILFISH_1,20,30
+    9,MAREANIE,24,30
+    5,TENTACRUEL,30,35
+OldRod
+    20,MAGIKARP,5,10
+    15,BINACLE,5,10
+    10,TENTACOOL,5,10
+GoodRod
+    20,MAGIKARP,10,30
+    10,SKRELP,10,30
+    7,CLAUNCHER,10,30
+    5,WAILMER,10,30
+SuperRod
+    20,WAILMER,25,45
+    15,SKRELP,15,45
+    10,DHELMISE,25,45
+    10,QWILFISH_1,15,45
+    5,DRAGALGE,50
+#-------------------------------
+[260] # Abandoned Ship 11
+Cave,5
+    20,HAUNTER,48,53
+    20,LAMPENT,48,53
+    20,SINISTEA,50
+    18,PHANTUMP,50
+    17,SANDYGAST,47,53
+    15,BRUXISH,47,53
+    13,POLTCHAGEIST,48,53
+    12,DHELMISE,50,55
+    10,ROTOM,40,45
+    5,DREEPY,5
+#-------------------------------
+[261] # Abandoned Ship 12
+Cave,5
+    20,HAUNTER,48,53
+    20,LAMPENT,48,53
+    20,SINISTEA,50
+    18,PHANTUMP,50
+    17,SANDYGAST,47,53
+    15,BRUXISH,47,53
+    13,POLTCHAGEIST,48,53
+    12,DHELMISE,50,55
+    10,ROTOM,40,45
+    5,DREEPY,5
+#-------------------------------
+[263] # New Mauville
+Cave,5
+    20,MAGNEMITE,25,33
+    20,MAREEP,25,33
+    20,VOLTORB,24,34
+    15,SHINX,24,34
+    15,YAMPER,24,33
+    10,CHARJABUG,24,30
+    10,ELEKID,22,33
+    10,TYNAMO,22,30
+    5,LUXIO,30,31
+    1,ELECTRODE,30
+    1,MAGNETON,30,37
+#-------------------------------
+[270] # 107 BORDER UP
+Water,2
+    20,TENTACOOL,5,35
+    15,KRABBY,5,35
+    15,WINGULL,10,30
+    10,CLAUNCHER,10,30
+    5,PELIPPER,25,30
+OldRod
+    20,MAGIKARP,5,10
+    10,TENTACOOL,5,10
+GoodRod
+    20,MAGIKARP,10,30
+    10,TENTACOOL,10,30
+    5,WAILMER,10,30
+SuperRod
+    20,WAILMER,25,45
+#-------------------------------
+[316] # Route 123
+Land,21
+    20,OINKOLOGNE,32,37
+    20,SHUPPET,32,37
+    15,ODDISH,32,37
+    10,GLOOM,32,36
+    10,LINOONE,33,38
+    10,MIGHTYENA,33,38
+    1,KECLEON,30,40
+Water,2
+    20,TENTACOOL,5,40
+    10,WINGULL,5,35
+    8,WISHIWASHI,25,35
+    7,STUNFISK,5,40
+    4,PELIPPER,25,40
+OldRod
+    20,MAGIKARP,5,10
+    10,TENTACOOL,5,10
+GoodRod
+    20,MAGIKARP,10,30
+    10,TENTACOOL,10,30
+    5,WAILMER,10,30
+SuperRod
+    20,WAILMER,25,45
+    10,STUNFISK,50
+#-------------------------------
+[319] # Route 119
+Land,21
+    20,LINOONE,29,33
+    20,PIDGEY,29,34
+    10,GLOOM,29,33
+    10,PIDGEOTTO,29,33
+    10,VOLTORB_1,29,30
+    8,PASSIMIAN,29,33
+    5,ROSELIA,29,34
+    4,TROPIUS,29,30
+    3,KECLEON,25,33
+LandNight,21
+    20,LINOONE,29,33
+    15,ODDISH,29,32
+    12,SKIDDO,25,28
+    10,GLOOM,29,33
+    10,PIDGEOTTO,27,33
+    5,ROSELIA,26,34
+    4,TROPIUS,26,30
+    3,GOGOAT,30,32
+    3,KECLEON,25,33
+Water,2
+    20,MARILL,5,40
+    15,BASCULIN,20,38
+    10,GOLDEEN,20,35
+    1,FEEBAS,20,35
+OldRod
+    20,MAGIKARP,5,10
+    10,TENTACOOL,5,10
+GoodRod
+    20,MAGIKARP,10,30
+    10,TENTACOOL,10,30
+    5,CARVANHA,10,30
+SuperRod
+    20,CARVANHA,20,45
+    1,BASCULEGION,28,45
+#-------------------------------
+[341] # Route 120
+Land,21
+    20,AIPOM,33,38
+    20,MIGHTYENA,33,37
+    15,MARILL,33,36
+    15,ODDISH,33,35
+    10,GLOOM,30,36
+    8,PASSIMIAN,30,36
+    4,ABSOL,32,37
+    1,KECLEON,30,39
+    1,SEEDOT,34,38
+Water,2
+    20,MARILL,5,45
+    1,GOLDEEN,20,40
+OldRod
+    20,MAGIKARP,5,10
+    10,GOLDEEN,5,10
+GoodRod
+    20,MAGIKARP,10,30
+    10,GOLDEEN,10,30
+    5,BARBOACH,10,30
+SuperRod
+    20,BARBOACH,25,55
+#-------------------------------
+[343] # Route 121
+Land,21
+    20,POOCHYENA,33,38
+    20,SHUPPET,31,36
+    15,ELGYEM,30,34
+    15,GLOOM,32,37
+    15,MARILL,30,37
+    10,MIGHTYENA,30,36
+    10,VOLTORB_1,30,35
+    5,HYPNO,30,35
+    1,KECLEON,30,40
+Water,2
+    20,MARILL,5,40
+    1,GOLDEEN,20,35
+OldRod
+    20,MAGIKARP,5,10
+    10,GOLDEEN,5,10
+GoodRod
+    20,MAGIKARP,10,30
+    10,GOLDEEN,10,30
+    5,BARBOACH,10,30
+SuperRod
+    20,WAILMER,25,55
+#-------------------------------
+[344] # Lilycove City
+Water,2
+    20,TENTACOOL,25,45
+    15,WINGULL,25,45
+    10,GOLDEEN,10,40
+    10,POLIWAG,25,45
+    8,KRABBY,35,40
+    5,PELIPPER,25,45
+    5,POLIWHIRL,25,45
+OldRod
+    20,MAGIKARP,5,10
+    10,TENTACOOL,5,10
+    5,INKAY,5,10
+GoodRod
+    20,MAGIKARP,15,30
+    20,TENTACOOL,15,30
+    10,WAILMER,15,35
+    5,INKAY,15,35
+SuperRod
+    20,STARYU,25,55
+    8,INKAY,35,50
+    5,STARMIE,25,60
+#-------------------------------
+[345] # Route 122
+Water,2
+    20,TENTACOOL,5,40
+    15,ALOMOMOLA,30,40
+    15,WINGULL,10,30
+    10,PELIPPER,10,35
+OldRod
+    20,MAGIKARP,5,10
+    10,TENTACOOL,5,10
+GoodRod
+    20,MAGIKARP,10,30
+    15,WAILMER,10,30
+SuperRod
+    20,SHARPEDO,30,50
+    15,WAILMER,30,55
+#-------------------------------
+[352] # Meteor Falls
+Cave,5
+    20,ELGYEM,62,67
+    20,GOLBAT,62,67
+    20,SWOOBAT,62,65
+    15,BRONZONG,63,67
+    15,CLEFAIRY,60,65
+    10,GOTHORITA,62,66
+    10,LUNATONE,65,67
+    10,MINIOR,60
+    10,SOLROCK,60,62
+    5,DEINO,60
+#-------------------------------
+[353] # Mt. Fiery
+Land,21
+    20,HEATMOR,48,55
+    20,LAMPENT,48,55
+    20,PANSEAR,48,55
+    10,CHIMCHAR,10
+    10,TEPIG,10
+    5,LITTEN,10
+    5,FENNEKIN,10
+    3,FUECOCO,10
+#-------------------------------
+[364] # Mt. Pyre
+Cave,5
+    20,ELGYEM,30,34
+    20,SHUPPET,30,34
+    18,FLITTLE,30,34
+    15,GASTLY,30,34
+    15,HATENNA,30,34
+    15,LITWICK,30,34
+    5,SINISTEA,30,35
+#-------------------------------
+[365] # Mt. Pyre
+Cave,5
+    20,ELGYEM,30,34
+    20,SHUPPET,30,34
+    18,FLITTLE,30,34
+    15,GASTLY,30,34
+    15,HATENNA,30,34
+    15,LITWICK,30,34
+    10,ORANGURU,35
+    5,SINISTEA,30,35
+#-------------------------------
+[366] # Mt. Pyre
+Cave,5
+    20,ELGYEM,30,34
+    20,SHUPPET,30,34
+    18,FLITTLE,30,34
+    15,GASTLY,30,34
+    15,HATENNA,30,34
+    10,HATTREM,30,34
+    7,INDEEDEE,30,36
+    5,SINISTEA,30,35
+#-------------------------------
+[367] # Mt. Pyre
+Cave,5
+    20,ELGYEM,30,34
+    20,SHUPPET,30,34
+    18,FLITTLE,30,34
+    15,DUSKULL,30,34
+    15,GASTLY,30,34
+    10,HATENNA,30,34
+    10,HATTREM,30,34
+    7,INDEEDEE,30,36
+    5,SINISTEA,30,35
+    1,DUSCLOPS,35
+#-------------------------------
+[368] # Mt. Pyre
+Cave,5
+    20,ELGYEM,30,34
+    20,SHUPPET,30,34
+    10,DUSKULL,30,34
+    10,HATENNA,30,34
+    10,HATTREM,30,34
+    5,DUSCLOPS,32,35
+    5,HAUNTER,30,34
+    4,MISDREAVUS,30,34
+#-------------------------------
+[369] # Mt. Pyre
+Cave,5
+    20,ELGYEM,30,34
+    20,SHUPPET,30,34
+    15,DUSKULL,30,34
+    15,GASTLY,30,34
+    5,DUSCLOPS,30,34
+    5,HAUNTER,30,34
+    3,MISDREAVUS,30,34
+    2,ESPATHRA,35
+    1,ORANGURU,35
+#-------------------------------
+[376] # Mt. Pyre
+Land,21
+    20,GASTLY,38,43
+    20,SHUPPET,38,43
+    15,MEDITITE,38,43
+    15,PONYTA_1,38,43
+    10,GREAVARD,38,43
+    10,VULPIX,38,43
+    5,GROWLITHE,38,43
+    1,MISDREAVUS,35,42
+#-------------------------------
+[377] # Mt. Pyre
+Land,21
+    20,SHUPPET,32,34
+    15,DUSKULL,32,34
+    15,PONYTA_1,32,34
+    10,VULPIX,29,32
+    5,GROWLITHE,29,32
+    1,CHIMECHO,30,34
+#-------------------------------
+[378] # Magma Hideout
+Cave,5
+    20,GEODUDE,35,42
+    20,SIZZLIPEDE,35,42
+    15,HOUNDOUR,35,40
+    15,KOFFING,34,42
+    15,NUMEL,33,42
+    10,SLUGMA,33,44
+    10,TORKOAL,36,41
+#-------------------------------
+[379] # Magma Hideout 
+Cave,5
+    20,GEODUDE,35,42
+    20,SIZZLIPEDE,35,42
+    20,SLUGMA,33,44
+    15,GRIMER_1,34,42
+    15,NUMEL,33,42
+    10,MAGMAR,33,44
+    10,TORKOAL,36,41
+    5,TAUROS_2,36,42
+#-------------------------------
+[380] # Magma Hideout
+Cave,5
+    20,GEODUDE,35,42
+    20,SIZZLIPEDE,35,42
+    20,SLUGMA,33,44
+    15,GRIMER_1,34,42
+    15,NUMEL,33,42
+    10,MAGMAR,33,44
+    10,TORKOAL,36,41
+    5,TAUROS_2,36,42
+#-------------------------------
+[381] # Magma Hideout 
+Cave,5
+    20,GEODUDE,35,42
+    20,SIZZLIPEDE,35,42
+    20,SLUGMA,33,44
+    15,GRIMER_1,34,42
+    15,NUMEL,33,42
+    10,MAGMAR,33,44
+    10,TORKOAL,36,41
+    5,TAUROS_2,36,42
+#-------------------------------
+[382] # Magma Hideout
+Cave,5
+    20,GEODUDE,35,42
+    20,SIZZLIPEDE,35,42
+    20,SLUGMA,33,44
+    15,GRIMER_1,34,42
+    15,NUMEL,33,42
+    12,MAROWAK_1,35,40
+    10,MAGMAR,33,44
+    10,TORKOAL,36,41
+    5,TAUROS_2,36,42
+#-------------------------------
+[383] # Magma Hideout
+Cave,5
+    20,GEODUDE,35,42
+    20,SIZZLIPEDE,35,42
+    20,SLUGMA,33,44
+    15,GRIMER_1,34,42
+    15,NUMEL,33,42
+    10,MAGMAR,33,44
+    10,TORKOAL,36,41
+    5,TAUROS_2,36,42
+#-------------------------------
+[384] # Magma Hideout 
+Cave,5
+    20,GEODUDE,35,42
+    20,SIZZLIPEDE,35,42
+    20,SLUGMA,33,44
+    15,GRIMER_1,34,42
+    15,NUMEL,33,42
+    10,MAGMAR,33,44
+    10,TORKOAL,36,41
+    5,TAUROS_2,36,42
+#-------------------------------
+[385] # Magma Hideout
+Cave,5
+    20,GEODUDE,35,42
+    20,SIZZLIPEDE,35,42
+    20,SLUGMA,33,44
+    15,GRIMER_1,34,42
+    15,NUMEL,33,42
+    10,MAGMAR,33,44
+    10,TORKOAL,36,41
+    5,TAUROS_2,36,42
+#-------------------------------
+[392] # Safari Zone
+Land,21
+    20,KARRABLAST,34,36
+    20,ODDISH,34,37
+    20,RHYHORN,34,37
+    15,BUNEARY,34,37
+    10,DODUO,34,37
+    10,SCYTHER,30,33
+    5,EMOLGA,30,36
+    4,DODRIO,35,37
+    4,PINSIR,33,35
+Water,2
+    20,PSYDUCK,25,40
+    10,GOLDUCK,25,40
+OldRod
+    20,MAGIKARP,5,10
+    10,GOLDEEN,10,30
+GoodRod
+    20,MAGIKARP,15,30
+    10,GOLDEEN,15,35
+SuperRod
+    20,GOLDEEN,25,50
+    1,SEAKING,25,60
+#-------------------------------
+[393] # Safari Zone
+Land,21
+    20,ODDISH,33,37
+    20,PHANPY,33,36
+    20,SHELMET,34,36
+    20,SNUBBULL,33,35
+    14,RABSCA,33,35
+    10,GLOOM,34,36
+    10,NATU,34,35
+    4,HERACROSS,33,39
+    4,XATU,32,37
+RockSmash,50
+    20,GEODUDE,10,40
+    5,BINACLE,10,20
+#-------------------------------
+[394] # Safari Zone
+Land,21
+    20,ODDISH,34,36
+    10,DODUO,35,37
+    10,GIRAFARIG,34,37
+    10,NATU,34,37
+    10,PIKACHU,34,36
+    5,GLOOM,35,37
+    5,ROSELIA,35,37
+    4,WOBBUFFET,34,38
+Water,2
+    20,PSYDUCK,20,40
+OldRod
+    20,MAGIKARP,5,10
+    10,GOLDEEN,10,30
+GoodRod
+    20,MAGIKARP,15,30
+    10,GOLDEEN,15,35
+SuperRod
+    20,GOLDEEN,25,50
+    1,SEAKING,25,60
+#-------------------------------
+[395] # Safari Zone
+Land,21
+    20,ODDISH,34,36
+    10,DODUO,35,37
+    10,GIRAFARIG,34,37
+    10,NATU,34,37
+    5,GLOOM,35,37
+    5,ROSELIA,35,37
+    4,WOBBUFFET,34,38
+    1,PIKACHU,34,36
+#-------------------------------
+[396] # Safari Zone
+Land,21
+    20,CHEWTLE,35,40
+    20,GRUBBIN,35,40
+    15,GIRAFARIG,35,45
+    15,IMPIDIMP,35,40
+    15,PANPOUR,35,40
+    15,PANSAGE,35,40
+    15,PANSEAR,35,40
+    10,HAWLUCHA,35,40
+    1,MILTANK,38,45
+RockSmash,50
+    20,DWEBBLE,35,45
+    10,BINACLE,35,45
+#-------------------------------
+[397] # Safari Zone
+Land,21
+    20,SPINARAK,35,40
+    20,SUNKERN,35,40
+    15,GIRAFARIG,35,45
+    15,HOOTHOOT,35,40
+    15,IMPIDIMP,35,40
+    15,PIDGEOTTO,35,40
+    15,STANTLER,35,40
+    15,TYMPOLE,35,40
+    10,INDEEDEE,45
+    1,GLIGAR,40,45
+Water,2
+    20,WOOPER,35,40
+    15,MARILL,35,40
+    10,QUAGSIRE,35,40
+OldRod
+    20,GOLDEEN,25,30
+    20,MAGIKARP,25,30
+GoodRod
+    20,GOLDEEN,25,35
+    20,REMORAID,25,35
+SuperRod
+    20,REMORAID,30,50
+    1,OCTILLERY,35,55
+#-------------------------------
+[408] # Route 124
+Water,2
+    20,TENTACOOL,45,48
+    15,ALOMOMOLA,45,48
+    15,FINIZEN,45,48
+    10,GOLDEEN,45,48
+    10,POLIWAG,45,48
+    5,PELIPPER,45,48
+    5,POLIWHIRL,45,48
+OldRod
+    20,MAGIKARP,5,10
+    10,TENTACOOL,5,10
+GoodRod
+    20,MAGIKARP,15,30
+    20,TENTACOOL,15,30
+    10,WAILMER,15,35
+SuperRod
+    20,WAILMER,40,50
+    5,OSHAWOTT,10
+    1,SHARPEDO,40,50
+#-------------------------------
+[409] # Mossdeep City
+Water,2
+    20,MAGIKARP,45,50
+    20,TENTACOOL,45,50
+    15,FINIZEN,44,47
+    10,GOLDEEN,44,47
+    10,POLIWAG,44,47
+    5,PELIPPER,44,46
+    5,POLIWHIRL,40,50
+OldRod
+    20,MAGIKARP,5,10
+    10,TENTACOOL,5,10
+GoodRod
+    20,MAGIKARP,15,30
+    20,TENTACOOL,15,30
+    10,WAILMER,15,35
+SuperRod
+    20,WAILMER,40,50
+    1,SHARPEDO,40,50
+#-------------------------------
+[410] # Route 125
+Water,2
+    20,MAGIKARP,40,45
+    20,TENTACOOL,40,48
+    15,FINIZEN,43,46
+    10,GOLDEEN,45,47
+    10,POLIWAG,45,50
+    5,PELIPPER,45,50
+    5,POLIWHIRL,45,50
+OldRod
+    20,MAGIKARP,5,10
+    10,TENTACOOL,5,10
+GoodRod
+    20,MAGIKARP,15,30
+    20,TENTACOOL,15,30
+    10,WAILMER,15,35
+SuperRod
+    20,WAILMER,40,50
+    10,OSHAWOTT,10
+    1,SHARPEDO,40,50
+#-------------------------------
+[411] # Route 127
+Water,2
+    20,MAGIKARP,40,45
+    20,TENTACOOL,40,48
+    15,FINIZEN,43,46
+    10,GOLDEEN,45,47
+    10,POLIWAG,45,50
+    5,PELIPPER,45,50
+    5,POLIWHIRL,45,50
+OldRod
+    20,MAGIKARP,5,10
+    10,TENTACOOL,5,10
+GoodRod
+    20,MAGIKARP,15,30
+    20,TENTACOOL,15,30
+    10,WAILMER,15,35
+SuperRod
+    20,WAILMER,40,50
+    10,FROAKIE,10
+    1,SHARPEDO,40,50
+#-------------------------------
+[412] # Route 126
+Water,2
+    20,TENTACOOL,45,52
+    15,ALOMOMOLA,44,48
+    15,FINIZEN,45,50
+    10,GOLDEEN,40,48
+    10,POLIWAG,40,47
+    7,VELUZA,45,50
+    5,PELIPPER,44,48
+    5,POLIWHIRL,44,48
+OldRod
+    20,MAGIKARP,5,10
+    10,TENTACOOL,5,10
+GoodRod
+    20,MAGIKARP,15,30
+    20,TENTACOOL,15,30
+    10,WAILMER,15,35
+SuperRod
+    20,WAILMER,40,50
+    10,FROAKIE,10
+    1,SHARPEDO,45,50
+#-------------------------------
+[413] # Route 128
+Water,2
+    20,TENTACOOL,45,52
+    15,ALOMOMOLA,44,48
+    15,FINIZEN,45,50
+    10,GOLDEEN,40,48
+    10,POLIWAG,40,47
+    7,VELUZA,45,50
+    5,PELIPPER,44,48
+    5,POLIWHIRL,44,48
+OldRod
+    20,MAGIKARP,5,10
+    10,TENTACOOL,5,10
+GoodRod
+    20,LUVDISC,15,30
+    20,MAGIKARP,15,30
+    10,WAILMER,15,35
+SuperRod
+    20,WAILMER,40,50
+    15,LUVDISC,40,50
+    10,CORSOLA,40,50
+    8,QUAXLY,10
+    1,SHARPEDO,45,50
+#-------------------------------
+[414] # Ever Grande City 
+Water,2
+    20,TENTACOOL,45,52
+    15,ALOMOMOLA,44,48
+    15,FINIZEN,45,50
+    10,GOLDEEN,40,48
+    10,POLIWAG,40,47
+    7,VELUZA,45,50
+    5,PELIPPER,44,48
+    5,POLIWHIRL,44,48
+OldRod
+    20,MAGIKARP,5,10
+    10,TENTACOOL,5,10
+GoodRod
+    20,LUVDISC,15,30
+    20,MAGIKARP,15,30
+    10,WAILMER,15,35
+SuperRod
+    20,WAILMER,40,50
+    15,LUVDISC,40,50
+    10,CORSOLA,40,50
+    1,SHARPEDO,45,50
+#-------------------------------
+[415] # Route 129
+Water,2
+    20,TENTACOOL,45,52
+    15,ALOMOMOLA,44,48
+    15,FINIZEN,45,50
+    10,GOLDEEN,40,48
+    10,POLIWAG,40,47
+    7,VELUZA,45,50
+    5,PELIPPER,44,48
+    5,POLIWHIRL,44,48
+OldRod
+    20,MAGIKARP,5,10
+    10,TENTACOOL,5,10
+GoodRod
+    20,MAGIKARP,15,30
+    20,TENTACOOL,15,30
+    10,WAILMER,15,35
+SuperRod
+    20,WAILMER,40,50
+    1,SHARPEDO,45,50
+#-------------------------------
+[416] # Route 130
+Water,2
+    20,TENTACOOL,45,52
+    15,ALOMOMOLA,44,48
+    15,FINIZEN,45,50
+    10,GOLDEEN,40,48
+    10,POLIWAG,40,47
+    7,VELUZA,45,50
+    5,PELIPPER,44,48
+    5,POLIWHIRL,44,48
+OldRod
+    20,MAGIKARP,5,10
+    10,TENTACOOL,5,10
+GoodRod
+    20,MAGIKARP,15,30
+    20,TENTACOOL,15,30
+    10,WAILMER,15,35
+SuperRod
+    20,WAILMER,40,50
+    1,SHARPEDO,45,50
+#-------------------------------
+[417] # Route 131
+Water,2
+    20,MAGIKARP,45,50
+    20,TENTACOOL,44,50
+    15,ALOMOMOLA,44,50
+    15,FINIZEN,44,50
+    10,PALAFIN,44,50
+    10,POLIWAG,44,50
+    5,PELIPPER,44,50
+    5,POLIWHIRL,44,50
+OldRod
+    20,MAGIKARP,5,10
+    10,TENTACOOL,5,10
+GoodRod
+    20,MAGIKARP,15,30
+    20,TENTACOOL,15,30
+    10,WAILMER,15,35
+SuperRod
+    20,WAILMER,30,50
+    1,SHARPEDO,35,50
+#-------------------------------
+[443] # Shoal Cave
+Cave,5
+    20,ROGGENROLA,42,46
+    20,SPHEAL,42,46
+    15,CARBINK,42,46
+    10,DEWPIDER,42,46
+    10,DRILBUR,42,46
+    10,GOLBAT,42,46
+    5,SEALEO,36,41
+#-------------------------------
+[444] # Shoal Cave
+Cave,5
+    20,ROGGENROLA,42,47
+    20,SPHEAL,42,44
+    15,CARBINK,41,48
+    15,CUBCHOO,40,45
+    10,DEWPIDER,42,46
+    10,DRILBUR,42,46
+    10,GOLBAT,43,48
+    5,SEALEO,40,47
+Water,2
+    20,BASCULIN,40,48
+    20,SHELMET,40,48
+    15,GOLDEEN,40,48
+    15,SPHEAL,39,48
+    15,WOOPER,39,48
+OldRod
+    20,MAGIKARP,5,10
+    20,REMORAID,5,10
+    15,TENTACOOL,5,10
+GoodRod
+    20,MAGIKARP,10,30
+    20,REMORAID,10,30
+    15,TENTACOOL,10,30
+SuperRod
+    20,SPHEAL,25,45
+    20,WAILMER,25,45
+    15,REMORAID,25,50
+    10,SKRELP,30,40
+    1,OCTILLERY,45
+#-------------------------------
+[445] # Shoal Cave
+Cave,5
+    20,ROGGENROLA,42,46
+    20,SPHEAL,43,47
+    15,CARBINK,42,46
+    15,CUBCHOO,42,46
+    10,DEWPIDER,41,47
+    10,DRILBUR,42,46
+    10,GOLBAT,42,46
+    5,SEALEO,42,45
+    1,BEARTIC,40,45
+#-------------------------------
+[446] # Shoal Cave
+Cave,5
+    20,ROGGENROLA,42,46
+    20,SPHEAL,43,47
+    15,CARBINK,42,46
+    15,CUBCHOO,42,46
+    10,DEWPIDER,41,47
+    10,DRILBUR,42,46
+    10,GOLBAT,42,46
+    5,SEALEO,42,45
+    1,BEARTIC,40,45
+Water,2
+    20,BASCULIN,40,46
+    20,SHELMET,40,46
+    15,GOLDEEN,40,46
+    15,SPHEAL,40,46
+    15,WOOPER,30,43
+OldRod
+    20,MAGIKARP,5,10
+    20,REMORAID,5,10
+    15,TENTACOOL,5,10
+GoodRod
+    20,MAGIKARP,10,30
+    20,REMORAID,10,30
+    15,TENTACOOL,10,30
+SuperRod
+    20,SPHEAL,25,45
+    20,WAILMER,25,45
+    15,REMORAID,25,50
+    10,SKRELP,30,40
+    1,OCTILLERY,45
+#-------------------------------
+[447] # Shoal Cave
+Cave,5
+    20,ROGGENROLA,42,46
+    20,SPHEAL,43,47
+    15,CARBINK,42,46
+    15,CUBCHOO,42,46
+    10,DEWPIDER,41,47
+    10,DRILBUR,42,46
+    10,GOLBAT,42,46
+    5,SEALEO,42,45
+    1,BEARTIC,40,45
+#-------------------------------
+[448] # Shoal Cave
+Cave,5
+    20,ROGGENROLA,42,46
+    20,SPHEAL,43,47
+    15,CARBINK,42,46
+    15,CUBCHOO,42,46
+    10,DEWPIDER,41,47
+    10,DRILBUR,42,46
+    10,GOLBAT,42,46
+    5,SEALEO,42,45
+#-------------------------------
+[449] # Shoal Cave
+Cave,5
+    20,BERGMITE,42,47
+    20,SEEL,42,47
+    20,VANILLITE,41,44
+    15,SNOM,40
+    15,SNORUNT,42,47
+    10,SHELLDER,42,47
+    5,CRYOGONAL,42,46
+    1,FROSMOTH,44,47
+    1,SNEASEL,40,50
+CaveNight,5
+    20,CETODDLE,41,47
+    20,SEEL,43,46
+    20,SPHEAL,42,47
+    15,SNOM,40
+    15,SNORUNT,42,47
+    10,SHELLDER,42,46
+    1,FROSMOTH,43,46
+    1,SNEASEL,45,50
+#-------------------------------
+[453] # Underwater
+Land,21
+    20,CHINCHOU,30,50
+    20,CLAMPERL,30,50
+    20,MAREANIE,30,50
+    15,BARRASKEWDA,30,50
+    15,CLAUNCHER,30,50
+    10,CORSOLA,30,50
+    10,CURSOLA,30,50
+    10,FRILLISH,35,50
+    5,LANTURN,30,50
+    1,RELICANTH,30,55
+#-------------------------------
+[455] # Underwater
+Land,21
+    20,CHINCHOU,30,50
+    20,CLAMPERL,30,50
+    20,MAREANIE,30,50
+    15,BARRASKEWDA,30,50
+    15,CLAUNCHER,30,50
+    10,CORSOLA,30,50
+    10,CURSOLA,30,50
+    10,FRILLISH,35,50
+    5,WIMPOD,5,35
+    1,RELICANTH,30,55
+#-------------------------------
+[461] # Seafloor Cavern
+Cave,5
+    20,SANDYGAST,45,50
+    15,WIMPOD,40,50
+    10,KLAWF,45,50
+#-------------------------------
+[463] # Seafloor Cavern
+Cave,5
+    20,WOOBAT,46,48
+    15,GOLBAT,45,48
+    15,NOIBAT,44,46
+    15,ORTHWORM,45
+    15,TOEDSCRUEL,45,47
+    10,MIENFOO,44,46
+    10,SWOOBAT,45,48
+    4,NOIVERN,45,48
+    1,GOOMY,45,48
+#-------------------------------
+[464] # Seafloor Cavern
+Cave,5
+    20,WOOBAT,46,48
+    15,GOLBAT,45,48
+    15,NOIBAT,44,46
+    15,ORTHWORM,45
+    15,TOEDSCRUEL,45,47
+    10,MIENFOO,44,46
+    10,SWOOBAT,45,48
+    4,NOIVERN,45,48
+    1,GOOMY,45,48
+#-------------------------------
+[465] # Seafloor Cavern
+Cave,5
+    20,WOOBAT,46,48
+    15,GOLBAT,45,48
+    15,NOIBAT,44,46
+    15,ORTHWORM,45
+    15,TOEDSCRUEL,45,47
+    10,MIENFOO,44,46
+    10,SWOOBAT,45,48
+    4,NOIVERN,45,48
+    1,GOOMY,45,48
+#-------------------------------
+[466] # Seafloor Cavern
+Cave,5
+    20,WOOBAT,46,48
+    15,GOLBAT,45,48
+    15,NOIBAT,44,46
+    15,ORTHWORM,45
+    15,TOEDSCRUEL,45,47
+    10,MIENFOO,44,46
+    10,SWOOBAT,45,48
+    4,NOIVERN,45,48
+    1,GOOMY,45,48
+#-------------------------------
+[469] # Route 132
+Water,2
+    20,TENTACOOL,40,50
+    15,ALOMOMOLA,40,50
+    15,FINIZEN,40,50
+    12,MANTYKE,40,50
+    11,BASCULIN,40,50
+    10,GOLDEEN,40,50
+    10,WAILMER,40,50
+    7,VELUZA,40,50
+    5,PELIPPER,35,50
+    5,POLIWHIRL,40,50
+OldRod
+    20,MAGIKARP,5,10
+    15,SKRELP,5,10
+    10,TENTACOOL,5,10
+GoodRod
+    20,MAGIKARP,15,30
+    20,TENTACOOL,15,30
+    10,WAILMER,15,35
+SuperRod
+    20,WAILMER,30,50
+    15,SKRELP,35,50
+    1,SHARPEDO,35,50
+    1,WHISCASH,35,50
+#-------------------------------
+[470] # Route 133
+Water,2
+    20,TENTACOOL,40,50
+    15,ALOMOMOLA,40,50
+    15,FINIZEN,40,50
+    12,MANTYKE,40,50
+    11,BASCULIN,40,50
+    10,GOLDEEN,40,50
+    10,WAILMER,40,50
+    7,VELUZA,40,50
+    5,PELIPPER,35,50
+    5,POLIWHIRL,40,50
+OldRod
+    20,MAGIKARP,5,10
+    15,SKRELP,5,10
+    10,TENTACOOL,5,10
+GoodRod
+    20,MAGIKARP,15,30
+    20,TENTACOOL,15,30
+    10,WAILMER,15,35
+SuperRod
+    20,WAILMER,30,50
+    15,SKRELP,35,50
+    1,SHARPEDO,35,50
+    1,WHISCASH,35,50
+#-------------------------------
+[471] # Route 134
+Water,2
+    20,TENTACOOL,40,50
+    15,ALOMOMOLA,40,50
+    15,FINIZEN,40,50
+    12,MANTYKE,40,50
+    11,BASCULIN,40,50
+    10,GOLDEEN,40,50
+    10,WAILMER,40,50
+    7,VELUZA,40,50
+    5,PELIPPER,35,50
+    5,POLIWHIRL,40,50
+OldRod
+    20,MAGIKARP,5,10
+    15,SKRELP,5,10
+    10,TENTACOOL,5,10
+GoodRod
+    20,MAGIKARP,15,30
+    20,TENTACOOL,15,30
+    10,WAILMER,15,35
+SuperRod
+    20,WAILMER,30,50
+    15,SKRELP,35,50
+    1,SHARPEDO,35,50
+    1,WHISCASH,35,50
+#-------------------------------
+[482] # Seafloor Cavern
+Cave,5
+    20,WOOBAT,46,48
+    15,GOLBAT,45,48
+    15,NOIBAT,44,46
+    15,ORTHWORM,45
+    15,TOEDSCRUEL,45,47
+    10,MIENFOO,44,46
+    10,SWOOBAT,45,48
+    4,NOIVERN,45,48
+    1,GOOMY,45,48
+#-------------------------------
+[483] # Seafloor Cavern
+Cave,5
+    20,WOOBAT,46,48
+    15,GOLBAT,45,48
+    15,NOIBAT,44,46
+    15,ORTHWORM,45
+    15,TOEDSCRUEL,45,47
+    10,MIENFOO,44,46
+    10,SWOOBAT,45,48
+    4,NOIVERN,45,48
+    1,GOOMY,45,48
+Water,2
+    20,SHELLDER,44,45
+    20,TENTACOOL,44,45
+    15,TIRTOUGA,43,46
+    5,DONDOZO,43,47
+OldRod
+    20,MAGIKARP,10,30
+GoodRod
+    20,MAGIKARP,10,30
+SuperRod
+    20,GYARADOS,40,50
+    10,WISHIWASHI,43,56
+#-------------------------------
+[484] # Seafloor Cavern
+Water,2
+    20,SHELLDER,44,45
+    20,TENTACOOL,44,45
+    15,TIRTOUGA,43,46
+    5,DONDOZO,43,47
+OldRod
+    20,MAGIKARP,10,30
+GoodRod
+    20,MAGIKARP,10,30
+SuperRod
+    20,GYARADOS,40,50
+    10,WISHIWASHI,43,56
+#-------------------------------
+[485] # Seafloor Cavern
+Cave,5
+    20,WOOBAT,46,48
+    15,GOLBAT,45,48
+    15,NOIBAT,44,46
+    15,ORTHWORM,45
+    15,TOEDSCRUEL,45,47
+    10,MIENFOO,44,46
+    10,SWOOBAT,45,48
+    4,NOIVERN,45,48
+    1,GOOMY,45,48
+#-------------------------------
+[486] # Seafloor Cavern
+Cave,5
+    20,WOOBAT,46,48
+    15,GOLBAT,45,48
+    15,NOIBAT,44,46
+    15,ORTHWORM,45
+    15,TOEDSCRUEL,45,47
+    10,MIENFOO,44,46
+    10,SWOOBAT,45,48
+    4,NOIVERN,45,48
+    1,GOOMY,45,48
+#-------------------------------
+[500] # Frostgale Peak
+Land,21
+    20,PILOSWINE,48,54
+    18,SNEASEL,48,54
+    18,SNOVER,45,52
+    14,CETITAN,45,53
+    12,CRYOGONAL,46,54
+    10,FRIGIBAX,30
+    6,EISCUE,47,53
+    1,AURORUS,50
+#-------------------------------
+[501] # Seafloor Cavern
+Cave,5
+    20,WOOBAT,46,48
+    20,ZUBAT,46,48
+    15,GOLBAT,45,48
+    15,JOLTIK,44,45
+    15,KLINK,44,45
+    15,NOIBAT,44,46
+    10,MIENFOO,44,46
+    10,SWOOBAT,45,48
+    4,NOIVERN,45,48
+    1,GOOMY,45,48
+#-------------------------------
+[502] # Forgotten Providence
+Land,21
+    20,DRIFBLIM,48,54
+    20,GIMMIGHOUL,48,52
+    20,HOUNDSTONE,48,52
+    20,SINISTEA,48,54
+    18,GOLETT,48,54
+    15,MUNKIDORI,48,52
+    1,FLUTTERMANE,50
+#-------------------------------
+[503] # Moomoo Farm
+Land,21
+    20,FLAAFFY,32,37
+    20,OINKOLOGNE,32,37
+    15,RATICATE,32,37
+    12,MILTANK,32,37
+    10,DRIFLOON,32,36
+    4,RIOLU,5,10
+#-------------------------------
+[507] # Marine Cave 125
+Cave,5
+    20,BINACLE,40,45
+    20,KLAWF,40,45
+    18,WISHIWASHI,40,45
+    16,WUGTRIO,40,45
+    10,TOXAPEX,40,45
+    7,CYCLIZAR,40,45
+    4,BARBARACLE,40,45
+    1,DRACOVISH,40
+Water,2
+    20,DEWPIDER,40,45
+    20,FRILLISH,40,45
+    10,ARAQUANID,40,45
+    7,VELUZA,40,45
+OldRod
+    20,MAGIKARP,10
+    15,CLAUNCHER,10
+    15,WIGLETT,10
+GoodRod
+    20,MAGIKARP,10,30
+    15,CLAUNCHER,10,30
+    10,VELUZA,15,30
+SuperRod
+    15,WISHIWASHI,43,45
+    10,VELUZA,43,46
+    1,DONDOZO,43,45
+#-------------------------------
+[517] # Terra Cave
+Cave,5
+    20,BOLDORE,58,64
+    20,GLIMMORA,58,64
+    15,HAWLUCHA,60,64
+    12,LAMPENT,60,64
+    8,SIMISEAR,60,64
+    4,PUPITAR,58,62
+#-------------------------------
+[518] # Terra Cave
+Cave,5
+    20,BOLDORE,58,64
+    20,GLIMMORA,58,64
+    15,HAWLUCHA,60,64
+    12,LAMPENT,60,64
+    8,SIMISEAR,60,64
+    4,PUPITAR,58,62
+#-------------------------------
+[522] # Eonfall Isle
+Water,2
+    20,MANTYKE,60,65
+    15,BASCULIN,65,70
+    15,TENTACRUEL,60,70
+    10,MANTINE,60,70
+OldRod
+    20,FINNEON,10
+    20,REMORAID,10
+GoodRod
+    20,BASCULIN_2,25
+    20,FINNEON,25
+    20,MAGIKARP,25
+    20,REMORAID,25
+    20,TENTACOOL,25
+SuperRod
+    20,REMORAID,60,70
+    15,OCTILLERY,60,70
+    10,LUMINEON,60,70
+    5,BASCULEGION,70
+#-------------------------------
+[528] # Primeval Forest
+Land,21
+    20,BEEDRILL,48,56
+    20,BUTTERFREE,48,56
+    20,NOCTOWL,48,56
+    20,SPEWPA,48,56
+    20,SWADLOON,48,56
+    15,VOLTORB_1,48,56
+    5,ROSELIA,48,56
+    4,ELECTRODE_1,48,56
+    1,CHIKORITA,10
+    1,SPRIGATITO,10
+#-------------------------------
+[529] # Primeval Forest
+Land,21
+    20,BEEDRILL,48,56
+    20,BUTTERFREE,48,56
+    20,NOCTOWL,48,56
+    20,SPEWPA,48,56
+    20,SWADLOON,48,56
+    15,VOLTORB_1,48,56
+    5,ROSELIA,48,56
+    4,ELECTRODE_1,48,56
+    1,CHIKORITA,10
+    1,SPRIGATITO,10
+#-------------------------------
+[530] # Primeval Forest
+Land,21
+    20,BEEDRILL,48,56
+    20,BUTTERFREE,48,56
+    20,NOCTOWL,48,56
+    20,SPEWPA,48,56
+    20,SWADLOON,48,56
+    15,VOLTORB_1,48,56
+    5,ROSELIA,48,56
+    4,ELECTRODE_1,48,56
+    1,CHIKORITA,10
+    1,SPRIGATITO,10
+#-------------------------------
+[531] # Lostlorn Path
+Land,21
+    20,GUMSHOOS,60,65
+    20,STARAVIA,60,65
+    15,DROWZEE,60,67
+    15,ROSELIA,60,65
+    15,SPEWPA,60,67
+    10,AMOONGUSS,60,67
+    10,DEWPIDER,60,67
+    5,SNIVY,10
+    1,CHESPIN,10
+#-------------------------------
+[533] # Primeval Cave
+Cave,5
+    20,GOLBAT,48,55
+    18,SWOOBAT,48,55
+    15,CARKOL,48,55
+    12,RHYDON,48,55
+    10,CARBINK,48,55
+    9,DURALUDON,50
+    8,NACLSTACK,48,55
+    5,CHIMCHAR,10
+#-------------------------------
+[537] # Lostlorn Tower
+Cave,5
+    20,BELLSPROUT,60,65
+    20,HOOTHOOT,60,65
+    20,RATICATE,60,65
+    18,RATICATE_1,60,65
+    15,GOLBAT,60,67
+    15,MACHOKE,60,67
+    12,NOCTOWL,60,67
+    5,ESPURR,60,65
+    1,CHIMCHAR,10
+    1,MIENFOO,60,65
+#-------------------------------
+[539] # Goran Cave
+Cave,5
+    20,NOIBAT,48,55
+    20,SWOOBAT,48,55
+    15,GRAVELER,48,55
+    15,GRAVELER_1,48,55
+    10,SANDSLASH,48,55
+    5,BOLDORE,48,55
+    5,FROAKIE,10
+    2,EXCADRILL,45,53
+RockSmash,50
+    20,CARKOL,62,67
+    15,NOSEPASS,62,67
+    10,KLAWF,62,67
+    5,CRUSTLE,62,67
+#-------------------------------
+[542] # Cave of Origin
+Cave,5
+    20,UNOWN,40,65
+#-------------------------------
+[543] # Cave of Origin
+Cave,5
+    20,UNOWN,40,65
+#-------------------------------
+[544] # Cave of Origin
+Cave,5
+    20,UNOWN,40,65
+#-------------------------------
+[545] # Cave of Origin
+Cave,5
+    20,UNOWN,40,65
+#-------------------------------
+[549] # Team Sky Hideout
+Cave,5
+    20,DUCKLETT,48,50
+    20,FLETCHLING,48,50
+    20,HOOTHOOT,48,50
+    20,PIDGEY,48,50
+    20,PIDOVE,48,50
+    20,PIKIPEK,48,50
+    20,ROOKIDEE,48,50
+    20,SPEAROW,48,50
+    20,STARLY,48,50
+    20,WOOBAT,48,50
+    4,RUFFLET,50
+#-------------------------------
+[550] # Team Sky Hideout
+Cave,5
+    20,DUCKLETT,48,50
+    20,FLETCHLING,48,50
+    20,HOOTHOOT,48,50
+    20,PIDGEY,48,50
+    20,PIDOVE,48,50
+    20,PIKIPEK,48,50
+    20,ROOKIDEE,48,50
+    20,SPEAROW,48,50
+    20,STARLY,48,50
+    20,WOOBAT,48,50
+    4,RUFFLET,50
+#-------------------------------
+[551] # Team Sky Hideout
+Cave,5
+    20,DUCKLETT,48,50
+    20,FLETCHLING,48,50
+    20,HOOTHOOT,48,50
+    20,PIDGEY,48,50
+    20,PIDOVE,48,50
+    20,PIKIPEK,48,50
+    20,ROOKIDEE,48,50
+    20,SPEAROW,48,50
+    20,STARLY,48,50
+    20,WOOBAT,48,50
+    4,RUFFLET,50
+#-------------------------------
+[552] # Sky Pillar F1
+Cave,5
+    20,GOLBAT,48,52
+    20,MAWILE,48,54
+    20,RATICATE,46,52
+    20,SABLEYE,46,52
+    15,NOCTOWL,46,52
+    10,BANETTE,46,52
+    10,CLAYDOL,46,52
+    1,RUFFLET,55
+#-------------------------------
+[553] # Sky Pillar F2
+Cave,5
+    20,GOLBAT,48,52
+    20,MAWILE,48,54
+    20,RATICATE,46,52
+    20,SABLEYE,46,52
+    15,NOCTOWL,46,52
+    10,BANETTE,46,52
+    10,CLAYDOL,46,52
+    1,RUFFLET,55
+#-------------------------------
+[554] # Sky Pillar F3
+Cave,5
+    20,GOLBAT,48,52
+    20,MAWILE,48,54
+    20,RATICATE,46,52
+    20,SABLEYE,46,52
+    15,NOCTOWL,46,52
+    12,HAWLUCHA,47,51
+    10,BANETTE,46,52
+    10,CLAYDOL,46,52
+    1,RUFFLET,55
+#-------------------------------
+[555] # Sky Pillar F4
+Cave,5
+    20,GOLBAT,46,52
+    20,HAWLUCHA,46,52
+    20,MAWILE,46,52
+    20,SABLEYE,46,52
+    20,WATCHOG,46,52
+    10,BANETTE,46,52
+    10,CLAYDOL,46,52
+    1,RUFFLET,55
+#-------------------------------
+[556] # Sky Pillar F5
+Cave,5
+    20,GOLBAT,46,52
+    20,HAWLUCHA,46,52
+    20,MAWILE,46,52
+    20,SABLEYE,46,52
+    20,WATCHOG,46,52
+    10,BANETTE,46,52
+    10,CLAYDOL,46,52
+    1,PAWNIARD,45,50
+#-------------------------------
+[560] # Granite Cave
+Cave,5
+    20,ARON,9,12
+    20,NICKIT,9,12
+    15,JOLTIK,9,12
+    15,ZUBAT,9,12
+    10,ABRA,9,12
+    10,KLINK,9,12
+    10,MAKUHITA,10,12
+    10,MAWILE,9,11
+    10,SABLEYE,9,11
+    1,PANCHAM,10,13
+#-------------------------------
+[562] # Rusturf Tunnel
+Cave,5
+    20,CHINGLING,18,22
+    20,MANKEY,18,22
+    20,WHISMUR,18,22
+    15,CUBONE,19,22
+    15,LOUDRED,20,22
+    15,WOOBAT,20,22
+    5,DRILBUR,19,22
+    1,PANCHAM,18,20
+#-------------------------------
+[566] # Sky Base
+Land,21
+    20,CORVISQUIRE,60,65
+    20,FLETCHINDER,60,65
+    20,KILOWATTREL,60,65
+    20,PIDGEOTTO,60,65
+    20,STARAVIA,60,65
+    20,TRANQUILL,60,65
+    20,TRUMBEAK,60,65
+    15,CRAMORANT,60,65
+    15,HAWLUCHA,60,65
+    10,BOMBIRDIER,60,65
+    1,RUFFLET,60
+#-------------------------------
+[567] # Sky Base
+Land,21
+    20,CORVISQUIRE,60,65
+    20,FLETCHINDER,60,65
+    20,KILOWATTREL,60,65
+    20,PIDGEOTTO,60,65
+    20,STARAVIA,60,65
+    20,TRANQUILL,60,65
+    20,TRUMBEAK,60,65
+    15,CRAMORANT,60,65
+    15,HAWLUCHA,60,65
+    10,BOMBIRDIER,60,65
+    1,RUFFLET,60
+#-------------------------------
+[568] # Scorched Slab
+Cave,5
+    20,GOLBAT,31,35
+    20,NOIBAT,31,35
+    15,HELIOPTILE,31,35
+    10,GOLETT,31,35
+    10,WOOBAT,31,35
+    1,AXEW,30,35
+#-------------------------------
+[569] # Scorched Slab
+Cave,5
+    20,GOLBAT,31,35
+    20,NOIBAT,31,35
+    15,DIGLETT,31,35
+    15,HELIOPTILE,31,35
+    10,GOLETT,31,35
+    10,WOOBAT,31,35
+    1,AXEW,30,35
+#-------------------------------
+[570] # Scorched Slab
+Cave,5
+    20,GOLBAT,31,35
+    20,NOIBAT,31,35
+    15,HELIOPTILE,31,35
+    10,AXEW,30,35
+    10,FALINKS,33,35
+    10,GOLETT,31,35
+    4,HELIOLISK,33,35
+    1,FRAXURE,30,35
+Water,2
+    20,WISHIWASHI,30,35
+    15,BASCULIN,30,35
+    5,FRILLISH,30,35
+OldRod
+    20,CORPHISH,10
+    10,BASCULIN,10
+GoodRod
+    20,CORPHISH,10,30
+SuperRod
+    20,CRAWDAUNT,30,60
+#-------------------------------
+[575] # Sky Pillar F1
+Cave,5
+    20,GOLBAT,60,67
+    20,HAWLUCHA,62,65
+    20,MAWILE,62,65
+    20,SABLEYE,63,67
+    20,WATCHOG,64,66
+    10,BANETTE,60,65
+    10,CLAYDOL,60,64
+    5,RUFFLET,60,62
+    1,BRAVIARY_1,60
+    1,PAWNIARD,60,64
+#-------------------------------
+[576] # Sky Pillar F2
+Cave,5
+    20,GOLBAT,60,67
+    20,HAWLUCHA,62,65
+    20,MAWILE,62,65
+    20,SABLEYE,63,67
+    20,WATCHOG,64,66
+    10,BANETTE,60,65
+    10,CLAYDOL,60,64
+    5,RUFFLET,60,62
+    1,BRAVIARY_1,60
+    1,PAWNIARD,60,64
+#-------------------------------
+[577] # Sky Pillar F3
+Cave,5
+    20,GOLBAT,60,67
+    20,HAWLUCHA,62,65
+    20,MAWILE,62,65
+    20,SABLEYE,63,67
+    20,WATCHOG,64,66
+    10,BANETTE,60,65
+    10,CLAYDOL,60,64
+    5,RUFFLET,60,62
+    1,BRAVIARY_1,60
+    1,PAWNIARD,60,64
+#-------------------------------
+[578] # Sky Pillar F4
+Cave,5
+    20,GOLBAT,60,67
+    20,HAWLUCHA,62,65
+    20,MAWILE,62,65
+    20,SABLEYE,63,67
+    20,WATCHOG,64,66
+    10,BANETTE,60,65
+    10,CLAYDOL,60,64
+    5,RUFFLET,60,62
+    1,BRAVIARY_1,60
+    1,PAWNIARD,60,64
+#-------------------------------
+[579] # Sky Pillar F5
+Cave,5
+    20,GOLBAT,60,67
+    20,HAWLUCHA,62,65
+    20,MAWILE,62,65
+    20,SABLEYE,63,67
+    20,WATCHOG,64,66
+    10,BANETTE,60,65
+    10,CLAYDOL,60,64
+    5,RUFFLET,60,62
+    1,BRAVIARY_1,60
+    1,PAWNIARD,60,64
+#-------------------------------
+[583] # Meteor Falls
+Cave,5
+    20,GOLBAT,48,52
+    15,CLEFAIRY,48,52
+    12,TINKATUFF,48,52
+    10,LUNATONE,48,52
+    10,SOLROCK,48,52
+Water,2
+    20,WISHIWASHI,30,35
+    15,BASCULIN,30,35
+    5,FRILLISH,30,35
+SuperRod
+    20,BARBOACH,20,45
+GoodRod
+    20,GOLDEEN,10,30
+    10,BARBOACH,10,30
+OldRod
+    20,MAGIKARP,5,10
+    10,GOLDEEN,5,10
+#-------------------------------
+[584] # Meteor Falls
+Cave,5
+    20,GOLBAT,48,52
+    15,CLEFAIRY,48,52
+    12,TINKATUFF,48,52
+    10,LUNATONE,48,52
+    10,SOLROCK,48,52
+Water,2
+    20,WISHIWASHI,30,35
+    15,BASCULIN,30,35
+    5,FRILLISH,30,35
+SuperRod
+    20,BARBOACH,20,45
+GoodRod
+    20,GOLDEEN,10,30
+    10,BARBOACH,10,30
+OldRod
+    20,MAGIKARP,5,10
+    10,GOLDEEN,5,10
+#-------------------------------
+[585] # Meteor Falls
+Cave,5
+    20,GOLBAT,48,52
+    15,CLEFAIRY,48,52
+    12,TINKATUFF,48,52
+    10,LUNATONE,48,52
+    10,SOLROCK,48,52
+    1,BAGON,30,40
+    1,DRUDDIGON,50,55
+Water,2
+    20,WISHIWASHI,30,35
+    15,BASCULIN,30,35
+    5,FRILLISH,30,35
+OldRod
+    20,MAGIKARP,5,10
+    10,GOLDEEN,5,10
+GoodRod
+    20,GOLDEEN,10,30
+    10,BARBOACH,10,30
+SuperRod
+    20,BARBOACH,20,45
+    10,TOTODILE,10
+#-------------------------------
+[587] # Victory Road
+Cave,5
+    20,DRILBUR,50,55
+    20,GOLBAT,50,54
+    20,HARIYAMA,50,56
+    15,LAIRON,50,54
+    15,LOUDRED,48,56
+    10,DREDNAW,48,54
+    5,EXCADRILL,48,54
+    1,MALAMAR,50,55
+#-------------------------------
+[588] # Victory Road
+Cave,5
+    20,DOUBLADE,48,54
+    20,DRILBUR,48,54
+    20,HARIYAMA,48,54
+    15,LAIRON,48,54
+    15,LICKITUNG,48,54
+    12,BOMBIRDIER,48,53
+    10,DREDNAW,48,54
+    5,EXCADRILL,48,54
+    1,MALAMAR,50,55
+#-------------------------------
+[589] # Victory Road
+Cave,5
+    20,DRILBUR,48,54
+    20,GOLBAT,48,54
+    20,SABLEYE,48,54
+    15,LAIRON,48,54
+    15,LOUDRED,48,54
+    12,FLAMIGO,48,53
+    10,DREDNAW,48,54
+    10,LICKITUNG,48,54
+    5,MAWILE,47,54
+    1,MALAMAR,50,55
+Water,2
+    20,BUIZEL,45,47
+    20,GASTRODON,46,49
+    15,CRABRAWLER,45,50
+    15,FLOATZEL,45,50
+    12,WUGTRIO,45,50
+    8,TATSUGIRI,47,52
+    1,CRABOMINABLE,45,50
+OldRod
+    20,GOLDEEN,5,10
+    20,MAGIKARP,5,10
+GoodRod
+    20,GOLDEEN,5,30
+    20,MAGIKARP,5,30
+SuperRod
+    20,BARBOACH,5,35
+    20,MAGIKARP,5,35
+    10,WHISCASH,50,55
+    4,VELUZA,50,55
+#-------------------------------
+[604] # Altering Cave
+Cave,5
+    20,AIPOM,48,56
+    20,DELIBIRD,48,56
+    20,FARFETCHD,48,56
+    20,PINECO,48,56
+    20,SHUCKLE,48,55
+    20,SMEARGLE,48,55
+    20,STANTLER,48,55
+    20,TEDDIURSA,48,55
+#-------------------------------
+[605] # Desert Underpass
+Cave,5
+    20,DITTO,38,45
+    20,DURANT,38,45
+    20,LOUDRED,38,45
+    18,HIPPOWDON,45
+    15,CUFANT,38,45
+    15,DIGLETT_1,38,44
+    5,ZWEILOUS,40,45
+#-------------------------------
+[608] # Lake Valor
+Land,21
+    35,BIBAREL,47,56
+    35,GIRAFARIG,46,57
+    35,STARAVIA,48,60
+    15,GOLDUCK,48,60
+    15,PSYDUCK,48,60
+    10,KRICKETUNE,45,57
+Water,2
+    90,PSYDUCK,45,55
+    10,GOLDUCK,50,60
+OldRod
+    100,MAGIKARP,3,15
+GoodRod
+    55,MAGIKARP,10,25
+    40,GOLDEEN,15,20
+    5,SEAKING,25,35
+SuperRod
+    55,GYARADOS,30,55
+    45,SEAKING,30,55
+#-------------------------------
+[610] # Stark Mountain
+Cave,5
+    20,GOLBAT,48,60
+    20,MAGCARGO,48,56
+    20,RHYDON,48,56
+    15,GRAVELER,48,55
+    15,GRAVELER_1,48,56
+    15,WEEZING,48,56
+    15,WEEZING_1,48,57
+    5,RHYHORN,48,56
+    1,GOLEM,55
+    1,GOLEM_1,55
+#-------------------------------
+[614] # 125 Border
+Water,2
+    20,MAGIKARP,25,45
+    20,TENTACOOL,25,45
+    15,WINGULL,25,45
+    10,GOLDEEN,10,40
+    10,POLIWAG,25,45
+    5,PELIPPER,25,45
+    5,POLIWHIRL,25,45
+    1,TOTODILE,10
+OldRod
+    20,MAGIKARP,5,10
+    10,TENTACOOL,5,10
+GoodRod
+    20,MAGIKARP,15,30
+    20,TENTACOOL,15,30
+    10,WAILMER,15,35
+SuperRod
+    20,WAILMER,30,50
+    1,SHARPEDO,35,50
+#-------------------------------
+[622] # Battle Frontier
+Land,21
+    20,KANGASKHAN,60,65
+    20,TRUMBEAK,60,65
+    18,FARFETCHD_1,60
+    18,JANGMOO,25
+    14,FALINKS,60,65
+    1,LARVITAR,25
+Water,2
+    20,MANTYKE,60,65
+    15,BASCULIN,65,70
+    15,TENTACRUEL,60,70
+    10,MANTINE,60,70
+OldRod
+    20,FINNEON,10
+    20,REMORAID,10
+GoodRod
+    20,BASCULIN_2,25
+    20,FINNEON,25
+    20,MAGIKARP,25
+    20,REMORAID,25
+    20,TENTACOOL,25
+SuperRod
+    20,REMORAID,40,50
+    15,OCTILLERY,40,50
+    10,LUMINEON,40,50
+    5,BASCULEGION,40,50
+#-------------------------------
+[626] # ??? Island
+Land,21
+    20,MUNNA,60,65
+    18,CLEFAIRY,60,65
+    18,LUNATONE,60,65
+    18,SOLROCK,60,65
+    14,FLOETTE,60,65
+    10,MINIOR,60,65
+    8,FEZANDIPITI,70
+    8,OKIDOGI,60,65
+Water,2
+    20,MANTYKE,60,65
+    15,BASCULIN,65,70
+    15,TENTACRUEL,60,70
+    10,MANTINE,60,70
+OldRod
+    20,FINNEON,10
+    20,REMORAID,10
+GoodRod
+    20,BASCULIN_2,25
+    20,FINNEON,25
+    20,MAGIKARP,25
+    20,REMORAID,25
+    20,TENTACOOL,25
+SuperRod
+    20,REMORAID,40,50
+    15,OCTILLERY,40,50
+    10,LUMINEON,40,50
+    5,BASCULEGION,40,50
+#-------------------------------
+[628] # Underwater
+Land,21
+    20,LANTURN,55,60
+    20,MAREANIE,55,60
+    20,POLIWHIRL,55,60
+    15,BARRASKEWDA,45,55
+    15,CLAUNCHER,55,60
+    10,CORSOLA,55,60
+    10,CURSOLA,55,60
+    10,FRILLISH,55,60
+    5,TIRTOUGA,40
+#-------------------------------
+[638] # Route 113
+Land,21
+    20,SPINDA,20,23
+    15,HOUNDOUR,20,23
+    15,SALANDIT,20,24
+    10,SLUGMA,20,23
+    5,KLEFKI,20,24
+    5,SKARMORY,20,25
+    1,BOUFFALANT,20,25
+#-------------------------------
+[639] # Route 111-Desert
+Land,21
+    20,DIGLETT,27,33
+    20,SANDSHREW,27,33
+    20,TRAPINCH,25,33
+    18,HIPPOPOTAS,25,30
+    15,SANDILE,25,32
+    15,SCRAGGY,25,33
+    10,BALTOY,26,32
+    10,DWEBBLE,25,32
+    10,NACLSTACK,26,32
+    5,CACNEA,25,32
+LandNight,21
+    20,DIGLETT,27,30
+    20,SANDSHREW,27,30
+    20,TRAPINCH,25,28
+    18,RELLOR,25,28
+    15,SANDILE,25,28
+    15,SCRAGGY,25,28
+    10,BALTOY,26,29
+    10,DWEBBLE,25,30
+    5,CACNEA,25,30
+#-------------------------------
+[645] # Snowpoint Temple
+Cave,5
+    20,GOLBAT,47,54
+    20,SMOOCHUM,50,55
+    20,SWINUB,45,47
+    15,PILOSWINE,47,50
+    15,SNEASEL,49,54
+    15,STEELIX,53,54
+    12,CETODDLE,53,54
+    10,JYNX,47,50
+    5,ONIX,52,53
+#-------------------------------
+[646] # Snowpoint Temple
+Cave,5
+    20,GOLBAT,47,54
+    20,SMOOCHUM,50,55
+    20,SWINUB,45,47
+    15,PILOSWINE,47,50
+    15,SNEASEL,49,54
+    15,STEELIX,53,54
+    12,CETODDLE,54,55
+    10,JYNX,47,50
+    5,ONIX,52,53
+#-------------------------------
+[647] # Snowpoint Temple
+Cave,5
+    20,GOLBAT,47,54
+    20,SMOOCHUM,50,55
+    20,SWINUB,45,47
+    15,PILOSWINE,47,50
+    15,SNEASEL,49,54
+    15,STEELIX,53,54
+    10,GRAVELER,54
+    10,JYNX,47,50
+    5,ONIX,52,53
+#-------------------------------
+[648] # Snowpoint Temple
+Cave,5
+    20,GOLBAT,47,54
+    20,SMOOCHUM,50,55
+    20,SWINUB,45,47
+    15,PILOSWINE,47,50
+    15,SNEASEL,49,54
+    15,STEELIX,53,54
+    10,GRAVELER,54
+    10,JYNX,47,50
+    5,ONIX,52,53
+#-------------------------------
+[649] # Snowpoint Temple
+Cave,5
+    20,GOLBAT,47,54
+    20,SMOOCHUM,50,55
+    20,SWINUB,45,47
+    15,PILOSWINE,47,50
+    15,SNEASEL,49,54
+    15,STEELIX,53,56
+    10,GRAVELER,54,56
+    10,JYNX,47,50
+    5,ONIX,52,53
+#-------------------------------
+[654] # Mirage Cave
+Cave,5
+    20,BUNNELBY,48,54
+    20,KLINK,48,54
+    15,CUFANT,48,54
+    10,COPPERAJAH,48,54
+    10,PAWNIARD,48,54
+    8,KLANG,48,54
+    5,SQUIRTLE,10
+    1,PANCHAM,48,54
+#-------------------------------
+[656] # Artisan Cave
+Cave,5
+    20,SIGILYPH,60,70
+    20,SMEARGLE,60,70
+    13,DRAMPA,60,70
+    1,BISHARP,55,65
+#-------------------------------
+[657] # Artisan Cave
+Cave,5
+    20,SIGILYPH,60,70
+    20,SMEARGLE,60,70
+    13,DRAMPA,60,70
+    1,BISHARP,55,65
+#-------------------------------
+[659] # Mirage Forest
+Land,21
+    20,FLETCHLING,48,54
+    20,FOMANTIS,48,54
+    20,GLAMEOW,48,54
+    15,CHERRIM,48,54
+    10,CARNIVINE,48,54
+    10,ELECTRODE_1,47,54
+    10,PURUGLY,48,54
+    5,SNIVY,10
+    5,TANGELA,48,54
+#-------------------------------
+[660] # Mirage Island
+Land,21
+    20,DARUMAKA,30,36
+    20,DUNSPARCE,25,30
+    20,LITLEO,30,35
+    15,DARMANITAN,35
+    10,SPRIGATITO,10
+    9,STONJOURNER,30,35
+    8,GROOKEY,10
+Water,2
+    20,TENTACOOL,5,35
+    15,KRABBY,5,35
+    15,WINGULL,10,30
+    10,CLAUNCHER,10,30
+    5,PELIPPER,25,30
+    2,SQUIRTLE,10
+OldRod
+    20,MAGIKARP,5,10
+    10,TENTACOOL,5,10
+GoodRod
+    20,MAGIKARP,10,30
+    10,TENTACOOL,10,30
+    5,WAILMER,10,30
+SuperRod
+    20,WAILMER,25,45
+#-------------------------------
+[662] # Mirage Cave
+Water,2
+    20,TENTACOOL,5,35
+    15,KRABBY,5,35
+    15,WINGULL,10,30
+    10,CLAUNCHER,10,30
+    5,PELIPPER,25,30
+OldRod
+    20,MAGIKARP,5,10
+    10,TENTACOOL,5,10
+GoodRod
+    20,MAGIKARP,10,30
+    10,TENTACOOL,10,30
+    5,WAILMER,10,30
+SuperRod
+    20,WAILMER,25,45
+    5,MUDKIP,10
+#-------------------------------
+[663] # Mirage Cave
+Cave,5
+    20,CHEWTLE,36,40
+    20,DREDNAW,36,40
+    20,MINCCINO,36,40
+    18,SLOWPOKE_1,36,40
+    15,BOLDORE,36,40
+    10,MUDKIP,10
+#-------------------------------
+[679] # Mt. Chimney
+Land,21
+    20,KOFFING,20,23
+    20,NUMEL,20,24
+    15,MAGBY,10
+    15,SIZZLIPEDE,20,23
+    12,GROWLITHE_1,20,24
+    10,DARUMAKA,21,24
+    10,TORKOAL,21,24
+    5,HEATMOR,20,25
+    1,TURTONATOR,25
+LandNight,21
+    20,KOFFING,20,23
+    20,NUMEL,20,24
+    17,DRIFLOON,20,23
+    15,MAGBY,10
+    15,SIZZLIPEDE,20,23
+    10,DARUMAKA,21,24
+    10,TORKOAL,21,24
+    5,CHIMECHO,22,26
+    1,TURTONATOR,25
+#-------------------------------
+[680] # Mt. Chimney
+Cave,5
+    20,KOFFING,20,23
+    20,NUMEL,20,24
+    15,SIZZLIPEDE,20,23
+    10,DARUMAKA,21,24
+    10,TORKOAL,21,24
+    5,HEATMOR,20,25
+    1,TURTONATOR,25
+RockSmash,50
+    20,ROLYCOLY,20,27
+#-------------------------------
+[682] # Petalburg Woods
+Land,21
+    20,TAROUNTULA,5,6
+    20,WURMPLE,5,6
+    15,PANSAGE,5,8
+    15,SHROOMISH,5,6
+    10,CASCOON,5
+    10,SILCOON,5
+    10,VENONAT,5,6
+    5,SLAKOTH,5,6
+    5,TAILLOW,5,6
+LandNight,21
+    20,CATERPIE,3,6
+    20,SPINARAK,3,6
+    20,WEEDLE,3,6
+    20,WURMPLE,5,6
+    15,KAKUNA,5
+    15,SHROOMISH,5,6
+    15,SPEAROW,5,8
+    10,EXEGGCUTE,5,8
+    10,PINECO,5,10
+    5,SLAKOTH,5,6
+    1,PHANTUMP,5,6
+#-------------------------------
+[684] # Mirage Caves
+Cave,5
+    20,DRILBUR,48,55
+    18,FLITTLE,48,55
+    15,NACLSTACK,48,55
+    12,FARIGIRAF,48,55
+    10,EXCADRILL,48,55
+    10,FUECOCO,10
+#-------------------------------
+[686] # Mirage Cave
+Cave,5
+    20,YAMASK,48,54
+    20,YAMASK_1,48,54
+    15,COFAGRIGUS,48,54
+    10,EELEKTRIK,48,54
+    5,CHARMANDER,10
+#-------------------------------
+[689] # Mt. Pyre
+Land,21
+    20,FLITTLE,38,43
+    20,SHUPPET,38,41
+    15,DUSKULL,37,42
+    15,MEDITITE,37,42
+    10,GREAVARD,39,43
+    10,VULPIX,38,42
+    5,GROWLITHE,38,42
+    1,CHIMECHO,38,42
+#-------------------------------
+[690] # Route 120
+Land,21
+    20,MIGHTYENA,33,37
+    20,POOCHYENA,33,37
+    15,MARILL,33,36
+    15,ODDISH,33,35
+    10,GLOOM,30,36
+    4,ABSOL,32,37
+    1,KECLEON,30,39
+    1,SEEDOT,34,38
+Water,2
+    20,MARILL,5,45
+    1,GOLDEEN,20,40
+OldRod
+    20,MAGIKARP,5,10
+    10,GOLDEEN,5,10
+GoodRod
+    20,MAGIKARP,10,30
+    10,GOLDEEN,10,30
+    5,BARBOACH,10,30
+SuperRod
+    20,BARBOACH,25,55
+#-------------------------------
+[694] # Underwater
+Land,21
+    20,CLAUNCHER,45,50
+    18,WISHIWASHI,47,50
+    15,SKRELP,45,50
+    10,HUNTAIL,45,50
+    5,SHELLDER,45,50
+#-------------------------------
+[695] # Meteor Falls
+Cave,5
+    20,ELGYEM,47,52
+    20,GOLBAT,47,52
+    20,GOTHITA,47,51
+    20,WOOBAT,47,51
+    15,BRONZOR,47,51
+    15,CLEFAIRY,45,50
+    10,GOTHORITA,46,51
+    10,LUNATONE,46,52
+    10,MINIOR,44,50
+    10,SOLROCK,44,50
+    5,DEINO,40,50
+Water,2
+    20,WISHIWASHI,30,50
+    15,BASCULIN_2,30,50
+    10,STARYU,30,50
+    5,FRILLISH,30,50
+    1,STARMIE,30,45
+OldRod
+    20,MAGIKARP,5,10
+    15,BASCULIN_2,5,10
+    10,GOLDEEN,5,10
+    1,DRATINI,5,10
+GoodRod
+    20,GOLDEEN,10,30
+    15,BASCULIN_2,10,30
+    10,BARBOACH,10,30
+    5,DRATINI,10
+SuperRod
+    20,BARBOACH,20,45
+    15,BASCULIN_2,20,45
+    5,DRATINI,30
+RockSmash,50
+    20,NOSEPASS,45,50
+    15,BINACLE,45,50
+    15,DWEBBLE,45,50
+    10,GRAVELER,45,50
+    1,TYRUNT,25
+#-------------------------------
+[706] # Granite Cave
+Cave,5
+    25,TOEDSCOOL,11,12
+    20,MAKUHITA,11,12
+    20,TADBULB,11,12
+    15,FERROSEED,11,12
+    15,ZUBAT,11,12
+    10,ABRA,11,12
+    10,ONIX,10,12
+    5,SCRAGGY,10,12
+#-------------------------------
+[719] # Cerulean Cave 
+Cave,5
+    20,MAGNETON,55,63
+    20,PARASECT,55,63
+    15,GOLBAT,55,63
+    10,MACHOKE,55,63
+    10,PRIMEAPE,55,63
+    4,WOBBUFFET,60,65
+    1,DITTO,60,65
+Water,2
+    20,PSYDUCK,50,65
+    10,GOLDUCK,50,62
+OldRod
+    20,MAGIKARP,5,10
+GoodRod
+    20,POLIWAG,15,20
+    15,GOLDEEN,15,20
+SuperRod
+    20,POLIWAG,45,55
+    15,POLIWHIRL,45,60
+    10,GYARADOS,45,55
+RockSmash,50
+    20,GEODUDE,40,50
+    10,GRAVELER,45,55
+#-------------------------------
+[720] # Cerulean Cave 
+Cave,5
+    20,MAGNETON,55,63
+    20,PARASECT,55,63
+    15,GOLBAT,55,63
+    10,MACHOKE,55,63
+    10,PRIMEAPE,55,63
+    4,KADABRA,55,62
+    4,WOBBUFFET,60,65
+    1,DITTO,60,65
+RockSmash,50
+    20,GEODUDE,40,50
+    10,GRAVELER,45,55
+#-------------------------------
+[721] # Cerulean Cave 
+Cave,5
+    20,KADABRA,55,63
+    20,PARASECT,55,63
+    15,GOLBAT,55,63
+    10,MACHOKE,55,63
+    10,PRIMEAPE,55,63
+    4,WOBBUFFET,60,65
+    1,DITTO,60,65
+Water,2
+    20,PSYDUCK,50,65
+    10,GOLDUCK,50,62
+OldRod
+    20,MAGIKARP,5,10
+GoodRod
+    20,POLIWAG,15,20
+    15,GOLDEEN,15,20
+SuperRod
+    20,POLIWAG,45,55
+    15,POLIWHIRL,45,60
+    10,GYARADOS,45,55
+RockSmash,50
+    20,GEODUDE,40,50
+    10,GRAVELER,45,55
+#-------------------------------
+[724] # Kanto Power Plant
+Cave,5
+    20,MAGNEMITE,60,65
+    20,VOLTORB,60,65
+    15,ELEKID,60,65
+    10,PIKACHU,60,65
+    10,TYNAMO,60,65
+    5,MAGNETON,60,65
+    4,ELECTABUZZ,60,65
+#-------------------------------
+[725] # Seafoam Islands
+Cave,5
+    20,GOLBAT,60,65
+    20,SEEL,60,64
+    20,SMOOCHUM,60,65
+    20,ZUBAT,60,65
+    15,SLOWPOKE,60,65
+    10,SLOWBRO,60,65
+    10,SLOWKING,60,65
+    5,DEWGONG,60,65
+    1,JYNX,60,65
+#-------------------------------
+[726] # Seafoam Islands 
+Cave,5
+    20,GOLBAT,60,65
+    20,SEEL,60,64
+    20,SMOOCHUM,60,65
+    20,ZUBAT,60,65
+    15,SLOWPOKE,60,65
+    10,SLOWBRO,60,65
+    10,SLOWKING,60,65
+    5,DEWGONG,60,65
+    1,JYNX,60,65
+#-------------------------------
+[727] # Seafoam Islands 
+Cave,5
+    20,GOLBAT,60,65
+    20,SEEL,60,64
+    20,SMOOCHUM,60,65
+    20,ZUBAT,60,65
+    15,SLOWPOKE,60,65
+    10,SLOWBRO,60,65
+    10,SLOWKING,60,65
+    5,DEWGONG,60,65
+    1,JYNX,60,65
+#-------------------------------
+[728] # Seafoam Islands 
+Cave,5
+    20,GOLBAT,60,65
+    20,SEEL,60,64
+    20,SMOOCHUM,60,65
+    20,ZUBAT,60,65
+    15,SLOWPOKE,60,65
+    10,SLOWBRO,60,65
+    10,SLOWKING,60,65
+    5,DEWGONG,60,65
+    1,JYNX,60,65
+Water,2
+    20,SEEL,45,55
+    10,HORSEA,40,50
+    10,PSYDUCK,40,50
+    1,SQUIRTLE,10
+OldRod
+    20,MAGIKARP,5,10
+GoodRod
+    20,KRABBY,15,20
+    15,GOLDEEN,15,20
+SuperRod
+    20,KRABBY,45,55
+    15,POLIWHIRL,45,60
+    10,GYARADOS,45,55
+#-------------------------------
+[729] # Seafoam Islands 
+Cave,5
+    20,GOLBAT,60,65
+    20,SEEL,60,64
+    20,SMOOCHUM,60,65
+    20,ZUBAT,60,65
+    15,SLOWPOKE,60,65
+    10,SLOWBRO,60,65
+    10,SLOWKING,60,65
+    5,DEWGONG,60,65
+    1,JYNX,60,65
+Water,2
+    20,SEEL,45,55
+    10,HORSEA,40,50
+    10,PSYDUCK,40,50
+    1,SQUIRTLE,10
+OldRod
+    20,MAGIKARP,5,10
+GoodRod
+    20,KRABBY,15,20
+    15,GOLDEEN,15,20
+SuperRod
+    20,KRABBY,45,55
+    15,POLIWHIRL,45,60
+    10,GYARADOS,45,55
+#-------------------------------
+[730] # Mt. Ember
+Cave,5
+    20,HEATMOR,60,65
+    20,MAGCARGO,60,65
+    20,PONYTA,60,65
+    15,FEAROW,60,65
+    15,MACHOKE,60,65
+    10,RAPIDASH,60,64
+#-------------------------------
+[731] # Mt. Chimney
+Cave,5
+    20,KOFFING,20,23
+    20,NUMEL,20,24
+    15,SIZZLIPEDE,20,23
+    12,CHARCADET,20,25
+    10,DARUMAKA,21,24
+    10,TORKOAL,21,24
+    5,HEATMOR,20,25
+    1,TURTONATOR,25
+RockSmash,50
+    20,ROLYCOLY,20,27
+#-------------------------------
+[735] # Route 224
+Land,21
+    20,BELLSPROUT,49,53
+    20,BUIZEL,48,54
+    20,RIBOMBEE,48,54
+    15,GLOOM,49,54
+    15,WEEPINBELL,49,54
+    10,BEAUTIFLY,49,55
+    10,DUSTOX,49,55
+    5,FLOATZEL,48,60
+    5,GASTRODON,48,60
+    1,CHATOT,55
+Water,2
+    20,TENTACRUEL,45,54
+    15,PELIPPER,45,54
+    10,GASTRODON,45,55
+OldRod
+    20,MAGIKARP,5,10
+GoodRod
+    20,REMORAID,15,20
+    15,GYARADOS,15,20
+SuperRod
+    20,GYARADOS,45,55
+    20,OCTILLERY,44,55
+    10,LUVDISC,45,55
+#-------------------------------
+[736] # Route 224
+Land,21
+    20,BELLSPROUT,49,53
+    20,BUIZEL,48,54
+    20,RIBOMBEE,48,54
+    15,GLOOM,49,54
+    15,WEEPINBELL,49,54
+    10,BEAUTIFLY,49,55
+    10,DUSTOX,49,55
+    5,FLOATZEL,48,60
+    5,GASTRODON,48,60
+    1,CHATOT,55
+Water,2
+    20,TENTACRUEL,45,54
+    15,PELIPPER,45,54
+    10,GASTRODON,45,55
+OldRod
+    20,MAGIKARP,5,10
+GoodRod
+    20,REMORAID,15,20
+    15,GYARADOS,15,20
+SuperRod
+    20,GYARADOS,45,55
+    20,OCTILLERY,44,55
+    10,LUVDISC,45,55
+#-------------------------------
+[738] # Mt. Coronet
+CaveMorning,5
+    20,BRONZONG,57
+    20,GRAVELER,58
+    20,MEDICHAM,57,59
+    10,CHINGLING,56,58
+    10,CLEFAIRY,56
+    10,MACHOKE,59
+    5,GOLBAT,58
+    5,NOSEPASS,57
+Cave,5
+    30,GRAVELER,56,58
+    20,BRONZONG,57
+    20,MEDICHAM,57,59
+    10,CHINGLING,56,58
+    10,JYNX,59,61
+    10,MACHOKE,59
+    10,SNEASEL,51
+    5,GOLBAT,58
+    5,NOSEPASS,57
+CaveNight,5
+    20,BRONZONG,57
+    20,GRAVELER,58
+    15,GOLBAT,57,58
+    10,CHINGLING,56,58
+    10,CLEFAIRY,56
+    10,MACHOKE,59
+    10,MEDICHAM,59
+    5,NOSEPASS,57
+#-------------------------------
+[739] # Mt. Coronet
+Land,21
+    30,ABOMASNOW,48,59
+    20,MEDICHAM,48,54
+    20,SNOVER,46,65
+    10,CHINGLING,47,59
+    10,MACHOKE,50,55
+    5,ABSOL,48,54
+    5,NOSEPASS,48,56
+LandNight,21
+    20,ABOMASNOW,48,56
+    20,SNOVER,46,59
+    10,CHINGLING,47,59
+    10,GOLBAT,48,57
+    10,MACHOKE,50,60
+    10,MEDICHAM,50,60
+    10,NOCTOWL,49,56
+    5,ABSOL,48,60
+    5,NOSEPASS,48,56
+#-------------------------------
+[741] # Mt. Coronet
+Cave,5
+    30,GRAVELER,56,58
+    20,BRONZONG,57
+    20,MEDICHAM,57,59
+    10,CHINGLING,56,58
+    10,JYNX,59,61
+    10,MACHOKE,59
+    10,SNEASEL,51
+    5,GOLBAT,58
+    5,NOSEPASS,57
+CaveMorning,5
+    20,BRONZONG,57
+    20,GRAVELER,58
+    20,MEDICHAM,57,59
+    10,CHINGLING,56,58
+    10,CLEFAIRY,56
+    10,MACHOKE,59
+    5,GOLBAT,58
+    5,NOSEPASS,57
+CaveNight,5
+    20,BRONZONG,57
+    20,GRAVELER,58
+    15,GOLBAT,57,58
+    10,CHINGLING,56,58
+    10,CLEFAIRY,56
+    10,MACHOKE,59
+    10,MEDICHAM,59
+    5,NOSEPASS,57
+#-------------------------------
+[750] # Mirage Mountain
+Land,21
+    20,DACHSBUN,44,50
+    20,SKARMORY,44,50
+    18,HATTREM,44,50
+    14,CRAMORANT,44,50
+    12,BRAMBLEGHAST,44,50
+    5,TORCHIC,10
+#-------------------------------
+[752] # Mirage Mountain
+Land,21
+    20,MORELULL,48,54
+    20,RIBOMBEE,48,54
+    20,XATU,48,54
+    15,BOUNSWEET,48,54
+    15,MUNNA,40
+    10,PORYGON,48,54
+    1,LURANTIS,48,54
+    1,TREECKO,10
+RockSmash,50
+    20,GRAVELER,45,55
+    10,CRUSTLE,45,55
+#-------------------------------
+[754] # Pokemon Tower 
+Cave,5
+    20,CUBONE,45,55
+    20,ZUBAT,45,55
+    15,GOLBAT,45,55
+    10,HAUNTER,45,55
+    1,CHANSEY,50,60
+#-------------------------------
+[755] # Pokemon Tower 
+Cave,5
+    20,CUBONE,45,55
+    20,ZUBAT,45,55
+    15,GOLBAT,45,55
+    10,HAUNTER,45,55
+    1,CHANSEY,50,60
+#-------------------------------
+[756] # Pokemon Tower 
+Cave,5
+    20,CUBONE,45,55
+    20,ZUBAT,45,55
+    15,GOLBAT,45,55
+    10,HAUNTER,45,55
+    1,CHANSEY,50,60
+#-------------------------------
+[757] # Pokemon Tower 
+Cave,5
+    20,CUBONE,45,55
+    20,ZUBAT,45,55
+    15,GOLBAT,45,55
+    10,HAUNTER,45,55
+    1,CHANSEY,50,60
+#-------------------------------
+[758] # Pokemon Tower 
+Cave,5
+    20,CUBONE,45,55
+    20,ZUBAT,45,55
+    15,GOLBAT,45,55
+    10,HAUNTER,45,55
+    1,CHANSEY,50,60
+#-------------------------------
+[759] # Pokemon Tower
+Cave,5
+    20,CUBONE,45,55
+    20,ZUBAT,45,55
+    15,GOLBAT,45,55
+    10,HAUNTER,45,55
+    1,CHANSEY,50,60
+#-------------------------------
+[760] # Mirage Forest
+Land,21
+    20,SUNFLORA,48,54
+    15,CORVISQUIRE,48,54
+    15,STUNKY,48,55
+    15,TANGELA,48,54
+    10,PURUGLY,48,54
+    5,VULPIX,48,54
+    1,CHIKORITA,10
+#-------------------------------
+[761] # Mirage Mountain
+Land,21
+    20,KRICKETUNE,37,40
+    20,PHANPY,37,40
+    18,TOGEDEMARU,37,40
+    15,DONPHAN,37,40
+    10,FORRETRESS,37,40
+    5,LITTEN,10
+    5,RUFFLET,37,40
+#-------------------------------
+[762] # Mirage Mountain
+Land,21
+    20,DOTTLER,47,50
+    20,SKWOVET,47,50
+    18,HIPPOPOTAS,47,50
+    15,GREEDENT,47,50
+    15,ORBEETLE,47,50
+    10,ELDEGOSS,47,50
+    10,TORCHIC,10
+    5,VULLABY,47,50
+Water,2
+    20,MAGIKARP,25,45
+    20,TENTACOOL,25,45
+    15,WINGULL,25,45
+    10,GOLDEEN,10,40
+    10,POLIWAG,25,45
+    5,PELIPPER,25,45
+    5,POLIWHIRL,25,45
+    1,TOTODILE,10
+OldRod
+    20,MAGIKARP,5,10
+    10,TENTACOOL,5,10
+GoodRod
+    20,MAGIKARP,15,30
+    20,TENTACOOL,15,30
+    10,WAILMER,15,35
+SuperRod
+    20,WAILMER,30,50
+    1,SHARPEDO,35,50
+#-------------------------------
+[763] # Victory Road 
+Cave,5
+    20,DRILBUR,48,54
+    20,GOLBAT,48,54
+    20,SABLEYE,48,54
+    15,LAIRON,48,54
+    15,LOUDRED,48,54
+    12,FLAMIGO,48,53
+    10,DREDNAW,48,54
+    10,LICKITUNG,48,54
+    5,MAWILE,47,54
+    1,MALAMAR,50,55
+Water,2
+    20,BUIZEL,45,47
+    20,GASTRODON,46,49
+    15,CRABRAWLER,45,50
+    15,FLOATZEL,45,50
+    12,WUGTRIO,45,50
+    8,TATSUGIRI,47,52
+    1,CRABOMINABLE,45,50
+OldRod
+    20,GOLDEEN,5,10
+    20,MAGIKARP,5,10
+GoodRod
+    20,GOLDEEN,5,30
+    20,MAGIKARP,5,30
+SuperRod
+    20,BARBOACH,5,35
+    20,MAGIKARP,5,35
+    10,WHISCASH,50,55
+    4,VELUZA,50,55
+#-------------------------------
+[771] # Mirage Mountain
+Land,21
+    20,WOOLOO,48,55
+    18,CHATOT,48,55
+    17,MRMIME,48,55
+    15,DUBWOOL,48,55
+    10,STUFFUL,48,55
+    1,BEWEAR,48,55
+#-------------------------------
+[773] # Mirage Mountain
+Land,21
+    20,BLITZLE,50,60
+    15,ELEKID,50,60
+    15,TYNAMO,50,60
+    15,ZEBSTRIKA,50,60
+    10,ORICORIO_1,50,60
+    1,ELECTABUZZ,55,60
+#-------------------------------
+[775] # Route 106
+Water,2
+    20,TENTACOOL,5,35
+    15,KRABBY,5,35
+    15,WINGULL,10,30
+    10,CLAUNCHER,10,30
+    5,PELIPPER,25,30
+OldRod
+    20,MAGIKARP,5,10
+    10,TENTACOOL,5,10
+GoodRod
+    20,MAGIKARP,10,30
+    10,TENTACOOL,10,30
+    5,WAILMER,10,30
+SuperRod
+    20,WAILMER,25,45
+    10,SOBBLE,10
+#-------------------------------
+[776] # Granite Cave
+Cave,5
+    20,MAKUHITA,11,12
+    20,TADBULB,11,12
+    15,FERROSEED,11,12
+    15,VENIPEDE,11,12
+    15,ZUBAT,11,12
+    10,ABRA,11,12
+    10,GEODUDE,11,12
+    10,ONIX,10,12
+    5,SCRAGGY,10,12
+    1,HONEDGE,10,13
+#-------------------------------
+[791] # Sinister Swamp
+Cave,5
+    20,MURKROW,29,32
+    20,SKORUPI,30,33
+    15,CROAGUNK,28,35
+    15,VENIPEDE,30,33
+    12,BRAMBLIN,30,34
+    11,CLODSIRE,27,35
+    10,YANMA,30,33
+    7,STUNFISK_1,28,32
+    5,WHIRLIPEDE,28,32
+    1,YAMASK_1,28,32
+#-------------------------------
+[795] # Petalburg Sanctuary
+Land,21
+    20,CASCOON,27,32
+    20,SILCOON,27,32
+    15,COMFEY,26,34
+    15,KRICKETUNE,27,30
+    15,PANPOUR,15
+    15,SLAKOTH,27,33
+    10,FLOETTE,25,33
+    10,LEDIAN,27,31
+    10,VIGOROTH,27,33
+    5,PHANTUMP,26,31
+    1,KOMALA,30
+LandNight,21
+    20,SPEWPA,27,32
+    20,SWADLOON,27,32
+    15,COMFEY,26,34
+    15,PANPOUR,15
+    12,FEAROW,27,33
+    10,LEDIAN,27,31
+    5,PHANTUMP,26,31
+    1,SIMIPOUR,25,30
+#-------------------------------
+[796] # Petalburg Woods
+Land,21
+    20,LEDYBA,8,10
+    20,POOCHYENA,8,10
+    20,WURMPLE,8,10
+    15,CHERUBI,8,10
+    15,COTTONEE,8,10
+    15,SHROOMISH,8,10
+    10,FLABEBE,8,10
+    5,SLAKOTH,8,10
+LandNight,21
+    20,BOUNSWEET,8,10
+    20,LEDYBA,8,10
+    20,WURMPLE,8,10
+    15,PETILIL,8,10
+    15,SHROOMISH,8,10
+    10,PUMPKABOO,8,10
+    5,SLAKOTH,8,10
+    1,PHANTUMP,8,10
+#-------------------------------
+[801] # 114 Border Left
+Water,2
+    50,MARILL,19,24
+    31,AZUMARILL,20,25
+    30,TYMPOLE,20,22
+    15,SURSKIT,20
+    4,MASQUERAIN,25
+OldRod
+    20,MAGIKARP,5,10
+    15,TYMPOLE,5,10
+    10,GOLDEEN,5,10
+GoodRod
+    20,GOLDEEN,10,30
+    15,TYMPOLE,10,30
+    10,BARBOACH,10,30
+    4,PALPITOAD,30
+SuperRod
+    20,BARBOACH,20,45
+    10,PALPITOAD,20,45
+#-------------------------------
+[803] # Ophidian Cave
+Cave,5
+    20,CLOBBOPUS,30
+    20,LINOONE_1,29,33
+    20,MASCHIFF,27,33
+    17,MORGREM,27,33
+    14,BOLDORE,27,33
+    12,MABOSSTIFF,30,32
+    7,LOKIX,30,32
+    5,FLAMIGO,30,32
+#-------------------------------
+[804] # Ophidian Cave
+Cave,5
+    20,CLOBBOPUS,30
+    20,LINOONE_1,29,33
+    20,MASCHIFF,27,33
+    17,MORGREM,27,33
+    14,BOLDORE,27,33
+    12,MABOSSTIFF,30,32
+    7,LOKIX,30,32
+    5,FLAMIGO,30,32
+    1,SLIGGOO_1,30,34
+#-------------------------------
+[809] # Mirage Tower
+Cave,5
+    20,TRAPINCH,25,32
+    15,HELIOPTILE,25,32
+    15,HONEDGE,25,31
+    15,ROCKRUFF,25,32
+    15,SANDILE,25,32
+    10,CARBINK,25,31
+    10,DWEBBLE,25,32
+    10,MUDBRAY,25,32
+    5,SILICOBRA,25,32
+    1,APPLIN,25,32
+CaveNight,5
+    20,TRAPINCH,25,32
+    20,YUNGOOS,25,32
+    15,HELIOPTILE,25,33
+    15,HONEDGE,25,31
+    15,ROCKRUFF,25,33
+    15,SANDILE,25,31
+    10,CARBINK,25,32
+    5,SILICOBRA,25,32
+    1,APPLIN,25,32
+#-------------------------------
+[810] # Mirage Tower
+Cave,5
+    20,TRAPINCH,25,32
+    15,HELIOPTILE,25,32
+    15,HONEDGE,25,31
+    15,ROCKRUFF,25,32
+    15,SANDILE,25,32
+    10,CARBINK,25,31
+    10,DWEBBLE,25,32
+    10,MUDBRAY,25,32
+    5,SILICOBRA,25,32
+    1,APPLIN,25,32
+CaveNight,5
+    20,TRAPINCH,25,32
+    20,YUNGOOS,25,32
+    15,HELIOPTILE,25,33
+    15,HONEDGE,25,31
+    15,ROCKRUFF,25,33
+    15,SANDILE,25,31
+    10,CARBINK,25,32
+    5,SILICOBRA,25,32
+    1,APPLIN,25,32
+#-------------------------------
+[811] # Mirage Tower
+Cave,5
+    20,TRAPINCH,25,32
+    15,HELIOPTILE,25,32
+    15,HONEDGE,25,32
+    15,ROCKRUFF,25,32
+    15,SANDILE,25,32
+    10,CARBINK,25,32
+    10,DWEBBLE,25,32
+    10,GROWLITHE_1,25,32
+    10,MUDBRAY,25,32
+    5,SILICOBRA,25,32
+    1,APPLIN,25,33
+CaveNight,5
+    20,TRAPINCH,25,32
+    20,YUNGOOS,25,32
+    15,HELIOPTILE,25,32
+    15,HONEDGE,25,33
+    15,ROCKRUFF,25,32
+    15,SANDILE,25,32
+    10,CARBINK,25,32
+    10,GROWLITHE_1,25,33
+    5,SILICOBRA,25,32
+    1,APPLIN,25,32
+#-------------------------------
+[812] # Mirage Tower
+Cave,5
+    20,TRAPINCH,25,32
+    15,GROWLITHE_1,25,32
+    15,HELIOPTILE,25,32
+    15,ROCKRUFF,25,31
+    15,SANDILE,25,31
+    10,CARBINK,25,31
+    10,DWEBBLE,25,31
+    10,MUDBRAY,25,32
+    5,SILICOBRA,25,32
+    1,APPLIN,25,31
+CaveNight,5
+    20,TRAPINCH,25,32
+    20,YUNGOOS,25,32
+    15,HELIOPTILE,25,31
+    15,HONEDGE,25,32
+    15,ROCKRUFF,25,32
+    15,SANDILE,25,33
+    10,CARBINK,25,33
+    5,SILICOBRA,25,33
+    1,APPLIN,25,34
+#-------------------------------
+[817] # Ilex Forest
+Land,21
+    20,NOCTOWL,60,65
+    18,BEEDRILL,60,65
+    18,BUTTERFREE,60,65
+    15,EXEGGCUTE,60,65
+    12,PARASECT,60,65
+    12,PINECO,60,65
+    10,CHIKORITA,10
+#-------------------------------
+[819] # Mirage Forest 
+Land,21
+    20,FLETCHLING,48,54
+    20,HAPPINY,48,54
+    20,PINECO,48,54
+    15,PACHIRISU,48,54
+    15,PETILIL,48,54
+    10,FORRETRESS,48,54
+    10,MARACTUS,48,54
+    5,SNIVY,48,54
+    1,TREECKO,10
+RockSmash,50
+    20,GRAVELER,48,54
+    10,BINACLE,48,54
+#-------------------------------
+[820] # Mirage Forest
+Land,21
+    20,GLAMEOW,47,52
+    20,MIMEJR,47,50
+    20,SUNKERN,47,50
+    15,CORVISQUIRE,46,50
+    15,PETILIL,45,50
+    15,SWIRLIX,45,50
+    15,TANGELA,45,50
+    5,ROWLET,10
+    1,BULBASAUR,10
+#-------------------------------
+[821] # Mirage Forest
+Land,21
+    20,BURMY,48,54
+    20,COMBEE,48,54
+    20,VENIPEDE,48,54
+    15,WORMADAM,48,54
+    12,SPRITZEE,48,54
+    10,AUDINO,48,54
+    10,VESPIQUEN,48,54
+    5,ROWLET,10
+    1,CHESPIN,10
+#-------------------------------
+[827] # Lavaridge Hotsprings
+Cave,5
+    20,KOFFING,22,27
+    20,SIZZLIPEDE,22,26
+    20,SLUGMA,23,27
+    15,DRIFLOON,22,25
+    10,GRIMER,22,26
+    10,TORKOAL,22,26
+    1,WEEZING_1,30
+#-------------------------------
+[828] # Mt. Coronet
+Cave,5
+    20,BULBASAUR,5
+#-------------------------------
+[829] # Lake Verity
+Land,21
+    20,BIDOOF,48,55
+    20,STARAVIA,48,55
+    15,BIBAREL,47,56
+    10,LUNATONE,45,55
+    10,SOLROCK,45,55
+    10,WOBBUFFET,45,55
+Water,2
+    90,PSYDUCK,45,57
+    10,GOLDUCK,45,60
+OldRod
+    100,MAGIKARP,3,15
+GoodRod
+    55,MAGIKARP,10,25
+    40,GOLDEEN,15,20
+    5,SEAKING,25,35
+SuperRod
+    55,GYARADOS,30,55
+    45,SEAKING,30,55
+#-------------------------------
+[832] # Lake Acuity
+Land,21
+    25,SMOOCHUM,46,55
+    20,PSYDUCK,48,60
+    20,SNORUNT,44,56
+    20,SNOVER,44,57
+    15,BERGMITE,47,55
+    15,GOLDUCK,49,57
+    10,SNEASEL,46,55
+    1,FROSLASS,50,55
+Water,2
+    90,PSYDUCK,50,60
+    20,PIPLUP,10
+    10,GOLDUCK,50,60
+    5,CLAUNCHER,50,60
+OldRod
+    100,MAGIKARP,3,15
+GoodRod
+    55,MAGIKARP,10,25
+    40,GOLDEEN,15,20
+    5,SEAKING,25,35
+SuperRod
+    55,GYARADOS,30,55
+    45,SEAKING,30,55
+    25,OCTILLERY,35,55
+#-------------------------------
+[834] # Secret Islet
+Water,2
+    20,MAGIKARP,25,45
+    20,TENTACOOL,25,45
+    15,QWILFISH,25,45
+    10,QWILFISH_1,25,45
+    5,TENTACRUEL,40,45
+OldRod
+    100,MAGIKARP,3,15
+GoodRod
+    55,MAGIKARP,10,25
+    40,GOLDEEN,15,20
+    5,SEAKING,25,35
+SuperRod
+    55,GYARADOS,30,55
+    45,SEAKING,30,55
+    25,OCTILLERY,35,55
+    1,OVERQWIL,40,50
+#-------------------------------
+[836] # Underwater
+Land,21
+    20,CHINCHOU,30,50
+    20,CLAMPERL,30,50
+    20,MAREANIE,30,50
+    15,BARRASKEWDA,30,50
+    15,CLAUNCHER,30,50
+    10,CORSOLA,30,50
+    10,CURSOLA,30,50
+    10,FRILLISH,35,50
+    5,WIMPOD,5,35
+    1,RELICANTH,30,55
+#-------------------------------
+[838] # Marine Cave
+Cave,5
+    20,BINACLE,40,45
+    20,KLAWF,40,45
+    18,WISHIWASHI,40,45
+    16,WUGTRIO,40,45
+    10,TOXAPEX,40,45
+    7,CYCLIZAR,40,45
+    4,BARBARACLE,40,45
+    1,DRACOVISH,40
+Water,2
+    20,DEWPIDER,40,45
+    20,FRILLISH,40,45
+    10,ARAQUANID,40,45
+    7,VELUZA,40,45
+OldRod
+    20,MAGIKARP,10
+    15,CLAUNCHER,10
+    15,WIGLETT,10
+GoodRod
+    20,MAGIKARP,10,30
+    15,CLAUNCHER,10,30
+    10,VELUZA,15,30
+SuperRod
+    15,WISHIWASHI,43,45
+    10,VELUZA,43,46
+    1,DONDOZO,43,45
+#-------------------------------
+[840] # Route 130
+Land,21
+    20,CHINCHOU,30,50
+    20,CLAMPERL,30,50
+    20,MAREANIE,30,50
+    15,BARRASKEWDA,30,50
+    15,CLAUNCHER,30,50
+    10,CORSOLA,30,50
+    10,CURSOLA,30,50
+    10,FRILLISH,35,50
+    5,WIMPOD,5,35
+    1,RELICANTH,30,55
+#-------------------------------
+[841] # Desert Underpass
+Cave,5
+    20,DITTO,60,65
+    20,DURANT,60,64
+    20,KROKOROK,60,64
+    15,CUFANT,55,63
+    15,DUGTRIO_1,55,65
+    10,DRUDDIGON,60,67
+    10,YAMASK_1,55,65
+    10,ZWEILOUS,55,62
+    1,RUNERIGUS,60
+#-------------------------------
+[842] # Desert Underpass
+Cave,5
+    20,DITTO,60,65
+    20,DURANT,60,64
+    20,KROKOROK,60,64
+    15,CUFANT,55,63
+    15,DUGTRIO_1,55,65
+    10,DRUDDIGON,60,67
+    10,YAMASK_1,55,65
+    10,ZWEILOUS,55,62
+    1,RUNERIGUS,60
+#-------------------------------
+[843] # Desert Underpass
+Cave,5
+    20,DITTO,60,65
+    20,DURANT,60,64
+    20,KROKOROK,60,64
+    15,CUFANT,55,63
+    15,DUGTRIO_1,55,65
+    10,DRUDDIGON,60,67
+    10,YAMASK_1,55,65
+    10,ZWEILOUS,55,62
+    1,RUNERIGUS,60
+#-------------------------------
+[844] # Desert Underpass
+Cave,5
+    20,DITTO,60,65
+    20,DURANT,60,64
+    20,KROKOROK,60,64
+    15,CUFANT,55,63
+    15,DUGTRIO_1,55,65
+    10,DRUDDIGON,60,67
+    10,YAMASK_1,55,65
+    10,ZWEILOUS,55,62
+    1,RUNERIGUS,60
+#-------------------------------
+[845] # Desert Underpass
+Cave,5
+    20,DITTO,60,65
+    20,DURANT,60,64
+    20,KROKOROK,60,64
+    15,CUFANT,55,63
+    15,DUGTRIO_1,55,65
+    10,DRUDDIGON,60,67
+    10,YAMASK_1,55,65
+    10,ZWEILOUS,55,62
+    1,RUNERIGUS,60
+#-------------------------------
+[847] # Mirage Cave
+Water,2
+    90,PSYDUCK,50,60
+    20,PIPLUP,10
+    10,GOLDUCK,50,60
+    5,CLAUNCHER,50,60
+OldRod
+    100,MAGIKARP,3,15
+GoodRod
+    55,MAGIKARP,10,25
+    40,GOLDEEN,15,20
+    5,SEAKING,25,35
+SuperRod
+    55,GYARADOS,30,55
+    45,SEAKING,30,55
+    25,OCTILLERY,35,55
+#-------------------------------
+[848] # Mirage Cave
+Cave,5
+    20,TYNAMO,48,51
+    15,DITTO,48,50
+    15,EELEKTRIK,50,52
+    12,SLOWPOKE_1,50,52
+    10,DREDNAW,48,52
+    10,PALPITOAD,48,50
+    5,MUDKIP,10
+    1,MALAMAR,50
+#-------------------------------
+[849] # Difford Cave
+Cave,5
+    20,FARFETCHD,24,30
+    20,MAKUHITA,24,30
+    20,PINECO,24,30
+    15,SHUCKLE,24,30
+    12,SQUAWKABILLY,24,30
+    10,HARIYAMA,24,31
+    10,STANTLER,22,31
+    5,TEDDIURSA,23,32
+#-------------------------------
+[851] # Cape Littoral
+Land,21
+    20,TANGELA,38,44
+    18,HAWLUCHA,38,45
+    12,SANDSLASH,34,43
+    10,TOXICROAK,40,43
+    5,TREECKO,10
+LandNight,21
+    20,TANGELA,38,44
+    18,MAROWAK_1,38,44
+    14,DRIFLOON,38,42
+    12,SANDSLASH,34,43
+    10,TOXICROAK,40,43
+    5,CHIKORITA,10
+    5,SNIVY,10
+#-------------------------------
+[852] # Auralis Port
+Water,2
+    18,SHELLDER,40,44
+    14,TENTACRUEL,40,44
+    12,FINIZEN,40,43
+    5,SOBBLE,10
+    5,SQUIRTLE,10
+    1,CLOYSTER,40
+WaterNight,21
+    20,BASCULIN,40,44
+    14,TENTACRUEL,40,44
+    12,FINIZEN,40,43
+    10,FROAKIE,10
+    5,TOTODILE,10
+OldRod
+    20,MAGIKARP,10
+    15,DUCKLETT,10
+    10,CHEWTLE,10
+GoodRod
+    20,HORSEA,15,25
+    15,STARYU,15,25
+SuperRod
+    20,HORSEA,50
+    18,PSYDUCK,50
+    12,GYARADOS,50
+    10,STARMIE,50
+    8,SEADRA,50
+    4,DRATINI,10,30
+    1,QUAXLY,10
+#-------------------------------
+[855] # Littoral Peak
+Water,2
+    18,SHELLDER,40,44
+    14,TENTACRUEL,40,44
+    12,FINIZEN,40,43
+    10,BASCULIN,40,43
+    8,CRAMORANT,40,43
+    5,PIPLUP,10
+    5,SQUIRTLE,10
+    1,CLOYSTER,40
+WaterNight,21
+    20,BASCULIN,40,44
+    14,TENTACRUEL,40,44
+    12,FINIZEN,40,43
+    12,POPPLIO,10
+    10,FROAKIE,10
+OldRod
+    20,MAGIKARP,10
+    15,DUCKLETT,10
+    10,CHEWTLE,10
+GoodRod
+    20,HORSEA,15,25
+    15,STARYU,15,25
+SuperRod
+    20,HORSEA,50
+    18,PSYDUCK,50
+    12,GYARADOS,50
+    10,STARMIE,50
+    8,SEADRA,50
+    4,DRATINI,10,30
+    1,QUAXLY,10
+#-------------------------------
+[868] # Area Zero Pyre
+Cave,5
+    20,CHINGLING,40,42
+    20,FLITTLE,40,42
+    20,GLIMMET,40,43
+    20,MEOWTH_1,40,42
+    18,NOIBAT,40,42
+    15,LINOONE_1,40,43
+    10,GREAVARD,40,42
+    7,VAROOM,35,40
+    5,LITTEN,10
+    4,GLIMMORA,40
+Water,2
+    20,DEWPIDER,30,45
+    20,FRILLISH,30,45
+    12,TATSUGIRI,30,40
+    10,ARAQUANID,30,45
+    7,VELUZA,30,45
+OldRod
+    20,MAGIKARP,10
+    15,CLAUNCHER,10
+    15,WIGLETT,10
+GoodRod
+    20,MAGIKARP,10,30
+    15,CLAUNCHER,10,30
+    10,VELUZA,15,30
+SuperRod
+    15,WISHIWASHI,43,45
+    10,VELUZA,43,46
+    1,DONDOZO,43,45
+#-------------------------------
+[869] # Seafloor Caverns
+Cave,5
+    20,WOOBAT,46,48
+    15,CHIMECHO,45,50
+    15,GOLBAT,45,48
+    15,NOIBAT,44,46
+    15,ORTHWORM,45
+    15,TOEDSCRUEL,45,47
+    10,MIENFOO,44,46
+    10,SWOOBAT,45,48
+    4,NOIVERN,45,48
+    1,GOOMY,45,48
+Water,2
+    20,SHELLDER,44,45
+    20,TENTACOOL,44,45
+    15,TIRTOUGA,43,46
+    5,DONDOZO,43,47
+OldRod
+    20,MAGIKARP,10,30
+GoodRod
+    20,MAGIKARP,10,30
+SuperRod
+    20,GYARADOS,40,50
+    10,WISHIWASHI,43,56
+#-------------------------------
+[875] # The Walking Firmament
+Land,21
+    20,CASTFORM,60,65
+    20,DRIFLOON,60,65
+    15,EMOLGA,60,65
+    12,DRIFBLIM,60,65
+    10,GLIGAR,60,65
+    5,TOGETIC,60
+#-------------------------------
+[879] # Shroomish Forest
+Land,21
+    20,GOSSIFLEUR,48,55
+    20,SHROOMISH,48,55
+    18,DEERLING,45,55
+    15,STANTLER,48,55
+    10,BRELOOM,50,53
+    10,ELDEGOSS,50,55
+    8,SAWSBUCK,50,52
+    4,GOURGEIST,50,53
+#-------------------------------
+[881] # Isle 4 Port
+Land,21
+    20,GLOOM,60,67
+    20,PIDGEOTTO,60,67
+    18,MEOWTH,60,67
+    17,MEOWTH_1,60,67
+    15,VENOMOTH,60,67
+    12,GOLDUCK,60,67
+    8,PERSIAN,60,67
+Water,2
+    20,TENTACOOL,60,67
+    15,TENTACRUEL,60,67
+    12,FINIZEN,60,67
+    10,WAILMER,60,67
+    5,MUDKIP,10
+    5,SQUIRTLE,10
+OldRod
+    20,MAGIKARP,10
+GoodRod
+    20,HORSEA,15,25
+SuperRod
+    20,HORSEA,50,65
+    18,PSYDUCK,50,65
+    12,GYARADOS,50,65
+    8,SEADRA,50,65
+    4,DRATINI,10
+    1,QUAXLY,10
+#-------------------------------
+[882] # Bond Bridge
+Land,21
+    20,GLOOM,60,67
+    20,PIDGEOTTO,60,67
+    18,MEOWTH,60,67
+    17,MEOWTH_1,60,67
+    15,VENOMOTH,60,67
+    12,GOLDUCK,60,67
+    8,PERSIAN,60,67
+    5,QUAXLY,10
+Water,2
+    20,TENTACOOL,60,67
+    15,TENTACRUEL,60,67
+    12,FINIZEN,60,67
+    10,WAILMER,60,67
+    5,MUDKIP,10
+    5,SQUIRTLE,10
+OldRod
+    20,MAGIKARP,10
+GoodRod
+    20,HORSEA,15,25
+SuperRod
+    20,HORSEA,50,65
+    18,PSYDUCK,50,65
+    12,GYARADOS,50,65
+    8,SEADRA,50,65
+    4,DRATINI,10
+    1,QUAXLY,10
+#-------------------------------
+[883] # Berry Forest
+Land,21
+    20,GLOOM,60,67
+    20,PIDGEOTTO,60,67
+    18,APPLIN,60,67
+    17,MEOWTH_1,60,67
+    15,VENOMOTH,60,67
+    12,GOLDUCK,60,67
+    8,PERSIAN,60,67
+    7,EXEGGUTOR_1,65
+    5,HYPNO,60,67
+OldRod
+    20,MAGIKARP,10
+GoodRod
+    20,HORSEA,15,25
+SuperRod
+    20,HORSEA,50,65
+    18,PSYDUCK,50,65
+    12,GYARADOS,50,65
+    8,SEADRA,50,65
+    4,DRATINI,10
+    1,QUAXLY,10
+#-------------------------------
+[890] # Hyperspace Wilds
+Land,21
+    20,BLACEPHALON,60,65
+    20,BUZZWOLE,60,65
+    20,CELESTEELA,60,65
+    20,GUZZLORD,60,65
+    20,KARTANA,60,65
+    20,NIHILEGO,60,65
+    20,PHEROMOSA,60,65
+    20,STAKATAKA,60,65
+    20,XURKITREE,60,65
+#-------------------------------
+[894] # Mirage Cave
+Cave,5
+    20,KLANG,48,55
+    18,SLOWPOKE,48,55
+    15,CUFANT,48,54
+    10,BISHARP,48,54
+    10,COPPERAJAH,48,54
+    10,PANGORO,48,54
+    5,CHIMCHAR,10
+    1,BRUTEBONNET,55
+#-------------------------------
+[895] # Water Labyrinth
+Water,2
+    20,TENTACOOL,60,67
+    15,QWILFISH,60,67
+    15,TENTACRUEL,60,67
+    12,FINIZEN,60,67
+    10,WAILMER,60,67
+    5,PIPLUP,10
+    5,TOTODILE,10
+OldRod
+    20,MAGIKARP,10
+GoodRod
+    20,HORSEA,15,25
+SuperRod
+    20,HORSEA,50,65
+    18,PSYDUCK,50,65
+    12,GYARADOS,50,65
+    8,SEADRA,50,65
+    4,DRATINI,10
+    1,QUAXLY,10
+#-------------------------------
+[896] # Resort Gorgeous
+Water,2
+    20,TENTACOOL,60,67
+    15,QWILFISH,60,67
+    15,TENTACRUEL,60,67
+    12,FINIZEN,60,67
+    10,WAILMER,60,67
+    5,MUDKIP,10
+    5,TOTODILE,10
+OldRod
+    20,MAGIKARP,10
+GoodRod
+    20,HORSEA,15,25
+SuperRod
+    20,HORSEA,50,65
+    18,PSYDUCK,50,65
+    12,GYARADOS,50,65
+    8,SEADRA,50,65
+    4,DRATINI,10
+    1,QUAXLY,10
+#-------------------------------
+[897] # Wailmer Island
+Land,21
+    20,GLOOM,48,55
+    20,MILCERY,48,55
+    20,PIDGEOTTO,48,55
+    18,DACHSBUN,48,55
+    17,MEOWTH_1,48,55
+    15,PERRSERKER,48,55
+    12,CHESPIN,10
+    8,BULBASAUR,10
+    8,SQUAWKABILLY,50,55
+    1,ALCREMIE,50
+Water,2
+    20,TENTACOOL,45,55
+    15,TENTACRUEL,45,55
+    12,FINIZEN,45,55
+    10,WAILMER,45,55
+    5,MUDKIP,10
+    5,SOBBLE,10
+    5,SQUIRTLE,10
+OldRod
+    20,MAGIKARP,10
+GoodRod
+    20,HORSEA,15,25
+SuperRod
+    20,HORSEA,50,55
+    18,PSYDUCK,50,55
+    12,GYARADOS,50,55
+    8,SEADRA,50,55
+    4,DRATINI,10
+    1,QUAXLY,10
+#-------------------------------
+[898] # Green Path
+Water,2
+    20,TENTACOOL,60,67
+    15,TENTACRUEL,60,67
+    12,FINIZEN,60,67
+    10,WAILMER,60,67
+    5,MUDKIP,10
+    5,SOBBLE,10
+    5,SQUIRTLE,10
+OldRod
+    20,MAGIKARP,10
+GoodRod
+    20,HORSEA,15,25
+SuperRod
+    20,HORSEA,50,65
+    18,PSYDUCK,50,65
+    12,GYARADOS,50,65
+    8,SEADRA,50,65
+    4,DRATINI,10
+    1,QUAXLY,10
+#-------------------------------
+[908] # Mirage Island
+Land,21
+    20,WYNAUT,5,10
+#-------------------------------
+[914] # Viridian Park
+Land,21
+    20,COMBEE,48,55
+    20,SWIRLIX,48,55
+    18,VIVILLON,48,55
+    15,SCYTHER,48,55
+    10,PRIMEAPE,48
+    5,BULBASAUR,10
+    1,AROMATISSE,55
+Water,2
+    20,KRABBY,48,55
+    15,KINGLER,49,55
+    1,TOTODILE,10
+OldRod
+    20,CHEWTLE,10
+    20,MAGIKARP,10
+GoodRod
+    20,BASCULIN,15,30
+    20,BASCULIN_1,15,30
+    20,BASCULIN_2,15,30
+SuperRod
+    20,BASCULIN,45,60
+    20,BASCULIN_1,45,60
+    20,BASCULIN_2,45,60
+    18,FLOATZEL,50,60
+    15,DONDOZO,45,55
+    5,TATSUGIRI,50,55
+#-------------------------------
+[915] # Woodrift Isle
+Land,21
+    20,EISCUE,48,55
+    20,SANDSHREW_1,47,54
+    20,SNOVER,48,55
+    18,SNOM,48,55
+    15,FROSLASS,46,55
+    12,SNEASEL,48,55
+    10,FRIGIBAX,25
+    8,ABOMASNOW,48,55
+    4,JYNX,48,55
+#-------------------------------
+[918] # Great Marsh
+Land,21
+    20,CLODSIRE,48,55
+    20,QUAGSIRE,48,55
+    20,SKORUPI,48,55
+    18,YANMA,48,55
+    17,CARNIVINE,48,55
+    15,ARBOK,48,55
+    12,AMOONGUSS,48,55
+    10,RHYDON,48,55
+    5,DRAPION,48,55
+Water,2
+    20,POLIWAG,48,55
+    18,POLIWHIRL,48,55
+    14,PALPITOAD,48,55
+    12,BRUXISH,48,55
+    10,SWANNA,48,55
+    1,VELUZA,50
+OldRod
+    20,CHEWTLE,10
+    20,MAGIKARP,10
+GoodRod
+    20,BASCULIN,15,30
+    20,BASCULIN_1,15,30
+    20,BASCULIN_2,15,30
+SuperRod
+    20,BASCULIN,45,60
+    20,BASCULIN_1,45,60
+    20,BASCULIN_2,45,60
+    15,WHISCASH,45,60
+    10,GYARADOS,50,60
+    1,VELUZA,60
+#-------------------------------
+[919] # Stark Isle
+Land,21
+    20,FEAROW,48,55
+    20,GOLBAT,48,55
+    18,GRAVELER,48,55
+    18,WEEZING,48,55
+    17,GLIGAR,48,55
+    14,RHYDON,48,55
+    10,SKARMORY,48,55
+    5,BANETTE,48,55
+    4,MAGBY,22
+#-------------------------------
+[920] # Stark Isle
+Land,21
+    20,FEAROW,48,55
+    20,GOLBAT,48,55
+    18,GRAVELER,48,55
+    18,WEEZING,48,55
+    17,GLIGAR,48,55
+    14,RHYDON,48,55
+    10,SKARMORY,48,55
+    5,BANETTE,48,55
+    4,MAGBY,22
+#-------------------------------
+[921] # Littoral Forest
+Land,21
+    20,MILCERY,60,64
+    18,FLITTLE,60,64
+    15,BRAMBLEGHAST,60,70
+    12,MORPEKO,60,70
+    11,DEDENNE,60,70
+    10,INDEEDEE,60,70
+    5,BULBASAUR,10
+    5,OKIDOGI,60
+    1,BRUTEBONNET,70
