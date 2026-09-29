@@ -71,3 +71,29 @@ class CheckpointPluginTest < Minitest::Test
     assert_equal "[false, true, true]", out.strip
   end
 end
+
+class CheckpointPluginTest
+  def test_idle_periodic_save_waits_for_a_safe_frame
+    runner = RUNNER.split('ck.request(:map)').first + <<~'BODY'
+      $clock += 119.0
+      ck.tick
+      raise 'saved too soon' unless $pushes.empty?
+      $game_temp.in_battle = true
+      $clock += 1.0
+      ck.tick
+      raise 'saved during battle' unless $pushes.empty?
+      $game_temp.in_battle = false
+      ck.tick
+      raise 'idle periodic save missing' unless $pushes == [false]
+      $clock += 120.0
+      ck.tick
+      raise 'second periodic save missing' unless $pushes == [false, false]
+      print 'OK'
+      $stdout.flush
+      exit!(0)
+    BODY
+    out = IO.popen([RbConfig.ruby, '-W0', '-e', runner, CHECKPOINT], err: %i[child out], &:read)
+    assert $?.success?, out
+    assert_equal 'OK', out
+  end
+end

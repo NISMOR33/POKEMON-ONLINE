@@ -1,0 +1,6 @@
+Name = Save Status HUD
+Version = 1.0.0
+Essentials = 21.1
+Credits = Project
+Requires = PEMK
+Requires = Periodic Autosave

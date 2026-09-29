@@ -30,9 +30,16 @@ end
 # (Modified so that we adjust the effective time when cycling speeds)
 #===============================================================================#
 module Input
+  class << self
+    alias_method :delta_speed_previous_update, :update
+  end
   def self.update
-    update_KGC_ScreenCapture
-    pbScreenCapture if trigger?(Input::F8)
+    delta_speed_previous_update
+    delta_speed_update unless defined?(AZERTYControls)
+  end
+
+  # AZERTY calls this after its current-frame action state has been sampled.
+  def self.delta_speed_update
     if $CanToggle && trigger?(Input::AUX1)
       # Record the current multiplier
       old_multiplier = SPEEDUP_STAGES[$GameSpeed]

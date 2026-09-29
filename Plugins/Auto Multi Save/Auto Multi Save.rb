@@ -104,27 +104,32 @@ module SaveData
   def self.get_newest_save_slot
     newest_time = Time.at(0) # the Epoch
     newest_slot = nil
-    self.each_slot do |file_slot|
+    all_slots = [OLD_SAVE_SLOT, 'Game_guest'] + AUTO_SLOTS + MANUAL_SLOTS
+    all_slots.each do |file_slot|
       full_path = self.get_full_path(file_slot)
       next if !File.file?(full_path)
-      temp_save_data = self.read_from_file(full_path)
-      save_time = temp_save_data[:player].last_time_saved || Time.at(1)
+      mtime = File.mtime(full_path) rescue Time.at(0)
+      save_time = mtime
+      begin
+        temp_save_data = self.read_from_file(full_path)
+        if temp_save_data && temp_save_data[:player] && temp_save_data[:player].last_time_saved
+          save_time = temp_save_data[:player].last_time_saved
+          save_time = mtime if mtime > save_time
+        end
+      rescue
+      end
       if save_time > newest_time
         newest_time = save_time
         newest_slot = file_slot
       end
-    end
-    # Port old save
-    if newest_slot.nil? && File.file?(self.get_full_path(OLD_SAVE_SLOT))
-      file_copy(self.get_full_path(OLD_SAVE_SLOT), self.get_full_path(MANUAL_SLOTS[0]))
-      return MANUAL_SLOTS[0]
     end
     return newest_slot
   end
 
   # @return [Boolean] whether any save file exists
   def self.exists?
-    self.each_slot do |slot|
+    all_slots = [OLD_SAVE_SLOT, 'Game_guest'] + AUTO_SLOTS + MANUAL_SLOTS
+    all_slots.each do |slot|
       full_path = SaveData.get_full_path(slot)
       return true if File.file?(full_path)
     end
@@ -142,6 +147,7 @@ module SaveData
         full_path = self.get_full_path(slot)
         File.delete(full_path) if File.file?(full_path)
       end
+      File.delete(self.get_full_path(OLD_SAVE_SLOT)) if File.file?(self.get_full_path(OLD_SAVE_SLOT))
     end
   end
 
@@ -173,6 +179,93 @@ end
 #
 #===============================================================================
 class PokemonLoad_Scene
+  alias_method :orig_pbStartScene, :pbStartScene unless method_defined?(:orig_pbStartScene)
+
+  def pbStartScene(commands, show_continue, trainer, stats, map_id)
+    orig_pbStartScene(commands, show_continue, trainer, stats, map_id)
+    return unless show_continue && @sprites["panel0"]
+
+    scale = 0.65
+    panel_w = 384
+    center_x = (Graphics.width - (panel_w * scale)) / 2
+    start_y = 78
+
+    @sprites["panel0"].zoom_x = scale
+    @sprites["panel0"].zoom_y = scale
+    @sprites["panel0"].x = center_x
+    @sprites["panel0"].y = start_y
+
+    if @sprites["player"]
+      @sprites["player"].zoom_x = scale
+      @sprites["player"].zoom_y = scale
+      @sprites["player"].x = center_x + (64 * scale)
+      @sprites["player"].y = start_y + (48 * scale)
+    end
+
+    6.times do |i|
+      if @sprites["party#{i}"]
+        @sprites["party#{i}"].zoom_x = scale
+        @sprites["party#{i}"].zoom_y = scale
+        @sprites["party#{i}"].x = center_x + ((240 + (60 * (i % 2))) * scale)
+        @sprites["party#{i}"].y = start_y + ((48 + (44 * (i / 2))) * scale)
+      end
+    end
+
+    next_y = start_y + (224 * scale) + 6
+    commands.length.times do |i|
+      next if i == 0
+      if @sprites["panel#{i}"]
+        @sprites["panel#{i}"].zoom_x = scale
+        @sprites["panel#{i}"].zoom_y = scale
+        @sprites["panel#{i}"].x = center_x
+        @sprites["panel#{i}"].y = next_y
+        next_y += (48 * scale) + 4
+      end
+    end
+  end
+
+  alias_method :orig_pbSetParty, :pbSetParty unless method_defined?(:orig_pbSetParty)
+
+  def pbSetParty(trainer)
+    orig_pbSetParty(trainer)
+    return unless @sprites["panel0"]
+
+    scale = 0.65
+    panel_w = 384
+    center_x = (Graphics.width - (panel_w * scale)) / 2
+    start_y = 78
+
+    if @sprites["player"]
+      charwidth  = @sprites["player"].bitmap ? @sprites["player"].bitmap.width : 32
+      charheight = @sprites["player"].bitmap ? @sprites["player"].bitmap.height : 48
+      @sprites["player"].zoom_x = scale
+      @sprites["player"].zoom_y = scale
+      @sprites["player"].x = center_x + (64 * scale) - (charwidth * scale / 8)
+      @sprites["player"].y = start_y + (80 * scale) - (charheight * scale / 8)
+    end
+
+    6.times do |i|
+      if @sprites["party#{i}"]
+        @sprites["party#{i}"].zoom_x = scale
+        @sprites["party#{i}"].zoom_y = scale
+        @sprites["party#{i}"].x = center_x + ((240 + (60 * (i % 2))) * scale)
+        @sprites["party#{i}"].y = start_y + ((80 + (48 * (i / 2))) * scale)
+      end
+    end
+  end
+
+  def pbUpdate
+    oldi = @sprites["cmdwindow"].index rescue 0
+    pbUpdateSpriteHash(@sprites)
+    newi = @sprites["cmdwindow"].index rescue 0
+    if oldi != newi
+      @sprites["panel#{oldi}"].selected = false if @sprites["panel#{oldi}"]
+      @sprites["panel#{oldi}"].pbRefresh if @sprites["panel#{oldi}"]
+      @sprites["panel#{newi}"].selected = true if @sprites["panel#{newi}"]
+      @sprites["panel#{newi}"].pbRefresh if @sprites["panel#{newi}"]
+    end
+  end
+
   def pbChoose(commands, continue_idx)
     @sprites["cmdwindow"].commands = commands
     loop do
@@ -181,12 +274,6 @@ class PokemonLoad_Scene
       pbUpdate
       if Input.trigger?(Input::USE)
         return @sprites["cmdwindow"].index
-      elsif @sprites["cmdwindow"].index == continue_idx
-        if Input.trigger?(Input::LEFT)
-          return -3
-        elsif Input.trigger?(Input::RIGHT)
-          return -2
-        end
       end
     end
   end
@@ -238,96 +325,75 @@ class PokemonLoadScreen
   end
 
   def pbStartLoadScreen
-    save_file_list = SaveData::AUTO_SLOTS + SaveData::MANUAL_SLOTS
-    first_time = true
-    loop do # Outer loop is used for switching save files
-      if @selected_file
-        @save_data = load_save_file(SaveData.get_full_path(@selected_file))
-      else
-        @save_data = {}
-      end
-      commands = []
-      cmd_continue     = -1
-      cmd_new_game     = -1
-      cmd_options      = -1
-      cmd_language     = -1
-      cmd_mystery_gift = -1
-      cmd_debug        = -1
-      cmd_quit         = -1
-      show_continue = !@save_data.empty?
-      if show_continue
-        commands[cmd_continue = commands.length] = " <- #{@selected_file} -> "
-        if @save_data[:player].mystery_gift_unlocked
-          commands[cmd_mystery_gift = commands.length] = _INTL('Mystery Gift') # Honestly I have no idea how to make Mystery Gift work well with this.
-        end
-      end
-      commands[cmd_new_game = commands.length]  = _INTL('New Game')
-      commands[cmd_options = commands.length]   = _INTL('Options')
-      commands[cmd_language = commands.length]  = _INTL('Language') if Settings::LANGUAGES.length >= 2
-      commands[cmd_debug = commands.length]     = _INTL('Debug') if $DEBUG
-      commands[cmd_quit = commands.length]      = _INTL('Quit Game')
-      cmd_left = -3
-      cmd_right = -2
+    @selected_file = SaveData.get_newest_save_slot
+    if @selected_file
+      @save_data = load_save_file(SaveData.get_full_path(@selected_file))
+    else
+      @save_data = {}
+    end
 
-      map_id = show_continue ? @save_data[:map_factory].map.map_id : 0
-      @scene.pbStartScene(commands, show_continue, @save_data[:player], @save_data[:stats], map_id)
-      @scene.pbSetParty(@save_data[:player]) if show_continue
-      if first_time
-        @scene.pbStartScene2
-        first_time = false
-      else
-        @scene.pbUpdate
-      end
+    commands = []
+    cmd_main     = -1
+    cmd_options  = -1
+    cmd_language = -1
+    cmd_debug    = -1
+    cmd_quit     = -1
 
-      loop do # Inner loop is used for going to other menus and back and stuff (vanilla)
-        command = @scene.pbChoose(commands, cmd_continue)
-        pbPlayDecisionSE if command != cmd_quit
+    show_continue = !@save_data.empty?
+    if show_continue
+      commands[cmd_main = commands.length] = _INTL('Continuer')
+    else
+      commands[cmd_main = commands.length] = _INTL('Nouvelle Partie')
+    end
 
-        case command
-        when cmd_continue
-          @scene.pbEndScene
+    commands[cmd_options = commands.length]  = _INTL('Options')
+    commands[cmd_language = commands.length] = _INTL('Language') if Settings::LANGUAGES.length >= 2
+    commands[cmd_debug = commands.length]    = _INTL('Debug') if $DEBUG
+    commands[cmd_quit = commands.length]     = _INTL('Quit Game')
+
+    map_id = show_continue ? @save_data[:map_factory].map.map_id : 0
+    @scene.pbStartScene(commands, show_continue, @save_data[:player], @save_data[:stats], map_id)
+    @scene.pbSetParty(@save_data[:player]) if show_continue
+    @scene.pbStartScene2
+
+    loop do
+      command = @scene.pbChoose(commands, -1)
+      pbPlayDecisionSE if command != cmd_quit
+
+      case command
+      when cmd_main
+        @scene.pbEndScene
+        if show_continue
           Game.load(@save_data)
-          return
-        when cmd_new_game
-          @scene.pbEndScene
-          Game.start_new
-          return
-        when cmd_mystery_gift
-          pbFadeOutIn { pbDownloadMysteryGift(@save_data[:player]) }
-        when cmd_options
-          pbFadeOutIn do
-            scene = PokemonOption_Scene.new
-            screen = PokemonOptionScreen.new(scene)
-            screen.pbStartScreen(true)
-          end
-        when cmd_language
-          @scene.pbEndScene
-          $PokemonSystem.language = pbChooseLanguage
-          MessageTypes.load_message_files(Settings::LANGUAGES[$PokemonSystem.language][1])
-          if show_continue
-            @save_data[:pokemon_system] = $PokemonSystem
-            File.open(SaveData.get_full_path(@selected_file), "wb") { |file| Marshal.dump(@save_data, file) }
-          end
-          $scene = pbCallTitle
-          return
-        when cmd_debug
-          pbFadeOutIn { pbDebugMenu(false) }
-        when cmd_quit
-          pbPlayCloseMenuSE
-          @scene.pbEndScene
-          $scene = nil
-          return
-        when cmd_left
-          @scene.pbCloseScene
-          @selected_file = SaveData.get_prev_slot(save_file_list, @selected_file)
-          break # to outer loop
-        when cmd_right
-          @scene.pbCloseScene
-          @selected_file = SaveData.get_next_slot(save_file_list, @selected_file)
-          break # to outer loop
         else
-          pbPlayBuzzerSE
+          Game.start_new
         end
+        return
+      when cmd_options
+        pbFadeOutIn do
+          scene = PokemonOption_Scene.new
+          screen = PokemonOptionScreen.new(scene)
+          screen.pbStartScreen(true)
+        end
+      when cmd_language
+        @scene.pbEndScene
+        $PokemonSystem.language = pbChooseLanguage
+        MessageTypes.load_message_files(Settings::LANGUAGES[$PokemonSystem.language][1])
+        if show_continue
+          @save_data[:pokemon_system] = $PokemonSystem
+          File.open(SaveData.get_full_path(@selected_file), "wb") { |file| Marshal.dump(@save_data, file) }
+        end
+        $scene = pbCallTitle
+        return
+      when cmd_debug
+        pbFadeOutIn { pbDebugMenu(false) }
+      when cmd_quit
+        pbPlayCloseMenuSE
+        @scene.pbEndScene
+        $scene = nil
+        return
+      else
+        pbPlayBuzzerSE
       end
     end
   end

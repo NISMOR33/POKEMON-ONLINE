@@ -3,7 +3,7 @@
 # no Redis. Postgres is the only datastore.
 source "https://rubygems.org"
 
-ruby "~> 3.1"
+ruby ">= 3.1"
 
 gem "pg",     "~> 1.5"    # PostgreSQL driver (native ext -> needs libpq-dev)
 gem "sequel", "~> 5.0"    # DB toolkit + migrations, without ActiveRecord weight

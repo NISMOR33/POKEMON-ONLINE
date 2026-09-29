@@ -27,7 +27,7 @@ module PEMK
   module Checkpoint
     MIN_INTERVAL        = 20.0  # floor for AMBIENT triggers (map/periodic/t1) — avoids map-hop serialize spam
     URGENT_MIN_INTERVAL = 1.0   # floor for HIGH-VALUE discrete gains — save within ~1s, not 20s
-    PERIODIC_S       = 120.0    # activity-gated catch-all (story flags, dex, ...)
+    PERIODIC_S       = 120.0    # unconditional catch-all (story flags, dex, ...)
     FAIL_COOLDOWN    = 60.0     # after a failed write; doubles per consecutive failure
     FAIL_COOLDOWN_MAX = 960.0
     PENDING_WARN_AGE = 300.0    # a request pending this long = a stuck gate; log once
@@ -148,8 +148,8 @@ module PEMK
         @push_pending = false if st == :pushed || st == :unchanged
       end
 
-      # Activity-gated periodic catch-all (unobserved mutations: switches, dex...).
-      request(:periodic) if @pending.nil? && @activity && (now - @last_cp) >= PERIODIC_S
+      # Periodic catch-all, including idle players (unobserved switches, dex...).
+      request(:periodic) if @pending.nil? && (now - @last_cp) >= PERIODIC_S
 
       return unless @pending
 
