@@ -1,10 +1,13 @@
-# 🌋 Pokémon Eternal Emerald MMO — Bilan Technique & Cahier des Charges (Housing & Peinture de Sol)
+# 🌋 Pokémon Eternal Emerald MMO — Bilan Technique & Documentation Modpack
 
-Ce document constitue le **bilan complet de l'état du système de Housing (Maison Joueur)**, des fonctionnalités implémentées, des problèmes de rendu graphique rencontrés et des pistes de résolution pour la suite du développement.
+> 📖 **DOCUMENTATION COMPLÈTE DU MODPACK & DU JEU :**  
+> Consultez le guide encyclopédique complet : **[`DOCUMENTATION_COMPLETE_MODPACK.md`](file:///c:/Users/brosi/POKEMON-ONLINE/DOCUMENTATION_COMPLETE_MODPACK.md)**  
+> *Inclus : 47+ Mods expliqués, 1 026+ Pokémon (Gen 1 à 9), 100+ Méga-Évolutions & Légendes Z, Système de Housing, Quêtes MQS et Guide d'Obtention.*
 
 ---
 
 ## 📌 1. Contexte & Architecture du Système
+
 
 Le système de **Housing** est une fonctionnalité multijoueur synchrone en temps réel (PEMK) permettant aux joueurs d'acheter, décorer et personnaliser leur propre maison.
 
