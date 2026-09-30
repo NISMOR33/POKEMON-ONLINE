@@ -53,6 +53,7 @@ module PEMK
                                  rolls: (@config.battle_enforce_encounters == :on ? @encounter_rolls : nil),
                                  resim: @config.battle_enforce_resim)   # D8: birth states
       @trades     = Trades.new(@db, resim: @config.battle_enforce_resim)   # D8: provisional trade hold
+      @housing    = Housing.new(@db, @ledger, logger: @log)                         # Phase A: player houses
       # M4 Layer A: read-only world model + detection-only interaction audit. Both are
       # in-memory and DB-free; a missing export just makes the audit a no-op.
       @world      = WorldData.new(@config.world_path, logger: @log)
@@ -293,7 +294,10 @@ module PEMK
       flags: [10, 1.0], flag_delta: [20, 4], gift_claim: [20, 4], gift_req: [10, 1.0], gift_applied: [10, 1.0],
       encounter_req: [10, 2], catch_req: [20, 6], battle_record: [6, 1], trade_commit: [6, 2],
       team_check: [10, 2], pickup_req: [20, 6], interact_claim: [30, 10], trade_applied: [6, 2], trade_owed: [4, 0.2], shop_req: [10, 2], money_claim: [10, 2],
-      pos: [40, 20], dir: [40, 20], step: [40, 20], spawn: [10, 2]
+      pos: [40, 20], dir: [40, 20], step: [40, 20], spawn: [10, 2],
+      # Housing Phase A -- 60 actions/min combined on house_* messages per connection.
+      house_enter: [6, 0.5], house_catalog: [6, 0.5],
+      house_buy: [10, 1], house_place: [30, 1], house_move: [30, 1], house_remove: [30, 1]
     }.freeze
     FRAME_BUDGET_DEFAULT = [30, 10].freeze
 
@@ -340,6 +344,12 @@ module PEMK
       when :trade_owed then handle_trade_owed(conn, authed)
       when :shop_req then handle_shop_req(conn, env, authed)
       when :money_claim then handle_money_claim(conn, env, authed)
+      when :house_enter   then handle_house_enter(conn, env, authed)
+      when :house_catalog then handle_house_catalog(conn, authed)
+      when :house_buy     then handle_house_buy(conn, env, authed)
+      when :house_place   then handle_house_place(conn, env, authed)
+      when :house_move    then handle_house_move(conn, env, authed)
+      when :house_remove  then handle_house_remove(conn, env, authed)
       when :pos, :dir, :step, :spawn then handle_presence(conn, env, authed)
       when *ADDRESSED then handle_addressed(conn, env, body, authed)
         when :chat then handle_chat(conn, env, authed)
@@ -2850,6 +2860,190 @@ module PEMK
         true
       end
     end
+
+
+# ======================================================================
+# Phase A -- Housing handlers
+# Pattern: per-player mailbox, DB on worker thread, reply on reactor.
+# account_id from session; character_id looked up server-side.
+# ======================================================================
+
+def character_id_for(account_id)
+  @db[:characters].where(account_id: account_id).get(:id)
+end
+
+def house_reply_error(conn, code, req_type)
+  @log.call("housing: #{code} (req=#{req_type}) account #{conn.data[:account_id]}")
+  reply(conn, type: :house_error, code: code, req: req_type)
+end
+
+# ---------------------------------------------------------------- enter --
+# house_enter -> house_state
+def handle_house_enter(conn, _env, account_id)
+  @mailbox.submit(account_id) do
+    char_id = character_id_for(account_id)
+    unless char_id
+      @reactor.post { house_reply_error(conn, "NOT_FOUND", :house_enter) if @reactor.alive?(conn) }
+      next
+    end
+    result = @housing.enter(char_id)
+    @reactor.post do
+      next unless @reactor.alive?(conn)
+      if result.is_a?(Array) && result.first == :error
+        house_reply_error(conn, result[1], :house_enter)
+      else
+        data = result
+        placed_json = JSON.generate(
+          (data[:placed] || []).map { |p|
+            { uid: p[:uid], catalog_id: p[:catalog_id], key: p[:key],
+              category: p[:category], x: p[:x], y: p[:y], rot: p[:rot],
+              footprint_w: p[:footprint_w], footprint_h: p[:footprint_h],
+              blocking: p[:blocking] }
+          }
+        )
+        inv_json = JSON.generate(
+          (data[:inventory] || []).map { |p|
+            { uid: p[:uid], catalog_id: p[:catalog_id], key: p[:key],
+              name: p[:name], category: p[:category],
+              footprint_w: p[:footprint_w], footprint_h: p[:footprint_h],
+              blocking: p[:blocking] }
+          }
+        )
+        house = data[:house]
+        reply(conn, type: :house_state,
+              house_id: house[:id], name: house[:name],
+              size_tier: house[:size_tier], visibility: house[:visibility],
+              version: data[:version],
+              grid_w: data[:grid_w], grid_h: data[:grid_h],
+              placed_json: placed_json,
+              inventory_json: inv_json)
+      end
+    end
+  end
+end
+
+# -------------------------------------------------------------- catalog --
+def handle_house_catalog(conn, account_id)
+  @pool.submit do
+    catalog = @housing.catalog
+    cat_json = JSON.generate(catalog)
+    @reactor.post do
+      next unless @reactor.alive?(conn)
+      reply(conn, type: :house_catalog_ok, catalog_json: cat_json)
+    end
+  rescue StandardError => e
+    @log.call("housing: catalog failed #{e.class}: #{e.message}")
+    @reactor.post { house_reply_error(conn, "NOT_FOUND", :house_catalog) if @reactor.alive?(conn) }
+  end
+end
+
+# ----------------------------------------------------------------- buy --
+def handle_house_buy(conn, env, account_id)
+  catalog_id = env[:catalog_id]
+  qty        = env[:qty]
+  unless catalog_id.is_a?(Integer) && qty.is_a?(Integer) && qty.between?(1, PEMK::MAX_BUY_QTY)
+    return house_reply_error(conn, "INVALID_INPUT", :house_buy)
+  end
+  @mailbox.submit(account_id) do
+    char_id = character_id_for(account_id)
+    unless char_id
+      @reactor.post { house_reply_error(conn, "NOT_FOUND", :house_buy) if @reactor.alive?(conn) }
+      next
+    end
+    result = @housing.buy(char_id, account_id, catalog_id, qty)
+    @reactor.post do
+      next unless @reactor.alive?(conn)
+      if result.first == :error
+        house_reply_error(conn, result[1], :house_buy)
+      else
+        _, balance, new_uids = result
+        reply(conn, type: :house_buy_ok, balance: balance,
+              uids_json: JSON.generate(new_uids))
+      end
+    end
+  end
+end
+
+# --------------------------------------------------------------- place --
+def handle_house_place(conn, env, account_id)
+  uid, x, y, rot, bv = env[:furniture_uid], env[:x], env[:y], env[:rot], env[:base_version]
+  unless uid.is_a?(String) && x.is_a?(Integer) && y.is_a?(Integer) &&
+         rot.is_a?(Integer) && [0, 90, 180, 270].include?(rot) && bv.is_a?(Integer)
+    return house_reply_error(conn, "INVALID_INPUT", :house_place)
+  end
+  @mailbox.submit(account_id) do
+    char_id = character_id_for(account_id)
+    unless char_id
+      @reactor.post { house_reply_error(conn, "NOT_FOUND", :house_place) if @reactor.alive?(conn) }
+      next
+    end
+    result = @housing.place(char_id, uid, x, y, rot, bv)
+    @reactor.post do
+      next unless @reactor.alive?(conn)
+      if result.first == :error
+        house_reply_error(conn, result[1], :house_place)
+      else
+        reply(conn, type: :house_place_ok, furniture_uid: uid,
+              x: x, y: y, rot: rot, version: result[1])
+      end
+    end
+  end
+end
+
+# ---------------------------------------------------------------- move --
+def handle_house_move(conn, env, account_id)
+  uid, x, y, rot, bv = env[:furniture_uid], env[:x], env[:y], env[:rot], env[:base_version]
+  unless uid.is_a?(String) && x.is_a?(Integer) && y.is_a?(Integer) &&
+         rot.is_a?(Integer) && [0, 90, 180, 270].include?(rot) && bv.is_a?(Integer)
+    return house_reply_error(conn, "INVALID_INPUT", :house_move)
+  end
+  @mailbox.submit(account_id) do
+    char_id = character_id_for(account_id)
+    unless char_id
+      @reactor.post { house_reply_error(conn, "NOT_FOUND", :house_move) if @reactor.alive?(conn) }
+      next
+    end
+    result = @housing.move(char_id, uid, x, y, rot, bv)
+    @reactor.post do
+      next unless @reactor.alive?(conn)
+      if result.first == :error
+        house_reply_error(conn, result[1], :house_move)
+      else
+        reply(conn, type: :house_move_ok, furniture_uid: uid,
+              x: x, y: y, rot: rot, version: result[1])
+      end
+    end
+  end
+end
+
+# -------------------------------------------------------------- remove --
+def handle_house_remove(conn, env, account_id)
+  uid = env[:furniture_uid]
+  bv  = env[:base_version]
+  unless uid.is_a?(String) && bv.is_a?(Integer)
+    return house_reply_error(conn, "INVALID_INPUT", :house_remove)
+  end
+  @mailbox.submit(account_id) do
+    char_id = character_id_for(account_id)
+    unless char_id
+      @reactor.post { house_reply_error(conn, "NOT_FOUND", :house_remove) if @reactor.alive?(conn) }
+      next
+    end
+    result = @housing.remove(char_id, uid, bv)
+    @reactor.post do
+      next unless @reactor.alive?(conn)
+      if result.first == :error
+        house_reply_error(conn, result[1], :house_remove)
+      else
+        reply(conn, type: :house_remove_ok, furniture_uid: uid, version: result[1])
+      end
+    end
+  end
+end
+
+# ======================================================================
+# End housing handlers
+# ======================================================================
 
     def install_signal_handlers
       %w[INT TERM].each { |sig| Signal.trap(sig) { @reactor.stop } }

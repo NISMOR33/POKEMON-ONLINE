@@ -1,128 +1,84 @@
-# 🌋 Pokémon Eternal Emerald MMO (Édition Française)
+# 🌋 Pokémon Eternal Emerald MMO — Bilan Technique & Cahier des Charges (Housing & Peinture de Sol)
 
-Bienvenue sur le dépôt officiel de **Pokémon Eternal Emerald MMO**. Ce projet combine la région complète de Hoenn (Pokémon Émeraude) avec un moteur multijoueur synchrone en temps réel basé sur **Ruby** et **PostgreSQL**.
-
----
-
-## 🌟 Fonctionnalités du Projet
-
-- 🗺️ **Région de Hoenn (Émeraude Complète)** : Cartes intégrales d'Émeraude avec météo, événements, arènes et zones secrètes.
-- 👥 **Multijoueur Temps Réel (PEMK)** : Visualisation synchrone des autres dresseurs sur la carte.
-- 💬 **Chat Émeraude** : **T** ouvre la saisie et l’historique. Panneau bleu nuit, accents verts, bulles ivoire avec pseudos et fondu en temps réel.
-- 🔐 **Système de Compte & Connexion** : Fenêtre de Login / Création de compte intégrée au jeu lors du clic sur **New Game**.
-- ⚡ **Vitesse réglable** : **F4** alterne entre **×1, ×1,5 et ×2**, selon les options du jeu.
-- 🛠️ **Lanceurs 1-Clic (`.bat`)** :
-  - `0_Restart_Serveur.bat` : Démarre/Redémarre PostgreSQL et le serveur Ruby.
-  - `1_Lancer_Joueur_1.bat` : Lance le jeu principal (Joueur 1).
-  - `2_Lancer_Joueur_2.bat` : Lance une 2ème fenêtre indépendante (Joueur 2 / Invité) sur le même PC.
+Ce document constitue le **bilan complet de l'état du système de Housing (Maison Joueur)**, des fonctionnalités implémentées, des problèmes de rendu graphique rencontrés et des pistes de résolution pour la suite du développement.
 
 ---
 
-## 🖥️ Prérequis pour travailler depuis ton PC chez toi
+## 📌 1. Contexte & Architecture du Système
 
-Pour pouvoir exécuter et modifier le jeu sur ton ordinateur personnel, tu dois installer les logiciels suivants :
+Le système de **Housing** est une fonctionnalité multijoueur synchrone en temps réel (PEMK) permettant aux joueurs d'acheter, décorer et personnaliser leur propre maison.
 
-1. **RPG Maker XP** (Logiciel d'édition des cartes et événements `Game.rxproj`).
-2. **Ruby 3.1.x (x64)** (Nécessaire pour exécuter le serveur réseau PEMK).
-   - Téléchargeable sur [rubyinstaller.org](https://rubyinstaller.org/).
-   - Coche l'option d'ajout au `PATH` lors de l'installation.
-3. **PostgreSQL 16** (Base de données du serveur MMO).
-   - Port de connexion utilisé : **`55433`** (ou port par défaut `5432` réajustable).
-   - Utilisateur : `postgres` | Mot de passe : `pemk_dev` | Base : `pemk_eternal_emerald`.
-4. **Git for Windows** (Pour cloner et pousser le code).
+### 📐 Configuration de la carte & de la grille
+- **Carte modèle :** Map ID 927 (`Maison Joueur Modèle`).
+- **Grille Tier 1 (Taille S) :** 11 colonnes × 7 lignes.
+- **Origine de la grille sur la carte :** `GRID_ORIGIN_X = 0`, `GRID_ORIGIN_Y = 2`.
+- **Case d'entrée / Téléportation :** Grille `[3, 6]` (Carte `(3, 8)`).
+- **Zone de sortie (paillasson) :** Ligne `y = 9`, colonnes `x = 2..4`.
 
----
-
-## 🚀 Guide de Démarrage Rapide (Chez toi)
-
-### Étape 1 : Cloner le projet Git
-Ouvre un terminal (PowerShell ou Git Bash) et exécute :
-```bash
-git clone https://github.com/NISMOR33/POKEMON-ONLINE.git
-cd POKEMON-ONLINE
-```
-
-### Étape 2 : Installer les dépendances du serveur Ruby
-```bash
-cd server
-bundle install
-bundle exec rake db:migrate
-```
-
-### Étape 3 : Lancer le jeu et le serveur
-De retour dans le dossier principal du projet :
-1. Double-clique sur **`0_Restart_Serveur.bat`** pour démarrer PostgreSQL et le serveur Ruby.
-2. Double-clique sur **`1_Lancer_Joueur_1.bat`** pour ouvrir ton jeu.
-3. (Optionnel) Double-clique sur **`2_Lancer_Joueur_2.bat`** pour tester le multijoueur avec 2 fenêtres à côté.
+### 🗂️ Fichiers du projet concernés
+- **`Plugins/PEMK_Housing/001_HousingConfig.rb`** : Constantes de grille, 10 bitmaps de motifs de sol procéduraux, helpers `set_floor_tile` et `fill_floor`.
+- **`Plugins/PEMK_Housing/002_HousingNet.rb`** : Communication réseau client/serveur (`house_enter`, `house_floor_paint`).
+- **`Plugins/PEMK_Housing/003_HousingMenu.rb`** : Menu de téléportation PNJ hôtel et gestionnaire d'entrée/sortie.
+- **`Plugins/PEMK_Housing/004_HousingRenderer.rb`** : Rendu graphique du sol (`@floor_sprite`), des meubles, calcul des Z-indexes et de la passabilité.
+- **`Plugins/PEMK_Housing/005_HousingEditor.rb`** : Mode édition/décoration, machine à états du mode peinture (Sélection motif vs Sélection zone), HUDs et entrées clavier/souris.
+- **`Plugins/PEMK_Housing/007_HousingJSON.rb`** : Parseur JSON autonome en Ruby pur (sans dépendance stdlib).
+- **`Plugins/Save Status HUD/Save_Status.rb`** : Masquage du HUD de sauvegarde ("Il y a X s") pendant le mode décoration.
+- **`server/lib/pemk/housing.rb`** : Serveur Ruby autoritaire (PostgreSQL), persistance de `floor_paint` dans `houses.appearance_json`.
 
 ---
 
-## 🎮 Commandes et Raccourcis en Jeu
+## ✅ 2. Fonctionnalités Valides et Fonctionnelles
 
-Profil **clavier AZERTY français + souris**. Les anciens réglages F1 ne sont plus utilisés ; **F1 sur la carte ouvre l’aide**.
-
-| Touche | Action |
-| --- | --- |
-| **Z Q S D / Flèches** | Se déplacer et naviguer |
-| **E / C / Entrée / Espace / clic gauche** | Interagir, valider la sélection, avancer les dialogues |
-| **Échap / X / clic droit** | Ouvrir le menu sur la carte ; annuler/revenir ailleurs |
-| **Maj maintenue** | Courir, ou marcher si la course automatique est activée ; chaussures et terrain requis |
-| **Tab** | Menu sur la carte ; action secondaire selon l’écran (combat, sac, résumé…) |
-| **F** | Objets enregistrés et capacités de terrain ; action spéciale selon l’écran |
-| **T** | Ouvrir le chat sur la carte, hors dialogue/événement/menu |
-| **A / Page précédente** | Fonction/page précédente ; afficher/masquer le Pokémon suiveur sur la carte |
-| **R / Page suivante** | Fonction/page suivante, selon l’écran |
-| **V** | Seconde action auxiliaire si utilisée par un écran |
-| **F4** | Vitesse ×1 / ×1,5 / ×2, selon les options |
-| **F1** | Aide des commandes sur la carte |
-| **F8** | Capture d’écran |
-| **F9** | Menu debug, seulement en mode debug |
-| **Alt + Entrée** | Plein écran |
-
-**Saisie de texte :** les lettres et espaces sont réservés au texte, Entrée valide, Échap annule, Retour arrière efface. Les raccourcis de jeu sont suspendus pendant la saisie et hors de la fenêtre active. Alt + Entrée ne valide pas un choix de jeu.
-
-**Souris :** le clic gauche valide l’élément déjà sélectionné ; il ne déplace pas le personnage et ne sélectionne pas automatiquement un bouton sous le pointeur. Les clics hors de la fenêtre sont ignorés. F12 ne réinitialise plus la partie.
-
+1. **Masquage du HUD de Sauvegarde :** Le bandeau "Il y a X s" est correctement masqué pendant le mode décoration (`HousingEditor.active?`).
+2. **Dimensions de la Grille Tier 1 :** Grille ajustée à 11×7 avec l'entrée abaissée à `[3, 6]`.
+3. **Parseur JSON Pure-Ruby :** `HousingJSON.dump` et `HousingJSON.generate` opérationnels (résolvant les exceptions `NoMethodError`).
+4. **Flux du Mode Peinture de Sol en 2 Étapes :**
+   - **Étape 1 :** Ouverture du catalogue à gauche, sélection du motif avec flèches/souris, validation par `Entrée`.
+   - **Étape 2 :** Le catalogue se ferme. Un badge indicatif s'affiche en haut à gauche (`SOL : [MOTIF] Clic: Changer`). Un clic sur le badge ou la touche `Tab` réouvre le catalogue.
+   - **Étape 3 (Sélection de zone) :** Clic/Entrée 1 = fixation du 1er coin (`@zone_start`). Déplacement du curseur = rectangle vert de surbrillance (`W × H`). Clic/Entrée 2 = application du motif sur la zone (`x1..x2, y1..y2`).
 
 ---
 
-## 📁 Structure du Projet
+## ⚠️ 3. Problème Persistant : Superposition du Joueur et du Sol/Meubles (Z-Ordering)
 
-```text
-POKEMON-ONLINE/
-├── 0_Restart_Serveur.bat      # Script de démarrage du serveur & DB
-├── 1_Lancer_Joueur_1.bat      # Script de lancement Joueur 1
-├── 2_Lancer_Joueur_2.bat      # Script de lancement Joueur 2 (Mode Invité)
-├── Game.exe                   # Exécutable du jeu (moteur MKXP-z)
-├── Game.rxproj                # Fichier de projet RPG Maker XP
-├── Data/                      # Fichiers de cartes (.rxdata)
-├── Graphics/                  # Sprites, décors, interfaces
-├── PBS/                       # Données brutes (Pokémon, capacités, objets traduits)
-├── Plugins/                   # Plugins Ruby (Moteur PEMK, Chat HUD, SpeedUp, etc.)
-└── server/                    # Code source du serveur multijoueur Ruby + Sequel DB
-```
+### 🔴 Symptôme du Problème
+Le personnage du joueur (`$game_player`) passe **sous le sol peint** (`@floor_sprite`) ou **sous certains meubles**, le rendant invisible ou partiellement masqué lorsqu'il se déplace sur la carte.
 
-## Sauvegarde automatique
+### 🧪 Essais et Tentatives Déjà Effectués
 
-La partie se sauvegarde toutes les **2 minutes réelles**, même sans marcher.
-Si un combat, dialogue, menu, déplacement ou événement est en cours, la sauvegarde
-attend le prochain instant sûr. L'accélération F4 ne raccourcit pas ce délai.
+1. **`@floor_sprite.z = -5`** :
+   - *Résultat :* Le sol peint était totalement invisible car dessiné derrière la couche de sol par défaut du Tilemap RMXP (`Z = 0`).
+2. **`@floor_sprite.z = 1`** :
+   - *Résultat :* Le sol devenait visible sur la carte, mais s'affichait au-dessus du joueur quand celui-ci marchait dessus.
+3. **`@floor_sprite.z = 0` avec récupération de `viewport1` via inspection réflexive** :
+   - *Résultat :* Correction des erreurs `NameError` sur `instance_variable_defined?`, mais le sprite du joueur continue d'être masqué par les tuiles de sol ou les meubles selon les lignes Y.
+4. **Ajustements de la formule Z des meubles solides (`y * 32 + 1` vs `y * 32 + 16`)** :
+   - *Résultat :* Problèmes de profondeur lorsque le joueur se tient sur la même ligne Y que la base d'un meuble.
 
-En MMO, le système existant conserve aussi ses sauvegardes après les gains importants
-et synchronise avec le serveur ; une connexion interrompue est réessayée en arrière-plan.
-Hors ligne, les trois emplacements **Auto 1 / Auto 2 / Auto 3** tournent sans remplacer
-les sauvegardes manuelles. Une écriture échouée conserve le fichier précédent et est
-réessayée après 60 secondes. La sauvegarde manuelle reste disponible.
+---
 
-Un indicateur en haut à droite de la carte affiche une disquette et **Sauvegarde en cours…**, puis **Sauvegardé !** et l’âge de la dernière sauvegarde. Il distingue les échecs et les sauvegardes locales dont la synchronisation serveur est encore en attente. Le temps affiché est réel, même avec F4.
+## 💡 4. Pistes & Recommandations pour la Prochaine IA / Développeur
 
-## Chat Émeraude
+Dans le moteur Pokémon Essentials d'origine (RPG Maker XP / MKXP) :
 
-**T** ouvre le panneau de discussion et son champ de saisie. **Entrée** envoie,
-**Échap** ferme en conservant le brouillon. **Page précédente / suivante** parcourent
-les 80 derniers messages de la session. Un message non envoyé reste dans le champ.
-Le panneau est complètement masqué tant que T n’est pas pressé ; Échap le referme sans bandeau permanent.
-Les bulles sont limitées à quatre lignes (texte complet dans l’historique), restent
-dans l’écran et disparaissent après 5 à 10 secondes réelles, même avec F4.
+### Piste 1 : Fonctionnement des Bases Secrètes d'origine (`PField_SecretBases`)
+Dans les bases secrètes officielles de Pokémon Essentials :
+- Les **décorations / meubles** ne sont pas des `Sprite` autonomes gérés manuellement, mais des instances d'**Événements de carte (`Game_Event`)**.
+- Comme chaque objet est un `Game_Event`, il hérite nativement de `Game_Character#screen_z` (`y * 32 + 32`). Le moteur trie ainsi automatiquement le joueur et les meubles sans aucun décalage.
 
-L’indicateur de sauvegarde utilise une petite pastille de 108 × 20 pixels en haut à droite, avec une disquette et une seule ligne (état ou temps écoulé).
+### Piste 2 : Modification directe de la table de données de la Carte (`$game_map.map.data`)
+- Pour les **motifs de sol (peinture de sol)**, la méthode la plus propre dans RPG Maker XP consiste à modifier directement la table de données de la carte `$game_map.map.data[x, y, 0]` avec les Tile IDs correspondants du Tileset.
+- Étant donné que ces tuiles deviennent directement gérées par la classe C++ `Tilemap` du moteur au niveau de la couche 0, elles restent **toujours sous le joueur, sous les événements et sous les meubles**, sans nécessiter de `Sprite` séparé.
+
+---
+
+## 📝 5. Résumé des Modifications à Pousser sur Git
+- `Plugins/PEMK_Housing/001_HousingConfig.rb`
+- `Plugins/PEMK_Housing/002_HousingNet.rb`
+- `Plugins/PEMK_Housing/004_HousingRenderer.rb`
+- `Plugins/PEMK_Housing/005_HousingEditor.rb`
+- `Plugins/PEMK_Housing/007_HousingJSON.rb`
+- `Plugins/Save Status HUD/Save_Status.rb`
+- `server/lib/pemk/housing.rb`
+- `README.md` (mis à jour avec ce bilan technique)
+

@@ -121,6 +121,20 @@ module PEMK
         BattleSetup.on_team(msg)
       when :battle_start, :battle_choice, :battle_round, :battle_switch, :battle_end
         BattleNet.on_message(msg)
+      when :house_state
+        PEMK::Housing.on_house_state(msg) if defined?(PEMK::Housing)
+      when :house_catalog_ok
+        PEMK::Housing.on_house_catalog_ok(msg) if defined?(PEMK::Housing)
+      when :house_buy_ok
+        PEMK::Housing.on_house_buy_ok(msg) if defined?(PEMK::Housing)
+      when :house_place_ok
+        PEMK::Housing.on_house_place_ok(msg) if defined?(PEMK::Housing)
+      when :house_move_ok
+        PEMK::Housing.on_house_move_ok(msg) if defined?(PEMK::Housing)
+      when :house_remove_ok
+        PEMK::Housing.on_house_remove_ok(msg) if defined?(PEMK::Housing)
+      when :house_error
+        PEMK::Housing.on_house_error(msg) if defined?(PEMK::Housing)
       when NetClient::DISCONNECTED
         PEMK.log("disconnected from server")
         PosCorrect.reset                 # drop any un-applied snap-back from the dead session
