@@ -46,15 +46,11 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // --- 2. GEOJSON VECTOR ROUTE OVERLAYS (EXACT COORDINATE ALIGNMENT) ---
+  // --- 2. GEOJSON VECTOR ROUTE OVERLAYS (EXACT 100% ALIGNMENT) ---
   const vectorLayersByName = {};
 
   if (window.OverworldVector) {
     L.geoJson(window.OverworldVector, {
-      coordsToLatLng: function (coords) {
-        // Leaflet CRS.Simple requires L.latLng(y, x) where GeoJSON is [x, y]
-        return L.latLng(coords[1], coords[0]);
-      },
       style: function () {
         return {
           color: '#00ff99',
