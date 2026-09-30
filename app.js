@@ -1,4 +1,4 @@
-// PKMNMap Interactive Engine & Master Pokémon Catalog
+// Professional Leaflet Map Engine & Master Pokémon Catalog
 document.addEventListener('DOMContentLoaded', () => {
   const masterData = window.PRO_MAP_DATA;
   if (!masterData) {
@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', () => {
     return;
   }
 
-  // --- 1. LEAFLET MAP INITIALIZATION WITH PKMNMAP HIGH-RES TILES ---
+  // --- 1. LEAFLET MAP INITIALIZATION ---
   const tileBounds = L.latLngBounds(L.latLng(-95.7421875, 0), L.latLng(0, 199.9921875));
 
   const map = L.map('map', {
@@ -18,7 +18,7 @@ document.addEventListener('DOMContentLoaded', () => {
     maxBounds: tileBounds
   });
 
-  // Main Overworld TileLayer from PKMNMap Content Server
+  // TileLayer (PKMNMap Overworld Tiles)
   let currentShortname = "OverworldTrainers";
   let tileLayer = L.tileLayer(`https://pkmnmap.com/Maps/Emerald/Content/Tilesets/${currentShortname}/{z}/{x}/{y}.png`, {
     minZoom: 3,
@@ -27,9 +27,9 @@ document.addEventListener('DOMContentLoaded', () => {
     bounds: tileBounds
   }).addTo(map);
 
-  map.setView([-47, 100], 4);
+  map.setView([-47.87, 100], 4);
 
-  // Scope Switch (Overworld vs Underwater)
+  // Scope Switch (Monde Normal vs Sous l'Eau)
   document.querySelectorAll('.scope-button').forEach(btn => {
     btn.addEventListener('click', () => {
       document.querySelectorAll('.scope-button').forEach(b => b.classList.remove('active'));
@@ -46,12 +46,16 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // --- 2. VECTOR OVERLAY LAYERS (GEOJSON ROUTES) ---
+  // --- 2. GEOJSON VECTOR ROUTE OVERLAYS (EXACT COORDINATE ALIGNMENT) ---
   const vectorLayersByName = {};
 
   if (window.OverworldVector) {
-    const geoJsonLayer = L.geoJson(window.OverworldVector, {
-      style: function (feature) {
+    L.geoJson(window.OverworldVector, {
+      coordsToLatLng: function (coords) {
+        // Leaflet CRS.Simple requires L.latLng(y, x) where GeoJSON is [x, y]
+        return L.latLng(coords[1], coords[0]);
+      },
+      style: function () {
         return {
           color: '#00ff99',
           weight: 1.5,
@@ -69,14 +73,14 @@ document.addEventListener('DOMContentLoaded', () => {
         layer.bindTooltip(`<strong>${props.name}</strong>`, { sticky: true });
 
         layer.on('mouseover', function () {
-          this.setStyle({ fillOpacity: 0.5, weight: 2.5, color: '#ffffff' });
+          this.setStyle({ fillOpacity: 0.55, weight: 2.5, color: '#ffffff' });
         });
 
         layer.on('mouseout', function () {
           this.setStyle({ fillOpacity: 0.15, weight: 1.5, color: '#00ff99' });
         });
 
-        layer.on('click', function (e) {
+        layer.on('click', function () {
           openInfoPanel(props);
           map.fitBounds(layer.getBounds(), { maxZoom: 6, animate: true, duration: 0.5 });
         });
@@ -107,13 +111,11 @@ document.addEventListener('DOMContentLoaded', () => {
       `;
 
       card.addEventListener('click', () => {
-        // Find matching vector layer or fallback point
         const matches = vectorLayersByName[m.name.toLowerCase()];
         if (matches && matches[0]) {
           openInfoPanel(matches[0].props);
           map.fitBounds(matches[0].layer.getBounds(), { maxZoom: 6, animate: true, duration: 0.5 });
         } else {
-          // Open info panel with PBS encounters
           openInfoPanelFromPBS(m);
         }
       });
@@ -128,7 +130,7 @@ document.addEventListener('DOMContentLoaded', () => {
     renderControlPanel(e.target.value.trim());
   });
 
-  // --- 4. RIGHT INFO PANEL (ROUTE ENCOUNTERS TABLE) ---
+  // --- 4. RIGHT INFO PANEL (EXACT PKMNMAP ENCOUNTERS TABLE) ---
   const infoPanel = document.getElementById('infoPanel');
   const btnCloseInfo = document.getElementById('btnCloseInfo');
   const infoTitle = document.getElementById('infoTitle');
@@ -138,7 +140,6 @@ document.addEventListener('DOMContentLoaded', () => {
     infoPanel.classList.remove('hidden');
     infoTitle.innerText = props.name;
 
-    // Check if props has Pokemon object or fallback to masterData
     let encounters = props["Pokemon"] || props["Pokémon"];
     if (!encounters || Object.keys(encounters).length === 0) {
       const pbsMatch = Object.values(masterData.encountersByMap).find(m => m.name.toLowerCase() === props.name.toLowerCase());
@@ -154,12 +155,11 @@ document.addEventListener('DOMContentLoaded', () => {
   function openInfoPanelFromPBS(pbsMatch) {
     infoPanel.classList.remove('hidden');
     infoTitle.innerText = pbsMatch.name;
-
     infoBody.innerHTML = '';
 
     const types = pbsMatch.types;
-    if (Object.keys(types).length === 0) {
-      infoBody.innerHTML = `<div style="padding: 20px; text-align: center; color: var(--text-muted);">Aucun Pokémon sauvage configuré sur cette zone.</div>`;
+    if (!types || Object.keys(types).length === 0) {
+      infoBody.innerHTML = `<div style="padding: 24px; text-align: center; color: var(--text-muted);">Aucun Pokémon sauvage configuré sur cette zone.</div>`;
       return;
     }
 
@@ -204,7 +204,7 @@ document.addEventListener('DOMContentLoaded', () => {
     infoBody.innerHTML = '';
 
     if (!encounters || Object.keys(encounters).length === 0) {
-      infoBody.innerHTML = `<div style="padding: 20px; text-align: center; color: var(--text-muted);">Aucune rencontre disponible.</div>`;
+      infoBody.innerHTML = `<div style="padding: 24px; text-align: center; color: var(--text-muted);">Aucune rencontre disponible.</div>`;
       return;
     }
 
@@ -231,7 +231,7 @@ document.addEventListener('DOMContentLoaded', () => {
         let rateClass = rateVal >= 35 ? 'rate-high' : (rateVal >= 15 ? 'rate-mid' : 'rate-low');
 
         tableHtml += `
-          <tr>
+          <tr style="cursor: pointer;" onclick="window.openPokemonCatalogModalFor('${e.name}')">
             <td class="pkmn-cell-icon"><img src="${spriteUrl}" alt="${e.name}" onerror="this.src='https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/poke-ball.png'"></td>
             <td style="font-weight: 700; color: #fff;">${e.name}</td>
             <td style="color: var(--cyan-accent);">${e.area || area}</td>
@@ -262,11 +262,12 @@ document.addEventListener('DOMContentLoaded', () => {
       case 'SuperRod': return '🎣 Méga Canne';
       case 'HeadbuttLow': return '🌳 Coup de Boule';
       case 'HeadbuttHigh': return '🌳 Coup de Boule Rare';
+      case 'BugContest': return '🦋 Concours';
       default: return tKey;
     }
   }
 
-  // --- 5. MASTER POKEMON CATALOG MODAL (ALL 1,024 POKEMON) ---
+  // --- 5. MASTER POKEMON CATALOG MODAL (ALL 1,024 POKEMON + UNOBTAINABLE FILTER) ---
   const btnCatalog = document.getElementById('btnCatalog');
   const catalogModal = document.getElementById('catalogModal');
   const btnCloseCatalog = document.getElementById('btnCloseCatalog');
@@ -303,7 +304,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const filtered = masterData.pokemonCatalog.filter(sp => {
       const matchQuery = sp.name.toLowerCase().includes(query) || sp.id.toLowerCase().includes(query) || sp.dex.toString().includes(query);
-      const matchGen = selectedGen === 'ALL' || sp.gen.toString() === selectedGen;
+      
+      let matchGen = true;
+      if (selectedGen === 'UNOBTAINABLE') {
+        matchGen = !sp.isWild;
+      } else if (selectedGen !== 'ALL') {
+        matchGen = sp.gen.toString() === selectedGen;
+      }
+
       return matchQuery && matchGen;
     });
 
@@ -315,6 +323,10 @@ document.addEventListener('DOMContentLoaded', () => {
       const spriteUrl = `https://play.pokemonshowdown.com/sprites/gen5/${clean}.png`;
       const locCount = sp.locations ? sp.locations.length : 0;
 
+      const locBadge = sp.isWild 
+        ? `<div class="loc-count">📍 ${locCount} Zone(s) d'apparition</div>`
+        : `<div style="font-size: 0.72rem; color: var(--amber-accent); font-weight: 600;">🚫 Non Obtenable Sauvage</div>`;
+
       card.innerHTML = `
         <img src="${spriteUrl}" alt="${sp.name}" onerror="this.src='https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/poke-ball.png'">
         <div style="flex: 1;">
@@ -322,7 +334,7 @@ document.addEventListener('DOMContentLoaded', () => {
             <strong style="font-family: var(--font-heading); font-size: 0.95rem; color: #fff;">${sp.name}</strong>
             <span class="badge-gen ${sp.gen === 9 ? 'gen-9' : ''}">Gen ${sp.gen}</span>
           </div>
-          <div class="loc-count">📍 ${locCount} Zone(s) d'apparition</div>
+          ${locBadge}
         </div>
       `;
 
@@ -340,8 +352,8 @@ document.addEventListener('DOMContentLoaded', () => {
   const spawnModalBody = document.getElementById('spawnModalBody');
   const btnCloseSpawnModal = document.getElementById('btnCloseSpawnModal');
 
-  window.openPokemonCatalogModalFor = function(speciesId) {
-    const sp = masterData.pokemonCatalog.find(s => s.id.toUpperCase() === speciesId.toUpperCase());
+  window.openPokemonCatalogModalFor = function(speciesQuery) {
+    const sp = masterData.pokemonCatalog.find(s => s.id.toUpperCase() === speciesQuery.toUpperCase() || s.name.toLowerCase() === speciesQuery.toLowerCase());
     if (sp) openSpawnModal(sp);
   };
 
@@ -355,7 +367,7 @@ document.addEventListener('DOMContentLoaded', () => {
         <img src="${spriteUrl}" style="width: 44px; height: 44px; object-fit: contain;">
         <div>
           <h3 style="font-family: var(--font-heading); font-size: 1.15rem; color: #fff;">${sp.name}</h3>
-          <span style="font-size: 0.78rem; color: var(--emerald-accent);">Génération ${sp.gen} • ${sp.locations ? sp.locations.length : 0} Zone(s) d'apparition</span>
+          <span style="font-size: 0.78rem; color: var(--emerald-accent);">Génération ${sp.gen} • ${sp.isWild ? `${sp.locations.length} Zone(s) d'apparition` : 'Pokémon Non Obtenable Sauvage'}</span>
         </div>
       </div>
       <button id="btnCloseSpawnModalInner" class="btn-close"><i class="fa-solid fa-xmark"></i></button>
@@ -368,7 +380,19 @@ document.addEventListener('DOMContentLoaded', () => {
     spawnModalBody.innerHTML = '';
 
     if (!sp.locations || sp.locations.length === 0) {
-      spawnModalBody.innerHTML = `<div style="padding: 20px; text-align: center; color: var(--text-muted);">Aucune rencontre sauvage directe enregistrée.</div>`;
+      spawnModalBody.innerHTML = `
+        <div style="padding: 24px; text-align: center; color: var(--text-muted);">
+          <i class="fa-solid fa-ban" style="font-size: 2.5rem; color: var(--amber-accent); margin-bottom: 10px;"></i>
+          <p style="font-size: 1rem; color: #fff; font-weight: 700; margin-bottom: 6px;">Pokémon Non Obtenable en Rencontre Sauvage</p>
+          <p style="font-size: 0.82rem;">Ce Pokémon ne s'attrape pas dans l'herbe/eau de manière sauvage. Il s'obtient via :</p>
+          <ul style="text-align: left; max-width: 380px; margin: 12px auto 0; font-size: 0.8rem; line-height: 1.6; color: var(--emerald-accent);">
+            <li>• Évolutions / Reproduction</li>
+            <li>• Quêtes scénarisées dans le journal MQS</li>
+            <li>• PNJ Form Trader (Échanges de Formes)</li>
+            <li>• Événements & Codes Cadeau Mystère</li>
+          </ul>
+        </div>
+      `;
       return;
     }
 

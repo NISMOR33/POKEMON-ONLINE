@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Pokémon Eternal Emerald MMO — Carte Interactive Officielle du Monde</title>
-  <meta name="description" content="Carte interactive officielle de Pokémon Eternal Emerald MMO. Explorez l'intégralité du monde Émeraude, toutes les routes, villes, grottes et rencontres de Gen 1 à Gen 9.">
+  <meta name="description" content="Carte interactive officielle de Pokémon Eternal Emerald MMO avec Leaflet.js, filtres de routes, Pokémon de Gen 1 à Gen 9 et localisateur complet.">
   
   <!-- Leaflet CSS -->
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
@@ -30,9 +30,13 @@
         <i class="fa-solid fa-dragon"></i>
         <span>Catalogue Master Pokémon (1 024)</span>
       </button>
+      <a href="POKEMON_NON_OBTENABLES.md" target="_blank" class="btn-nav" style="text-decoration: none; color: var(--amber-accent); border-color: rgba(245, 158, 11, 0.4);">
+        <i class="fa-solid fa-ban"></i>
+        <span>Non Obtenables (418)</span>
+      </a>
       <a href="DOCUMENTATION_COMPLETE_MODPACK.md" target="_blank" class="btn-nav" style="text-decoration: none;">
         <i class="fa-solid fa-book-bookmark"></i>
-        <span>Documentation Modpack</span>
+        <span>Docs Modpack</span>
       </a>
     </div>
   </header>
@@ -97,8 +101,9 @@
       </div>
     </div>
 
-    <div class="scope-switch" style="margin-bottom: 14px; background: transparent; padding: 0; border: none;">
+    <div class="scope-switch" style="margin-bottom: 14px; background: transparent; padding: 0; border: none; flex-wrap: wrap;">
       <button class="chip gen-filter-chip active" data-gen="ALL">Toutes</button>
+      <button class="chip gen-filter-chip" data-gen="UNOBTAINABLE" style="color: var(--amber-accent); border-color: rgba(245, 158, 11, 0.4);">🚫 Non Obtenables (418)</button>
       <button class="chip gen-filter-chip" data-gen="1">Gen 1</button>
       <button class="chip gen-filter-chip" data-gen="2">Gen 2</button>
       <button class="chip gen-filter-chip" data-gen="3">Gen 3</button>
