@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Pokémon Eternal Emerald MMO — Carte Interactive & Encyclopédie Pro</title>
-  <meta name="description" content="Carte interactive pro pour Pokémon Eternal Emerald MMO avec Leaflet.js, filtres de routes, Pokémon de Gen 1 à 9 et localisateur complet.">
+  <title>Pokémon Eternal Emerald MMO — Carte Interactive Officielle du Monde</title>
+  <meta name="description" content="Carte interactive officielle de Pokémon Eternal Emerald MMO. Explorez l'intégralité du monde Émeraude, toutes les routes, villes, grottes et rencontres de Gen 1 à Gen 9.">
   
   <!-- Leaflet CSS -->
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
@@ -13,7 +13,7 @@
 </head>
 <body>
 
-  <!-- App Header Bar -->
+  <!-- App Header -->
   <header class="app-header">
     <div class="brand">
       <div class="brand-logo">
@@ -21,14 +21,14 @@
       </div>
       <div class="brand-text">
         <h1>Pokémon Eternal Emerald MMO</h1>
-        <p>Carte Interactive Pro & Localisateur de Pokémon (Gen 1 à 9)</p>
+        <p>Carte Interactive Officielle & Encyclopédie (Gen 1 à Gen 9)</p>
       </div>
     </div>
 
     <div class="nav-actions">
       <button id="btnCatalog" class="btn-nav">
         <i class="fa-solid fa-dragon"></i>
-        <span>Catalogue Pokémon (1 024)</span>
+        <span>Catalogue Master Pokémon (1 024)</span>
       </button>
       <a href="DOCUMENTATION_COMPLETE_MODPACK.md" target="_blank" class="btn-nav" style="text-decoration: none;">
         <i class="fa-solid fa-book-bookmark"></i>
@@ -37,26 +37,24 @@
     </div>
   </header>
 
-  <!-- Main Workspace -->
+  <!-- Workspace -->
   <div class="main-wrapper">
 
-    <!-- Leaflet Interactive Map Viewport -->
-    <div id="leafletMap"></div>
+    <!-- Leaflet World Map Container -->
+    <div id="map"></div>
 
-    <!-- Floating Left Control Panel (PKMNMap Style) -->
+    <!-- Left Floating Control Panel (PKMNMap Style) -->
     <aside id="controlPanel" class="control-panel">
       <div class="panel-header">
         <div class="search-field">
           <i class="fa-solid fa-magnifying-glass"></i>
-          <input type="text" id="searchInput" placeholder="Filtrer une route ou zone..." autocomplete="off">
+          <input type="text" id="searchInput" placeholder="Rechercher une route ou zone..." autocomplete="off">
         </div>
       </div>
 
-      <div class="filter-chips">
-        <button class="chip active" data-filter="ALL">Toutes les Zones</button>
-        <button class="chip" data-filter="ROUTES">Routes</button>
-        <button class="chip" data-filter="TOWNS">Villes</button>
-        <button class="chip" data-filter="CAVES">Grottes</button>
+      <div class="scope-switch">
+        <button class="scope-button active" data-map="Overworld">Monde Normal</button>
+        <button class="scope-button" data-map="Underwater">Sous l'Eau</button>
       </div>
 
       <div id="panelList" class="panel-list">
@@ -64,24 +62,17 @@
       </div>
     </aside>
 
-    <!-- Right Info Drawer (Route Details & Wild Encounters) -->
+    <!-- Right Info Panel (Exact PKMNMap Route Information Drawer) -->
     <aside id="infoPanel" class="info-panel hidden">
       <div class="info-header">
-        <div class="info-title">
-          <h2 id="infoTitle">Route 101</h2>
-          <span id="infoSubtitle">Zone d'apparition</span>
-        </div>
+        <h3 id="infoTitle">Route 103</h3>
         <button id="btnCloseInfo" class="btn-close" title="Fermer">
           <i class="fa-solid fa-xmark"></i>
         </button>
       </div>
 
-      <div id="envTabsContainer" class="env-tabs">
-        <!-- Environment tabs rendered dynamically -->
-      </div>
-
       <div id="infoBody" class="info-body">
-        <!-- Wild encounter cards rendered dynamically -->
+        <!-- Encounters table rendered dynamically -->
       </div>
     </aside>
 
@@ -91,23 +82,23 @@
   <div id="catalogModal" class="catalog-modal" style="display: none;">
     <div class="catalog-header">
       <div>
-        <h2 style="font-family: var(--font-heading); font-size: 1.4rem; color: #fff;">🐉 Catalogue Encyclopédique des Pokémon (Gen 1 à Gen 9)</h2>
-        <p style="color: var(--text-muted); font-size: 0.82rem;">Recherchez un Pokémon et cliquez dessus pour afficher TOUTES ses zones d'apparition et le localiser sur la carte !</p>
+        <h2 style="font-family: var(--font-heading); font-size: 1.35rem; color: #fff;">🐉 Catalogue Encyclopédique des Pokémon (Gen 1 à Gen 9)</h2>
+        <p style="color: var(--text-muted); font-size: 0.8rem;">Recherchez n'importe quel Pokémon pour afficher toutes ses zones d'apparition et le localiser sur la carte !</p>
       </div>
-      <button id="btnCloseCatalog" class="btn-close" style="width: 40px; height: 40px; font-size: 20px;">
+      <button id="btnCloseCatalog" class="btn-close" style="width: 36px; height: 36px; font-size: 18px;">
         <i class="fa-solid fa-xmark"></i>
       </button>
     </div>
 
-    <div class="catalog-search-bar">
-      <div class="search-field" style="flex: 1;">
+    <div style="margin-bottom: 12px;">
+      <div class="search-field" style="width: 100%;">
         <i class="fa-solid fa-magnifying-glass"></i>
         <input type="text" id="catalogSearchInput" placeholder="Rechercher par nom (ex: Zygarde, Pikachu, Lokix, Rayquaza) ou par # de Pokédex..." autocomplete="off">
       </div>
     </div>
 
-    <div class="filter-chips" style="margin-bottom: 14px; border: none; background: transparent; padding: 0;">
-      <button class="chip gen-filter-chip active" data-gen="ALL">Toutes les Générations</button>
+    <div class="scope-switch" style="margin-bottom: 14px; background: transparent; padding: 0; border: none;">
+      <button class="chip gen-filter-chip active" data-gen="ALL">Toutes</button>
       <button class="chip gen-filter-chip" data-gen="1">Gen 1</button>
       <button class="chip gen-filter-chip" data-gen="2">Gen 2</button>
       <button class="chip gen-filter-chip" data-gen="3">Gen 3</button>
@@ -120,7 +111,7 @@
     </div>
 
     <div id="catalogGrid" class="catalog-grid">
-      <!-- Master Pokemon Cards rendered dynamically -->
+      <!-- Master cards rendered dynamically -->
     </div>
   </div>
 
@@ -132,14 +123,15 @@
     <div id="spawnModalBody" class="spawn-modal-body">
       <!-- Spawn locations list rendered dynamically -->
     </div>
-    <div style="padding: 12px 20px; border-top: 1px solid var(--border-color); text-align: right;">
+    <div style="padding: 10px 18px; border-top: 1px solid var(--border-color); text-align: right;">
       <button id="btnCloseSpawnModal" class="btn-nav">Fermer</button>
     </div>
   </div>
 
-  <!-- Scripts -->
+  <!-- Leaflet JS & Data Scripts -->
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
   <script src="map_data_pro.js"></script>
+  <script src="vectors_data.js"></script>
   <script src="app.js"></script>
 </body>
 </html>

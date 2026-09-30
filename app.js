@@ -1,127 +1,120 @@
-// Professional Leaflet Map Engine & Pokémon Master Catalog
+// PKMNMap Interactive Engine & Master Pokémon Catalog
 document.addEventListener('DOMContentLoaded', () => {
-  const data = window.PRO_MAP_DATA;
-  if (!data) {
+  const masterData = window.PRO_MAP_DATA;
+  if (!masterData) {
     console.error("PRO_MAP_DATA is missing!");
     return;
   }
 
-  // --- 1. LEAFLET MAP INITIALIZATION ---
-  const mapWidth = data.imageWidth || 480;
-  const mapHeight = data.imageHeight || 320;
-  const bounds = [[0, 0], [mapHeight, mapWidth]];
+  // --- 1. LEAFLET MAP INITIALIZATION WITH PKMNMAP HIGH-RES TILES ---
+  const tileBounds = L.latLngBounds(L.latLng(-95.7421875, 0), L.latLng(0, 199.9921875));
 
-  const map = L.map('leafletMap', {
+  const map = L.map('map', {
     crs: L.CRS.Simple,
-    minZoom: -1,
-    maxZoom: 4,
+    minZoom: 3,
+    maxZoom: 7,
     zoomSnap: 0.25,
-    attributionControl: false
+    attributionControl: false,
+    maxBounds: tileBounds
   });
 
-  // Image Overlay
-  L.imageOverlay(data.mapBase64, bounds).addTo(map);
-  map.fitBounds(bounds);
+  // Main Overworld TileLayer from PKMNMap Content Server
+  let currentShortname = "OverworldTrainers";
+  let tileLayer = L.tileLayer(`https://pkmnmap.com/Maps/Emerald/Content/Tilesets/${currentShortname}/{z}/{x}/{y}.png`, {
+    minZoom: 3,
+    maxZoom: 7,
+    tileSize: 256,
+    bounds: tileBounds
+  }).addTo(map);
 
-  // Layer groups for markers and polygons
-  const markersGroup = L.layerGroup().addTo(map);
-  const highlightedGroup = L.layerGroup().addTo(map);
+  map.setView([-47, 100], 4);
 
-  // Store map layers mapping
-  const mapLayers = {};
-
-  // Tile sizes (30 cols, 20 rows) -> 16px per grid unit
-  const tileW = mapWidth / data.gridCols; // 16px
-  const tileH = mapHeight / data.gridRows; // 16px
-
-  // Draw Leaflet Interactive Rectangles / Markers for all Town Map Points
-  data.points.forEach(pt => {
-    // Leaflet Simple CRS coordinates: [y, x] where (0,0) is bottom-left
-    const y1 = mapHeight - (pt.y + 1) * tileH;
-    const y2 = mapHeight - pt.y * tileH;
-    const x1 = pt.x * tileW;
-    const x2 = (pt.x + 1) * tileW;
-
-    const rectBounds = [[y1, x1], [y2, x2]];
-
-    // SVG Polygon / Rectangle for route
-    const rect = L.rectangle(rectBounds, {
-      color: pt.map_id ? '#00ff99' : '#06b6d4',
-      weight: 1,
-      fillColor: pt.map_id ? '#00ff99' : '#06b6d4',
-      fillOpacity: 0.25
+  // Scope Switch (Overworld vs Underwater)
+  document.querySelectorAll('.scope-button').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.scope-button').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const targetMap = btn.getAttribute('data-map');
+      currentShortname = targetMap === 'Underwater' ? 'Underwater' : 'OverworldTrainers';
+      map.removeLayer(tileLayer);
+      tileLayer = L.tileLayer(`https://pkmnmap.com/Maps/Emerald/Content/Tilesets/${currentShortname}/{z}/{x}/{y}.png`, {
+        minZoom: 3,
+        maxZoom: 7,
+        tileSize: 256,
+        bounds: tileBounds
+      }).addTo(map);
     });
-
-    // Tooltip popup
-    const popupContent = `
-      <div style="text-align: center; padding: 4px;">
-        <strong style="font-size: 0.95rem; color: #fff;">${pt.name}</strong><br>
-        <span style="font-size: 0.75rem; color: #00ff99;">${pt.poi ? pt.poi : (pt.map_id ? `Map #${pt.map_id}` : 'Ville')}</span>
-      </div>
-    `;
-
-    rect.bindTooltip(popupContent, { sticky: true });
-
-    rect.on('mouseover', function () {
-      this.setStyle({ fillOpacity: 0.6, weight: 2.5, color: '#ffffff' });
-    });
-
-    rect.on('mouseout', function () {
-      this.setStyle({ fillOpacity: 0.25, weight: 1, color: pt.map_id ? '#00ff99' : '#06b6d4' });
-    });
-
-    rect.on('click', function () {
-      openInfoPanel(pt);
-      map.flyToBounds(rectBounds, { duration: 0.6, maxZoom: 2 });
-    });
-
-    rect.addTo(markersGroup);
-
-    if (pt.map_id) {
-      mapLayers[pt.map_id] ||= [];
-      mapLayers[pt.map_id].push({ rect, bounds: rectBounds, point: pt });
-    }
   });
 
-  // --- 2. CONTROL PANEL & SEARCH LOGIC ---
+  // --- 2. VECTOR OVERLAY LAYERS (GEOJSON ROUTES) ---
+  const vectorLayersByName = {};
+
+  if (window.OverworldVector) {
+    const geoJsonLayer = L.geoJson(window.OverworldVector, {
+      style: function (feature) {
+        return {
+          color: '#00ff99',
+          weight: 1.5,
+          fillColor: '#00ff99',
+          fillOpacity: 0.15
+        };
+      },
+      onEachFeature: function (feature, layer) {
+        const props = feature.properties;
+        if (!props || !props.name) return;
+
+        vectorLayersByName[props.name.toLowerCase()] ||= [];
+        vectorLayersByName[props.name.toLowerCase()].push({ layer, props });
+
+        layer.bindTooltip(`<strong>${props.name}</strong>`, { sticky: true });
+
+        layer.on('mouseover', function () {
+          this.setStyle({ fillOpacity: 0.5, weight: 2.5, color: '#ffffff' });
+        });
+
+        layer.on('mouseout', function () {
+          this.setStyle({ fillOpacity: 0.15, weight: 1.5, color: '#00ff99' });
+        });
+
+        layer.on('click', function (e) {
+          openInfoPanel(props);
+          map.fitBounds(layer.getBounds(), { maxZoom: 6, animate: true, duration: 0.5 });
+        });
+      }
+    }).addTo(map);
+  }
+
+  // --- 3. LEFT CONTROL PANEL (LOCATION SEARCH) ---
   const searchInput = document.getElementById('searchInput');
   const panelList = document.getElementById('panelList');
-  const infoPanel = document.getElementById('infoPanel');
-  const btnCloseInfo = document.getElementById('btnCloseInfo');
-  const infoTitle = document.getElementById('infoTitle');
-  const infoSubtitle = document.getElementById('infoSubtitle');
-  const envTabsContainer = document.getElementById('envTabsContainer');
-  const infoBody = document.getElementById('infoBody');
 
-  // Populate Left Panel Location List
-  function renderControlPanelList(filterQuery = '') {
+  function renderControlPanel(query = '') {
     panelList.innerHTML = '';
+    const mapEntries = Object.values(masterData.encountersByMap);
 
-    // Group maps by name
-    const mapEntries = Object.values(data.encountersByMap);
-    const filtered = mapEntries.filter(m => m.name.toLowerCase().includes(filterQuery.toLowerCase()));
+    const filtered = mapEntries.filter(m => m.name.toLowerCase().includes(query.toLowerCase()));
 
     filtered.forEach(m => {
       const card = document.createElement('div');
-      card.className = 'map-item-card';
+      card.className = 'map-card-item';
 
-      // count species
       let speciesCount = 0;
       Object.values(m.types).forEach(list => speciesCount += list.length);
 
       card.innerHTML = `
-        <span class="map-item-name">${m.name}</span>
-        <span class="map-item-count">${speciesCount} Pokémon</span>
+        <span class="map-card-title">${m.name}</span>
+        <span class="map-card-badge">${speciesCount} Pokémon</span>
       `;
 
       card.addEventListener('click', () => {
-        // find point
-        const pt = data.points.find(p => p.map_id === m.id) || { map_id: m.id, name: m.name };
-        openInfoPanel(pt);
-
-        // Zoom Leaflet to location if layers exist
-        if (mapLayers[m.id] && mapLayers[m.id][0]) {
-          map.flyToBounds(mapLayers[m.id][0].bounds, { duration: 0.6, maxZoom: 2 });
+        // Find matching vector layer or fallback point
+        const matches = vectorLayersByName[m.name.toLowerCase()];
+        if (matches && matches[0]) {
+          openInfoPanel(matches[0].props);
+          map.fitBounds(matches[0].layer.getBounds(), { maxZoom: 6, animate: true, duration: 0.5 });
+        } else {
+          // Open info panel with PBS encounters
+          openInfoPanelFromPBS(m);
         }
       });
 
@@ -129,61 +122,133 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  renderControlPanelList();
+  renderControlPanel();
 
   searchInput.addEventListener('input', (e) => {
-    renderControlPanelList(e.target.value.trim());
+    renderControlPanel(e.target.value.trim());
   });
 
-  // Filter Chips in Control Panel
-  document.querySelectorAll('.filter-chips .chip').forEach(chip => {
-    chip.addEventListener('click', () => {
-      document.querySelectorAll('.filter-chips .chip').forEach(c => c.classList.remove('active'));
-      chip.classList.add('active');
-    });
-  });
+  // --- 4. RIGHT INFO PANEL (ROUTE ENCOUNTERS TABLE) ---
+  const infoPanel = document.getElementById('infoPanel');
+  const btnCloseInfo = document.getElementById('btnCloseInfo');
+  const infoTitle = document.getElementById('infoTitle');
+  const infoBody = document.getElementById('infoBody');
 
-  // --- 3. RIGHT INFO PANEL DRAWER ---
-  function openInfoPanel(point) {
+  function openInfoPanel(props) {
     infoPanel.classList.remove('hidden');
-    infoTitle.innerText = point.name;
-    infoSubtitle.innerText = point.poi ? point.poi : (point.map_id ? `Carte #${point.map_id}` : 'Zone Urbaine');
+    infoTitle.innerText = props.name;
 
-    envTabsContainer.innerHTML = '';
+    // Check if props has Pokemon object or fallback to masterData
+    let encounters = props["Pokemon"] || props["Pokémon"];
+    if (!encounters || Object.keys(encounters).length === 0) {
+      const pbsMatch = Object.values(masterData.encountersByMap).find(m => m.name.toLowerCase() === props.name.toLowerCase());
+      if (pbsMatch) {
+        openInfoPanelFromPBS(pbsMatch);
+        return;
+      }
+    }
+
+    renderEncounterTableFromVectorProps(encounters);
+  }
+
+  function openInfoPanelFromPBS(pbsMatch) {
+    infoPanel.classList.remove('hidden');
+    infoTitle.innerText = pbsMatch.name;
+
     infoBody.innerHTML = '';
 
-    const encounters = point.map_id && data.encountersByMap[point.map_id] ? data.encountersByMap[point.map_id].types : null;
-
-    if (!encounters || Object.keys(encounters).length === 0) {
-      infoBody.innerHTML = `
-        <div style="padding: 30px; text-align: center; color: var(--text-muted);">
-          <i class="fa-solid fa-house-chimney" style="font-size: 2.5rem; color: var(--cyan); margin-bottom: 12px;"></i>
-          <p style="font-size: 1rem; color: #fff; font-weight: 600;">Zone Sûre / Pas de Pokémon Sauvages</p>
-          <p style="font-size: 0.8rem; margin-top: 6px;">Aucune rencontre sauvage n'est configurée sur cette carte.</p>
-        </div>
-      `;
+    const types = pbsMatch.types;
+    if (Object.keys(types).length === 0) {
+      infoBody.innerHTML = `<div style="padding: 20px; text-align: center; color: var(--text-muted);">Aucun Pokémon sauvage configuré sur cette zone.</div>`;
       return;
     }
 
-    const types = Object.keys(encounters);
-    let activeType = types[0];
+    let tableHtml = `
+      <table class="pkmn-table">
+        <thead>
+          <tr>
+            <th>Icon</th>
+            <th>Name</th>
+            <th>Method</th>
+            <th>Levels</th>
+            <th>Rate</th>
+          </tr>
+        </thead>
+        <tbody>
+    `;
 
-    types.forEach((tKey, idx) => {
-      const tab = document.createElement('button');
-      tab.className = `env-tab ${idx === 0 ? 'active' : ''}`;
-      tab.innerText = getEnvLabel(tKey);
+    Object.keys(types).forEach(method => {
+      tableHtml += `<tr class="section-row"><td colspan="5">${getEnvLabel(method)}</td></tr>`;
+      types[method].forEach(item => {
+        const clean = item.species.toLowerCase().replace(/[^a-z0-9]/g, '');
+        const spriteUrl = `https://play.pokemonshowdown.com/sprites/gen5/${clean}.png`;
+        let rateClass = item.chance >= 35 ? 'rate-high' : (item.chance >= 15 ? 'rate-mid' : 'rate-low');
 
-      tab.addEventListener('click', () => {
-        document.querySelectorAll('.env-tab').forEach(t => t.classList.remove('active'));
-        tab.classList.add('active');
-        renderEncounterCards(encounters[tKey]);
+        tableHtml += `
+          <tr style="cursor: pointer;" onclick="window.openPokemonCatalogModalFor('${item.species}')">
+            <td class="pkmn-cell-icon"><img src="${spriteUrl}" alt="${item.name}" onerror="this.src='https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/poke-ball.png'"></td>
+            <td style="font-weight: 700; color: #fff;">${item.name} <span class="badge-gen ${item.gen === 9 ? 'gen-9' : ''}">G${item.gen}</span></td>
+            <td style="color: var(--cyan-accent);">${getEnvLabel(method)}</td>
+            <td>${item.min_lvl ? (item.min_lvl === item.max_lvl ? `Niv. ${item.min_lvl}` : `Niv. ${item.min_lvl}-${item.max_lvl}`) : ''}</td>
+            <td><span class="rate-badge ${rateClass}">${item.chance}%</span></td>
+          </tr>
+        `;
       });
-
-      envTabsContainer.appendChild(tab);
     });
 
-    renderEncounterCards(encounters[activeType]);
+    tableHtml += `</tbody></table>`;
+    infoBody.innerHTML = tableHtml;
   }
+
+  function renderEncounterTableFromVectorProps(encounters) {
+    infoBody.innerHTML = '';
+
+    if (!encounters || Object.keys(encounters).length === 0) {
+      infoBody.innerHTML = `<div style="padding: 20px; text-align: center; color: var(--text-muted);">Aucune rencontre disponible.</div>`;
+      return;
+    }
+
+    let tableHtml = `
+      <table class="pkmn-table">
+        <thead>
+          <tr>
+            <th>Icon</th>
+            <th>Name</th>
+            <th>Method</th>
+            <th>Levels</th>
+            <th>Rate</th>
+          </tr>
+        </thead>
+        <tbody>
+    `;
+
+    Object.keys(encounters).forEach(area => {
+      tableHtml += `<tr class="section-row"><td colspan="5">${area}</td></tr>`;
+      encounters[area].forEach(e => {
+        const clean = e.name.toLowerCase().replace(/[^a-z0-9]/g, '');
+        const spriteUrl = `https://play.pokemonshowdown.com/sprites/gen5/${clean}.png`;
+        let rateVal = parseInt(e.rate) || 0;
+        let rateClass = rateVal >= 35 ? 'rate-high' : (rateVal >= 15 ? 'rate-mid' : 'rate-low');
+
+        tableHtml += `
+          <tr>
+            <td class="pkmn-cell-icon"><img src="${spriteUrl}" alt="${e.name}" onerror="this.src='https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/poke-ball.png'"></td>
+            <td style="font-weight: 700; color: #fff;">${e.name}</td>
+            <td style="color: var(--cyan-accent);">${e.area || area}</td>
+            <td>Niv. ${e.levels || ''}</td>
+            <td><span class="rate-badge ${rateClass}">${e.rate}</span></td>
+          </tr>
+        `;
+      });
+    });
+
+    tableHtml += `</tbody></table>`;
+    infoBody.innerHTML = tableHtml;
+  }
+
+  btnCloseInfo.addEventListener('click', () => {
+    infoPanel.classList.add('hidden');
+  });
 
   function getEnvLabel(tKey) {
     switch (tKey) {
@@ -197,64 +262,18 @@ document.addEventListener('DOMContentLoaded', () => {
       case 'SuperRod': return '🎣 Méga Canne';
       case 'HeadbuttLow': return '🌳 Coup de Boule';
       case 'HeadbuttHigh': return '🌳 Coup de Boule Rare';
-      case 'BugContest': return '🦋 Concours';
       default: return tKey;
     }
   }
 
-  function renderEncounterCards(list) {
-    infoBody.innerHTML = '';
-
-    list.forEach(item => {
-      const card = document.createElement('div');
-      card.className = 'pkmn-encounter-card';
-
-      let rateClass = 'rate-common';
-      if (item.chance < 15) rateClass = 'rate-rare';
-      else if (item.chance < 35) rateClass = 'rate-uncommon';
-
-      const spriteUrl = getPokemonSprite(item.species);
-      const typesHtml = item.types.map(t => `<span class="type-pill">${t}</span>`).join('');
-
-      card.innerHTML = `
-        <div class="sprite-box">
-          <img class="sprite-img" src="${spriteUrl}" alt="${item.name}" onerror="this.src='https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/poke-ball.png'">
-        </div>
-        <div class="pkmn-details">
-          <div class="pkmn-header-line">
-            <span class="pkmn-name">${item.name}</span>
-            <span class="badge-gen ${item.gen === 9 ? 'gen-9' : ''}">Gen ${item.gen}</span>
-          </div>
-          <div class="types-row">${typesHtml}</div>
-          <div class="rate-line">
-            <span class="rate-badge ${rateClass}">${item.chance}% de chance</span>
-            <span>${item.min_lvl ? (item.min_lvl === item.max_lvl ? `Niv. ${item.min_lvl}` : `Niv. ${item.min_lvl}-${item.max_lvl}`) : ''}</span>
-          </div>
-        </div>
-      `;
-
-      // Clicking an encounter card opens its reverse locations popover!
-      card.addEventListener('click', () => {
-        const fullSp = data.pokemonCatalog.find(s => s.id === item.species);
-        if (fullSp) openSpawnLocationsModal(fullSp);
-      });
-
-      infoBody.appendChild(card);
-    });
-  }
-
-  btnCloseInfo.addEventListener('click', () => {
-    infoPanel.classList.add('hidden');
-  });
-
-  // --- 4. MASTER POKEMON CATALOG & REVERSE SEARCH MODAL ---
+  // --- 5. MASTER POKEMON CATALOG MODAL (ALL 1,024 POKEMON) ---
   const btnCatalog = document.getElementById('btnCatalog');
   const catalogModal = document.getElementById('catalogModal');
   const btnCloseCatalog = document.getElementById('btnCloseCatalog');
   const catalogGrid = document.getElementById('catalogGrid');
   const catalogSearchInput = document.getElementById('catalogSearchInput');
 
-  let selectedGenFilter = 'ALL';
+  let selectedGen = 'ALL';
 
   btnCatalog.addEventListener('click', () => {
     catalogModal.style.display = 'flex';
@@ -265,12 +284,11 @@ document.addEventListener('DOMContentLoaded', () => {
     catalogModal.style.display = 'none';
   });
 
-  // Catalog Gen Filter Chips
   document.querySelectorAll('.gen-filter-chip').forEach(chip => {
     chip.addEventListener('click', () => {
       document.querySelectorAll('.gen-filter-chip').forEach(c => c.classList.remove('active'));
       chip.classList.add('active');
-      selectedGenFilter = chip.getAttribute('data-gen');
+      selectedGen = chip.getAttribute('data-gen');
       renderCatalogGrid();
     });
   });
@@ -281,63 +299,63 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function renderCatalogGrid() {
     catalogGrid.innerHTML = '';
-
     const query = catalogSearchInput.value.trim().toLowerCase();
 
-    let filtered = data.pokemonCatalog.filter(sp => {
-      const matchName = sp.name.toLowerCase().includes(query) || sp.id.toLowerCase().includes(query) || sp.dex.toString().includes(query);
-      const matchGen = selectedGenFilter === 'ALL' || sp.gen.toString() === selectedGenFilter;
-      return matchName && matchGen;
+    const filtered = masterData.pokemonCatalog.filter(sp => {
+      const matchQuery = sp.name.toLowerCase().includes(query) || sp.id.toLowerCase().includes(query) || sp.dex.toString().includes(query);
+      const matchGen = selectedGen === 'ALL' || sp.gen.toString() === selectedGen;
+      return matchQuery && matchGen;
     });
 
     filtered.forEach(sp => {
       const card = document.createElement('div');
       card.className = 'catalog-card';
 
-      const spriteUrl = getPokemonSprite(sp.id);
+      const clean = sp.id.toLowerCase().replace(/[^a-z0-9]/g, '');
+      const spriteUrl = `https://play.pokemonshowdown.com/sprites/gen5/${clean}.png`;
       const locCount = sp.locations ? sp.locations.length : 0;
-      const typesHtml = sp.types.map(t => `<span class="type-pill">${t}</span>`).join('');
 
       card.innerHTML = `
-        <div class="sprite-box">
-          <img class="sprite-img" src="${spriteUrl}" alt="${sp.name}" onerror="this.src='https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/poke-ball.png'">
-        </div>
+        <img src="${spriteUrl}" alt="${sp.name}" onerror="this.src='https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/poke-ball.png'">
         <div style="flex: 1;">
           <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 2px;">
             <strong style="font-family: var(--font-heading); font-size: 0.95rem; color: #fff;">${sp.name}</strong>
             <span class="badge-gen ${sp.gen === 9 ? 'gen-9' : ''}">Gen ${sp.gen}</span>
           </div>
-          <div class="types-row" style="margin-bottom: 4px;">${typesHtml}</div>
           <div class="loc-count">📍 ${locCount} Zone(s) d'apparition</div>
         </div>
       `;
 
       card.addEventListener('click', () => {
-        openSpawnLocationsModal(sp);
+        openSpawnModal(sp);
       });
 
       catalogGrid.appendChild(card);
     });
   }
 
-  // --- 5. POKEMON SPAWN LOCATIONS POPOVER MODAL ---
+  // --- 6. SPAWN LOCATIONS MODAL ---
   const spawnModal = document.getElementById('spawnModal');
   const spawnModalHeader = document.getElementById('spawnModalHeader');
   const spawnModalBody = document.getElementById('spawnModalBody');
   const btnCloseSpawnModal = document.getElementById('btnCloseSpawnModal');
 
-  function openSpawnLocationsModal(sp) {
+  window.openPokemonCatalogModalFor = function(speciesId) {
+    const sp = masterData.pokemonCatalog.find(s => s.id.toUpperCase() === speciesId.toUpperCase());
+    if (sp) openSpawnModal(sp);
+  };
+
+  function openSpawnModal(sp) {
     spawnModal.style.display = 'flex';
-    const spriteUrl = getPokemonSprite(sp.id);
+    const clean = sp.id.toLowerCase().replace(/[^a-z0-9]/g, '');
+    const spriteUrl = `https://play.pokemonshowdown.com/sprites/gen5/${clean}.png`;
 
     spawnModalHeader.innerHTML = `
-      <div style="display: flex; align-items: center; gap: 14px;">
-        <div class="sprite-box" style="width: 48px; height: 48px;">
-          <img class="sprite-img" src="${spriteUrl}" alt="${sp.name}">
-        </div>
+      <div style="display: flex; align-items: center; gap: 12px;">
+        <img src="${spriteUrl}" style="width: 44px; height: 44px; object-fit: contain;">
         <div>
-          <h3 style="font-family: var(--font-heading); font-size: 1.2rem; color: #fff;">${sp.name}</h3>
-          <span style="font-size: 0.78rem; color: var(--emerald);">Génération ${sp.gen} • ${sp.locations ? sp.locations.length : 0} Zone(s) d'apparition</span>
+          <h3 style="font-family: var(--font-heading); font-size: 1.15rem; color: #fff;">${sp.name}</h3>
+          <span style="font-size: 0.78rem; color: var(--emerald-accent);">Génération ${sp.gen} • ${sp.locations ? sp.locations.length : 0} Zone(s) d'apparition</span>
         </div>
       </div>
       <button id="btnCloseSpawnModalInner" class="btn-close"><i class="fa-solid fa-xmark"></i></button>
@@ -350,35 +368,24 @@ document.addEventListener('DOMContentLoaded', () => {
     spawnModalBody.innerHTML = '';
 
     if (!sp.locations || sp.locations.length === 0) {
-      spawnModalBody.innerHTML = `
-        <div style="padding: 20px; text-align: center; color: var(--text-muted);">
-          <p>Aucune rencontre sauvage directe enregistrée (Évolution, Cadeau Mystère, Échange ou Événement MQS).</p>
-        </div>
-      `;
+      spawnModalBody.innerHTML = `<div style="padding: 20px; text-align: center; color: var(--text-muted);">Aucune rencontre sauvage directe enregistrée.</div>`;
       return;
     }
 
     sp.locations.forEach(loc => {
       const row = document.createElement('div');
-      row.className = 'pkmn-encounter-card';
-      row.style.justifyConstraint = 'space-between';
+      row.className = 'map-card-item';
 
-      let rateClass = 'rate-common';
-      if (loc.chance < 15) rateClass = 'rate-rare';
-      else if (loc.chance < 35) rateClass = 'rate-uncommon';
+      let rateClass = loc.chance >= 35 ? 'rate-high' : (loc.chance >= 15 ? 'rate-mid' : 'rate-low');
 
       row.innerHTML = `
-        <div style="flex: 1;">
-          <strong style="font-family: var(--font-heading); font-size: 0.95rem; color: #fff;">${loc.map_name}</strong>
-          <div style="font-size: 0.78rem; color: var(--text-muted); margin-top: 2px;">
-            ${getEnvLabel(loc.method)} ${loc.min_lvl ? `• Niv. ${loc.min_lvl}-${loc.max_lvl}` : ''}
-          </div>
+        <div>
+          <strong style="color: #fff; font-size: 0.9rem;">${loc.map_name}</strong>
+          <div style="font-size: 0.75rem; color: var(--text-muted);">${getEnvLabel(loc.method)} ${loc.min_lvl ? `• Niv. ${loc.min_lvl}-${loc.max_lvl}` : ''}</div>
         </div>
         <div style="display: flex; align-items: center; gap: 10px;">
           <span class="rate-badge ${rateClass}">${loc.chance}%</span>
-          <button class="btn-nav btn-locate" style="padding: 6px 12px; font-size: 0.75rem;">
-            <i class="fa-solid fa-crosshairs"></i> Localiser
-          </button>
+          <button class="btn-nav btn-locate" style="padding: 4px 10px; font-size: 0.75rem;"><i class="fa-solid fa-crosshairs"></i> Localiser</button>
         </div>
       `;
 
@@ -386,14 +393,11 @@ document.addEventListener('DOMContentLoaded', () => {
         spawnModal.style.display = 'none';
         catalogModal.style.display = 'none';
 
-        // Find point and zoom Leaflet to bounds!
-        const pt = data.points.find(p => p.map_id === loc.map_id) || { map_id: loc.map_id, name: loc.map_name };
-        openInfoPanel(pt);
-
-        if (mapLayers[loc.map_id] && mapLayers[loc.map_id][0]) {
-          const l = mapLayers[loc.map_id][0];
-          map.flyToBounds(l.bounds, { duration: 0.8, maxZoom: 2.5 });
-          l.rect.setStyle({ fillOpacity: 0.8, color: '#ff0055', weight: 3 });
+        const matches = vectorLayersByName[loc.map_name.toLowerCase()];
+        if (matches && matches[0]) {
+          openInfoPanel(matches[0].props);
+          map.fitBounds(matches[0].layer.getBounds(), { maxZoom: 6, animate: true, duration: 0.6 });
+          matches[0].layer.setStyle({ fillOpacity: 0.8, color: '#ff0055', weight: 3 });
         }
       });
 
@@ -404,10 +408,4 @@ document.addEventListener('DOMContentLoaded', () => {
   btnCloseSpawnModal.addEventListener('click', () => {
     spawnModal.style.display = 'none';
   });
-
-  // Helper function for Pokemon Sprite URL
-  function getPokemonSprite(speciesId) {
-    const clean = speciesId.toLowerCase().replace(/[^a-z0-9]/g, '');
-    return `https://play.pokemonshowdown.com/sprites/gen5/${clean}.png`;
-  }
 });
