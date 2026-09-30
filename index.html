@@ -3,51 +3,59 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Pokémon Eternal Emerald MMO — Carte Interactive Officielle du Monde</title>
+  <title>Pokémon Eternal Emerald MMO — Carte Interactive & Encyclopédie Pro</title>
   <meta name="description" content="Carte interactive officielle de Pokémon Eternal Emerald MMO avec Leaflet.js, filtres de routes, Pokémon de Gen 1 à Gen 9 et localisateur complet.">
   
-  <!-- Leaflet CSS -->
+  <!-- Leaflet CSS & FontAwesome -->
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
-  <!-- App Header -->
+  <!-- App Header Navigation -->
   <header class="app-header">
     <div class="brand">
-      <div class="brand-logo">
-        <i class="fa-solid fa-map-location-dot"></i>
+      <div class="brand-badge">
+        <i class="fa-solid fa-gamepad"></i>
       </div>
-      <div class="brand-text">
+      <div class="brand-titles">
         <h1>Pokémon Eternal Emerald MMO</h1>
-        <p>Carte Interactive Officielle & Encyclopédie (Gen 1 à Gen 9)</p>
+        <p>Guide Officiel & Carte Interactive (Gen 1 à Gen 9)</p>
       </div>
     </div>
 
+    <!-- Navigation Bar Tabs -->
     <div class="nav-actions">
-      <button id="btnCatalog" class="btn-nav">
-        <i class="fa-solid fa-dragon"></i>
-        <span>Catalogue Master Pokémon (1 024)</span>
+      <button id="btnNavMap" class="nav-tab-btn active" data-target="viewMap">
+        <i class="fa-solid fa-map-location-dot"></i>
+        <span>Carte Interactive</span>
       </button>
-      <a href="POKEMON_NON_OBTENABLES.md" target="_blank" class="btn-nav" style="text-decoration: none; color: var(--amber-accent); border-color: rgba(245, 158, 11, 0.4);">
+
+      <button id="btnNavCatalog" class="nav-tab-btn" data-target="viewCatalog">
+        <i class="fa-solid fa-dragon"></i>
+        <span>Catalogue Pokémon (1 024)</span>
+      </button>
+
+      <button id="btnNavUnobtainables" class="nav-tab-btn btn-unobtainable" data-target="viewUnobtainable">
         <i class="fa-solid fa-ban"></i>
         <span>Non Obtenables (418)</span>
-      </a>
-      <a href="DOCUMENTATION_COMPLETE_MODPACK.md" target="_blank" class="btn-nav" style="text-decoration: none;">
+      </button>
+
+      <button id="btnNavDocs" class="nav-tab-btn" data-target="viewDocs">
         <i class="fa-solid fa-book-bookmark"></i>
-        <span>Docs Modpack</span>
-      </a>
+        <span>Documentation Modpack</span>
+      </button>
     </div>
   </header>
 
-  <!-- Workspace -->
-  <div class="main-wrapper">
+  <!-- VIEW 1: INTERACTIVE LEAFLET WORLD MAP -->
+  <main id="viewMap" class="page-view active">
 
-    <!-- Leaflet World Map Container -->
+    <!-- Leaflet Canvas -->
     <div id="map"></div>
 
-    <!-- Left Floating Control Panel (PKMNMap Style) -->
+    <!-- Left Control Panel (PKMNMap Explorer Style) -->
     <aside id="controlPanel" class="control-panel">
       <div class="panel-header">
         <div class="search-field">
@@ -80,45 +88,105 @@
       </div>
     </aside>
 
-  </div>
+  </main>
 
-  <!-- Master Pokemon Catalog Modal -->
-  <div id="catalogModal" class="catalog-modal" style="display: none;">
-    <div class="catalog-header">
-      <div>
-        <h2 style="font-family: var(--font-heading); font-size: 1.35rem; color: #fff;">🐉 Catalogue Encyclopédique des Pokémon (Gen 1 à Gen 9)</h2>
-        <p style="color: var(--text-muted); font-size: 0.8rem;">Recherchez n'importe quel Pokémon pour afficher toutes ses zones d'apparition et le localiser sur la carte !</p>
+  <!-- VIEW 2: MASTER POKEMON CATALOG PAGE -->
+  <section id="viewCatalog" class="page-view">
+    <div class="full-page-container">
+      <div class="page-title-header">
+        <div>
+          <h2>🐉 Catalogue Encyclopédique des Pokémon (Gen 1 à Gen 9)</h2>
+          <p>Consultez l'intégralité des 1 024 espèces de Pokémon avec leurs animations, types, et cliquez pour localiser leurs apparitions sur la carte !</p>
+        </div>
       </div>
-      <button id="btnCloseCatalog" class="btn-close" style="width: 36px; height: 36px; font-size: 18px;">
-        <i class="fa-solid fa-xmark"></i>
-      </button>
-    </div>
 
-    <div style="margin-bottom: 12px;">
-      <div class="search-field" style="width: 100%;">
-        <i class="fa-solid fa-magnifying-glass"></i>
-        <input type="text" id="catalogSearchInput" placeholder="Rechercher par nom (ex: Zygarde, Pikachu, Lokix, Rayquaza) ou par # de Pokédex..." autocomplete="off">
+      <div class="toolbar-filters">
+        <div class="search-field" style="flex: 1; max-width: 400px;">
+          <i class="fa-solid fa-magnifying-glass"></i>
+          <input type="text" id="catalogSearchInput" placeholder="Rechercher par nom (ex: Zygarde, Pikachu, Lokix) ou par # Pokédex..." autocomplete="off">
+        </div>
+
+        <div class="scope-switch" style="background: transparent; padding: 0; border: none; flex-wrap: wrap; gap: 6px;">
+          <button class="chip catalog-gen-chip active" data-gen="ALL">Toutes</button>
+          <button class="chip catalog-gen-chip" data-gen="1">Gen 1</button>
+          <button class="chip catalog-gen-chip" data-gen="2">Gen 2</button>
+          <button class="chip catalog-gen-chip" data-gen="3">Gen 3</button>
+          <button class="chip catalog-gen-chip" data-gen="4">Gen 4</button>
+          <button class="chip catalog-gen-chip" data-gen="5">Gen 5</button>
+          <button class="chip catalog-gen-chip" data-gen="6">Gen 6</button>
+          <button class="chip catalog-gen-chip" data-gen="7">Gen 7</button>
+          <button class="chip catalog-gen-chip" data-gen="8">Gen 8</button>
+          <button class="chip catalog-gen-chip" data-gen="9">Gen 9 (Paldea)</button>
+        </div>
+      </div>
+
+      <div id="catalogGrid" class="grid-cards-container">
+        <!-- Catalog cards rendered dynamically -->
       </div>
     </div>
+  </section>
 
-    <div class="scope-switch" style="margin-bottom: 14px; background: transparent; padding: 0; border: none; flex-wrap: wrap;">
-      <button class="chip gen-filter-chip active" data-gen="ALL">Toutes</button>
-      <button class="chip gen-filter-chip" data-gen="UNOBTAINABLE" style="color: var(--amber-accent); border-color: rgba(245, 158, 11, 0.4);">🚫 Non Obtenables (418)</button>
-      <button class="chip gen-filter-chip" data-gen="1">Gen 1</button>
-      <button class="chip gen-filter-chip" data-gen="2">Gen 2</button>
-      <button class="chip gen-filter-chip" data-gen="3">Gen 3</button>
-      <button class="chip gen-filter-chip" data-gen="4">Gen 4</button>
-      <button class="chip gen-filter-chip" data-gen="5">Gen 5</button>
-      <button class="chip gen-filter-chip" data-gen="6">Gen 6</button>
-      <button class="chip gen-filter-chip" data-gen="7">Gen 7</button>
-      <button class="chip gen-filter-chip" data-gen="8">Gen 8</button>
-      <button class="chip gen-filter-chip" data-gen="9">Gen 9 (Paldea)</button>
-    </div>
+  <!-- VIEW 3: UNOBTAINABLE POKEMON PAGE -->
+  <section id="viewUnobtainable" class="page-view">
+    <div class="full-page-container">
+      <div class="page-title-header">
+        <div>
+          <h2 style="color: var(--amber);">🚫 Pokémon Non Obtenables Sauvages (418 Species)</h2>
+          <p>Liste des Pokémon absents des herbes sauvages. Cliquez sur un Pokémon pour découvrir sa méthode d'obtention alternative (Évolutions, Reproduction, Quêtes MQS, Form Trader, Cadeaux Mystère).</p>
+        </div>
+      </div>
 
-    <div id="catalogGrid" class="catalog-grid">
-      <!-- Master cards rendered dynamically -->
+      <div class="toolbar-filters">
+        <div class="search-field" style="flex: 1; max-width: 400px;">
+          <i class="fa-solid fa-magnifying-glass"></i>
+          <input type="text" id="unobtainableSearchInput" placeholder="Filtrer un Pokémon non obtenable sauvage..." autocomplete="off">
+        </div>
+
+        <div class="scope-switch" style="background: transparent; padding: 0; border: none; flex-wrap: wrap; gap: 6px;">
+          <button class="chip unob-gen-chip active" data-gen="ALL">Toutes les Générations</button>
+          <button class="chip unob-gen-chip" data-gen="1">Gen 1</button>
+          <button class="chip unob-gen-chip" data-gen="2">Gen 2</button>
+          <button class="chip unob-gen-chip" data-gen="3">Gen 3</button>
+          <button class="chip unob-gen-chip" data-gen="4">Gen 4</button>
+          <button class="chip unob-gen-chip" data-gen="5">Gen 5</button>
+          <button class="chip unob-gen-chip" data-gen="6">Gen 6</button>
+          <button class="chip unob-gen-chip" data-gen="7">Gen 7</button>
+          <button class="chip unob-gen-chip" data-gen="8">Gen 8</button>
+          <button class="chip unob-gen-chip" data-gen="9">Gen 9 (Paldea)</button>
+        </div>
+      </div>
+
+      <div id="unobtainableGrid" class="grid-cards-container">
+        <!-- Unobtainables cards rendered dynamically -->
+      </div>
     </div>
-  </div>
+  </section>
+
+  <!-- VIEW 4: MODPACK DOCUMENTATION PAGE -->
+  <section id="viewDocs" class="page-view">
+    <div class="full-page-container">
+      <div class="page-title-header">
+        <div>
+          <h2>📖 Encyclopédie & Documentation du Modpack</h2>
+          <p>Guide technique complet de Pokémon Eternal Emerald MMO (47+ Plugins, Légendes Z, Deluxe Battle Kit, Housing, PWT et Commandes).</p>
+        </div>
+      </div>
+
+      <div class="docs-layout">
+        <aside class="docs-nav-sidebar">
+          <div class="docs-nav-item active" data-doc="stats">📊 1. Vue d'Ensemble & Stats</div>
+          <div class="docs-nav-item" data-doc="plugins">🧩 2. Catalogue des 47+ Mods</div>
+          <div class="docs-nav-item" data-doc="legendes-z">🐉 3. Extension Légendes Z & Mégas</div>
+          <div class="docs-nav-item" data-doc="housing">🏡 4. Guide Housing & Peinture</div>
+          <div class="docs-nav-item" data-doc="controls">🎮 5. Commandes & Raccourcis</div>
+        </aside>
+
+        <main id="docsContentArea" class="docs-content-area">
+          <!-- Rendered dynamically -->
+        </main>
+      </div>
+    </div>
+  </section>
 
   <!-- Spawn Locations Popover Modal -->
   <div id="spawnModal" class="spawn-modal" style="display: none;">
