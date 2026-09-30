@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pokémon Eternal Emerald MMO — Carte Interactive & Encyclopédie des Rencontres</title>
+  <meta name="description" content="Carte interactive officielle de Pokémon Eternal Emerald MMO. Explorez toutes les routes, villes, grottes, localisations de Pokémon sauvages de Gen 1 à Gen 9 avec pourcentages et niveaux.">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+  <!-- App Header -->
+  <header class="app-header">
+    <div class="brand">
+      <div class="brand-icon">
+        <i class="fa-solid fa-map-location-dot"></i>
+      </div>
+      <div>
+        <h1 class="brand-title">Pokémon Eternal Emerald MMO</h1>
+        <div style="font-size: 0.75rem; color: var(--accent-emerald); font-weight: 600;">Carte Interactive & Encyclopédie des Rencontres</div>
+      </div>
+    </div>
+
+    <!-- Live Search -->
+    <div class="search-box-header">
+      <i class="fa-solid fa-magnifying-glass search-icon"></i>
+      <input type="text" id="searchInput" class="search-input" placeholder="Rechercher un Pokémon (ex: Zygarde, Pikachu, Lokix) ou une Route..." autocomplete="off">
+    </div>
+
+    <!-- Navigation Actions -->
+    <div class="header-actions">
+      <button id="openFinderBtn" class="nav-btn">
+        <i class="fa-solid fa-dragon"></i>
+        <span>Catalogue Pokémon</span>
+      </button>
+      <a href="DOCUMENTATION_COMPLETE_MODPACK.md" target="_blank" class="nav-btn" style="text-decoration: none;">
+        <i class="fa-solid fa-book-bookmark"></i>
+        <span>Docs Modpack</span>
+      </a>
+    </div>
+  </header>
+
+  <!-- App Container -->
+  <div class="app-container">
+
+    <!-- Interactive Map Section -->
+    <main class="map-section" id="mapViewport">
+
+      <div class="map-canvas-container" id="mapContainer">
+        <!-- Map Background Image -->
+        <img id="mapImage" class="map-bg-image" alt="Carte Hoenn MMO">
+        <!-- Pins Overlay -->
+        <div id="mapPinsOverlay" class="map-grid-overlay"></div>
+      </div>
+
+      <!-- Map Floating Controls -->
+      <div class="map-controls">
+        <button id="zoomInBtn" class="ctrl-btn" title="Zoomer">
+          <i class="fa-solid fa-plus"></i>
+        </button>
+        <button id="zoomOutBtn" class="ctrl-btn" title="Dézoomer">
+          <i class="fa-solid fa-minus"></i>
+        </button>
+        <button id="resetZoomBtn" class="ctrl-btn" title="Réinitialiser la Vue">
+          <i class="fa-solid fa-compress"></i>
+        </button>
+      </div>
+
+    </main>
+
+    <!-- Sidebar Detail Drawer -->
+    <aside id="detailSidebar" class="detail-sidebar closed">
+      <div class="sidebar-header">
+        <div class="sidebar-title-group">
+          <h2 id="sidebarTitle">Route 101</h2>
+          <div id="sidebarSubtitle" class="sidebar-subtitle">Zone de Départ</div>
+        </div>
+        <button id="closeSidebarBtn" class="close-btn" title="Fermer">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+
+      <!-- Encounter Tabs -->
+      <div id="encTabsContainer" class="enc-tabs">
+        <!-- Tabs rendered dynamically -->
+      </div>
+
+      <!-- Sidebar Body Content -->
+      <div id="sidebarBody" class="sidebar-body">
+        <!-- Encounter cards rendered dynamically -->
+      </div>
+    </aside>
+
+  </div>
+
+  <!-- Global Finder View Modal -->
+  <div id="finderModal" class="finder-modal" style="display: none;">
+    <div class="finder-header">
+      <div>
+        <h2 style="font-family: var(--font-heading); font-size: 1.5rem; color: #fff;">🐉 Catalogue Encyclopédique des Pokémon</h2>
+        <p style="color: var(--text-muted); font-size: 0.85rem;">Cliquez sur un Pokémon pour illuminer immédiatement toutes ses zones d'apparition sur la carte !</p>
+      </div>
+      <button id="closeFinderBtn" class="close-btn" style="width: 40px; height: 40px; font-size: 22px;">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+    </div>
+
+    <div id="finderGrid" class="finder-grid">
+      <!-- Cards rendered dynamically -->
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="map_data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
