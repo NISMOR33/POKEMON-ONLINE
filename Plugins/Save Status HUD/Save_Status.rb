@@ -96,8 +96,10 @@ module SaveStatus
       end
       @sprite.x = Graphics.width - 114
       @sprite.y = 6
-      in_housing = defined?(PEMK::HousingEditor) && PEMK::HousingEditor.active?
-      @sprite.visible = !($game_temp && $game_temp.in_battle) && !in_housing
+      in_house_map = $game_map && defined?(PEMK::Housing) && PEMK::Housing.is_house_map?($game_map.map_id)
+      in_housing_edit = defined?(PEMK::HousingEditor) && PEMK::HousingEditor.active?
+      is_saving_active = (@depth || 0) > 0 || now < (@saving_until || 0) || now < (@success_until || 0)
+      @sprite.visible = !($game_temp && $game_temp.in_battle) && !in_housing_edit && (in_house_map || is_saving_active)
       state, title, detail = display
       # Keep the age visible even when the server is unavailable.
       detail = "#{age_text} · synchro en attente" if state == :pending

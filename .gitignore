@@ -16,3 +16,5 @@ Data/PluginScripts.rxdata
 scratch/
 check_*.rb
 inspect_*.rb
+game_*.txt
+

@@ -12,11 +12,19 @@ module PEMK
 
     class << self
       def active?
+        if @active && $game_map && !Housing.is_house_map?($game_map.map_id)
+          dispose
+          return false
+        end
         @active
       end
 
       # Called when the player teleports into their house (from Menu#enter_house).
       def setup
+        unless $game_map && Housing.is_house_map?($game_map.map_id)
+          dispose
+          return
+        end
         dispose_all
         @active = true
         refresh
@@ -29,6 +37,10 @@ module PEMK
 
       # Rebuild all sprites & passability from current Housing state.
       def refresh
+        unless $game_map && Housing.is_house_map?($game_map.map_id)
+          dispose
+          return
+        end
         return unless @active && Housing.state
         dispose_all
         refresh_floor_sprite
@@ -37,6 +49,7 @@ module PEMK
         rebuild_passability
         update_sprite_positions
       end
+
 
       def refresh_floor_sprite
         @floor_sprite&.bitmap&.dispose
@@ -145,7 +158,11 @@ module PEMK
 
       # Update screen positions & dynamic depth Z of placed furniture when camera scrolls or player moves
       def update_sprite_positions
-        return unless @active && $game_map
+        unless $game_map && Housing.is_house_map?($game_map.map_id)
+          dispose
+          return
+        end
+        return unless @active
         vp = get_map_viewport
         disp_x = ($game_map.display_x / 4.0).round rescue 0
         disp_y = ($game_map.display_y / 4.0).round rescue 0
@@ -397,7 +414,11 @@ class Scene_Map
   alias_method :pemk_housing_renderer_orig_update, :update
 
   def update
-    PEMK::HousingRenderer.update_sprite_positions if PEMK::HousingRenderer.active?
+    if $game_map && !PEMK::Housing.is_house_map?($game_map.map_id)
+      PEMK::HousingRenderer.dispose if PEMK::HousingRenderer.active?
+    elsif PEMK::HousingRenderer.active?
+      PEMK::HousingRenderer.update_sprite_positions
+    end
     pemk_housing_renderer_orig_update
   end
 end

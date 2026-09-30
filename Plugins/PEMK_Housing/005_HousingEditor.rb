@@ -136,6 +136,10 @@ module PEMK
       end
 
       def setup_view
+        unless $game_map && Housing.is_house_map?($game_map.map_id)
+          dispose_all
+          return
+        end
         @active         = true
         @mode           = :view
         @held           = nil
@@ -202,9 +206,13 @@ module PEMK
           @held_item      = nil
           @held_is_moving = false
           @hover_item     = nil
-          @ui_t           = 1.0
-          create_hud_bottom
-          refresh_hud_bottom
+          if $game_map && Housing.is_house_map?($game_map.map_id)
+            @ui_t           = 1.0
+            create_hud_bottom
+            refresh_hud_bottom
+          else
+            dispose_all
+          end
         ensure
           $game_temp.in_menu = @was_in_menu if $game_temp
         end
@@ -277,9 +285,10 @@ module PEMK
 
       # ── Boucle principale ──────────────────────────────────────────────────
       def update
-        return unless $scene.is_a?(Scene_Map) && Housing.state
-        tier = Housing.state[:size_tier] || 1
-        return unless $game_map && $game_map.map_id == Housing::MAP_FOR_TIER[tier]
+        unless $scene.is_a?(Scene_Map) && $game_map && Housing.state && Housing.is_house_map?($game_map.map_id)
+          dispose_all if @active || @hud_bottom || @hud_panel
+          return
+        end
 
         setup_view unless @active
 
@@ -1813,7 +1822,11 @@ class Scene_Map
   end
 
   def update
-    PEMK::HousingEditor.update if $scene.is_a?(Scene_Map) && PEMK::Housing.state
+    if $scene.is_a?(Scene_Map) && $game_map && PEMK::Housing.is_house_map?($game_map.map_id) && PEMK::Housing.state
+      PEMK::HousingEditor.update
+    else
+      PEMK::HousingEditor.dispose_all if defined?(PEMK::HousingEditor)
+    end
     pemk_housing_editor_orig_update
   end
 end
