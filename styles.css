@@ -123,12 +123,12 @@ body {
 #map {
   flex: 1;
   height: 100%;
-  background: #040811 !important;
+  background: #082c22 !important;
   z-index: 1;
 }
 
 .leaflet-container {
-  background: #040811 !important;
+  background: #082c22 !important;
 }
 
 /* Left Floating Control Panel (PKMNMap Style) */
