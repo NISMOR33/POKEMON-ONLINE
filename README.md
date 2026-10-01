@@ -392,6 +392,7 @@ Le jeu répertorie la totalité des **1 026 espèces de Pokémon** (Génération
 
 | Fichier | Description |
 | :--- | :--- |
+| [`web/pokemon_guide.html`](./web/pokemon_guide.html) | **Guide d'Obtention de A à Z Interactif HTML** (Design Noir & Blanc, recherche instantanée, images sprites). |
 | [`DOCUMENTATION_COMPLETE_MODPACK.md`](./docs/DOCUMENTATION_COMPLETE_MODPACK.md) | Guide encyclopédique exhaustif des 47+ plugins, Méga-Évolutions et Housing. |
 | [`POKEMON_OBTENABILITE_COMPLETE.md`](./docs/POKEMON_OBTENABILITE_COMPLETE.md) | Rapport d'obtenabilité certifié des 1 026 espèces de Pokémon. |
 | [`GUIDE_RENCONTRES_ROUTES_POKEMON.md`](./docs/GUIDE_RENCONTRES_ROUTES_POKEMON.md) | Registre complet des tables de rencontres sauvages sur les 288+ routes de Hoenn. |
