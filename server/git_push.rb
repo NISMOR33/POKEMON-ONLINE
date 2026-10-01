@@ -1,20 +1,21 @@
 # frozen_string_literal: true
 
 puts "================================================="
-puts "🚀 Organisation & Publication sur GitHub en cours..."
+puts "🚀 Rangement Ultime & Publication sur GitHub..."
 puts "================================================="
 
-# Run workspace organizer first
-system("ruby server/organize_workspace.rb") rescue nil
+# Execute ultimate clean script first
+system("ruby server/clean_root_structure.rb") rescue nil
+system("ruby server/clean_root_ultimate.rb") rescue nil
 
 ps_script = "server/do_git_push.ps1"
 
 ps1_code = <<~'POWERSHELL'
-Write-Host "--> Indexation des fichiers modifiés et rangés..."
+Write-Host "--> Indexation de tous les sous-dossiers (launchers/, docs/, web/, tools/, server/)..."
 git add -A
 
 Write-Host "--> Création du commit..."
-git commit -m "refactor: workspace clean architecture, server scripts, intro graphics & ultra-pro README"
+git commit -m "refactor: ultimate root folder cleanup (launchers, protocol, docs, web, tools)"
 
 Write-Host "--> Push vers GitHub..."
 git push origin main
@@ -28,6 +29,6 @@ File.write(ps_script, ps1_code)
 system("powershell -ExecutionPolicy Bypass -File #{ps_script}")
 
 puts "================================================="
-puts "✨ Publication et rangement terminés !"
+puts "✨ Rangement Ultime et Publication GitHub terminés !"
 puts "================================================="
 

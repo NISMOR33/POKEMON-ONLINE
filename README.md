@@ -328,15 +328,74 @@ end
 
 ---
 
+<a name="obtainability"></a>
+## Pokémon Obtainability & Unobtainable Species Guide
+
+Le jeu répertorie la totalité des **1 026 espèces de Pokémon** (Générations 1 à 9). Chaque espèce possède une méthode d'obtention dédiée :
+
+<table width="100%">
+  <tr>
+    <td width="33%" align="center">
+      <h4>639 Espèces Sauvages</h4>
+      <p><img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/safari-ball.png" /> Rencontres directes dans les herbes, grottes, eau et sous-marins sur les 288+ routes de Hoenn.</p>
+    </td>
+    <td width="33%" align="center">
+      <h4>355 Espèces Spéciales</h4>
+      <p><img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/exp-share.png" /> Obtention via Évolutions (Niveau, Pierres, Bonheur), Quêtes MQS, Form Trader, Pension et PWT.</p>
+    </td>
+    <td width="33%" align="center">
+      <h4>30 Espèces Événementielles</h4>
+      <p><img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/cherish-ball.png" /> Non capturables en état sauvage direct. Obtenables via Cadeaux Mystère, Marché GTS ou Événements.</p>
+    </td>
+  </tr>
+</table>
+
+### Registre des 30 Espèces Événementielles (Non Capturables Sauvages)
+
+| # | Espèce Pokémon | Identifiant Interne | Gen | Méthodes d'Obtention Légitimes |
+| :---: | :--- | :--- | :---: | :--- |
+| 1 | **Omanyte** | `OMANYTE` | Gen 1 | Restauration de Fossile Nautile / Cadeau Mystère |
+| 2 | **Omastar** | `OMASTAR` | Gen 1 | Évolution d'Omanyte (Niveau 40) / Marché GTS |
+| 3 | **Phione** | `PHIONE` | Gen 4 | Reproduction de Manaphy à la Pension Pokémon |
+| 4 | **Manaphy** | `MANAPHY` | Gen 4 | Événement Cadeau Mystère Œuf Manaphy |
+| 5 | **Cobalion** | `COBALION` | Gen 5 | Quête Scénarisée MQS Lames de la Justice |
+| 6 | **Terrakion** | `TERRAKION` | Gen 5 | Quête Scénarisée MQS Lames de la Justice |
+| 7 | **Virizion** | `VIRIZION` | Gen 5 | Quête Scénarisée MQS Lames de la Justice |
+| 8 | **Tornadus** | `TORNADUS` | Gen 5 | Événement Météo Volant / Cadeau Mystère |
+| 9 | **Thundurus** | `THUNDURUS` | Gen 5 | Événement Météo Volant / Cadeau Mystère |
+| 10 | **Furfrou** | `FURFROU` | Gen 6 | Échange Form Trader / Salon de Toilettage |
+| 11 | **Xerneas** | `XERNEAS` | Gen 6 | Quête Événementielle Légendaire de Kalos |
+| 12 | **Volcanion** | `VOLCANION` | Gen 6 | Code Cadeau Mystère Distribution Événement |
+| 13 | **Pyukumuku** | `PYUKUMUKU` | Gen 7 | Pêche Spéciale d'Alola / Échange Form Trader |
+| 14 | **Marshadow** | `MARSHADOW` | Gen 7 | Événement Ombre / Code Cadeau Mystère |
+| 15 | **Meltan** | `MELTAN` | Gen 7 | Boîte Mystère Événementielle / GTS |
+| 16 | **Melmetal** | `MELMETAL` | Gen 7 | Évolution de Meltan (400 Bonbons) / GTS |
+| 17 | **Arctozolt** | `ARCTOZOLT` | Gen 8 | Assemblage de Fossiles Galar / PNJ Scientifique |
+| 18 | **Zarude** | `ZARUDE` | Gen 8 | Code Cadeau Mystère Film Pokémon |
+| 19 | **Glastrier** | `GLASTRIER` | Gen 8 | Quête Écurie de Couronneige / GTS |
+| 20 | **Spectrier** | `SPECTRIER` | Gen 8 | Quête Écurie de Couronneige / GTS |
+| 21 | **Enamorus** | `ENAMORUS` | Gen 8 | Quête Génies de Hisui / Form Trader |
+| 22 | **Great Tusk** | `GREATTUSK` | Gen 9 | Événement Zone Zéro / Paradoxe Koraidon |
+| 23 | **Chien-Pao** | `CHIENPAO` | Gen 9 | Quête des 8 Pieux du Fléau |
+| 24 | **Ting-Lu** | `TINGLU` | Gen 9 | Quête des 8 Pieux du Fléau |
+| 25 | **Chi-Yu** | `CHIYU` | Gen 9 | Quête des 8 Pieux du Fléau |
+| 26 | **Gouging Fire** | `GOUGINGFIRE` | Gen 9 | Événement Écarlate Paradoxe Raikou |
+| 27 | **Raging Bolt** | `RAGINGBOLT` | Gen 9 | Événement Écarlate Paradoxe Entei |
+| 28 | **Iron Boulder** | `IRONBOULDER` | Gen 9 | Événement Violet Paradoxe Cobaltium |
+| 29 | **Iron Crown** | `IRONCROWN` | Gen 9 | Événement Violet Paradoxe Viridium |
+| 30 | **Pecharunt** | `PECHARUNT` | Gen 9 | Événement Baie Pêcha Fabuleuse / Cadeau Mystère |
+
+---
+
 <a name="documentation"></a>
 ## Documentation Index
 
 | Fichier | Description |
 | :--- | :--- |
-| [`DOCUMENTATION_COMPLETE_MODPACK.md`](./DOCUMENTATION_COMPLETE_MODPACK.md) | Guide encyclopédique exhaustif des 47+ plugins, Méga-Évolutions et Housing. |
-| [`POKEMON_OBTENABILITE_COMPLETE.md`](./POKEMON_OBTENABILITE_COMPLETE.md) | Rapport d'obtenabilité certifié des 1 026 espèces de Pokémon. |
-| [`GUIDE_RENCONTRES_ROUTES_POKEMON.md`](./GUIDE_RENCONTRES_ROUTES_POKEMON.md) | Registre complet des tables de rencontres sauvages sur les 288+ routes de Hoenn. |
-| [`POKEMON_NON_OBTENABLES.md`](./POKEMON_NON_OBTENABLES.md) | Spécifications des légendaires événementiels non capturables en état sauvage. |
+| [`DOCUMENTATION_COMPLETE_MODPACK.md`](./docs/DOCUMENTATION_COMPLETE_MODPACK.md) | Guide encyclopédique exhaustif des 47+ plugins, Méga-Évolutions et Housing. |
+| [`POKEMON_OBTENABILITE_COMPLETE.md`](./docs/POKEMON_OBTENABILITE_COMPLETE.md) | Rapport d'obtenabilité certifié des 1 026 espèces de Pokémon. |
+| [`GUIDE_RENCONTRES_ROUTES_POKEMON.md`](./docs/GUIDE_RENCONTRES_ROUTES_POKEMON.md) | Registre complet des tables de rencontres sauvages sur les 288+ routes de Hoenn. |
+| [`POKEMON_NON_OBTENABLES.md`](./docs/POKEMON_NON_OBTENABLES.md) | Spécifications des légendaires événementiels non capturables en état sauvage. |
 
 ---
 
