@@ -1,35 +1,41 @@
 <div align="center">
 
-  <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/showdown/384.gif" height="130" alt="Rayquaza Animated" />
+  <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/showdown/384.gif" height="140" alt="Rayquaza Animated" />
 
   # Pokémon Eternal Emerald Online
 
   <p align="center">
-    <b>MMO Persistant • Moteur MKXP-Z / Essentials v21.1 • 47+ Mods Intégrés • 1 026+ Pokémon (Gen 1–9)</b>
+    <b>Distributed MMO Architecture &bull; MKXP-Z 64-Bit Engine &bull; Pokémon Essentials v21.1 &bull; 1,026+ Species (Gen 1–9)</b>
   </p>
 
   <p align="center">
     <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/poke-ball.png" alt="Poké Ball" />
+    <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/great-ball.png" alt="Great Ball" />
     <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/ultra-ball.png" alt="Ultra Ball" />
     <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/master-ball.png" alt="Master Ball" />
+    <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/luxury-ball.png" alt="Luxury Ball" />
     <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/mega-ring.png" alt="Mega Ring" />
+    <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/town-map.png" alt="Town Map" />
   </p>
 
   <p align="center">
     <a href="https://pokemonessentials.wikia.com"><img src="https://img.shields.io/badge/Framework-Essentials_v21.1-D0021B?style=for-the-badge&logo=ruby&logoColor=white" alt="Essentials v21.1" /></a>
     <a href="https://github.com/MKXP-Z/MKXP-Z"><img src="https://img.shields.io/badge/Engine-MKXP--Z_64Bit-4A90E2?style=for-the-badge&logo=cplusplus&logoColor=white" alt="MKXP-Z Engine" /></a>
     <a href="https://www.ruby-lang.org"><img src="https://img.shields.io/badge/Language-Ruby_3.1-CC342D?style=for-the-badge&logo=ruby&logoColor=white" alt="Ruby 3.1" /></a>
-    <a href="./DOCUMENTATION_COMPLETE_MODPACK.md"><img src="https://img.shields.io/badge/Modpack-47%2B_Plugins_Intégrés-7ED321?style=for-the-badge" alt="47+ Mods" /></a>
-    <img src="https://img.shields.io/badge/Pokedex-1_026_Espèces-F5A623?style=for-the-badge" alt="1026 Species" />
+    <a href="./DOCUMENTATION_COMPLETE_MODPACK.md"><img src="https://img.shields.io/badge/Modpack-47%2B_Integrated_Plugins-7ED321?style=for-the-badge" alt="47+ Mods" /></a>
+    <img src="https://img.shields.io/badge/Pokedex-1_026_Species-F5A623?style=for-the-badge" alt="1026 Species" />
   </p>
 
   <p align="center">
-    <a href="#overview">Aperçu</a> &bull;
-    <a href="#modpack-features">Catalogue des 47+ Mods</a> &bull;
-    <a href="#architecture">Architecture MMO</a> &bull;
-    <a href="#code-samples">Code Sources</a> &bull;
+    <a href="#overview">Overview</a> &bull;
+    <a href="#architecture">Architecture</a> &bull;
+    <a href="#gts-engine">GTS Engine</a> &bull;
+    <a href="#housing-system">Housing System</a> &bull;
+    <a href="#modpack-catalog">Modpack Catalog</a> &bull;
+    <a href="#web-gis-engine">Web GIS Engine</a> &bull;
+    <a href="#code-references">Code Sources</a> &bull;
     <a href="#documentation">Documentation</a> &bull;
-    <a href="#getting-started">Installation</a>
+    <a href="#installation">Getting Started</a>
   </p>
 
 </div>
@@ -39,194 +45,248 @@
 <a name="overview"></a>
 ## Overview
 
-**Pokémon Eternal Emerald Online** est la version ultime et distribuée du légendaire Pokémon Émeraude. Le projet réinvente la région de Hoenn en une infrastructure MMO persistant avec plus de **47 plugins et mods intégrés**, un système de combat enrichi (Méga-Évolutions, Z-Moves, SOS Battles), un Hôtel des Ventes synchrone (GTS), du Housing multijoueur, et une application web interactive temps réel.
+**Pokémon Eternal Emerald Online** est une plateforme MMO multijoueur haute performance construite sur le framework **Pokémon Essentials v21.1** et exécutée via le moteur 64-bit **MKXP-Z**. Le projet réinvente la région de Hoenn sous forme d'univers persistant en réseau, intégrant un système de transactions GTS synchrone, un moteur de housing procédural sur grille, des mécaniques de combat jusqu'à la 9e Génération et une suite logicielle web d'analyse et de cartographie GeoJSON.
 
 ---
 
-<a name="modpack-features"></a>
-## Catalogue Complète des 47+ Mods & Fonctionnalités
+<a name="architecture"></a>
+## Distributed MMO Architecture
+
+### System Topology & Protocol Flow
+
+```mermaid
+flowchart LR
+    classDef client fill:#0F172A,stroke:#38BDF8,stroke-width:2px,color:#F8FAFC;
+    classDef server fill:#1E1035,stroke:#F59E0B,stroke-width:2px,color:#F8FAFC;
+    classDef web fill:#022C22,stroke:#10B981,stroke-width:2px,color:#F8FAFC;
+
+    subgraph ClientEngine ["Game Client Engine (MKXP-Z / RGSS)"]
+        GameClient["Ruby 3.1 Game Core"]:::client
+        GTS_Client["PEMK::GTS Client Module"]:::client
+        Housing_Client["PEMK::Housing Renderer"]:::client
+        Save_Manager["SaveData Fast Cleaner"]:::client
+    end
+
+    subgraph ServerInfrastructure ["Server Infrastructure Layer"]
+        MMO_Core["PEMK Authoritative Server (TCP Port 9998)"]:::server
+        Web_Server["Native HTTP API Server (Ruby Port 4567)"]:::server
+        JSON_Store["Persistent JSON Storage (gts_listings.json)"]:::server
+    end
+
+    subgraph WebInterface ["Web Applications & Dashboards"]
+        Dashboard["GTS Web Marketplace (/api/gts)"]:::web
+        InteractiveMap["Interactive GIS World Map (index.html)"]:::web
+    end
+
+    GameClient <-->|TCP Socket Packets| MMO_Core
+    GTS_Client -->|Serialize State| JSON_Store
+    JSON_Store -->|Read State| Web_Server
+    Web_Server -->|REST JSON Payload| Dashboard
+    InteractiveMap -->|Fetch GeoJSON Coordinates| Web_Server
+    Save_Manager -->|Targeted Cleanup| GameClient
+```
+
+---
+
+<a name="gts-engine"></a>
+## Global Trade System (GTS Engine)
+
+<table width="100%">
+  <tr>
+    <td width="18%" align="center">
+      <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/showdown/382.gif" height="110" alt="Kyogre" />
+    </td>
+    <td width="82%">
+      <h3>Hôtel des Ventes Multijoueur Synchrone</h3>
+      <p>Le module GTS (<code>Plugins/PEMK_GTS/</code>) fournit une place de marché complète avec persistance de données :</p>
+      <ul>
+        <li><img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/poke-ball.png" width="16" /> <b>Dépôt d'Annonces :</b> Mise en vente de Pokémon (IVs, EVs, natures, capacités) et d'objets du sac.</li>
+        <li><img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/poke-ball.png" width="16" /> <b>Restitution Automatique :</b> Annulation de vente avec réintégration directe dans l'équipe ou le sac du dresseur.</li>
+        <li><img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/poke-ball.png" width="16" /> <b>API REST Web :</b> Serveur HTTP natif (<code>server/web_server.rb</code>) exposant l'état du marché sur <code>/api/gts</code>.</li>
+      </ul>
+    </td>
+  </tr>
+</table>
+
+### GTS Transaction Protocol Sequence
+
+```mermaid
+sequenceDiagram
+    autonumber
+    participant TraderA as Trainer A (Seller)
+    participant ClientA as Client A (MKXP-Z)
+    participant Storage as Storage Layer (JSON)
+    participant WebAPI as Web API (Ruby Server)
+    participant TraderB as Trainer B (Buyer)
+
+    TraderA->>ClientA: Initiate Listing (Price, IVs, Moves)
+    ClientA->>Storage: Write to gts_listings.json
+    Storage->>WebAPI: Broadcast State Change
+    WebAPI-->>TraderB: HTTP GET /api/gts Payload
+    TraderB->>Storage: Execute Purchase Transaction
+    Storage->>ClientA: Credit Currency & Transfer Pokémon
+```
+
+---
+
+<a name="housing-system"></a>
+## Modular Housing Engine
+
+<table width="100%">
+  <tr>
+    <td width="18%" align="center">
+      <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/showdown/383.gif" height="110" alt="Groudon" />
+    </td>
+    <td width="82%">
+      <h3>Système de Logement Multijoueur (PEMK Housing)</h3>
+      <p>Le module Housing (<code>Plugins/PEMK_Housing/</code>) gère les parcelles privées des dresseurs sur la carte modèle (Map ID 927) :</p>
+      <ul>
+        <li><img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/poke-ball.png" width="16" /> <b>Grille Tier 1 (11&times;7 Cases) :</b> Délimitation exacte avec origine sur <code>[0, 2]</code> et paillasson de sortie en <code>y = 9</code>.</li>
+        <li><img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/poke-ball.png" width="16" /> <b>Peinture de Sol Procédurale :</b> Catalogue de 10 motifs de sol applicables par sélection de zone.</li>
+        <li><img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/poke-ball.png" width="16" /> <b>Algorithme Z-Ordering Absolu :</b> Calcul de profondeur <code>(footprint_bottom_map_y * 32) + 16</code> empêchant le joueur de passer sous le sol ou sous les meubles.</li>
+      </ul>
+    </td>
+  </tr>
+</table>
+
+---
+
+<a name="modpack-catalog"></a>
+## Modpack Catalog & Integrated Modules
 
 <table width="100%">
   <thead>
     <tr>
       <th width="8%" align="center">Sprite</th>
       <th width="32%">Module / Plugin</th>
-      <th width="60%">Description & Fonctionnalités Intégrées</th>
+      <th width="60%">Description & Spécifications Techniques</th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <td align="center"><img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/showdown/25.gif" height="60" alt="Pikachu" /></td>
       <td><b>Following Pokémon EX</b></td>
-      <td>Le premier Pokémon de votre équipe vous suit en temps réel sur la carte avec réactions émotionnelles, dialogues et animations adaptées au terrain.</td>
-    </tr>
-    <tr>
-      <td align="center"><img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/showdown/382.gif" height="60" alt="Kyogre" /></td>
-      <td><b>PEMK GTS (Hôtel des Ventes)</b></td>
-      <td>Place de marché multijoueur synchrone pour échanger et vendre Pokémon (IVs, EVs, capacités) et objets. Dashboard Web synchrone via API REST (<code>/api/gts</code>).</td>
-    </tr>
-    <tr>
-      <td align="center"><img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/showdown/383.gif" height="60" alt="Groudon" /></td>
-      <td><b>PEMK Housing System</b></td>
-      <td>Achat et décoration de maisons privées sur grille 11&times;7. Peinture de sol procédurale (10 motifs) et système de profondeur Z-Ordering absolu.</td>
+      <td>Suivi du Pokémon tête d'équipe en temps réel sur la carte avec émotions, réactions au terrain et dialogues interactifs.</td>
     </tr>
     <tr>
       <td align="center"><img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/showdown/6.gif" height="60" alt="Charizard" /></td>
       <td><b>Deluxe Battle Kit & Z-Power</b></td>
-      <td>Interface de combat repensée, système de Z-Moves avec animations du Bracelet Z, Méga-Évolutions et cinématiques d'introduction des dresseurs.</td>
+      <td>Refonte complète du moteur de combat, intégration des Z-Moves, animations du Bracelet Z, Méga-Évolutions et cinématiques d'entrée.</td>
     </tr>
     <tr>
       <td align="center"><img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/showdown/448.gif" height="60" alt="Lucario" /></td>
       <td><b>Generation 9 Pack</b></td>
-      <td>Intégration complète des 1 026 Pokémon de la Gen 1 à la Gen 9 (Paldea), incluant les formes de Hisui, les attaques et les talents régionaux.</td>
+      <td>Prise en charge des 1 026 Pokémon de la Gen 1 à la Gen 9 (Paldea), y compris les attaques, talents et formes de Hisui.</td>
     </tr>
     <tr>
       <td align="center"><img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/showdown/94.gif" height="60" alt="Gengar" /></td>
       <td><b>Modern Quest System + UI</b></td>
-      <td>Journal de quêtes interactif avec suivi des objectifs principaux/secondaires, indicateurs visuels au-dessus des PNJ et récompenses dynamiques.</td>
+      <td>Journal de quêtes interactif avec suivi des objectifs principaux/secondaires et bulles d'indications au-dessus des PNJ.</td>
     </tr>
     <tr>
       <td align="center"><img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/showdown/133.gif" height="60" alt="Eevee" /></td>
       <td><b>Item Crafting UI Plus & Wardrobe</b></td>
-      <td>Atelier d'artisanat pour fabriquer des Poké Balls, Baies et objets. Système de garde-robe personnalisable pour changer la tenue du dresseur.</td>
+      <td>Atelier d'artisanat pour la confection d'objets/Poké Balls et garde-robe complète pour personnaliser la tenue du dresseur.</td>
     </tr>
     <tr>
       <td align="center"><img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/showdown/3.gif" height="60" alt="Venusaur" /></td>
       <td><b>Level Caps Ex & Challenge Modes</b></td>
-      <td>Limitation de niveau automatique basée sur les badges. Modes de jeu configurables : Nuzlocke, Randomizer complet et Monotype.</td>
+      <td>Plafond de niveau automatique par badge et modes de jeu avancés (Nuzlocke, Randomizer complet et Monotype).</td>
     </tr>
     <tr>
       <td align="center"><img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/showdown/9.gif" height="60" alt="Blastoise" /></td>
       <td><b>Encounter List UI & Hyper Training</b></td>
-      <td>Affichage en direct des Pokémon capturables par route/zone. Entraînement Ultime avec Capsules d'Or pour maximiser les IVs au niveau 100.</td>
+      <td>Visualiseur des taux de rencontre sauvages par zone et système d'Entraînement Ultime avec Capsules d'Or.</td>
     </tr>
     <tr>
       <td align="center"><img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/showdown/493.gif" height="60" alt="Arceus" /></td>
-      <td><b>Save Manager & Fast Reset</b></td>
-      <td>Option <b>Supprimer la save</b> intégrée au menu principal. Nettoyage ciblée ultra-rapide (<b>0,001s</b>) et relance directe d'une Nouvelle Partie.</td>
+      <td><b>Save Manager & Fast Boot</b></td>
+      <td>Bouton <b>Supprimer la save</b> intégré au menu principal avec suppression ciblée ultrarafide (<b>0,001s</b>) et relance immédiate.</td>
     </tr>
   </tbody>
 </table>
 
----
+### Complete Registry of 47 Integrated Plugins
 
-### 🧩 Liste Détaillée des 47 Plugins Intégrés
-
-1. **v21.1 Hotfixes** — Correctifs officiels de stabilité pour Essentials v21.1.
-2. **[ULQ_007] Book System** — Bibliothèque et livres lisibles en jeu.
-3. **Generation 9 Pack** — Complétude des Pokémon Gen 1 à Gen 9 (1026+ espèces).
-4. **Modular UI Scenes** — Architecture UI modulaire réutilisable.
-5. **[MUI] Enhanced Pokemon UI** — Interface Pokémon améliorée.
-6. **[MUI] Improved Field Skills** — Capacité hors combat (Coupe, Vol, Surf) simplifiées.
-7. **[MUI] Pokedex Data Page** — Page Pokédex détaillée (statistiques, IVs/EVs).
-8. **Bag Screen w/int. Party** — Sac à dos moderne avec accès direct à l'équipe.
-9. **Deluxe Battle Kit** — Moteur de combat étendu.
-10. **[DBK] Animated Pokémon System** — Sprites Pokémon animés en combat.
-11. **[DBK] Animated Trainer Intros** — Animations d'entrée de combat des dresseurs.
-12. **[DBK] Z-Power** — Mécanique des Z-Moves et animations du Bracelet Z.
-13. **[SV] Summary Screen** — Écran de résumé style Écarlate & Violet.
-14. **DarrylBD99's Wardrobe** — Système de tenue et relookage du dresseur.
-15. **Video Poker** — Mini-jeu de casino interactif.
-16. **Secret Bases Remade** — Bases Secrètes Émeraude améliorées.
-17. **PEMK Core** — Noyau réseau multijoueur synchrone.
-18. **Save File Calls** — API d'accès aux fichiers de sauvegarde.
-19. **Regicode** — Énigmes et puzzles en braille des Regis.
-20. **Luka's Scripting Utilities** — Helpers et utilitaires graphiques.
-21. **Permanent Repel System** — Repousse réutilisable automatiquement.
-22. **Auto Multi Save & Periodic Autosave** — Sauvegarde automatique périodique et slots multiples.
-23. **PEMK Housing** — Système de logement et décoration de sol.
-24. **PEMK GTS** — Place de marché Hôtel des Ventes.
-25. **PWT System (E21)** — Pokémon World Tournament (Tournoi des champions).
-26. **Modern Quest System + UI** — Journal de quêtes interactif.
-27. **Modular Title Screen** — Écran d'accueil dynamique avec calques.
-28. **Level Caps Ex** — Caps de niveau par badge.
-29. **Item Find Description** — Indication d'emplacement des objets cachés.
-30. **Item Crafting UI Plus** — Système d'artisanat et de création d'objets.
-31. **Hyper Training** — Entraînement Ultime des IVs.
-32. **HGSS Dex List** — Présentation Pokédex style HeartGold / SoulSilver.
-33. **[DBK] SOS Battles** — Renforts sauvages en combat (Appels SOS).
-34. **Form Trader** — PNJ de changement de formes alternatives.
-35. **Following Pokemon EX** — Pokémon compagnon qui suit le dresseur.
-36. **Fly Animation** — Animation de Vol cinématique.
-37. **Event Indicators** — Bulle d'indication visuelle au-dessus des PNJ.
-38. **Encounter List UI** — Visualiseur des Pokémon sauvages de la zone.
-39. **Emerald UI Pack** — Thème graphique Émeraude rétro-chic.
-40. **Delta Speed Up** — Mode accéléré (Fast-Forward).
-41. **Challenge Modes** — Modes Nuzlocke, Randomizer et Monotype.
-42. **Caruban's Dynamic Darkness** — Obscurité et lampes dynamiques dans les grottes.
-43. **RSE Cable Car Scene** — Animation du Téléphérique du Mont Chimnée.
-44. **[DBK] Enhanced Battle UI** — Interface de combat améliorée.
-45. **Save Status HUD** — Bandeau d'état de sauvegarde.
-46. **BW Mystery Gift And Card Album** — Cadeaux Mystère et Album de Cartes.
-47. **AZERTY ZQSD Controls** — Contrôles clavier ZQSD natifs.
+1. **v21.1 Hotfixes** &bull; Correctifs officiels de stabilité Essentials v21.1.
+2. **[ULQ_007] Book System** &bull; Moteur de lecture de livres et documents en jeu.
+3. **Generation 9 Pack** &bull; Base de données des 1 026 espèces (Gen 1–9).
+4. **Modular UI Scenes** &bull; Framework UI modulaire réutilisable.
+5. **[MUI] Enhanced Pokemon UI** &bull; Interface équipe et fiches Pokémon améliorées.
+6. **[MUI] Improved Field Skills** &bull; Capacités hors-combat (Coupe, Vol, Surf) automatisées.
+7. **[MUI] Pokedex Data Page** &bull; Visualiseur avancé des IVs, EVs et statistiques.
+8. **Bag Screen w/int. Party** &bull; Sac à dos moderne avec équipe intégrée.
+9. **Deluxe Battle Kit** &bull; Moteur de combat haute performance.
+10. **[DBK] Animated Pokémon System** &bull; Animation des sprites Pokémon en combat.
+11. **[DBK] Animated Trainer Intros** &bull; Animations d'entrée des dresseurs adverses.
+12. **[DBK] Z-Power** &bull; Attaques Z et animations du Bracelet Z.
+13. **[SV] Summary Screen** &bull; Écran de résumé style Écarlate & Violet.
+14. **DarrylBD99's Wardrobe** &bull; Système de tenues et relookage.
+15. **Video Poker** &bull; Mini-jeu de casino interactif.
+16. **Secret Bases Remade** &bull; Bases Secrètes Émeraude étendues.
+17. **PEMK Core** &bull; Noyau réseau multijoueur synchrone.
+18. **Save File Calls** &bull; Gestionnaire d'accès aux fichiers de sauvegarde.
+19. **Regicode** &bull; Énigmes et puzzles en braille des Regis.
+20. **Luka's Scripting Utilities** &bull; Utilitaires graphiques et mathématiques.
+21. **Permanent Repel System** &bull; Repousse automatique réutilisable.
+22. **Auto Multi Save & Periodic Autosave** &bull; Sauvegarde périodique et slots multiples.
+23. **PEMK Housing** &bull; Logement multijoueur et peinture de sol.
+24. **PEMK GTS** &bull; Place de marché Hôtel des Ventes.
+25. **PWT System (E21)** &bull; Pokémon World Tournament (Tournoi des champions).
+26. **Modern Quest System + UI** &bull; Journal de quêtes interactif.
+27. **Modular Title Screen** &bull; Écran titre dynamique à calques.
+28. **Level Caps Ex** &bull; Caps de niveau automatiques par badge.
+29. **Item Find Description** &bull; Radar et descriptions des objets cachés.
+30. **Item Crafting UI Plus** &bull; Confection de Poké Balls et d'objets.
+31. **Hyper Training** &bull; Entraînement Ultime des IVs au niveau 100.
+32. **HGSS Dex List** &bull; Présentation Pokédex style HeartGold / SoulSilver.
+33. **[DBK] SOS Battles** &bull; Système d'appels à l'aide en combat sauvage.
+34. **Form Trader** &bull; PNJ de changement de formes régionales/alternatives.
+35. **Following Pokemon EX** &bull; Pokémon suiveur sur la carte.
+36. **Fly Animation** &bull; Animation cinématique de la capacité Vol.
+37. **Event Indicators** &bull; Bulles d'indications au-dessus des PNJ.
+38. **Encounter List UI** &bull; Registre des taux de rencontre par zone.
+39. **Emerald UI Pack** &bull; Thème graphique Émeraude rétro-chic.
+40. **Delta Speed Up** &bull; Mode d'accélération Fast-Forward.
+41. **Challenge Modes** &bull; Modes Nuzlocke, Randomizer et Monotype.
+42. **Caruban's Dynamic Darkness** &bull; Obscurité et éclairages dynamiques.
+43. **RSE Cable Car Scene** &bull; Animation du Téléphérique du Mont Chimnée.
+44. **[DBK] Enhanced Battle UI** &bull; Interface de combat étendue.
+45. **Save Status HUD** &bull; Bandeau de statut de sauvegarde.
+46. **BW Mystery Gift And Card Album** &bull; Cadeaux Mystère et Album de Cartes.
+47. **AZERTY ZQSD Controls** &bull; Support natif des claviers AZERTY ZQSD.
 
 ---
 
-<a name="architecture"></a>
-## Architecture MMO & Infrastructure Distribuée
+<a name="web-gis-engine"></a>
+## Web GIS & Interactive Map Engine
 
-### Diagramme des Composants du Système
+Le projet inclut une application web cartographique interactive (`index.html`, `app.js`, `map_data_pro.js`, `vectors.js`) permettant de visualiser l'intégralité de la région de Hoenn :
 
-```mermaid
-flowchart LR
-    classDef client fill:#1E293B,stroke:#38BDF8,stroke-width:2px,color:#F8FAFC;
-    classDef server fill:#0F172A,stroke:#F59E0B,stroke-width:2px,color:#F8FAFC;
-    classDef web fill:#1E1B4B,stroke:#818CF8,stroke-width:2px,color:#F8FAFC;
-
-    subgraph ClientLayer ["🎮 Moteur Jeu Client (MKXP-Z / RGSS)"]
-        GameClient["Client Ruby 3.1"]:::client
-        GTS_Client["Hôtel des Ventes (PEMK_GTS)"]:::client
-        Save_Manager["SaveData Helper"]:::client
-    end
-
-    subgraph ServerLayer ["⚙️ Infrastructure Serveur"]
-        MMO_Core["Serveur MMO PEMK (TCP 9998)"]:::server
-        Web_Server["Serveur Web HTTP API (Port 4567)"]:::server
-        JSON_Store["GTS Storage (gts_listings.json)"]:::server
-    end
-
-    subgraph WebLayer ["🌐 Web & Dashboard"]
-        Dashboard["Dashboard Web GTS"]:::web
-        InteractiveMap["Carte Web Interactive (index.html)"]:::web
-    end
-
-    GameClient <-->|Socket TCP Client/Serveur| MMO_Core
-    GTS_Client -->|Mise à jour Annonces| JSON_Store
-    JSON_Store -->|Lecture JSON| Web_Server
-    Web_Server -->|API REST /api/gts| Dashboard
-    InteractiveMap -->|GeoJSON Vector Data| Web_Server
-```
+<table width="100%">
+  <tr>
+    <td width="18%" align="center">
+      <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/showdown/376.gif" height="100" alt="Metagross" />
+    </td>
+    <td width="82%">
+      <ul>
+        <li><img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/town-map.png" width="16" /> <b>Rendu Vectoriel GeoJSON :</b> Conversion exacte des coordonnées de routes et villes de Hoenn.</li>
+        <li><img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/town-map.png" width="16" /> <b>Fiches de Rencontres par Zone :</b> Consultation dynamique des Pokémon capturables sur les 288+ routes.</li>
+        <li><img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/town-map.png" width="16" /> <b>Catalogue Multiview :</b> Recherche et filtrage en direct des 1 026 espèces de Pokémon.</li>
+      </ul>
+    </td>
+  </tr>
+</table>
 
 ---
 
-### Diagramme de Séquence : Transaction GTS
+<a name="code-references"></a>
+## Code Sources & Implementation
 
-```mermaid
-sequenceDiagram
-    autonumber
-    participant Vendeur as 🧢 Dresseur A (Vendeur)
-    participant ClientA as 🎮 Client A (MKXP-Z)
-    participant Storage as 💾 Storage JSON
-    participant WebAPI as 🌐 API Web (Ruby Server)
-    participant Acheteur as 🧢 Dresseur B (Acheteur)
-
-    Vendeur->>ClientA: Met un Pokémon en vente (Prix, IVs, Moves)
-    ClientA->>Storage: Écriture dans gts_listings.json
-    Storage->>WebAPI: Notification de changement d'état
-    WebAPI-->>Acheteur: Flux JSON REST (/api/gts)
-    Acheteur->>Storage: Validation de l'achat via GTS
-    Storage->>ClientA: Crédit de la somme & Restitution du Pokémon
-```
-
----
-
-<a name="code-samples"></a>
-## Extraits de Code Source Signatures
-
-### 1. Bouton "Supprimer la save" dans le Menu Principal ([`999_Patch-Load_Menu_Hard_Coded.rb`](file:///c:/Users/admin/Documents/Pokemon-MMO-Eternal-Emerald/Plugins/BW%20Mystery%20Gift/999_Patch-Load_Menu_Hard_Coded.rb#L65-L105))
+### 1. In-Game Save Deletion Integration (`999_Patch-Load_Menu_Hard_Coded.rb`)
 
 ```ruby
-# Injection dynamique du bouton Supprimer la save sous Continuer
+# Injection du bouton 'Supprimer la save' dans la structure de menu
 if show_continue
   commands[cmd_main = commands.length] = _INTL('Continuer')
   commands[cmd_delete_save = commands.length] = _INTL('Supprimer la save')
@@ -234,7 +294,7 @@ else
   commands[cmd_main = commands.length] = _INTL('Nouvelle Partie')
 end
 
-# Traitement de l'effacement et relance instantanée de la Nouvelle Partie
+# Traitement du clic avec confirmation et lancement direct
 when cmd_delete_save
   if pbConfirmMessage(_INTL("Voulez-vous vraiment supprimer votre sauvegarde et recommencer une nouvelle partie ?"))
     SaveDeletionHelper.delete_all_saves
@@ -244,7 +304,7 @@ when cmd_delete_save
   end
 ```
 
-### 2. Helper de Nettoyage de Sauvegarde Ciblée (0,001s)
+### 2. Fast Save Directory Targeted Cleanup (0.001s)
 
 ```ruby
 module SaveDeletionHelper
@@ -252,15 +312,15 @@ module SaveDeletionHelper
     SaveData.delete rescue nil if defined?(SaveData)
 
     user_home = ENV["USERPROFILE"] || "C:/Users/admin"
-    target_dirs = [
+    possible_folders = [
       File.join(ENV["APPDATA"] || "", "Pokemon Eternal Emerald Complete"),
       File.join(ENV["APPDATA"] || "", "POKEMON-ONLINE"),
       File.join(user_home, "Saved Games", "Pokemon Eternal Emerald Complete")
     ]
 
-    target_dirs.each do |dir|
-      next unless File.directory?(dir)
-      Dir.glob("#{dir}/*.{dat,rxdata,sav}").each { |f| File.delete(f) rescue nil }
+    possible_folders.each do |folder|
+      next unless File.directory?(folder)
+      Dir.glob("#{folder}/*.{dat,rxdata,sav}").each { |file| File.delete(file) rescue nil }
     end
   end
 end
@@ -269,9 +329,9 @@ end
 ---
 
 <a name="documentation"></a>
-## Index des Documentations Encyclopédiques
+## Documentation Index
 
-| Document | Description |
+| Fichier | Description |
 | :--- | :--- |
 | [`DOCUMENTATION_COMPLETE_MODPACK.md`](./DOCUMENTATION_COMPLETE_MODPACK.md) | Guide encyclopédique exhaustif des 47+ plugins, Méga-Évolutions et Housing. |
 | [`POKEMON_OBTENABILITE_COMPLETE.md`](./POKEMON_OBTENABILITE_COMPLETE.md) | Rapport d'obtenabilité certifié des 1 026 espèces de Pokémon. |
@@ -280,35 +340,35 @@ end
 
 ---
 
-<a name="getting-started"></a>
-## Installation & Démarrage
+<a name="installation"></a>
+## Getting Started & Execution
 
-### Prérequis
+### Prerequisites
 - Windows 10 / 11 (64-bit)
-- Runtime Ruby v3.1 (`C:\Ruby31-x64`)
+- Ruby Runtime v3.1 (`C:\Ruby31-x64`)
 
-### Exécution du Jeu
+### Launch Game Client
 ```bash
 ./Game.exe
 ```
 
-### Lancer le Serveur Web Dashboard (API GTS & Temps Réel)
+### Launch Native HTTP API & Web Dashboard Server
 ```bash
 ruby server/web_server.rb
 ```
-*URL du Dashboard Web :* `http://localhost:4567`
+*Web Dashboard URL:* `http://localhost:4567`
 
-### Scripts d'Administration (`server/`)
+### Administration Scripts (`server/`)
 ```bash
-ruby server/force_clear_cache.rb    # Efface le cache PluginScripts.rxdata
-ruby server/resize_intro_images.rb  # Redimensionne les images d'intro en 512x384 px
-ruby server/git_push.rb            # Exécute le commit et push automatique sur GitHub
+ruby server/force_clear_cache.rb    # Clear compiled PluginScripts.rxdata cache
+ruby server/resize_intro_images.rb  # Rescale intro graphics to native 512x384 px
+ruby server/git_push.rb            # Automated Git add, commit & push to remote
 ```
 
 ---
 
 <div align="center">
-  <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/showdown/658.gif" height="90" alt="Greninja Animated GIF" />
-  <p><b>Pokémon Eternal Emerald MMO Engine</b></p>
+  <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/showdown/658.gif" height="100" alt="Greninja Animated GIF" />
+  <p><b>Pokémon Eternal Emerald MMO Architecture Engine</b></p>
 </div>
 
