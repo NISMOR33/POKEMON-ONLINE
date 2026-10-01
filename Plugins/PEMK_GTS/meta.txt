@@ -1,0 +1,7 @@
+Name       = PEMK GTS
+Version    = 1.0.0
+Essentials = 21.1
+Requires   = PEMK
+Website    = https://github.com/NISMOR33/POKEMON-ONLINE
+Credits    = Antigravity, NISMOR33
+

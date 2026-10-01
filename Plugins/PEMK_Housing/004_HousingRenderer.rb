@@ -94,13 +94,17 @@ module PEMK
         return nil unless defined?(Scene_Map) && $scene.is_a?(Scene_Map)
 
         ss = nil
-        [:spriteset, :spriteset_map].each do |m|
-          if $scene.respond_to?(m)
-            ss = $scene.send(m) rescue nil
-            break if ss
+        if $scene.respond_to?(:spriteset) && $scene.spriteset
+          ss = $scene.spriteset
+        end
+        if ss.nil?
+          [:spriteset, :spriteset_map].each do |m|
+            if $scene.respond_to?(m)
+              ss = $scene.send(m) rescue nil
+              break if ss
+            end
           end
         end
-
         if ss.nil?
           [:@spriteset, :@spriteset_map].each do |ivar|
             if $scene.instance_variable_defined?(ivar)
@@ -109,7 +113,6 @@ module PEMK
             end
           end
         end
-
         if ss.nil?
           $scene.instance_variables.each do |ivar|
             val = $scene.instance_variable_get(ivar) rescue nil
@@ -120,30 +123,16 @@ module PEMK
           end
         end
 
-        return nil unless ss
-
         vp = nil
-        [:viewport1, :viewport].each do |m|
-          if ss.respond_to?(m)
-            v = ss.send(m) rescue nil
-            if v && v.is_a?(Viewport) && !v.disposed?
-              vp = v; break
-            end
-          end
-        end
+        vp ||= (Spriteset_Map.viewport rescue nil) if defined?(Spriteset_Map)
+        vp ||= (ss.viewport1 rescue nil) if ss
+        vp ||= (ss.viewport rescue nil) if ss
+        vp ||= (ss.instance_variable_get(:@viewport1) rescue nil) if ss
+        vp ||= (ss.instance_variable_get(:@viewport) rescue nil) if ss
+        vp ||= (Spriteset_Map.class_variable_get(:@@viewport1) rescue nil) if defined?(Spriteset_Map) && Spriteset_Map.class_variable_defined?(:@@viewport1)
+        vp ||= (Spriteset_Map.class_variable_get(:@@viewport) rescue nil) if defined?(Spriteset_Map) && Spriteset_Map.class_variable_defined?(:@@viewport)
 
-        if vp.nil?
-          [:@viewport1, :@viewport].each do |ivar|
-            if ss.instance_variable_defined?(ivar)
-              v = ss.instance_variable_get(ivar) rescue nil
-              if v && v.is_a?(Viewport) && !v.disposed?
-                vp = v; break
-              end
-            end
-          end
-        end
-
-        if vp.nil?
+        if vp.nil? && ss
           ss.instance_variables.each do |ivar|
             val = ss.instance_variable_get(ivar) rescue nil
             if val.is_a?(Viewport) && !val.disposed?
@@ -164,8 +153,10 @@ module PEMK
         end
         return unless @active
         vp = get_map_viewport
-        disp_x = ($game_map.display_x / 4.0).round rescue 0
-        disp_y = ($game_map.display_y / 4.0).round rescue 0
+        sub_x = (defined?(Game_Map::X_SUBPIXELS) ? Game_Map::X_SUBPIXELS.to_f : 4.0)
+        sub_y = (defined?(Game_Map::Y_SUBPIXELS) ? Game_Map::Y_SUBPIXELS.to_f : 4.0)
+        disp_x_px = ($game_map ? ($game_map.display_x / sub_x).round : 0) rescue 0
+        disp_y_px = ($game_map ? ($game_map.display_y / sub_y).round : 0) rescue 0
 
         if @floor_sprite && !@floor_sprite.disposed?
           if vp && @floor_sprite.viewport != vp
@@ -173,9 +164,9 @@ module PEMK
           end
           map_x = Housing::GRID_ORIGIN_X
           map_y = Housing::GRID_ORIGIN_Y
-          @floor_sprite.x = (map_x * Housing::TILE_SIZE) - disp_x
-          @floor_sprite.y = (map_y * Housing::TILE_SIZE) - disp_y
-          @floor_sprite.z = 0
+          @floor_sprite.x = (map_x * Housing::TILE_SIZE) - disp_x_px
+          @floor_sprite.y = (map_y * Housing::TILE_SIZE) - disp_y_px
+          @floor_sprite.z = 1
         end
 
         @sprites.each do |item|
@@ -194,21 +185,69 @@ module PEMK
           map_x = Housing::GRID_ORIGIN_X + piece[:x].to_i
           map_y = Housing::GRID_ORIGIN_Y + piece[:y].to_i
 
-          sprite.x = (map_x * Housing::TILE_SIZE) - disp_x
-          sprite.y = ((map_y + fh) * Housing::TILE_SIZE) - img_h - disp_y
+          sprite.x = (map_x * Housing::TILE_SIZE) - disp_x_px
+          sprite.y = ((map_y + fh) * Housing::TILE_SIZE) - img_h - disp_y_px
 
-          if piece[:category].to_s == "floor"
-            sprite.z = 1  # Rugs/carpets always under player and under solid furniture
+          cat = piece[:category].to_s
+          if cat == "floor"
+            sprite.z = 2  # Rugs/carpets always under player and under solid furniture
+          elsif cat == "wall"
+            # Wall items remain behind characters walking in front of the wall
+            sprite.z = (map_y * Housing::TILE_SIZE) - disp_y_px + 2
           else
             footprint_bottom_map_y = map_y + fh - 1
-            # Exact Z formula matching RPG Maker XP / Essentials Game_Character screen_z:
-            # Player at tile py has screen_z = py * 32 - disp_y + 32.
-            # Setting furniture Z to footprint_bottom_map_y * 32 - disp_y + 16 guarantees:
-            # - Player standing at footprint_bottom_map_y or South (py >= footprint_bottom_map_y): player.z (>= +32) > furniture.z (+16)
-            #   -> Player is drawn 100% ON TOP OF / IN FRONT OF furniture!
-            # - Player standing North (py < footprint_bottom_map_y): player.z (<= +0) < furniture.z (+16)
-            #   -> Player is drawn BEHIND / UNDER furniture!
-            sprite.z = (footprint_bottom_map_y * Housing::TILE_SIZE) - disp_y + 16
+            # Essentials v20/v21 screen_z alignment:
+            # player.screen_z = (py * 32) - disp_y_px + 32
+            # Setting furniture Z to (footprint_bottom_map_y * 32) - disp_y_px + 33 ensures:
+            # - Player standing South (py > footprint_bottom_map_y): player.screen_z >= +64 > furniture.z (+33) -> Player in FRONT
+            # - Player standing at/behind base (py <= footprint_bottom_map_y): player.screen_z <= +32 < furniture.z (+33) -> Player BEHIND
+            sprite.z = (footprint_bottom_map_y * Housing::TILE_SIZE) - disp_y_px + 33
+          end
+        end
+        debug_z
+      end
+
+      # Debug inspector helper (appeler toutes les 60 frames dans update_sprite_positions)
+      def debug_z
+        return unless @active && $game_player && defined?(Scene_Map) && $scene.is_a?(Scene_Map)
+        @dbg_tick = (@dbg_tick || 0) + 1
+        return unless @dbg_tick % 60 == 0
+
+        ss = ($scene.spriteset rescue nil)
+        vp = get_map_viewport
+
+        msg_env = "scene=#{$scene.class} ss=#{ss.class} ivars=#{ss ? ss.instance_variables.inspect : 'nil'} | " +
+                  "Spriteset_Map cvars=#{defined?(Spriteset_Map) ? Spriteset_Map.class_variables.inspect : 'nil'} | " +
+                  "vp=#{vp.inspect}"
+        if defined?(echoln)
+          echoln(msg_env) rescue nil
+        else
+          puts(msg_env) rescue nil
+        end
+
+        char_sprites = ss ? (ss.instance_variable_get(:@character_sprites) rescue nil) : nil
+        psp = char_sprites ? char_sprites.find { |s| s.character.equal?($game_player) } : nil
+
+        sub_y = (defined?(Game_Map::Y_SUBPIXELS) ? Game_Map::Y_SUBPIXELS.to_f : 4.0)
+        disp_y_px = ($game_map ? ($game_map.display_y / sub_y).round : 0) rescue 0
+
+        @sprites.each do |item|
+          spr, piece = item
+          next if spr.nil? || spr.disposed?
+          key = piece[:key]
+          rot = piece[:rot].to_i
+          fw, fh = effective_footprint(piece[:footprint_w].to_i, piece[:footprint_h].to_i, rot)
+          map_y = Housing::GRID_ORIGIN_Y + piece[:y].to_i
+          vp_same = (psp && psp.viewport && spr.viewport) ? psp.viewport.equal?(spr.viewport) : false
+
+          msg = "player py=#{$game_player.y} sprite_z=#{psp&.z} vp=#{psp&.viewport.inspect} | " +
+                "furn(#{key}) map_y=#{map_y} fh=#{fh} z=#{spr.z} vp=#{spr.viewport.inspect} vp_same=#{vp_same} | " +
+                "disp_y_px=#{disp_y_px}"
+
+          if defined?(echoln)
+            echoln(msg) rescue nil
+          else
+            puts(msg) rescue nil
           end
         end
       end
@@ -277,17 +316,22 @@ module PEMK
         map_x = Housing::GRID_ORIGIN_X + piece[:x].to_i
         map_y = Housing::GRID_ORIGIN_Y + piece[:y].to_i
 
-        disp_x = ($game_map ? ($game_map.display_x / 4.0).round : 0) rescue 0
-        disp_y = ($game_map ? ($game_map.display_y / 4.0).round : 0) rescue 0
+        sub_x = (defined?(Game_Map::X_SUBPIXELS) ? Game_Map::X_SUBPIXELS.to_f : 4.0)
+        sub_y = (defined?(Game_Map::Y_SUBPIXELS) ? Game_Map::Y_SUBPIXELS.to_f : 4.0)
+        disp_x_px = ($game_map ? ($game_map.display_x / sub_x).round : 0) rescue 0
+        disp_y_px = ($game_map ? ($game_map.display_y / sub_y).round : 0) rescue 0
 
-        sprite.x = (map_x * Housing::TILE_SIZE) - disp_x
-        sprite.y = ((map_y + fh) * Housing::TILE_SIZE) - img_h - disp_y
+        sprite.x = (map_x * Housing::TILE_SIZE) - disp_x_px
+        sprite.y = ((map_y + fh) * Housing::TILE_SIZE) - img_h - disp_y_px
 
-        if piece[:category].to_s == "floor"
-          sprite.z = 1
+        cat = piece[:category].to_s
+        if cat == "floor"
+          sprite.z = 2
+        elsif cat == "wall"
+          sprite.z = (map_y * Housing::TILE_SIZE) - disp_y_px + 2
         else
           footprint_bottom_map_y = map_y + fh - 1
-          sprite.z = (footprint_bottom_map_y * Housing::TILE_SIZE) - disp_y + 16
+          sprite.z = (footprint_bottom_map_y * Housing::TILE_SIZE) - disp_y_px + 33
         end
 
         Housing.apply_sprite_rotation(sprite, rot, bmp.width, bmp.height)
@@ -427,11 +471,14 @@ end
 class Game_Character
   alias_method :pemk_housing_char_orig_passable?, :passable?
 
-  def passable?(x, y, d, *args)
+  def passable?(x, y, d = 0, *args)
     if self.is_a?(Game_Player) && PEMK::Housing.state && $game_map && PEMK::Housing.is_house_map?($game_map.map_id)
-      new_x = x + (d == 6 ? 1 : d == 4 ? -1 : 0)
-      new_y = y + (d == 2 ? 1 : d == 8 ? -1 : 0)
-      return false unless PEMK::HousingRenderer.housing_tile_passable?(new_x, new_y)
+      return false unless PEMK::HousingRenderer.housing_tile_passable?(x, y)
+      if d && d > 0
+        nx = x + (d == 6 ? 1 : d == 4 ? -1 : 0)
+        ny = y + (d == 2 ? 1 : d == 8 ? -1 : 0)
+        return false unless PEMK::HousingRenderer.housing_tile_passable?(nx, ny)
+      end
     end
     pemk_housing_char_orig_passable?(x, y, d, *args)
   end
@@ -441,9 +488,14 @@ end
 class Game_Map
   alias_method :pemk_housing_orig_passable?, :passable?
 
-  def passable?(x, y, d, *args)
+  def passable?(x, y, d = 0, *args)
     if PEMK::Housing.state && PEMK::Housing.is_house_map?(@map_id)
       return false unless PEMK::HousingRenderer.housing_tile_passable?(x, y)
+      if d && d > 0
+        nx = x + (d == 6 ? 1 : d == 4 ? -1 : 0)
+        ny = y + (d == 2 ? 1 : d == 8 ? -1 : 0)
+        return false unless PEMK::HousingRenderer.housing_tile_passable?(nx, ny)
+      end
     end
     pemk_housing_orig_passable?(x, y, d, *args)
   end

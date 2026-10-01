@@ -4,6 +4,10 @@
 mmo.log
 server.log
 
+# Visual Studio & IDE temporary files (LOCKED BY IDE)
+.vs/
+.vscode/
+
 # Temporary session tokens
 mmo_session*.dat
 mmo_account*.dat
@@ -11,6 +15,11 @@ mmo_config*.txt
 
 # Compiled plugin scripts (auto-generated on boot)
 Data/PluginScripts.rxdata
+
+# Backups & Temporary files
+*.bak
+*.tmp
+*.tmp.png
 
 # Temporary / Scratch files
 scratch/

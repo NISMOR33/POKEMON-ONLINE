@@ -1,3 +1,54 @@
+module SaveDeletionHelper
+  def self.delete_all_saves
+    if defined?(SaveData) && SaveData.respond_to?(:delete)
+      SaveData.delete rescue nil
+    end
+
+    user_home = ENV["USERPROFILE"] || "C:/Users/admin"
+    search_dirs = [
+      ENV["APPDATA"],
+      ENV["LOCALAPPDATA"],
+      File.join(user_home, "Saved Games")
+    ].compact
+
+    search_dirs.each do |base|
+      next unless File.directory?(base)
+      Dir.glob("#{base}/**/*").each do |path|
+        next if File.directory?(path)
+        filename = File.basename(path)
+        dirname = File.dirname(path)
+
+        if dirname.match?(/Pokemon|Emerald|Save/i) || filename.match?(/Save|Game.*\.dat|Game.*\.sav|System\.dat|\.rxdata|\.dat/i)
+          if filename.match?(/\.(rxdata|dat|sav|bak)$/i)
+            File.delete(path) rescue nil
+          end
+        end
+      end
+    end
+  end
+
+  def self.start_new_game
+    if defined?(Game) && Game.respond_to?(:start_new)
+      Game.start_new
+    elsif defined?(pbStartNewGame)
+      pbStartNewGame
+    else
+      $scene = Scene_Map.new rescue nil
+    end
+  end
+
+  def self.confirm_and_delete(scene = nil)
+    if pbConfirmMessage(_INTL("⚠️ Voulez-vous vraiment SUPPRIMER votre sauvegarde et démarrer une nouvelle partie ?"))
+      delete_all_saves
+      pbMessage(_INTL("✅ Sauvegarde supprimée avec succès ! Lancement d'une nouvelle partie..."))
+      scene.pbEndScene if scene && scene.respond_to?(:pbEndScene)
+      start_new_game
+      return true
+    end
+    return false
+  end
+end
+
 # Auto Multi Save by http404error
 # For Pokemon Essentials v21.1
 

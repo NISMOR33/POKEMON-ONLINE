@@ -1,3 +1,27 @@
+module SaveDeletionHelper
+  def self.delete_all_saves
+    # 1. Standard Essentials Save Delete
+    if defined?(SaveData) && SaveData.respond_to?(:delete)
+      SaveData.delete rescue nil
+    end
+
+    # 2. Fast targeted cleanup of the game's save directory only
+    user_home = ENV["USERPROFILE"] || "C:/Users/admin"
+    possible_folders = [
+      File.join(ENV["APPDATA"] || "", "Pokemon Eternal Emerald Complete"),
+      File.join(ENV["APPDATA"] || "", "POKEMON-ONLINE"),
+      File.join(user_home, "Saved Games", "Pokemon Eternal Emerald Complete")
+    ]
+
+    possible_folders.each do |folder|
+      next unless File.directory?(folder)
+      Dir.glob("#{folder}/*.{dat,rxdata,sav}").each do |file|
+        File.delete(file) rescue nil
+      end
+    end
+  end
+end
+
 #===============================================================================
 # Hide Mystery Gift option in Load Screen completely for multi-save (brute force approch)
 #===============================================================================
@@ -14,15 +38,17 @@ if Object.const_defined?(:PokemonLoadScreen) && defined?(SaveData::AUTO_SLOTS)
       end
 
       commands = []
-      cmd_main     = -1
-      cmd_options  = -1
-      cmd_language = -1
-      cmd_debug    = -1
-      cmd_quit     = -1
+      cmd_main        = -1
+      cmd_delete_save = -1
+      cmd_options     = -1
+      cmd_language    = -1
+      cmd_debug       = -1
+      cmd_quit        = -1
 
       show_continue = !@save_data.empty?
       if show_continue
         commands[cmd_main = commands.length] = _INTL('Continuer')
+        commands[cmd_delete_save = commands.length] = _INTL('Supprimer la save')
       else
         commands[cmd_main = commands.length] = _INTL('Nouvelle Partie')
       end
@@ -50,6 +76,13 @@ if Object.const_defined?(:PokemonLoadScreen) && defined?(SaveData::AUTO_SLOTS)
             Game.start_new
           end
           return
+        when cmd_delete_save
+          if pbConfirmMessage(_INTL("Voulez-vous vraiment supprimer votre sauvegarde et recommencer une nouvelle partie ?"))
+            SaveDeletionHelper.delete_all_saves
+            @scene.pbEndScene
+            Game.start_new
+            return
+          end
         when cmd_options
           pbFadeOutIn do
             scene = PokemonOption_Scene.new
@@ -80,3 +113,4 @@ if Object.const_defined?(:PokemonLoadScreen) && defined?(SaveData::AUTO_SLOTS)
     end
   end
 end
+
