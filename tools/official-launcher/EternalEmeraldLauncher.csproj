@@ -8,7 +8,7 @@
     <AssemblyName>Eternal Emerald Launcher</AssemblyName>
     <RootNamespace>EternalEmerald.Launcher</RootNamespace>
     <ApplicationIcon>Game.ico</ApplicationIcon>
-    <Version>3.1.0</Version>
+    <Version>3.1.1</Version>
     <NoWarn>$(NoWarn);WFO1000</NoWarn>
   </PropertyGroup>
 </Project>
