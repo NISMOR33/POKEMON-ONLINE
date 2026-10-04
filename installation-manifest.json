@@ -1,0 +1,17 @@
+{
+  "product": "Pokémon Eternal Emerald Online",
+  "channel": "stable",
+  "version": "1.0.0",
+  "launcher": "3.0.0",
+  "required": [
+    "Game.exe",
+    "Game.rxdata",
+    "mkxp.json",
+    "Graphics",
+    "Plugins",
+    "server",
+    "launchers/Start-Eternal-Emerald-MMO.ps1"
+  ],
+  "health_report": ".runtime/health.json",
+  "update_policy": "manual-manifest"
+}

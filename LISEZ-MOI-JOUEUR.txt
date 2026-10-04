@@ -1,0 +1,20 @@
+POKÉMON ETERNAL EMERALD ONLINE — VERSION 3.0
+
+LANCER LE JEU
+  Ouvrez « Pokémon Eternal Emerald.lnk » ou « Eternal Emerald Launcher.exe ».
+
+RACCOURCIS DU LAUNCHER
+  Entrée  : jouer
+  F1      : lancer le diagnostic
+  Échap   : fermer le launcher
+
+EN CAS DE PROBLÈME
+  1. Ouvrez le launcher.
+  2. Cliquez sur DIAGNOSTIC ou appuyez sur F1.
+  3. Acceptez la réparation automatique si elle est proposée.
+  4. Les rapports se trouvent dans le dossier .runtime.
+
+SAUVEGARDE
+  La progression en ligne est sauvegardée automatiquement lorsque le compte est connecté.
+  Le mode hors-ligne n’envoie aucune progression au serveur.
+

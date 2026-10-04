@@ -1,12 +1,21 @@
 [CmdletBinding()]
-param([switch]$Guest)
+param([switch]$Guest, [switch]$NoGame)
 
 $ErrorActionPreference = 'Stop'
 $root = $PSScriptRoot
+if (-not (Test-Path -LiteralPath (Join-Path $root 'server')) -and (Test-Path -LiteralPath (Join-Path (Split-Path $root -Parent) 'server'))) {
+    $root = Split-Path $root -Parent
+}
 $serverDir = Join-Path $root 'server'
 $runtime = Join-Path $root '.runtime'
 $stateFile = Join-Path $runtime 'server.json'
-$databaseUrl = 'postgres://postgres:pemk_dev@127.0.0.1:55433/pemk_eternal_emerald'
+$databaseUrl = if ($env:PEMK_DATABASE_URL) {
+    $env:PEMK_DATABASE_URL
+} else {
+    # Le cluster local est créé avec l'authentification trust. Pour un serveur
+    # distant, définissez PEMK_DATABASE_URL hors du dépôt avec vos identifiants.
+    'postgres://postgres@127.0.0.1:55433/pemk_eternal_emerald'
+}
 
 # Detection dynamique de Ruby / bundle
 $bundleCmd = Get-Command bundle.bat, bundle -ErrorAction SilentlyContinue | Select-Object -ExpandProperty Source -First 1
@@ -127,9 +136,74 @@ for ($i = 0; $i -lt 30; $i++) {
 }
 if (-not $ready) { throw "Le serveur Hoenn n'a pas démarré. Consultez $serverLog" }
 
+if ($NoGame) {
+    Write-Host 'Serveur Hoenn prêt sur 127.0.0.1:9998.' -ForegroundColor Green
+    return
+}
+
+if ($NoGame) {
+    Write-Host 'Serveur Hoenn prêt sur 127.0.0.1:9998.' -ForegroundColor Green
+    return
+}
+
+if ($NoGame) {
+    Write-Host 'Serveur Hoenn prêt sur 127.0.0.1:9998.' -ForegroundColor Green
+    return
+}
+
+if ($NoGame) {
+    Write-Host 'Serveur Hoenn prêt sur 127.0.0.1:9998.' -ForegroundColor Green
+    return
+}
+
+if ($NoGame) {
+    Write-Host 'Serveur Hoenn prêt sur 127.0.0.1:9998.' -ForegroundColor Green
+    return
+}
+
+if ($NoGame) {
+    Write-Host 'Serveur Hoenn prêt sur 127.0.0.1:9998.' -ForegroundColor Green
+    return
+}
+
+if ($NoGame) {
+    Write-Host 'Serveur Hoenn prêt sur 127.0.0.1:9998.' -ForegroundColor Green
+    return
+}
+
+if ($NoGame) {
+    Write-Host 'Serveur Hoenn prêt sur 127.0.0.1:9998.' -ForegroundColor Green
+    return
+}
+
+if ($NoGame) {
+    Write-Host 'Serveur Hoenn prêt sur 127.0.0.1:9998.' -ForegroundColor Green
+    return
+}
+
+if ($NoGame) {
+    Write-Host 'Serveur Hoenn prêt sur 127.0.0.1:9998.' -ForegroundColor Green
+    return
+}
+
+if ($NoGame) {
+    Write-Host 'Serveur Hoenn prêt sur 127.0.0.1:9998.' -ForegroundColor Green
+    return
+}
+
+if ($NoGame) {
+    Write-Host 'Serveur Hoenn prêt sur 127.0.0.1:9998.' -ForegroundColor Green
+    return
+}
+
+if ($NoGame) {
+    Write-Host 'Serveur Hoenn prêt sur 127.0.0.1:9998.' -ForegroundColor Green
+    return
+}
+
 $env:RUBY_THREAD_VM_STACK_SIZE = '16777216'
 if ($Guest) { $env:PEMK_INSTANCE = 'guest' } else { Remove-Item Env:PEMK_INSTANCE -ErrorAction SilentlyContinue }
-Start-Process -FilePath (Join-Path $root 'Game.exe') -ArgumentList 'debug' -WorkingDirectory $root
+Start-Process -FilePath (Join-Path $root 'Game.exe') -WorkingDirectory $root
 Write-Host 'Pokemon MMO Hoenn est lancé.' -ForegroundColor Green
 Write-Host 'Serveur : 127.0.0.1:9998'
 Write-Host "Projet : $root"
