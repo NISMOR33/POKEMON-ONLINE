@@ -9,6 +9,15 @@ $root = Split-Path $PSScriptRoot -Parent
 $log = Join-Path $root '.runtime\update.log'
 New-Item -ItemType Directory -Path (Split-Path $log -Parent) -Force | Out-Null
 
+function Get-Sha256([string]$Path) {
+    $stream = [IO.File]::OpenRead($Path)
+    try {
+        $sha = [Security.Cryptography.SHA256]::Create()
+        try { return ([BitConverter]::ToString($sha.ComputeHash($stream))).Replace('-', '').ToLowerInvariant() }
+        finally { $sha.Dispose() }
+    } finally { $stream.Dispose() }
+}
+
 try {
     "[$(Get-Date -Format o)] Attente de la fermeture du launcher PID $LauncherPid" | Add-Content -LiteralPath $log -Encoding utf8
     try { Wait-Process -Id $LauncherPid -Timeout 30 -ErrorAction Stop } catch { Start-Sleep -Seconds 1 }
@@ -22,7 +31,7 @@ try {
         $rootPrefix = [IO.Path]::GetFullPath($root).TrimEnd('\') + '\'
         if (-not $target.StartsWith($rootPrefix, [StringComparison]::OrdinalIgnoreCase)) { throw "Destination interdite : $target" }
         if (-not (Test-Path -LiteralPath $stage)) { throw "Téléchargement introuvable : $stage" }
-        $hash = (Get-FileHash -LiteralPath $stage -Algorithm SHA256).Hash.ToLowerInvariant()
+        $hash = Get-Sha256 $stage
         if ($hash -ne ([string]$entry.sha256).ToLowerInvariant()) { throw "Empreinte incorrecte : $target" }
         if (Test-Path -LiteralPath $target) {
             $relative = $target.Substring($rootPrefix.Length)
