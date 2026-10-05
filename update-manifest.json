@@ -1,13 +1,13 @@
-{
-  "version": "3.1.1",
-  "mandatory": true,
-  "published_at": "2026-10-04T17:21:01.9001650Z",
-  "files": [
-    {
-      "path": "Eternal Emerald Launcher.exe",
-      "url": "https://raw.githubusercontent.com/NISMOR33/POKEMON-ONLINE/main/Eternal%20Emerald%20Launcher.exe",
-      "sha256": "495712fda25a837cb67549c32054283111ce892cea27fad240f3ebbbdf18c307",
-      "bytes": 51696551
-    }
-  ]
+﻿{
+    "version":  "3.1.1",
+    "mandatory":  true,
+    "published_at":  "2026-10-04T17:21:01.9001650Z",
+    "files":  [
+                  {
+                      "path":  "Eternal Emerald Launcher.exe",
+                      "url":  "https://raw.githubusercontent.com/NISMOR33/POKEMON-ONLINE/main/Eternal%20Emerald%20Launcher.exe",
+                      "sha256":  "139f6b01102e618e171e7296c3eae2c2eaeadbff22b736a6eabcdab6301f5b47",
+                      "bytes":  203776
+                  }
+              ]
 }
