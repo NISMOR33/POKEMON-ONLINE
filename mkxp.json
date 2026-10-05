@@ -14,6 +14,7 @@
     // accented characters in it, which is why this property is useful.
     //
     "windowTitle": "Pokémon Eternal Emerald Online",
+    "borderless": true,
 
     // The game window's width and height, in pixels.
     //

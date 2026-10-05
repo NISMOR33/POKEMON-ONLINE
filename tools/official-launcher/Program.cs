@@ -9,13 +9,13 @@ using System.Text.Json;
 
 namespace EternalEmerald.Launcher;
 
-internal static class Program
+public static class Program
 {
     [DllImport("user32.dll")] static extern bool SetForegroundWindow(IntPtr hWnd);
     [DllImport("user32.dll")] static extern bool ShowWindow(IntPtr hWnd, int nCmdShow);
 
     [STAThread]
-    static int Main(string[] args)
+    public static int Main(string[] args)
     {
         if (args.Contains("--self-test", StringComparer.OrdinalIgnoreCase))
         {
@@ -725,6 +725,12 @@ internal sealed class LauncherForm : Form
     [StructLayout(LayoutKind.Sequential)] struct SZ { public int cx, cy; }
     [StructLayout(LayoutKind.Sequential)] struct BLEND { public byte Op, Flags, Alpha, Format; }
     [StructLayout(LayoutKind.Sequential)] struct BMI { public int biSize, biWidth, biHeight; public short biPlanes, biBitCount; public int biCompression, biSizeImage, biXPels, biYPels, biClrUsed, biClrImportant; }
+    const int GWL_STYLE = -16;
+    const int WS_VISIBLE = 0x10000000;
+    const int WS_CHILD = 0x40000000;
+    [DllImport("user32.dll")] static extern IntPtr SetParent(IntPtr hWndChild, IntPtr hWndNewParent);
+    [DllImport("user32.dll")] static extern int SetWindowLong(IntPtr hWnd, int nIndex, int dwNewLong);
+    [DllImport("user32.dll")] static extern bool MoveWindow(IntPtr hWnd, int X, int Y, int nWidth, int nHeight, bool bRepaint);
     [DllImport("user32.dll")] static extern bool UpdateLayeredWindow(IntPtr hwnd, IntPtr hdcDst, IntPtr pptDst, ref SZ psize, IntPtr hdcSrc, ref PT pptSrc, int crKey, ref BLEND pblend, int dwFlags);
     [DllImport("user32.dll")] static extern IntPtr GetDC(IntPtr h);
     [DllImport("user32.dll")] static extern int ReleaseDC(IntPtr h, IntPtr dc);
@@ -1479,7 +1485,26 @@ internal sealed class LauncherForm : Form
             statusText = "Ouverture du jeu…";
             var info = new ProcessStartInfo(Path.Combine(root, "Game.exe")) { WorkingDirectory = root, UseShellExecute = false };
             if (guest) info.Environment["PEMK_INSTANCE"] = "guest";
-            Process.Start(info);
+            var gameProc = Process.Start(info);
+            if (gameProc != null)
+            {
+                for (int i = 0; i < 40; i++)
+                {
+                    await Task.Delay(100);
+                    gameProc.Refresh();
+                    if (gameProc.MainWindowHandle != IntPtr.Zero) break;
+                }
+                if (gameProc.MainWindowHandle != IntPtr.Zero)
+                {
+                    IntPtr gameHWnd = gameProc.MainWindowHandle;
+                    SetWindowLong(gameHWnd, GWL_STYLE, WS_VISIBLE | WS_CHILD);
+                    SetParent(gameHWnd, Handle);
+                    int gx = LX + (LW * LS - 512) / 2;
+                    int gy = LY + (LH * LS - 384) / 2;
+                    if (gy < LY - 20) gy = LY - 15;
+                    MoveWindow(gameHWnd, gx, gy, 512, 384, true);
+                }
+            }
             progTarget = 100; statusText = "Bonne aventure !";
             await Task.Delay(1300);
             if (Prefs.Get("autoclose", true)) { await PowerOff(); return; }

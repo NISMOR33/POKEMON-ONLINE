@@ -5,6 +5,7 @@
 # protocol/ dir on the load path, then boots.
 server_root = File.expand_path("..", __dir__)              # server/
 $LOAD_PATH.unshift File.join(server_root, "lib")
+$LOAD_PATH.unshift File.join(server_root, "protocol")
 $LOAD_PATH.unshift File.expand_path("../protocol", server_root)  # repo/protocol
 
 require "pemk"
