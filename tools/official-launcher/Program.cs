@@ -227,9 +227,9 @@ internal static class PixFont
 internal sealed class LauncherForm : Form
 {
     // La fenêtre tient sur un écran 1366x768 ; la cartouche entre depuis le bord supérieur.
-    const int W = 1100, CH = 800, TOP = 0, H = CH;
-    const int BX = 110, BY = 140, BW = 880, BH = 640;
-    const int LX = 294, LY = 208, LS = 2, LW = 256, LH = 192;
+    const int W = 1100, CH = 740, TOP = 0, H = CH;
+    const int BX = 110, BY = 160, BW = 880, BH = 530;
+    const int LX = 216, LY = 218, LS = 3, LW = 222, LH = 96;
     static readonly Color[] Pal = { Color.FromArgb(203, 222, 163), Color.FromArgb(160, 188, 122), Color.FromArgb(76, 106, 68), Color.FromArgb(20, 38, 24) };
     static readonly Color Mint = Color.FromArgb(90, 255, 100), Gold = Color.FromArgb(255, 190, 50), Danger = Color.FromArgb(255, 70, 55);
     static readonly string[] Ids = { "up", "down", "left", "right", "A", "B", "START", "SELECT" };
@@ -443,22 +443,22 @@ internal sealed class LauncherForm : Form
         float tx = (W - PixFont.Width(title) * 3) / 2f;
         PixText(g, title, tx + 1, BY + 15, 3, Color.FromArgb(130, 255, 255, 255));
         PixText(g, title, tx, BY + 14, 3, Color.FromArgb(24, 24, 28));
-        Ctr(g, "ONLINE", fLbl, Color.FromArgb(50, 50, 52), 893, 165);
+        Ctr(g, "ONLINE", fLbl, Color.FromArgb(50, 50, 52), 893, 185);
 
         // lunette de l'écran
-        var bez = new RectangleF(224, 168, 652, 464);
+        var bez = new RectangleF(146, 206, 814, 318);
         using (var bp = Round(bez, 26))
         using (var bb = new LinearGradientBrush(bez, Color.FromArgb(96, 96, 108), Color.FromArgb(62, 62, 74), 90f))
         using (var bo = new Pen(Color.FromArgb(40, 40, 48), 3)) { g.FillPath(bb, bp); g.DrawPath(bo, bp); }
-        Ctr(g, "POWER", fLbl, Color.FromArgb(200, 120, 120), 256, 320);
-        Ctr(g, "D O T   M A T R I X   W I T H   S T E R E O   S O U N D", fLbl, Color.FromArgb(150, 150, 168), 550, 610);
+        Ctr(g, "POWER", fLbl, Color.FromArgb(200, 120, 120), 178, 314);
+        Ctr(g, "D O T   M A T R I X   W I T H   S T E R E O   S O U N D", fLbl, Color.FromArgb(150, 150, 168), 553, 515);
 
         // marque
-        Ctr(g, "ETERNAL BOY", fBrand, Color.FromArgb(34, 40, 112), 550, 645);
+        Ctr(g, "ETERNAL BOY", fBrand, Color.FromArgb(34, 40, 112), 550, 552);
 
         // alvéole allongée derrière A / B (inclinée comme sur une vraie console)
         var st = g.Save();
-        g.TranslateTransform(772, 680); g.RotateTransform(-33.7f);
+        g.TranslateTransform(772, 589); g.RotateTransform(-33.7f);
         var pr = new RectangleF(-100, -50, 200, 100);
         using (var gp = Round(pr, 50))
         using (var gb = new LinearGradientBrush(pr, Color.FromArgb(150, 150, 144), Color.FromArgb(206, 206, 200), 90f))
@@ -470,14 +470,14 @@ internal sealed class LauncherForm : Form
         using (var sh = new Pen(Color.FromArgb(120, 255, 255, 255), 2) { StartCap = LineCap.Round, EndCap = LineCap.Round })
             for (int i = 0; i < 6; i++)
             {
-                g.DrawLine(sh, 882 + i * 14 + 5, 734 - i * 2, 902 + i * 14 + 5, 674 - i * 2);
-                g.DrawLine(sp, 882 + i * 14, 732 - i * 2, 902 + i * 14, 672 - i * 2);
+                g.DrawLine(sh, 882 + i * 14 + 5, 674 - i * 2, 902 + i * 14 + 5, 614 - i * 2);
+                g.DrawLine(sp, 882 + i * 14, 672 - i * 2, 902 + i * 14, 612 - i * 2);
             }
 
-        Ctr(g, "SELECT", fLbl, Color.FromArgb(34, 40, 112), 508, 732);
-        Ctr(g, "START", fLbl, Color.FromArgb(34, 40, 112), 582, 732);
-        Ctr(g, "B", fAb, Color.FromArgb(34, 40, 112), 752, 732);
-        Ctr(g, "A", fAb, Color.FromArgb(34, 40, 112), 846, 676);
+        Ctr(g, "SELECT", fLbl, Color.FromArgb(34, 40, 112), 508, 662);
+        Ctr(g, "START", fLbl, Color.FromArgb(34, 40, 112), 582, 662);
+        Ctr(g, "B", fAb, Color.FromArgb(34, 40, 112), 752, 662);
+        Ctr(g, "A", fAb, Color.FromArgb(34, 40, 112), 846, 606);
         return bmp;
     }
 
@@ -1490,23 +1490,7 @@ internal sealed class LauncherForm : Form
             statusText = "Ouverture du jeu…";
             var info = new ProcessStartInfo(Path.Combine(root, "Game.exe")) { WorkingDirectory = root, UseShellExecute = false };
             if (guest) info.Environment["PEMK_INSTANCE"] = "guest";
-            var gameProc = Process.Start(info);
-            if (gameProc != null)
-            {
-                for (int i = 0; i < 40; i++)
-                {
-                    await Task.Delay(100);
-                    gameProc.Refresh();
-                    if (gameProc.MainWindowHandle != IntPtr.Zero) break;
-                }
-                if (gameProc.MainWindowHandle != IntPtr.Zero)
-                {
-                    IntPtr gameHWnd = gameProc.MainWindowHandle;
-                    SetWindowLong(gameHWnd, GWL_STYLE, WS_VISIBLE | WS_CHILD);
-                    SetParent(gameHWnd, Handle);
-                    MoveWindow(gameHWnd, LX, LY, 512, 384, true);
-                }
-            }
+            Process.Start(info);
             progTarget = 100; statusText = "Bonne aventure !";
             await Task.Delay(1300);
             if (Prefs.Get("autoclose", true)) { await PowerOff(); return; }
